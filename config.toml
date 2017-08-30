@@ -1,7 +1,7 @@
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 #title = "<i class=\"button-icon fa fa-2x fa-docker\"></i>"
-title = "<img src=\"img/rocker-bw.png\" class=\"img-circle img-responsive\" width=\"40\"/>"
+title = "Rocker Project"
 theme = "material"
 #disqusShortname = ""
 # googleAnalytics = ""
@@ -53,4 +53,5 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   profile = "img/rocker.png"
   dateFormat = "January 2, 2006"
   background = "http://www.oocl.com/eng/pressandmedia/photogallery/vessels/PublishingImages/31-Golden_Gate_2.jpg"
+  icon = "<img src=\"img/rocker-bw.png\" class=\"img-circle img-responsive\" width=\"40\"/>"
 
