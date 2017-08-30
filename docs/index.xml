@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Rocker Project on &lt;img src=&#34;img/rocker-bw.png&#34; class=&#34;img-circle img-responsive&#34; width=&#34;40&#34;/&gt;</title>
+    <link>/</link>
+    <description>Recent content in The Rocker Project on &lt;img src=&#34;img/rocker-bw.png&#34; class=&#34;img-circle img-responsive&#34; width=&#34;40&#34;/&gt;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Rocker Project</title>
+      <link>/profile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/profile/</guid>
+      <description>Getting Started To get started right away, ensure you have Docker installed and start R in a container with:
+docker run --rm -ti rocker/r-base  Or get started with an RStudio® instance:
+docker run -p 8787:8787 rocker/rstudio  and point your browser to localhost:8787. Log in with user/password rstudio/rstudio to get started.
+License The Dockerfiles in this repository are licensed under the GPL 2 or later.
+Trademarks RStudio® is a registered trademark of RStudio, Inc.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,56 @@
+languageCode = "en-us"
+defaultContentLanguage = "en-us"
+#title = "<i class=\"button-icon fa fa-2x fa-docker\"></i>"
+title = "<img src=\"img/rocker-bw.png\" class=\"img-circle img-responsive\" width=\"40\"/>"
+theme = "material"
+#disqusShortname = ""
+# googleAnalytics = ""
+paginate = 7
+relativeurls = true
+publishDir = "docs"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+
+[permalinks]
+  post = "/:year/:month/:slug/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  archive = "archives"
+
+[author]
+  name = "Carl Boettiger"
+  bio = ""
+  job = "Assistant Professor"
+  location = "UC Berkeley"
+  gravatarEmail = "cboettig@gmail.com"
+  twitter = "cboettig"
+ 
+# Menu Configuration
+[[menu.main]]
+  weight = 1
+  identifier = "home"
+  name = "Home"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
+  url = "/"
+  
+
+[[menu.footer]]
+  weight = 1
+  name = "GitHub"
+  pre = "<i class=\"button-icon fa fa-2x fa-github\"></i>"
+  url = "https://github.com/rocker-org"
+[[menu.footer]]
+  weight = 2
+  name = "Docker Hub"
+  pre = "<i class=\"button-icon fa fa-2x fa-docker\"></i>"
+  url = "https://hub.docker.com/u/rocker"
+
+
+
+[params]
+  profile = "img/rocker.png"
+  dateFormat = "January 2, 2006"
+  background = "http://www.oocl.com/eng/pressandmedia/photogallery/vessels/PublishingImages/31-Golden_Gate_2.jpg"
+
