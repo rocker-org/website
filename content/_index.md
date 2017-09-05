@@ -28,7 +28,7 @@ and point your browser to `localhost:8787`.  Log in with user/password `rstudio/
 
 ## <i class="fa fa-balance-scale"></i> License ##
 
-The Dockerfiles in this repository are licensed under the GPL 2 or later.
+The Rocker Dockerfiles are licensed under the GPL 2 or later.
 
 ##  <i class="fa fa-trademark"></i> Trademarks ##
 

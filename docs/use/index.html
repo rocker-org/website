@@ -50,6 +50,26 @@
         </li>
         
       
+        
+
+        <li class="nav-item">
+          <a href="../images">
+            <i class="material-icons">cloud_download</i>
+            <span>Images</span>
+          </a>
+        </li>
+        
+      
+        
+
+        <li class="nav-item">
+          <a href="../use">
+            <i class="material-icons">mouse</i>
+            <span>Use</span>
+          </a>
+        </li>
+        
+      
         		</ul>
         	</div>
     	</div>
@@ -106,7 +126,46 @@
 
 <h3 id="i-class-material-icons-https-i-https"><i class="material-icons">https</i> HTTPS</h3>
 
-<p>Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as <a href="https://caddyserver.com">Caddy</a>.  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</p>
+<p>Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as <a href="https://caddyserver.com">Caddy</a>.  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example <code>Caddyfile</code> specifying the necessary configuration, along with a <code>docker-compose</code> file which sets up an RStudio server instance behind a separate container running <code>caddy</code>.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:</p>
+
+<p>Example <code>site/Caddyfile</code>:</p>
+
+<pre><code>rstudio.example.com {
+  
+  tls you@email.com
+  proxy / rstudio:8787 {
+    header_upstream Host {host}
+  }
+
+}
+
+</code></pre>
+
+<p>Example docker-compose file:</p>
+
+<pre><code class="language-yml">version: '2'
+services:
+  caddy:  
+    image: joshix/caddy
+    links:
+      - rstudio
+    volumes:
+      - ./site/:/var/www/html
+      - ./.caddy/:/.caddy
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+
+  rstudio:
+    image: rocker/verse 
+    env_file: .password 
+    volumes:
+      - $HOME/students:/home/
+    restart: always
+</code></pre>
+
+<p>More details about the use of <a href="https://docs.docker.com/compose/">docker-compose</a> and <a href="https://caddyserver.com/">Caddy Server</a> are found on their websites.</p>
 
 <h3 id="i-class-material-icons-data-usage-i-monitoring"><i class="material-icons">data_usage</i> Monitoring</h3>
 
@@ -118,7 +177,9 @@
 
 <h2 id="managing-containers">Managing containers</h2>
 
-<h3 id="tidy-up">Tidy up</h3>
+<p>The simplest tools to monitor containers are <code>docker log</code> and <code>docker stats</code> commands.</p>
+
+<h3 id="cleaning-up-stale-instances">Cleaning up stale instances</h3>
 
 <p>Most of the examples shown here include the use of the <code>--rm</code> flag, which will cause this container to be removed after it has exited.  By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using <code>docker start</code>, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).  However, most of the time we just forget about these containers, though they are still taking up disk space.  You can view all stopped as well as running containers by using the <code>-a</code> flag to <code>docker ps</code>:</p>
 
@@ -132,7 +193,7 @@
 
 <p>This avoids filling up your filesystem with stale containers.  This can be particularly useful if you often run containers without the <code>--rm</code> flag, such as when running RStudio containers in the background (&ldquo;detached&rdquo; mode, <code>docker run -d</code>).</p>
 
-<h3 id="persistant-containers">Persistant containers</h3>
+<h3 id="persistent-containers">Persistent containers</h3>
 
 <p>Often a user might want a container to stay up and restart itself after stopping (such as when docker is upgraded on the host machine, or the host machine is restarted.)  This is most common when working with a container accessed through RStudio.</p>
 
@@ -150,6 +211,8 @@
 <h2 id="misc-topics">Misc topics</h2>
 
 <p>X11</p>
+
+<h2 id="rstudio-connectivity">RStudio connectivity</h2>
 
 	      </div>
       </div>

@@ -54,7 +54,49 @@ Note!  When running RStudio from a container, always run the container as root (
 
 ###  <i class="material-icons">https</i> HTTPS 
 
-Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as [Caddy](https://caddyserver.com).  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.
+Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as [Caddy](https://caddyserver.com).  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example `Caddyfile` specifying the necessary configuration, along with a `docker-compose` file which sets up an RStudio server instance behind a separate container running `caddy`.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:
+
+Example `site/Caddyfile`:
+
+```
+rstudio.example.com {
+  
+  tls you@email.com
+  proxy / rstudio:8787 {
+    header_upstream Host {host}
+  }
+
+}
+
+```
+
+Example docker-compose file:
+
+```yml
+version: '2'
+services:
+  caddy:  
+    image: joshix/caddy
+    links:
+      - rstudio
+    volumes:
+      - ./site/:/var/www/html
+      - ./.caddy/:/.caddy
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+
+  rstudio:
+    image: rocker/verse 
+    env_file: .password 
+    volumes:
+      - $HOME/students:/home/
+    restart: always
+```
+
+
+More details about the use of [docker-compose](https://docs.docker.com/compose/) and [Caddy Server](https://caddyserver.com/) are found on their websites.
 
 ### <i class="material-icons">data_usage</i> Monitoring 
 
@@ -66,7 +108,9 @@ Versioned stack
 
 ## Managing containers
 
-### Tidy up
+The simplest tools to monitor containers are `docker log` and `docker stats` commands.  
+
+### Cleaning up stale instances
 
 Most of the examples shown here include the use of the `--rm` flag, which will cause this container to be removed after it has exited.  By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using `docker start`, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).  However, most of the time we just forget about these containers, though they are still taking up disk space.  You can view all stopped as well as running containers by using the `-a` flag to `docker ps`:
 
@@ -82,7 +126,7 @@ docker rm -v $(docker ps -a -q)
 
 This avoids filling up your filesystem with stale containers.  This can be particularly useful if you often run containers without the `--rm` flag, such as when running RStudio containers in the background ("detached" mode, `docker run -d`).
 
-### Persistant containers
+### Persistent containers
 
 Often a user might want a container to stay up and restart itself after stopping (such as when docker is upgraded on the host machine, or the host machine is restarted.)  This is most common when working with a container accessed through RStudio.
 
@@ -103,3 +147,4 @@ will drop us into a bash shell as the root user.
 
 X11
 
+## RStudio connectivity
