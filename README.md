@@ -1,6 +1,6 @@
-# rocker-org.github.io
-
-**A website for the Rocker Project**
+# [rocker-org.github.io/website](https://rocker-org.github.io/website)  
+      
+**A [website](https://rocker-org.github.io/website) for the Rocker Project**
 
 Carl Boettiger & Dirk Eddelbuettel
 
