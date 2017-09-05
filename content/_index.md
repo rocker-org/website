@@ -23,6 +23,22 @@ docker run --rm -p 8787:8787 rocker/rstudio
 
 and point your browser to `localhost:8787`.  Log in with user/password `rstudio/rstudio`.  
 
+For more information and further options, see the [use](/use) page.
+
+<div class="section">
+<h2> <i class="material-icons">people</i> Team </h2>
+
+<div class = "row">
+<div class="col-md-4 col-md-offset-2">
+<a href="https://twitter.com/cboettig"><img class="img-circle img-raised img-responsive center-block" src="/img/cboettig.jpg"/></a>
+</div>
+<div class="col-md-4">
+<a href="https://twitter.com/eddelbuettel"><img class="img-circle img-raised img-responsive center-block" src="/img/edd.jpg"/></a>
+</div>
+</div>
+<br/>
+The Rocker project is maintained by Carl Boettiger and Dirk Eddelbuettel with significant contributions from a broad community of users and developers. Get in touch on [GitHub issues](https://github.com/rocker-org/rocker) with bug reports, feature requests, or other feedback.  
+</div>
 
 
 
