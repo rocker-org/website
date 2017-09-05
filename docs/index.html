@@ -81,49 +81,10 @@
 
 <p>Or get started with an RStudio® instance:</p>
 
-<pre><code>docker run -p 8787:8787 rocker/rstudio
+<pre><code>docker run --rm -p 8787:8787 rocker/rstudio
 </code></pre>
 
 <p>and point your browser to <code>localhost:8787</code>.  Log in with user/password <code>rstudio/rstudio</code>.</p>
-
-<h2 id="choosing-a-rocker-container">Choosing a rocker container</h2>
-
-<p>The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.</p>
-
-<h3 id="the-rockerversioned-stack">The rocker-versioned stack</h3>
-
-<p><code>rocker/r-ver</code>, <code>rocker/rstudio</code>, <code>rocker/tidyverse</code>, <code>rocker/verse</code>, <code>rocker/geospatial</code>.</p>
-
-<p>This stack builds on stable Debian releases (<code>debian:8</code> for versions &lt; <code>3.4.1</code>, <code>debian:9</code> after). Images in this stack accept a version tag specifying which version of R is desired, e.g. <code>rocker/rstudio:3.4.0</code> for R <code>3.4.0</code>.  Version-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available (though Debian system libraries will still recieve any security patches.)  Omit the tag or specify <code>:latest</code> to always recieve the latest (nightly build) versions, or <code>:devel</code> for an image running on the current development (pre-release) version of R.  This is a linear stack, with each image extending the previous one.</p>
-
-<h3 id="the-rocker-base-stack">The rocker base stack</h3>
-
-<p><code>r-base</code>, <code>rocker/drd</code>, <code>rocker/devel-san</code></p>
-
-<p>This stack builds on <code>debian:testing</code> and <code>debian:unstable</code>.  This is a branched stack, with all other images extending <code>r-base</code>.  Use this stack if you want access to the latest versions of system libraries and compilers through <code>apt-get</code>.</p>
-
-<h2 id="working-with-containers">Working with containers</h2>
-
-<ul>
-<li>Accessing local files: shared volumes</li>
-<li>Managing users &amp; permissions</li>
-<li>Networking: tips and tricks
-
-<ul>
-<li>https and monitoring via <code>caddy</code> &amp; <code>netdata</code></li>
-<li>linking database containers</li>
-</ul></li>
-<li>Extending images
-
-<ul>
-<li>Versioned stack</li>
-</ul></li>
-<li>Misc topics
-
-<ul>
-<li>X11</li>
-</ul></li>
-</ul>
 
 <h2 id="i-classfa-fabalancescalei-license"><i class="fa fa-balance-scale"></i> License</h2>
 

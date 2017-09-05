@@ -18,11 +18,19 @@
   </url>
   
   <url>
+    <loc>/images/</loc>
+  </url>
+  
+  <url>
     <loc>/</loc>
   </url>
   
   <url>
     <loc>/profile/</loc>
+  </url>
+  
+  <url>
+    <loc>/use/</loc>
   </url>
   
 </urlset>
