@@ -63,6 +63,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [params]
   profile = "img/rocker.png"
   dateFormat = "January 2, 2006"
-  background = "http://www.oocl.com/eng/pressandmedia/photogallery/vessels/PublishingImages/31-Golden_Gate_2.jpg"
+  background = "/img/goldengate.jpg"
   icon = "<img src=\"img/rocker-bw.png\" class=\"img-circle img-responsive\" width=\"40\"/>"
 
