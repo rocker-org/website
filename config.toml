@@ -94,6 +94,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   profile = "img/rocker.png"
   dateFormat = "January 2, 2006"
   background = "/img/goldengate.jpg"
-  icon = "<img src=\"img/rocker-bw.png\" class=\"img-circle img-responsive\" width=\"40\"/>"
+  icon = "img/rocker-bw.png"
 #  custom_css = "css/custom.css"
 #  custom_js = "js/custom.js"

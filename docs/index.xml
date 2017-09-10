@@ -21,25 +21,12 @@ The versioned stack   image description size metrics build status     r-ver Spec
     </item>
     
     <item>
-      <title>The Rocker Project</title>
-      <link>/profile/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/profile/</guid>
-      <description>Getting Started To get started right away, ensure you have Docker installed and start R in a container with:
-docker run --rm -ti rocker/r-base  Or get started with an RStudio® instance:
-docker run -p 8787:8787 rocker/rstudio  and point your browser to localhost:8787. Log in with user/password rstudio/rstudio to get started.
-License The Dockerfiles in this repository are licensed under the GPL 2 or later.
-Trademarks RStudio® is a registered trademark of RStudio, Inc.</description>
-    </item>
-    
-    <item>
       <title>Working with containers</title>
       <link>/use/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/use/</guid>
-      <description>folder_shared Shared volumes A common configuration with Rocker containers is to share volumes between the container and the host filesystem. This allows the container to access and modify local files in directories you specify. In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container.</description>
+      <description>Shared Volumes A common configuration with Rocker containers is to share volumes between the container and the host filesystem. This allows the container to access and modify local files in directories you specify. In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container.</description>
     </item>
     
   </channel>

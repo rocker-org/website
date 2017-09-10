@@ -7,7 +7,8 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand" href="{{ .Site.BaseURL | relURL }}">{{ .Site.Params.icon | safeHTML }}</a>
+        		<a class="navbar-brand" href="{{ .Site.BaseURL | relURL }}">
+        		  <img src="{{ .Site.Params.icon | relURL  }}" class="img-circle img-responsive" width="40"/></a>
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
