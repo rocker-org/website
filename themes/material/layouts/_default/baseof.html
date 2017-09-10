@@ -20,6 +20,8 @@
 	<!-- CSS Files -->
     <link href="{{ "css/bootstrap.css" | relURL }}" rel="stylesheet" />
     <link href="{{"css/material-kit.css" | relURL }}" rel="stylesheet"/>
+    {{ with $.Site.Params.custom_css}} <link href="{{ . | relURL }}" rel="stylesheet"/> {{ end }}
+
 </head>
 
   {{ block "body" . }}
@@ -40,5 +42,5 @@
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="{{"js/material-kit.js" | relURL }}" type="text/javascript"></script>
-
+ {{ with $.Site.Params.custom_js}} <script src="{{ . | relURL }}" type="text/javascript"></script> {{ end }}
 </html>

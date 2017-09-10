@@ -58,11 +58,42 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   pre = "<i class=\"button-icon fa fa-2x fa-docker\"></i>"
   url = "https://hub.docker.com/u/rocker"
 
+[[menu.sidebar]]
+  weight = 1
+  pre = "<i class=\"material-icons\">folder_shared</i>"
+  name = "Shared volumes"
+  url = "#shared-volumes"
+[[menu.sidebar]]
+  weight = 2
+  pre = " <i class=\"material-icons\">people</i>"
+  name = "Managing users"
+  url = "#managing-users"
+[[menu.sidebar]]
+  weight = 3
+  pre = " <i class=\"material-icons\">settings_input_component</i>"
+  name = "Networking"
+  url = "#networking"
+[[menu.sidebar]]
+  weight = 4
+  pre = " <i class=\"material-icons\">extension</i>"
+  name = "Extending Images"
+  url = "#extending"  
+[[menu.sidebar]]
+  weight = 5
+  pre = " <i class=\"material-icons\">build</i>"
+  name = "Container management"
+  url = "#management"  
+[[menu.sidebar]]
+  weight = 6
+  pre = " <i class=\"material-icons\">explore</i>"
+  name = "Other topics"
+  url = "#other"  
 
 
 [params]
   profile = "img/rocker.png"
   dateFormat = "January 2, 2006"
   background = "/img/goldengate.jpg"
-  icon = "<img src=\"img/rocker-bw.png\" class=\"img-circle img-responsive\" width=\"40\"/>"
-
+  icon = "img/rocker-bw.png"
+#  custom_css = "css/custom.css"
+#  custom_js = "js/custom.js"
