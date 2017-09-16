@@ -37,7 +37,7 @@ For more information and further options, see the [use](/use) page.
 </div>
 </div>
 <br/>
-The Rocker project is maintained by Carl Boettiger and Dirk Eddelbuettel with significant contributions from a broad community of users and developers. Get in touch on [GitHub issues](https://github.com/rocker-org/rocker) with bug reports, feature requests, or other feedback.  
+The Rocker project is maintained by Carl Boettiger and Dirk Eddelbuettel with significant contributions from a broad community of users and developers. Get in touch on <a href="https://github.com/rocker-org/rocker">GitHub issues</a> with bug reports, feature requests, or other feedback.  
 </div>
 
 
