@@ -1,13 +1,10 @@
----
-title: Working with containers
-type: page
-layout: sidemenu
++++
+title = "Working with containers"
+type = "page"
+layout = "sidemenu"
++++
 
----
-
-
-
-
+&nbsp;
 <div class="tab-pane active" id="shared-volumes">
 
 ## Shared Volumes
@@ -60,9 +57,7 @@ In these examples, we link the current working directory, `$(pwd)`, to a user-ow
 Note!  When running RStudio from a container, always run the container as root (e.g. without specifying `--user rstudio`).  The container needs root to launch RStudio, and then you will log in as a non-root user 
 
 </div>
-
 <div class="tab-pane" id="networking">
-
 
 ##  Networking: tips and tricks
 
@@ -119,19 +114,15 @@ More details about the use of [docker-compose](https://docs.docker.com/compose/)
 </div>
 <div class="tab-pane" id="extending">
 
-
 ## Extending images
 
-<div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
-<i class="material-icons">info_outline</i></div>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true"><i class="material-icons">clear</i></span></button>
-Coming soon...
-</div></div>
-
-
-
-
+  <div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
+  <i class="material-icons">info_outline</i></div>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true"><i class="material-icons">clear</i></span></button>
+  Coming soon...
+  </div></div>
+  
 </div>
 <div class="tab-pane" id="management">
 
@@ -177,8 +168,6 @@ will drop us into a bash shell as the root user.
 </div>
 <div class="tab-pane" id="other">
 
-
-
 ## Other topics
 
 <div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
@@ -191,8 +180,6 @@ Coming soon...
 - X11
 
 ## RStudio connectivity
-
-
 
 </div>
 
