@@ -150,6 +150,14 @@
 
 <p>Would share the host&rsquo;s file <code>C:/Users/foobar</code></p>
 
+<h3 id="kitematic">Kitematic</h3>
+
+<p>Users of the Docker&rsquo;s GUI interface, <a href="https://kitematic.com">Kitematic</a>, who use the
+<code>rstudio</code>-derived images will automatically have their local kitematic
+directory linked to the <code>/home/rstudio/kitematic</code> directory on the
+Docker container.  This provides a seamless interface to Docker and the Rocker
+images without any need for shell commands.</p>
+
 <p></div></p>
 
 <div class="tab-pane" id="managing-users">
@@ -165,7 +173,18 @@ docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
 In this example, the default user remains `rstudio`, but now has a custom password.  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by `root` instead. Check the user id on the host (`id`) and pass this value to the docker container as an environmental variable, `-e USERID=$UID`, where `$UID` is the local user id.
 
 
-By default, all rocker images run as root.  This means that when running a terminal session such as `R` or `bash`, you will be a root user.  This allows you to easily install additional software on the container with `apt-get` and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by `root`.  To avoid this, run interactive terminal sessions with the default user (`docker` for `r-base` containers, `rstudio` for RStudio containers) when sharing volumes with the host, e.g.:
+By default, all rocker containers run as
+root. This is consistent with standard Docker practice, allowing both
+interactive users and downstream Dockerfiles to install software (with `apt-get`) 
+directly without having to switch to root.  The main snag of this approach comes if
+a user links a local volume and modifies files on that volume, which will
+result in the local file being owned by `root` and not the default user.
+To avoid this, specify the non-root user at runtime (username `docker`
+on the `r-base` stack, or `rstudio` on images deriving from rstudio)
+when running an interactive shell. 
+
+
+By default, all rocker images run as root.  This means that when running a terminal session such as `R` or `bash`, you will be a root user.  This allows you to easily install additional software on the container with `apt-get` and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by `root`.  To avoid this, run interactive terminal sessions with the default user (`docker` for `r-base` containers, `rstudio` for RStudio-derived containers) when sharing volumes with the host, e.g.:
 
 ```bash
 docker run --rm -ti -v $(pwd):/home/rstudio --user rstudio rocker/verse bash
@@ -179,7 +198,9 @@ docker run --rm -ti -v $(pwd):/home/docker --user docker r-base
 
 In these examples, we link the current working directory, `$(pwd)`, to a user-owned location on the image, and specify the approriate user name. 
 
-Note!  When running RStudio from a container, always run the container as root (e.g. without specifying `--user rstudio`).  The container needs root to launch RStudio, and then you will log in as a non-root user 
+For users accessing R through RStudio, this is not necessary.  The docker container will run as root, but a user logs in through the RStudio server web interface as the non-root user "rstudio", and thus any changes made to linked volumes will not alter file permissions on the home directory.  When running RStudio from a container, do no specify a user with `--user`! The container needs root to launch RStudio.  
+
+In RStudio containers, you can also add the non-root user to the `sudoers` group when the container is launched simply by specifying the environmental variable, `-e ROOT=TRUE` in your `docker run` command.  
 
 </div>
 <div class="tab-pane" id="networking">
@@ -241,54 +262,75 @@ More details about the use of [docker-compose](https://docs.docker.com/compose/)
 
 ## Extending images
 
-  <div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
-  <i class="material-icons">info_outline</i></div>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true"><i class="material-icons">clear</i></span></button>
-  Coming soon...
-  </div></div>
+
+Rocker images provide a few utility functions to streamline this process, including the 
+[littler](https://cran.r-project.org/package=littler) scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.
+
+    RUN install2.r pkg1 pgk2 pkg3 ...
+
+
+Users writing their own Dockerfiles are encouraged to follow the same practices as the
+Rocker Project, such as the [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/), the use of automated builds,
+and when appropriate, versioned tags.  Users can ensure their automated builds are rebuilt
+every time the relevant upstream Dockerfile is updated by using build triggers on Docker Hub.
+
+Note that users can also preserve changes to Rocker images that they have modified interactively using
+the `docker commit` mechanism, which creates a new binary image which can be pushed back to
+a personal account on the Docker Hub.  While this is sometimes convenient, we encourage users to
+consider writing Dockerfiles instead whenever possible, as this creates a more transparent
+and reproducible mechanism to accomplish the same thing.  
+
+
+
+
+
   
+</div>
+<div class="tab-pane" id="management">
 
-<p></div>
-<div class="tab-pane" id="management"></p>
 
-<h2 id="managing-containers">Managing containers</h2>
 
-<p>The simplest tools to monitor containers are <code>docker log</code> and <code>docker stats</code> commands.</p>
+## Managing containers
 
-<h3 id="cleaning-up-stale-instances">Cleaning up stale instances</h3>
+The simplest tools to monitor containers are `docker log` and `docker stats` commands.  
 
-<p>Most of the examples shown here include the use of the <code>--rm</code> flag, which will cause this container to be removed after it has exited.  By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using <code>docker start</code>, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).  However, most of the time we just forget about these containers, though they are still taking up disk space.  You can view all stopped as well as running containers by using the <code>-a</code> flag to <code>docker ps</code>:</p>
+### Cleaning up stale instances
 
-<pre><code>docker ps -a
-</code></pre>
+Most of the examples shown here include the use of the `--rm` flag, which will cause this container to be removed after it has exited.  By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using `docker start`, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).  However, most of the time we just forget about these containers, though they are still taking up disk space.  You can view all stopped as well as running containers by using the `-a` flag to `docker ps`:
 
-<p>and can remove all stopped containers by passing the id listed to <code>docker rm</code>.  A shortcut to remove all stopped containers (but not any actively running ones) is:</p>
+```
+docker ps -a
+```
 
-<pre><code>docker rm -v $(docker ps -a -q)
-</code></pre>
+and can remove all stopped containers by passing the id listed to `docker rm`.  A shortcut to remove all stopped containers (but not any actively running ones) is:
 
-<p>This avoids filling up your filesystem with stale containers.  This can be particularly useful if you often run containers without the <code>--rm</code> flag, such as when running RStudio containers in the background (&ldquo;detached&rdquo; mode, <code>docker run -d</code>).</p>
+```
+docker rm -v $(docker ps -a -q)
+```
 
-<h3 id="persistent-containers">Persistent containers</h3>
+This avoids filling up your filesystem with stale containers.  This can be particularly useful if you often run containers without the `--rm` flag, such as when running RStudio containers in the background ("detached" mode, `docker run -d`).
 
-<p>Often a user might want a container to stay up and restart itself after stopping (such as when docker is upgraded on the host machine, or the host machine is restarted.)  This is most common when working with a container accessed through RStudio.</p>
+### Persistent containers
 
-<p>Use <code>--restart=always</code> to have a container restart</p>
+Often a user might want a container to stay up and restart itself after stopping (such as when docker is upgraded on the host machine, or the host machine is restarted.)  This is most common when working with a container accessed through RStudio.
 
-<h3 id="accessing-a-running-container">Accessing a running container</h3>
+Use `--restart=always` to have a container restart
 
-<p>Sometimes we need to access a container that is already up and running in the background, such as to install additional libraries.  Some like to think of this as <code>ssh</code>-ing into their container, but there is no need to add <code>ssh</code> to accomplish this.  Access a running container using the <code>docker exec</code> command, e.g.</p>
 
-<pre><code>docker exec -ti &lt;container-id&gt; bash
-</code></pre>
+### Accessing a running container
 
-<p>will drop us into a bash shell as the root user.</p>
+Sometimes we need to access a container that is already up and running in the background, such as to install additional libraries.  Some like to think of this as `ssh`-ing into their container, but there is no need to add `ssh` to accomplish this.  Access a running container using the `docker exec` command, e.g.
 
-<p></div>
-<div class="tab-pane" id="other"></p>
+```
+docker exec -ti <container-id> bash
+```
 
-<h2 id="other-topics">Other topics</h2>
+will drop us into a bash shell as the root user.
+
+</div>
+<div class="tab-pane" id="other">
+
+## Other topics
 
 <div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
 <i class="material-icons">info_outline</i></div>

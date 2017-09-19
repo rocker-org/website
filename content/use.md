@@ -25,6 +25,16 @@ docker run -d -p 8787:8787 -v /c/Users/foobar:/home/rstudio/foobar rocker/rstudi
 
 Would share the host's file `C:/Users/foobar`
 
+### Kitematic
+
+
+Users of the Docker's GUI interface, [Kitematic](https://kitematic.com), who use the
+`rstudio`-derived images will automatically have their local kitematic
+directory linked to the `/home/rstudio/kitematic` directory on the
+Docker container.  This provides a seamless interface to Docker and the Rocker
+images without any need for shell commands. 
+
+
 </div>
 
 <div class="tab-pane" id="managing-users">
@@ -40,7 +50,18 @@ docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
 In this example, the default user remains `rstudio`, but now has a custom password.  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by `root` instead. Check the user id on the host (`id`) and pass this value to the docker container as an environmental variable, `-e USERID=$UID`, where `$UID` is the local user id.
 
 
-By default, all rocker images run as root.  This means that when running a terminal session such as `R` or `bash`, you will be a root user.  This allows you to easily install additional software on the container with `apt-get` and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by `root`.  To avoid this, run interactive terminal sessions with the default user (`docker` for `r-base` containers, `rstudio` for RStudio containers) when sharing volumes with the host, e.g.:
+By default, all rocker containers run as
+root. This is consistent with standard Docker practice, allowing both
+interactive users and downstream Dockerfiles to install software (with `apt-get`) 
+directly without having to switch to root.  The main snag of this approach comes if
+a user links a local volume and modifies files on that volume, which will
+result in the local file being owned by `root` and not the default user.
+To avoid this, specify the non-root user at runtime (username `docker`
+on the `r-base` stack, or `rstudio` on images deriving from rstudio)
+when running an interactive shell. 
+
+
+By default, all rocker images run as root.  This means that when running a terminal session such as `R` or `bash`, you will be a root user.  This allows you to easily install additional software on the container with `apt-get` and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by `root`.  To avoid this, run interactive terminal sessions with the default user (`docker` for `r-base` containers, `rstudio` for RStudio-derived containers) when sharing volumes with the host, e.g.:
 
 ```bash
 docker run --rm -ti -v $(pwd):/home/rstudio --user rstudio rocker/verse bash
@@ -54,7 +75,9 @@ docker run --rm -ti -v $(pwd):/home/docker --user docker r-base
 
 In these examples, we link the current working directory, `$(pwd)`, to a user-owned location on the image, and specify the approriate user name. 
 
-Note!  When running RStudio from a container, always run the container as root (e.g. without specifying `--user rstudio`).  The container needs root to launch RStudio, and then you will log in as a non-root user 
+For users accessing R through RStudio, this is not necessary.  The docker container will run as root, but a user logs in through the RStudio server web interface as the non-root user "rstudio", and thus any changes made to linked volumes will not alter file permissions on the home directory.  When running RStudio from a container, do no specify a user with `--user`! The container needs root to launch RStudio.  
+
+In RStudio containers, you can also add the non-root user to the `sudoers` group when the container is launched simply by specifying the environmental variable, `-e ROOT=TRUE` in your `docker run` command.  
 
 </div>
 <div class="tab-pane" id="networking">
@@ -116,12 +139,28 @@ More details about the use of [docker-compose](https://docs.docker.com/compose/)
 
 ## Extending images
 
-  <div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
-  <i class="material-icons">info_outline</i></div>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true"><i class="material-icons">clear</i></span></button>
-  Coming soon...
-  </div></div>
+
+Rocker images provide a few utility functions to streamline this process, including the 
+[littler](https://cran.r-project.org/package=littler) scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.
+
+    RUN install2.r pkg1 pgk2 pkg3 ...
+
+
+Users writing their own Dockerfiles are encouraged to follow the same practices as the
+Rocker Project, such as the [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/), the use of automated builds,
+and when appropriate, versioned tags.  Users can ensure their automated builds are rebuilt
+every time the relevant upstream Dockerfile is updated by using build triggers on Docker Hub.
+
+Note that users can also preserve changes to Rocker images that they have modified interactively using
+the `docker commit` mechanism, which creates a new binary image which can be pushed back to
+a personal account on the Docker Hub.  While this is sometimes convenient, we encourage users to
+consider writing Dockerfiles instead whenever possible, as this creates a more transparent
+and reproducible mechanism to accomplish the same thing.  
+
+
+
+
+
   
 </div>
 <div class="tab-pane" id="management">
