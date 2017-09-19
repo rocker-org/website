@@ -156,65 +156,57 @@
 <code>rstudio</code>-derived images will automatically have their local kitematic
 directory linked to the <code>/home/rstudio/kitematic</code> directory on the
 Docker container.  This provides a seamless interface to Docker and the Rocker
-images without any need for shell commands.</p>
+images without any need for shell commands.
+</div>
+<div class="tab-pane" id="managing-users"></p>
 
-<p></div></p>
+<h2 id="managing-users">Managing Users</h2>
 
-<div class="tab-pane" id="managing-users">
+<p>When using an RStudio-based instance over a public network (e.g. cloud server), remember to launch RStudio with a custom password as an environmental variable <code>-e</code>:</p>
 
-## Managing Users
+<pre><code class="language-bash">docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
+</code></pre>
 
-When using an RStudio-based instance over a public network (e.g. cloud server), remember to launch RStudio with a custom password as an environmental variable `-e`:
+<p>In this example, the default user remains <code>rstudio</code>, but now has a custom password.  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by <code>root</code> instead. Check the user id on the host (<code>id</code>) and pass this value to the docker container as an environmental variable, <code>-e USERID=$UID</code>, where <code>$UID</code> is the local user id.</p>
 
-```bash
-docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
-```
-
-In this example, the default user remains `rstudio`, but now has a custom password.  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by `root` instead. Check the user id on the host (`id`) and pass this value to the docker container as an environmental variable, `-e USERID=$UID`, where `$UID` is the local user id.
-
-
-By default, all rocker containers run as
+<p>By default, all rocker containers run as
 root. This is consistent with standard Docker practice, allowing both
-interactive users and downstream Dockerfiles to install software (with `apt-get`) 
+interactive users and downstream Dockerfiles to install software (with <code>apt-get</code>)
 directly without having to switch to root.  The main snag of this approach comes if
 a user links a local volume and modifies files on that volume, which will
-result in the local file being owned by `root` and not the default user.
-To avoid this, specify the non-root user at runtime (username `docker`
-on the `r-base` stack, or `rstudio` on images deriving from rstudio)
-when running an interactive shell. 
+result in the local file being owned by <code>root</code> and not the default user.
+To avoid this, specify the non-root user at runtime (username <code>docker</code>
+on the <code>r-base</code> stack, or <code>rstudio</code> on images deriving from rstudio)
+when running an interactive shell.</p>
 
+<p>By default, all rocker images run as root.  This means that when running a terminal session such as <code>R</code> or <code>bash</code>, you will be a root user.  This allows you to easily install additional software on the container with <code>apt-get</code> and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by <code>root</code>.  To avoid this, run interactive terminal sessions with the default user (<code>docker</code> for <code>r-base</code> containers, <code>rstudio</code> for RStudio-derived containers) when sharing volumes with the host, e.g.:</p>
 
-By default, all rocker images run as root.  This means that when running a terminal session such as `R` or `bash`, you will be a root user.  This allows you to easily install additional software on the container with `apt-get` and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by `root`.  To avoid this, run interactive terminal sessions with the default user (`docker` for `r-base` containers, `rstudio` for RStudio-derived containers) when sharing volumes with the host, e.g.:
+<pre><code class="language-bash">docker run --rm -ti -v $(pwd):/home/rstudio --user rstudio rocker/verse bash
+</code></pre>
 
-```bash
-docker run --rm -ti -v $(pwd):/home/rstudio --user rstudio rocker/verse bash
-```
+<p>or</p>
 
-or
+<pre><code class="language-bash">docker run --rm -ti -v $(pwd):/home/docker --user docker r-base 
+</code></pre>
 
-```bash
-docker run --rm -ti -v $(pwd):/home/docker --user docker r-base 
-```
+<p>In these examples, we link the current working directory, <code>$(pwd)</code>, to a user-owned location on the image, and specify the approriate user name.</p>
 
-In these examples, we link the current working directory, `$(pwd)`, to a user-owned location on the image, and specify the approriate user name. 
+<p>For users accessing R through RStudio, this is not necessary.  The docker container will run as root, but a user logs in through the RStudio server web interface as the non-root user &ldquo;rstudio&rdquo;, and thus any changes made to linked volumes will not alter file permissions on the home directory.  When running RStudio from a container, do no specify a user with <code>--user</code>! The container needs root to launch RStudio.</p>
 
-For users accessing R through RStudio, this is not necessary.  The docker container will run as root, but a user logs in through the RStudio server web interface as the non-root user "rstudio", and thus any changes made to linked volumes will not alter file permissions on the home directory.  When running RStudio from a container, do no specify a user with `--user`! The container needs root to launch RStudio.  
+<p>In RStudio containers, you can also add the non-root user to the <code>sudoers</code> group when the container is launched simply by specifying the environmental variable, <code>-e ROOT=TRUE</code> in your <code>docker run</code> command.</p>
 
-In RStudio containers, you can also add the non-root user to the `sudoers` group when the container is launched simply by specifying the environmental variable, `-e ROOT=TRUE` in your `docker run` command.  
+<p></div>
+<div class="tab-pane" id="networking"></p>
 
-</div>
-<div class="tab-pane" id="networking">
+<h2 id="networking-tips-and-tricks">Networking: tips and tricks</h2>
 
-##  Networking: tips and tricks
+<h3 id="i-class-material-icons-https-i-https"><i class="material-icons">https</i> HTTPS</h3>
 
-###  <i class="material-icons">https</i> HTTPS 
+<p>Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as <a href="https://caddyserver.com">Caddy</a>.  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example <code>Caddyfile</code> specifying the necessary configuration, along with a <code>docker-compose</code> file which sets up an RStudio server instance behind a separate container running <code>caddy</code>.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:</p>
 
-Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as [Caddy](https://caddyserver.com).  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example `Caddyfile` specifying the necessary configuration, along with a `docker-compose` file which sets up an RStudio server instance behind a separate container running `caddy`.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:
+<p>Example <code>site/Caddyfile</code>:</p>
 
-Example `site/Caddyfile`:
-
-```
-rstudio.example.com {
+<pre><code>rstudio.example.com {
   
   tls you@email.com
   proxy / rstudio:8787 {
@@ -223,12 +215,11 @@ rstudio.example.com {
 
 }
 
-```
+</code></pre>
 
-Example docker-compose file:
+<p>Example docker-compose file:</p>
 
-```yml
-version: '2'
+<pre><code class="language-yml">version: '2'
 services:
   caddy:  
     image: joshix/caddy
@@ -248,89 +239,76 @@ services:
     volumes:
       - $HOME/students:/home/
     restart: always
-```
+</code></pre>
 
+<p>More details about the use of <a href="https://docs.docker.com/compose/">docker-compose</a> and <a href="https://caddyserver.com/">Caddy Server</a> are found on their websites.</p>
 
-More details about the use of [docker-compose](https://docs.docker.com/compose/) and [Caddy Server](https://caddyserver.com/) are found on their websites.
+<h3 id="i-class-material-icons-data-usage-i-monitoring"><i class="material-icons">data_usage</i> Monitoring</h3>
 
-### <i class="material-icons">data_usage</i> Monitoring 
+<h3 id="i-class-fa-fa-database-i-linking-database-containers"><i class="fa fa-database"></i> Linking database containers</h3>
 
-### <i class="fa fa-database"></i> Linking database containers
+<p></div>
+<div class="tab-pane" id="extending"></p>
 
-</div>
-<div class="tab-pane" id="extending">
+<h2 id="extending-images">Extending images</h2>
 
-## Extending images
+<p>Rocker images provide a few utility functions to streamline this process, including the
+<a href="https://cran.r-project.org/package=littler">littler</a> scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.</p>
 
+<pre><code>RUN install2.r pkg1 pgk2 pkg3 ...
+</code></pre>
 
-Rocker images provide a few utility functions to streamline this process, including the 
-[littler](https://cran.r-project.org/package=littler) scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.
-
-    RUN install2.r pkg1 pgk2 pkg3 ...
-
-
-Users writing their own Dockerfiles are encouraged to follow the same practices as the
-Rocker Project, such as the [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/), the use of automated builds,
+<p>Users writing their own Dockerfiles are encouraged to follow the same practices as the
+Rocker Project, such as the <a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>, the use of automated builds,
 and when appropriate, versioned tags.  Users can ensure their automated builds are rebuilt
-every time the relevant upstream Dockerfile is updated by using build triggers on Docker Hub.
+every time the relevant upstream Dockerfile is updated by using build triggers on Docker Hub.</p>
 
-Note that users can also preserve changes to Rocker images that they have modified interactively using
-the `docker commit` mechanism, which creates a new binary image which can be pushed back to
+<p>Note that users can also preserve changes to Rocker images that they have modified interactively using
+the <code>docker commit</code> mechanism, which creates a new binary image which can be pushed back to
 a personal account on the Docker Hub.  While this is sometimes convenient, we encourage users to
 consider writing Dockerfiles instead whenever possible, as this creates a more transparent
-and reproducible mechanism to accomplish the same thing.  
+and reproducible mechanism to accomplish the same thing.</p>
 
+<p></div>
+<div class="tab-pane" id="management"></p>
 
+<h2 id="managing-containers">Managing containers</h2>
 
+<p>The simplest tools to monitor containers are <code>docker log</code> and <code>docker stats</code> commands.</p>
 
+<h3 id="cleaning-up-stale-instances">Cleaning up stale instances</h3>
 
-  
-</div>
-<div class="tab-pane" id="management">
+<p>Most of the examples shown here include the use of the <code>--rm</code> flag, which will cause this container to be removed after it has exited.  By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using <code>docker start</code>, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).  However, most of the time we just forget about these containers, though they are still taking up disk space.  You can view all stopped as well as running containers by using the <code>-a</code> flag to <code>docker ps</code>:</p>
 
+<pre><code>docker ps -a
+</code></pre>
 
+<p>and can remove all stopped containers by passing the id listed to <code>docker rm</code>.  A shortcut to remove all stopped containers (but not any actively running ones) is:</p>
 
-## Managing containers
+<pre><code>docker rm -v $(docker ps -a -q)
+</code></pre>
 
-The simplest tools to monitor containers are `docker log` and `docker stats` commands.  
+<p>This avoids filling up your filesystem with stale containers.  This can be particularly useful if you often run containers without the <code>--rm</code> flag, such as when running RStudio containers in the background (&ldquo;detached&rdquo; mode, <code>docker run -d</code>).</p>
 
-### Cleaning up stale instances
+<h3 id="persistent-containers">Persistent containers</h3>
 
-Most of the examples shown here include the use of the `--rm` flag, which will cause this container to be removed after it has exited.  By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using `docker start`, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).  However, most of the time we just forget about these containers, though they are still taking up disk space.  You can view all stopped as well as running containers by using the `-a` flag to `docker ps`:
+<p>Often a user might want a container to stay up and restart itself after stopping (such as when docker is upgraded on the host machine, or the host machine is restarted.)  This is most common when working with a container accessed through RStudio.</p>
 
-```
-docker ps -a
-```
+<p>Use <code>--restart=always</code> to have a container restart</p>
 
-and can remove all stopped containers by passing the id listed to `docker rm`.  A shortcut to remove all stopped containers (but not any actively running ones) is:
+<h3 id="accessing-a-running-container">Accessing a running container</h3>
 
-```
-docker rm -v $(docker ps -a -q)
-```
+<p>Sometimes we need to access a container that is already up and running in the background, such as to install additional libraries.  Some like to think of this as <code>ssh</code>-ing into their container, but there is no need to add <code>ssh</code> to accomplish this.  Access a running container using the <code>docker exec</code> command, e.g.</p>
 
-This avoids filling up your filesystem with stale containers.  This can be particularly useful if you often run containers without the `--rm` flag, such as when running RStudio containers in the background ("detached" mode, `docker run -d`).
+<pre><code>docker exec -ti &lt;container-id&gt; bash
+</code></pre>
 
-### Persistent containers
+<p>will drop us into a bash shell as the root user.</p>
 
-Often a user might want a container to stay up and restart itself after stopping (such as when docker is upgraded on the host machine, or the host machine is restarted.)  This is most common when working with a container accessed through RStudio.
+<p></div>
+<div class="tab-pane" id="other"></p>
 
-Use `--restart=always` to have a container restart
-
-
-### Accessing a running container
-
-Sometimes we need to access a container that is already up and running in the background, such as to install additional libraries.  Some like to think of this as `ssh`-ing into their container, but there is no need to add `ssh` to accomplish this.  Access a running container using the `docker exec` command, e.g.
-
-```
-docker exec -ti <container-id> bash
-```
-
-will drop us into a bash shell as the root user.
-
-</div>
-<div class="tab-pane" id="other">
-
-## Other topics
+<h2 id="other-topics">Other topics</h2>
 
 <div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
 <i class="material-icons">info_outline</i></div>

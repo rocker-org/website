@@ -32,11 +32,8 @@ Users of the Docker's GUI interface, [Kitematic](https://kitematic.com), who use
 `rstudio`-derived images will automatically have their local kitematic
 directory linked to the `/home/rstudio/kitematic` directory on the
 Docker container.  This provides a seamless interface to Docker and the Rocker
-images without any need for shell commands. 
-
-
+images without any need for shell commands.
 </div>
-
 <div class="tab-pane" id="managing-users">
 
 ## Managing Users
