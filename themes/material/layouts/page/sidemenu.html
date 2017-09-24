@@ -4,14 +4,14 @@
   <div class="wrapper">
 	  <div class="header header-filter" style="background-image: url('{{ .Site.Params.background | relURL }}');">
 	  </div>
-		<div class="main main-raised">
-	    <div class="container">
-	    <div class="section">
-        <h2 class="title text-center">{{ .Title }}</h2>
-        <div class = "nav-align-left">
+	  <div class = "nav-align-left">
           <div class="row">
+              <div class="section">
+            
+            
             <div class="col-md-2 text-left">
-              <ul class="nav nav-pills nav-pills-primary" role="tablist">
+            <nav class="navbar navbar-transparent">
+              <ul class="nav" role="tablist">
                   {{ range .Site.Menus.sidebar }}
                    <li class="nav-item">
                       <a href="{{ .URL }}" data-toggle="tab" role="tab">
@@ -20,14 +20,27 @@
                     </li>
                   {{ end }}
               </ul>
+              </nav>
             </div>
-            <div class="col-md-8">
-              <div class="tab-content gallery">
+          </div>
+            
+	              <div class="col-md-8">
+
+		<div class="main main-raised">
+	    <div class="container">
+	    <div class="section col-md-7">
+	      <!--
+        <h2 class="title text-center">{{ .Title }}</h2>
+        -->
+              <div class="tab-content">
             	{{ .Content }}
               </div>
             </div>
           </div>
         </div>
+	     </div>
+	     <div class="col-md-2">
+	       <!-- right gutter -->
 	     </div>
 	  </div>
   </div>
