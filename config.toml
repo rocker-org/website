@@ -95,5 +95,5 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   dateFormat = "January 2, 2006"
   background = "/img/goldengate.jpg"
   icon = "img/rocker-bw.png"
-#  custom_css = "css/custom.css"
-#  custom_js = "js/custom.js"
+  custom_css = "css/custom.css"
+  custom_js = "js/custom.js"

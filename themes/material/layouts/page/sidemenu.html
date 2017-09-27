@@ -7,11 +7,17 @@
 	  <div class = "nav-align-left">
           <div class="row">
               <div class="section">
-            
-            
-            <div class="col-md-2 text-left">
-            <nav class="navbar navbar-transparent">
-              <ul class="nav" role="tablist">
+              <div class="col-md-2 text-left">
+
+          	<div class="navbar-header">
+        		<a class="navbar-toggle" data-toggle="collapse" data-target="#subnav">
+            <i class="material-icons">menu</i>
+        		</a>
+        	  </div>
+        	<div class="collapse navbar-collapse" id="subnav">
+        	  
+            <nav class="navbar">
+              <ul class="nav navbar-nav" role="tablist">
                   {{ range .Site.Menus.sidebar }}
                    <li class="nav-item">
                       <a href="{{ .URL }}" data-toggle="tab" role="tab">
@@ -23,19 +29,19 @@
               </nav>
             </div>
           </div>
+          </div>
             
 	              <div class="col-md-8">
 
-		<div class="main main-raised">
-	    <div class="container">
-	    <div class="section col-md-7">
+		<div class="main main-raised" id="page-content-wrapper">
+	    <div class="container-fluid">
 	      <!--
         <h2 class="title text-center">{{ .Title }}</h2>
         -->
               <div class="tab-content">
+              
             	{{ .Content }}
               </div>
-            </div>
           </div>
         </div>
 	     </div>
@@ -45,6 +51,14 @@
 	  </div>
   </div>
   </div>
+  
+      <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+  
   {{ partial "footer" . }}
 </body>
 {{ end }}

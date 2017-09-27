@@ -13,6 +13,30 @@
   </url>
   
   <url>
+    <loc>/extending/</loc>
+  </url>
+  
+  <url>
+    <loc>/managing_users/</loc>
+  </url>
+  
+  <url>
+    <loc>/managing_containers/</loc>
+  </url>
+  
+  <url>
+    <loc>/networking/</loc>
+  </url>
+  
+  <url>
+    <loc>/other_topics/</loc>
+  </url>
+  
+  <url>
+    <loc>/shared_volumes/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
     <priority>0</priority>
   </url>

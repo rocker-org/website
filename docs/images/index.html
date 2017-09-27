@@ -20,7 +20,7 @@
 	
     <link href="../css/bootstrap.css" rel="stylesheet" />
     <link href="../css/material-kit.css" rel="stylesheet"/>
-    
+     <link href="../css/custom.css" rel="stylesheet"/> 
 
 </head>
 
@@ -78,13 +78,21 @@
     	</div>
     </nav>
   <div class="wrapper">
-    <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
-    </div>
-		<div class="main main-raised">
-			<div class="container">
-		  	<div class="section text-left">
-		  	  <h2 class="title text-center">The Rocker Images: choosing a container</h2>
-	            
+	  <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
+	  </div>
+	  <div class = "nav-align-left">
+          <div class="row">
+            <div class="col-md-2 text-left">
+              
+            </div>
+	          <div class="col-md-8">
+		<div class="main main-raised" id="page-content-wrapper">
+	    <div class="container-fluid">
+	    <div class="section col-md-7">
+	    
+        <h2 class="title text-center">The Rocker Images: choosing a container</h2>
+              <div id="page-content">
+            	
 
 <p>The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.</p>
 
@@ -244,10 +252,26 @@
 </tbody>
 </table>
 
-	      </div>
-      </div>
-		</div>
-    <footer class="footer">
+              </div>
+            </div>
+          </div>
+        </div>
+	     </div>
+	     <div class="col-md-2">
+	       
+	     </div>
+	  </div>
+  </div>
+  </div>
+  
+      <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+  
+  <footer class="footer">
   <div class="container">
 	  <nav class="pull-left">
 	    <ul>
@@ -273,7 +297,6 @@
 	  </div>
   </div>
 </footer>
-	</div>
 </body>
 
 			
@@ -291,5 +314,5 @@
 
 	
 	<script src="../js/material-kit.js" type="text/javascript"></script>
- 
+  <script src="../js/custom.js" type="text/javascript"></script> 
 </html>

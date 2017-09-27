@@ -11,3 +11,6 @@
     </script>
     <script async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
     {{ end }}
+    {{ range .Site.Params.custom_js }}
+    <script src="{{ "/js/" | relURL }}{{ . }}">       
+    {{ end }}
