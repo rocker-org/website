@@ -1,6 +1,5 @@
 ---
 title: Managing Users
-type: page
 ---
 
 When using an RStudio-based instance over a public network (e.g. cloud server), remember to launch RStudio with a custom password as an environmental variable `-e`:

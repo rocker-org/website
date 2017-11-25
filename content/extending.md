@@ -1,6 +1,5 @@
 ---
 title: "Extending images"
-type: page
 ---
 
 

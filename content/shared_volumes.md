@@ -1,6 +1,5 @@
 +++
 title = "Shared Volumes"
-type = "page"
 +++
 
 A common configuration with Rocker containers is to share volumes between the container and the host filesystem.  This allows the container to access and modify local files in directories you specify.  In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container. 

@@ -1,6 +1,5 @@
 ---
 title: "Networking: tips and tricks"
-type: page
 ---
 
 ###  <i class="material-icons">https</i> HTTPS 
@@ -49,6 +48,10 @@ services:
 
 More details about the use of [docker-compose](https://docs.docker.com/compose/) and [Caddy Server](https://caddyserver.com/) are found on their websites.
 
+
+
 ### <i class="material-icons">data_usage</i> Monitoring 
+
+
 
 ### <i class="fa fa-database"></i> Linking database containers

@@ -1,7 +1,5 @@
-
 ---
 title: Other topics
-type: page
 ---
 
 <div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">

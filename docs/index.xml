@@ -77,14 +77,5 @@ Cleaning up stale instances Most of the examples shown here include the use of t
 The versioned stack   image description size metrics build status     r-ver Specify R version in docker tag. Builds on debian:stable      rstudio Adds rstudio      tidyverse Adds tidyverse &amp;amp; devtools      verse Adds tex &amp;amp; publishing-related packages      geospatial Adds geospatial libraries       This stack builds on stable Debian releases (debian:8 for versions &amp;lt; 3.</description>
     </item>
     
-    <item>
-      <title>Working with containers</title>
-      <link>/use/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/use/</guid>
-      <description>&amp;nbsp; Shared Volumes A common configuration with Rocker containers is to share volumes between the container and the host filesystem. This allows the container to access and modify local files in directories you specify. In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container.</description>
-    </item>
-    
   </channel>
 </rss>

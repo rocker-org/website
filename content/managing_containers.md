@@ -1,6 +1,5 @@
 ---
 title: Managing containers
-type: page
 ---
 
 The simplest tools to monitor containers are `docker log` and `docker stats` commands.  
