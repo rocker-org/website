@@ -13,27 +13,27 @@
   </url>
   
   <url>
-    <loc>/extending/</loc>
+    <loc>/use/extending/</loc>
   </url>
   
   <url>
-    <loc>/managing_users/</loc>
+    <loc>/use/managing_users/</loc>
   </url>
   
   <url>
-    <loc>/managing_containers/</loc>
+    <loc>/use/managing_containers/</loc>
   </url>
   
   <url>
-    <loc>/networking/</loc>
+    <loc>/use/networking/</loc>
   </url>
   
   <url>
-    <loc>/other_topics/</loc>
+    <loc>/use/other_topics/</loc>
   </url>
   
   <url>
-    <loc>/shared_volumes/</loc>
+    <loc>/use/shared_volumes/</loc>
   </url>
   
   <url>
@@ -47,6 +47,11 @@
   
   <url>
     <loc>/</loc>
+  </url>
+  
+  <url>
+    <loc>/use/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>

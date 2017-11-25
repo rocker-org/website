@@ -12,58 +12,59 @@
     
     <item>
       <title>Extending images</title>
-      <link>/extending/</link>
+      <link>/use/extending/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/extending/</guid>
+      <guid>/use/extending/</guid>
       <description>Rocker images provide a few utility functions to streamline this process, including the littler scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.
 RUN install2.r pkg1 pgk2 pkg3 ...  Users writing their own Dockerfiles are encouraged to follow the same practices as the Rocker Project, such as the Dockerfile Best Practices, the use of automated builds, and when appropriate, versioned tags. Users can ensure their automated builds are rebuilt every time the relevant upstream Dockerfile is updated by using build triggers on Docker Hub.</description>
     </item>
     
     <item>
       <title>Managing Users</title>
-      <link>/managing_users/</link>
+      <link>/use/managing_users/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/managing_users/</guid>
+      <guid>/use/managing_users/</guid>
       <description>When using an RStudio-based instance over a public network (e.g. cloud server), remember to launch RStudio with a custom password as an environmental variable -e:
 docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio  In this example, the default user remains rstudio, but now has a custom password. There is generally no need to set a custom user name, even when sharing volumes with the host user. On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by root instead.</description>
     </item>
     
     <item>
       <title>Managing containers</title>
-      <link>/managing_containers/</link>
+      <link>/use/managing_containers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/managing_containers/</guid>
+      <guid>/use/managing_containers/</guid>
       <description>The simplest tools to monitor containers are docker log and docker stats commands.
 Cleaning up stale instances Most of the examples shown here include the use of the --rm flag, which will cause this container to be removed after it has exited. By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using docker start, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).</description>
     </item>
     
     <item>
       <title>Networking: tips and tricks</title>
-      <link>/networking/</link>
+      <link>/use/networking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/networking/</guid>
+      <guid>/use/networking/</guid>
       <description>https HTTPS Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.) The easiest way to connect over a secure https connection is to use a reverse proxy server, such as Caddy. To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</description>
     </item>
     
     <item>
       <title>Other topics</title>
-      <link>/other_topics/</link>
+      <link>/use/other_topics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/other_topics/</guid>
-      <description> info_outline clear Coming soon...   X11  RStudio connectivity </description>
+      <guid>/use/other_topics/</guid>
+      <description>selecting the BLAS implementation used by R By default rocker/r-ver uses the OpenBLAS (http://www.openblas.net) implementation for Linear Algebra (cf https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS). But it is possible to switch for the reference BLAS implementation (http://www.netlib.org/blas/) (as provided by the Debian package libblas-dev) using the Shared BLAS setup (cf https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS).
+checking which BLAS is in use A way of checking which implementation is currently is using the lsof utility, whih first needs to be installed: apt-get update &amp;amp;&amp;amp; apt-get install lsof</description>
     </item>
     
     <item>
       <title>Shared Volumes</title>
-      <link>/shared_volumes/</link>
+      <link>/use/shared_volumes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/shared_volumes/</guid>
+      <guid>/use/shared_volumes/</guid>
       <description>A common configuration with Rocker containers is to share volumes between the container and the host filesystem. This allows the container to access and modify local files in directories you specify. In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container.</description>
     </item>
     

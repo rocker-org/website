@@ -24,7 +24,7 @@ and point your browser to `localhost:8787`.  Log in with user/password `rstudio/
 
 For more information and further options, see the [use](/use) page.
 
-<!--
+
 &nbsp;
 <div class="section">
 <h2> <i class="material-icons">people</i> Team </h2>
@@ -37,7 +37,7 @@ For more information and further options, see the [use](/use) page.
 </div>
 </div>
 <br/>
--->
+
 
 The Rocker project is maintained by Carl Boettiger and Dirk Eddelbuettel with significant contributions from a broad community of users and developers. Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports, feature requests, or other feedback. 
 

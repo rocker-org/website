@@ -1,7 +1,7 @@
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "Rocker Project"
-theme = "material"
+theme = "hugo-material"
 #disqusShortname = ""
 # googleAnalytics = ""
 paginate = 7
@@ -37,51 +37,52 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   weight = 2
   identifier = "images"
   name = "Images"
-  pre = "<i class='material-icons'>mouse</i>"
+  pre = "<i class='material-icons'>computer</i>"
   #pre = "<i class='now-ui-icons arrows-1_cloud-download-93'></i>"
   url = "/images"
 [[menu.main]]
   weight = 2
   identifier = "use"
   name = "Use"
-  pre = "<i class='now-ui-icons ui-1_settings-gear-63'></i>"
+  pre = "<i class='material-icons'>settings</i>"
+#  pre = "<i class='now-ui-icons ui-1_settings-gear-63'></i>"
   url = "/use"
 [[menu.main]]
   parent = "use"
   weight = 1
   pre = "<i class=\"material-icons\">folder_shared</i>"
   name = "Shared volumes"
-  url = "/shared_volumes"
+  url = "/use/shared_volumes"
 [[menu.main]]
   parent = "use"
   weight = 2
   pre = " <i class=\"material-icons\">people</i>"
   name = "Managing users"
-  url = "/managing_users"
+  url = "/use/managing_users"
 [[menu.main]]
   parent = "use"
   weight = 3
   pre = " <i class=\"material-icons\">settings_input_component</i>"
   name = "Networking"
-  url = "#networking"
+  url = "/use/networking"
 [[menu.main]]
   parent = "use"
   weight = 4
   pre = " <i class=\"material-icons\">extension</i>"
   name = "Extending Images"
-  url = "/extending"  
+  url = "/use/extending"  
 [[menu.main]]
   parent = "use"
-  weight = 5
+  weight = 4
   pre = " <i class=\"material-icons\">build</i>"
   name = "Container management"
-  url = "/managing_containers"  
+  url = "/use/managing_containers"  
 [[menu.main]]
   parent = "use"
-  weight = 6
+  weight = 4
   pre = " <i class=\"material-icons\">explore</i>"
   name = "Other topics"
-  url = "/other_topics"  
+  url = "/use/other_topics"  
 
 
 [[menu.footer]]
