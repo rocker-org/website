@@ -1,0 +1,41 @@
+{{ define "body" }}
+<body class="profile-page">
+  {{ partial "nav-fixed-top.html" . }}
+  <div class="wrapper">
+	  <div class="header header-filter" style="background-image: url('{{ .Site.Params.background | relURL }}');">
+	  </div>
+	  <div class = "nav-align-left">
+          <div class="row">
+            <div class="col-md-2 text-left">
+              <!-- left gutter -->
+            </div>
+	          <div class="col-md-8">
+		<div class="main main-raised" id="page-content-wrapper">
+	    <div class="container-fluid">
+	    <div class="section col-md-7">
+	    
+        <h2 class="title text-center">{{ .Title }}</h2>
+              <div id="page-content">
+            	{{ .Content }}
+              </div>
+            </div>
+          </div>
+        </div>
+	     </div>
+	     <div class="col-md-2">
+	       <!-- right gutter -->
+	     </div>
+	  </div>
+  </div>
+  </div>
+  
+      <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+  
+  {{ partial "footer" . }}
+</body>
+{{ end }}

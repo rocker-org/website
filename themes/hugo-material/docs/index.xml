@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Write the best title for your page. on Material Kit by Creative Tim</title>
+    <link>/</link>
+    <description>Recent content in Write the best title for your page. on Material Kit by Creative Tim</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Policies</title>
+      <link>/about/</link>
+      <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Prerequisites You should be generally numerically literate, and some prior programming experience will be helpful. Students new to programming might find Hands on Programming with R to be helpful. Students with significant experience in programming and statistical analysis should find themselves well prepared but should find plenty still to learn in each lesson.
+Instructional Methods As a flipped classroom, students are provided with either reading or video material that they are expected to view/read prior to class.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/signup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/signup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Christian Louboutin</title>
+      <link>/profile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/profile/</guid>
+      <description> timeline Climate Change    bug_report Ecological simulation    directions_boat Overfishing    my_location Spatial movement    trending_down Mass Extinctions    cloud Cloud computing    Concepts CO2 concentration Global mean temperature Sea level rise Land ice sheet melt Arctic sea ice cover   Skills  Data wrangling: plain text formats Tidy data (intro) Data visualization Smoothing     Left Column  right column    Wide entry    unit 4 L  unit 4 R    unit 5 L  unit 5 R    unit 5 L  unit 5 R       </description>
+    </item>
+    
+    <item>
+      <title>Write the best title for your page.</title>
+      <link>/landing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/landing/</guid>
+      <description>Let&#39;s talk product This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&#39;t scroll to get here. Add a button if you want the user to see more.   chat  First Feature Divide details about your product or agency work into parts. Write a few lines about each one.</description>
+    </item>
+    
+  </channel>
+</rss>
