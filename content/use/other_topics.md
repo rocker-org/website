@@ -47,5 +47,7 @@ Coming soon...
 </div></div>
 
 
+## [Singularity](/use/singularity)
 
+See [Singularity](/use/singularity) for use in HPC environments without Docker installed.
 
