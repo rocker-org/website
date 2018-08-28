@@ -9,7 +9,7 @@
     
   <title>Rocker Project</title>
 	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
-	<link rel="icon" type="image/png" href="../../img/favicon.png">
+	<link rel="icon" type="image/png" href="../img/favicon.png">
 	
 	
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -20,26 +20,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css">
 
 	
-  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../../css/material-kit.css" rel="stylesheet"/>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/material-kit.css" rel="stylesheet"/>
   
   
 
   
-  <link rel="stylesheet" href="../../css/https://fonts.googleapis.com/icon?family=Material&#43;Icons">       
+  <link rel="stylesheet" href="../css/https://fonts.googleapis.com/icon?family=Material&#43;Icons">       
   
-  <link rel="stylesheet" href="../../css/https://cdn.rawgit.com/gaborcsardi/r-font/master/rlogo.css">       
+  <link rel="stylesheet" href="../css/https://cdn.rawgit.com/gaborcsardi/r-font/master/rlogo.css">       
   
-  <link rel="stylesheet" href="../../css/https://cdn.rawgit.com/wesbos/Font-Awesome-Docker-Icon/master/fontcustom/fontcustom.css">       
+  <link rel="stylesheet" href="../css/https://cdn.rawgit.com/wesbos/Font-Awesome-Docker-Icon/master/fontcustom/fontcustom.css">       
   
     
-  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Rocker Project">
-  <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Rocker Project">
-  <link rel="canonical" href="../../use/networking/">
+  <link rel="alternate" href="../archives/index.xml" type="application/rss+xml" title="Rocker Project">
+  <link rel="feed" href="../archives/index.xml" type="application/rss+xml" title="Rocker Project">
+  <link rel="canonical" href="../archives/">
 </head>
 
   
-<body class="profile-page">
+<body class="landing-page">
   	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
 	    	<div class="container">
         	
@@ -50,7 +50,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand" href="../../">Rocker Project</a>
+        		<a class="navbar-brand" href="../">Rocker Project</a>
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
@@ -59,7 +59,7 @@
         
 
         <li class="nav-item">
-          <a href="../../">
+          <a href="../">
             <i class="sidebar-button-icon fa fa-lg fa-home"></i>
             <span>Home</span>
           </a>
@@ -69,7 +69,7 @@
         
 
         <li class="nav-item">
-          <a href="../../images">
+          <a href="../images">
             <i class='material-icons'>computer</i>
             <span>Images</span>
           </a>
@@ -86,42 +86,42 @@
           <ul class="dropdown-menu">
             
             <li class="nav-item">
-              <a href="../../use/shared_volumes">
+              <a href="../use/shared_volumes">
                 <i class="material-icons">folder_shared</i>
                 <span>Shared volumes</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a href="../../use/managing_users">
+              <a href="../use/managing_users">
                  <i class="material-icons">people</i>
                 <span>Managing users</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a href="../../use/networking">
+              <a href="../use/networking">
                  <i class="material-icons">settings_input_component</i>
                 <span>Networking</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a href="../../use/managing_containers">
+              <a href="../use/managing_containers">
                  <i class="material-icons">build</i>
                 <span>Container management</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a href="../../use/extending">
+              <a href="../use/extending">
                  <i class="material-icons">extension</i>
                 <span>Extending Images</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a href="../../use/other_topics">
+              <a href="../use/other_topics">
                  <i class="material-icons">explore</i>
                 <span>Other topics</span>
               </a>
@@ -138,60 +138,24 @@
     </nav>
   <div class="wrapper">
     <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
+      <div class="container">
+        <div class="row">
+					<div class="col-md-6">
+              <h1 class="title">Archives</h1>
+              <h4></h4>
+              <br />
+					</div>
+        </div>
+      </div>
     </div>
 		<div class="main main-raised">
 			<div class="container">
-		  	<div class="section text-left">
-		  	  <h2 class="title text-center">Networking: tips and tricks</h2>
+		  	<div class="section text-center section-landing">
+		  	  <div class="row">
+		  	    <div class="col-md-6 col-md-offset-3">  
 	            
-
-<h3 id="i-class-material-icons-https-i-https"><i class="material-icons">https</i> HTTPS</h3>
-
-<p>Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as <a href="https://caddyserver.com">Caddy</a>.  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example <code>Caddyfile</code> specifying the necessary configuration, along with a <code>docker-compose</code> file which sets up an RStudio server instance behind a separate container running <code>caddy</code>.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:</p>
-
-<p>Example <code>site/Caddyfile</code>:</p>
-
-<pre><code>rstudio.example.com {
-  
-  tls you@email.com
-  proxy / rstudio:8787 {
-    header_upstream Host {host}
-  }
-
-}
-
-</code></pre>
-
-<p>Example docker-compose file:</p>
-
-<pre><code class="language-yml">version: '2'
-services:
-  caddy:  
-    image: joshix/caddy
-    links:
-      - rstudio
-    volumes:
-      - ./site/:/var/www/html
-      - ./.caddy/:/.caddy
-    ports:
-      - 80:80
-      - 443:443
-    restart: always
-
-  rstudio:
-    image: rocker/verse 
-    env_file: .password 
-    volumes:
-      - $HOME/students:/home/
-    restart: always
-</code></pre>
-
-<p>More details about the use of <a href="https://docs.docker.com/compose/">docker-compose</a> and <a href="https://caddyserver.com/">Caddy Server</a> are found on their websites.</p>
-
-<h3 id="i-class-material-icons-data-usage-i-monitoring"><i class="material-icons">data_usage</i> Monitoring</h3>
-
-<h3 id="i-class-fa-fa-database-i-linking-database-containers"><i class="fa fa-database"></i> Linking database containers</h3>
-
+	          </div>
+          </div>   
 	      </div>
       </div>
 		</div>
@@ -217,7 +181,7 @@ services:
       </ul>
     </nav>
 	  <div class="copyright pull-right">
-	    <img src="../../img/cc-by.svg"/>
+	    <img src="../img/cc-by.svg"/>
 	  </div>
   </div>
 </footer>
@@ -234,16 +198,16 @@ services:
 	
 	
 	
-	<script src="../../js/material.min.js"></script>
+	<script src="../js/material.min.js"></script>
 
 
 	
-	<script src="../../js/nouislider.min.js" type="text/javascript"></script>
+	<script src="../js/nouislider.min.js" type="text/javascript"></script>
 	
-	<script src="../../js/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script src="../js/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	
-	<script src="../../js/material-kit.js" type="text/javascript"></script>
+	<script src="../js/material-kit.js" type="text/javascript"></script>
 
    
     

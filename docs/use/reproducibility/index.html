@@ -35,7 +35,7 @@
     
   <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Rocker Project">
   <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Rocker Project">
-  <link rel="canonical" href="../../use/networking/">
+  <link rel="canonical" href="../../use/reproducibility/">
 </head>
 
   
@@ -142,56 +142,8 @@
 		<div class="main main-raised">
 			<div class="container">
 		  	<div class="section text-left">
-		  	  <h2 class="title text-center">Networking: tips and tricks</h2>
+		  	  <h2 class="title text-center">Reproducibility</h2>
 	            
-
-<h3 id="i-class-material-icons-https-i-https"><i class="material-icons">https</i> HTTPS</h3>
-
-<p>Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as <a href="https://caddyserver.com">Caddy</a>.  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example <code>Caddyfile</code> specifying the necessary configuration, along with a <code>docker-compose</code> file which sets up an RStudio server instance behind a separate container running <code>caddy</code>.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:</p>
-
-<p>Example <code>site/Caddyfile</code>:</p>
-
-<pre><code>rstudio.example.com {
-  
-  tls you@email.com
-  proxy / rstudio:8787 {
-    header_upstream Host {host}
-  }
-
-}
-
-</code></pre>
-
-<p>Example docker-compose file:</p>
-
-<pre><code class="language-yml">version: '2'
-services:
-  caddy:  
-    image: joshix/caddy
-    links:
-      - rstudio
-    volumes:
-      - ./site/:/var/www/html
-      - ./.caddy/:/.caddy
-    ports:
-      - 80:80
-      - 443:443
-    restart: always
-
-  rstudio:
-    image: rocker/verse 
-    env_file: .password 
-    volumes:
-      - $HOME/students:/home/
-    restart: always
-</code></pre>
-
-<p>More details about the use of <a href="https://docs.docker.com/compose/">docker-compose</a> and <a href="https://caddyserver.com/">Caddy Server</a> are found on their websites.</p>
-
-<h3 id="i-class-material-icons-data-usage-i-monitoring"><i class="material-icons">data_usage</i> Monitoring</h3>
-
-<h3 id="i-class-fa-fa-database-i-linking-database-containers"><i class="fa fa-database"></i> Linking database containers</h3>
-
 	      </div>
       </div>
 		</div>

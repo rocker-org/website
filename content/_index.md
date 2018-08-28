@@ -17,10 +17,10 @@ docker run --rm -ti rocker/r-base
 Or get started with an RStudio® instance:
 
 ```
-docker run --rm -p 8787:8787 rocker/rstudio
+docker run -e PASSWORD=yourpassword --rm -p 8787:8787 rocker/rstudio
 ```
 
-and point your browser to `localhost:8787`.  Log in with user/password `rstudio/rstudio`.  
+and point your browser to `localhost:8787`.  Log in with user/password `rstudio`/`yourpassword` (Please set your own password).  
 
 For more information and further options, see the [use](/use) page.
 
