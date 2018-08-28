@@ -26,8 +26,9 @@ RUN install2.r pkg1 pgk2 pkg3 ...  Users writing their own Dockerfiles are encou
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/use/managing_users/</guid>
-      <description>When using an RStudio-based instance over a public network (e.g. cloud server), remember to launch RStudio with a custom password as an environmental variable -e:
-docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio  In this example, the default user remains rstudio, but now has a custom password. There is generally no need to set a custom user name, even when sharing volumes with the host user. On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by root instead.</description>
+      <description>RStudio-based instances now always require a custom password as an environmental variable -e:
+docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio  Without a password, the container will exit with a warning message instead.
+In this example, the default user remains rstudio, but now has a custom password. There is generally no need to set a custom user name, even when sharing volumes with the host user. On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by root instead.</description>
     </item>
     
     <item>
@@ -75,6 +76,17 @@ checking which BLAS is in use A way of checking which implementation is currentl
       
       <guid>/use/shared_volumes/</guid>
       <description>A common configuration with Rocker containers is to share volumes between the container and the host filesystem. This allows the container to access and modify local files in directories you specify. In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container.</description>
+    </item>
+    
+    <item>
+      <title>Singularity</title>
+      <link>/use/singularity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/use/singularity/</guid>
+      <description>Singularity is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters. Rocker images can be imported and run using Singularity, with optional custom password support.
+Importing a Rocker Image Use the singularity pull command to import the desired Rocker image from Docker Hub into a SquashFS (compressed, read-only) image:
+singularity pull --name rstudio.simg docker://rocker/rstudio:latest  If additional Debian software packages are needed, see the Singularity documentation for building a writable image or writable sandbox directory (note that sudo privileges are required).</description>
     </item>
     
   </channel>

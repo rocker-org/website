@@ -35,7 +35,7 @@
     
   <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Rocker Project">
   <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Rocker Project">
-  <link rel="canonical" href="../../use/managing_users/">
+  <link rel="canonical" href="../../use/singularity/">
 </head>
 
   
@@ -142,41 +142,90 @@
 		<div class="main main-raised">
 			<div class="container">
 		  	<div class="section text-left">
-		  	  <h2 class="title text-center">Managing Users</h2>
-	            <p>RStudio-based instances now always require a custom password as an environmental variable <code>-e</code>:</p>
+		  	  <h2 class="title text-center">Singularity</h2>
+	            
 
-<pre><code class="language-bash">docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
+<p><a href="http://singularity.lbl.gov/">Singularity</a> is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters.
+Rocker images can be imported and run using Singularity, with optional custom password support.</p>
+
+<h3 id="importing-a-rocker-image">Importing a Rocker Image</h3>
+
+<p>Use the <code>singularity pull</code> command to import the desired Rocker image from Docker Hub into a SquashFS (compressed, read-only) image:</p>
+
+<pre><code>singularity pull --name rstudio.simg docker://rocker/rstudio:latest
 </code></pre>
 
-<p>Without a password, the container will exit with a warning message instead.</p>
+<p>If additional Debian software packages are needed, see the Singularity documentation for building a <a href="http://singularity.lbl.gov/docs-flow#writable-image">writable image</a> or <a href="http://singularity.lbl.gov/docs-flow#sandbox-folder">writable sandbox directory</a> (note that sudo privileges are required).
+A writable image is not needed for installing R packages into a personal library in the user&rsquo;s home directory.</p>
 
-<p>In this example, the default user remains <code>rstudio</code>, but now has a custom password.  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by <code>root</code> instead. Check the user id on the host (<code>id</code>) and pass this value to the docker container as an environmental variable, <code>-e USERID=$UID</code>, where <code>$UID</code> is the local user id.</p>
+<h3 id="running-a-rocker-singularity-container-localhost-no-password">Running a Rocker Singularity container (localhost, no password)</h3>
 
-<p>By default, all rocker containers run as
-root. This is consistent with standard Docker practice, allowing both
-interactive users and downstream Dockerfiles to install software (with <code>apt-get</code>)
-directly without having to switch to root.  The main snag of this approach comes if
-a user links a local volume and modifies files on that volume, which will
-result in the local file being owned by <code>root</code> and not the default user.
-To avoid this, specify the non-root user at runtime (username <code>docker</code>
-on the <code>r-base</code> stack, or <code>rstudio</code> on images deriving from rstudio)
-when running an interactive shell.</p>
-
-<p>By default, all rocker images run as root.  This means that when running a terminal session such as <code>R</code> or <code>bash</code>, you will be a root user.  This allows you to easily install additional software on the container with <code>apt-get</code> and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by <code>root</code>.  To avoid this, run interactive terminal sessions with the default user (<code>docker</code> for <code>r-base</code> containers, <code>rstudio</code> for RStudio-derived containers) when sharing volumes with the host, e.g.:</p>
-
-<pre><code class="language-bash">docker run --rm -ti -v $(pwd):/home/rstudio --user rstudio rocker/verse bash
+<pre><code>singularity exec rstudio.simg rserver --www-address=127.0.0.1
 </code></pre>
 
-<p>or</p>
+<p>This will run rserver in a Singularity container.
+The <code>--www-address=127.0.0.1</code> option binds to localhost (the default is 0.0.0.0, or all IP addresses on the host).
+listening on 127.0.0.1:8787.</p>
 
-<pre><code class="language-bash">docker run --rm -ti -v $(pwd):/home/docker --user docker r-base 
+<h3 id="running-a-rocker-singularity-container-with-password-authentication">Running a Rocker Singularity container with password authentication</h3>
+
+<p>To enable password authentication, set the PASSWORD environment variable and add the <code>--auth-none=0 --auth-pam-helper-path=pam-helper</code> options:</p>
+
+<pre><code>PASSWORD='...' singularity exec rstudio.simg rserver --auth-none=0  --auth-pam-helper-path=pam-helper
 </code></pre>
 
-<p>In these examples, we link the current working directory, <code>$(pwd)</code>, to a user-owned location on the image, and specify the approriate user name.</p>
+<p>After pointing your browser to http://<em>hostname</em>:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.</p>
 
-<p>For users accessing R through RStudio, this is not necessary.  The docker container will run as root, but a user logs in through the RStudio server web interface as the non-root user &ldquo;rstudio&rdquo;, and thus any changes made to linked volumes will not alter file permissions on the home directory.  When running RStudio from a container, do no specify a user with <code>--user</code>! The container needs root to launch RStudio.</p>
+<h3 id="slurm-job-script">SLURM job script</h3>
 
-<p>In RStudio containers, you can also add the non-root user to the <code>sudoers</code> group when the container is launched simply by specifying the environmental variable, <code>-e ROOT=TRUE</code> in your <code>docker run</code> command.</p>
+<p>On an HPC cluster, a Rocker Singularity container can be started on a compute node using the cluster&rsquo;s job scheduler, allowing it to access compute, memory, and storage resources that may far exceed those found in a typical desktop workstation.
+The following example illustrates how this may be done with a SLURM job script.</p>
+
+<pre><code>#!/bin/sh
+#SBATCH --time=08:00:00
+#SBATCH --signal=USR2
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-tasks=2
+#SBATCH --mem=8192
+#SBATCH --output=/home/%u/rstudio-server.job.%j
+
+export RSTUDIO_PASSWORD=$(openssl rand -base64 15)
+# get unused socket per https://unix.stackexchange.com/a/132524
+# tiny race condition between the python &amp; singularity commands
+readonly PORT=$(python -c 'import socket; s=socket.socket(); s.bind((&quot;&quot;, 0)); print(s.getsockname()[1]); s.close()')
+cat 1&gt;&amp;2 &lt;&lt;END
+1. SSH tunnel from your workstation using the following command:
+
+   ssh -N -L 8787:${HOSTNAME}:${PORT} ${USER}@LOGIN-HOST
+
+   and point your web browser to http://localhost:8787
+
+2. log in to RStudio Server using the following credentials:
+
+   user: ${USER}
+   password: ${PASSWORD}
+END
+
+# This example bind mounts the /project directory on the host into the Singularity container.
+# By default the only host file systems mounted within the container are $HOME, /tmp, /proc, /sys, and /dev.
+singularity exec --bind=/project rstudio.simg \
+    rserver --www-port ${PORT} --auth-none=0 --auth-pam-helper-path=pam-helper
+printf 'rserver exited' 1&gt;&amp;2
+</code></pre>
+
+<p>The job script is submitted using the SLURM <code>sbatch</code> command:</p>
+
+<pre><code>$ sbatch rstudio-server.job
+Submitted batch job 123456
+</code></pre>
+
+<p>After the scheduled job begins execution, <code>rserver</code> is started in a Singularity container, and the connection information (including the compute node hostname, TCP port, and a randomly-generated custom password) is sent in the job script stderr to a file in the user&rsquo;s home directory named <code>rstudio-server.job.123456</code>.</p>
+
+<p>The <code>rserver</code> process (and resulting rsession process after login) will persist until:
+1. The job wall time (<code>--time=08:00:00</code>, or 8 hours) is reached.
+    + The <code>--signal=USR2</code> directive tells SLURM to send SIGUSR2 approximately 60 seconds before the wall time limit is reached.
+      This causes the <code>rsession</code> process to save user&rsquo;s session state to their home directory, so it can be resumed in a subsequent job.
+2. The SLURM <code>scancel</code> command is used to cancel the job.</p>
 
 	      </div>
       </div>
