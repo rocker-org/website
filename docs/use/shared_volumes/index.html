@@ -149,12 +149,12 @@
 
 <p>To share a volume with the host we use the <code>-v</code> or <code>--volume</code> flag. Simply indicate the location on the host machine on the left side of <code>:</code>, and indicate the location on the container to the right.  For instance:</p>
 
-<pre><code class="language-bash">docker run -d -p 8787:8787 -v /Users/bob/Documents:/home/rstudio/Documents rocker/rstudio
+<pre><code class="language-bash">docker run -d  -e PASSWORD=yourpassword -p 8787:8787 -v /Users/bob/Documents:/home/rstudio/Documents rocker/rstudio
 </code></pre>
 
 <p>would link the User <code>bob</code>&rsquo;s Documents directory to the default <code>rstudio</code> user&rsquo;s directory on the container.  The above example shows a typical path on a Mac host, which can share any subdirectory under <code>Users</code>.  A Linux host can link an arbitrary path.  The same method should work on Windows paths as well, e.g.</p>
 
-<pre><code class="language-bash">docker run -d -p 8787:8787 -v /c/Users/foobar:/home/rstudio/foobar rocker/rstudio
+<pre><code class="language-bash">docker run -d  -e PASSWORD=yourpassword -p 8787:8787 -v /c/Users/foobar:/home/rstudio/foobar rocker/rstudio
 </code></pre>
 
 <p>Would share the host&rsquo;s file <code>C:/Users/foobar</code></p>
