@@ -153,13 +153,16 @@ Debian package libblas-dev) using the Shared BLAS setup (cf <a href="https://cra
 
 <h4 id="checking-which-blas-is-in-use">checking which BLAS is in use</h4>
 
-<p>A way of checking which implementation is currently is using the lsof utility, whih first needs to be installed:
-<code>apt-get update &amp;&amp; apt-get install lsof</code></p>
+<p>You can see the current BLAS configuration in your image by using <code>sessionInfo()</code> from the R console; e.g.</p>
 
-<p>Then you can check as follows by looking at the name of the BLAS shared library loaded by R:</p>
+<pre><code class="language-r">&gt; sessionInfo()
+R version 3.5.0 (2018-04-23)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Debian GNU/Linux 9 (stretch)
 
-<pre><code>R -q -e &quot;grep('blas', system2('lsof', c('-p', Sys.getpid()), stdout=TRUE), value = TRUE)&quot;
-[1] &quot;R       211 root  mem       REG   0,36 32775824    1319 /usr/lib/libopenblasp-r0.2.19.so&quot;
+Matrix products: default
+BLAS: /usr/lib/openblas-base/libblas.so.3
+LAPACK: /usr/lib/libopenblasp-r0.2.19.so
 </code></pre>
 
 <p>Here for instance R uses OpenBLAS.</p>

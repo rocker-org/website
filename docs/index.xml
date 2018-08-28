@@ -57,7 +57,7 @@ Cleaning up stale instances Most of the examples shown here include the use of t
       
       <guid>/use/other_topics/</guid>
       <description>selecting the BLAS implementation used by R By default rocker/r-ver uses the OpenBLAS (http://www.openblas.net) implementation for Linear Algebra (cf https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS). But it is possible to switch for the reference BLAS implementation (http://www.netlib.org/blas/) (as provided by the Debian package libblas-dev) using the Shared BLAS setup (cf https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS).
-checking which BLAS is in use A way of checking which implementation is currently is using the lsof utility, whih first needs to be installed: apt-get update &amp;amp;&amp;amp; apt-get install lsof</description>
+checking which BLAS is in use You can see the current BLAS configuration in your image by using sessionInfo() from the R console; e.</description>
     </item>
     
     <item>
