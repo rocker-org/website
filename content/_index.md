@@ -20,7 +20,7 @@ Or get started with an RStudio® instance:
 docker run -e PASSWORD=yourpassword --rm -p 8787:8787 rocker/rstudio
 ```
 
-and point your browser to `localhost:8787`.  Log in with user/password `rstudio`/`yourpassword` (Please set your own password!).  
+and point your browser to `localhost:8787`.  Log in with user/password `rstudio`/`yourpassword` (Please set your own password; it cannot be `rstudio`).  
 
 For more information and further options, see the [use](/use) page.
 

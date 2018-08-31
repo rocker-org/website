@@ -10,7 +10,7 @@ docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
 
 Without a password, the container will exit with a warning message instead.
 
-In this example, the default user remains `rstudio`, but now has a custom password.  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by `root` instead. Check the user id on the host (`id`) and pass this value to the docker container as an environmental variable, `-e USERID=$UID`, where `$UID` is the local user id.
+In this example, the default user remains `rstudio`, but now has a custom password.  (The password cannot be `rstudio` and is no longer set by default).  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by `root` instead. Check the user id on the host (`id`) and pass this value to the docker container as an environmental variable, `-e USERID=$UID`, where `$UID` is the local user id.
 
 
 By default, all rocker containers run as
