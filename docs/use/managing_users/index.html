@@ -143,12 +143,28 @@
 			<div class="container">
 		  	<div class="section text-left">
 		  	  <h2 class="title text-center">Managing Users</h2>
-	            <p>RStudio-based instances now always require a custom password as an environmental variable <code>-e</code>:</p>
+	            
+
+<p>RStudio-based instances now always require a custom password as an environmental variable <code>-e</code>:</p>
 
 <pre><code class="language-bash">docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
 </code></pre>
 
 <p>Without a password, the container will exit with a warning message instead.</p>
+
+<h3 id="rstudio-without-authentication">RStudio without authentication</h3>
+
+<p>If you are certain you are running in a secure environment (e.g. not a publicly accessible server such as AWS instance), you can disable authentication for RStudio by setting an environmental variable <code>DISABLE_AUTH=true</code>, e.g.:</p>
+
+<pre><code class="language-bash">docker run --rm \
+  -p 127.0.0.1:8787:8787 \
+  -e DISABLE_AUTH=true \
+  rocker/rstudio
+</code></pre>
+
+<p>When you visit <a href="https://localhost:8787">https://localhost:8787</a>, you will now automatically be logged in as the user <code>rstudio</code> without having to first enter a user name and password.  (Note this example explicitly binds <code>127.0.0.1:8787</code> instead of the default <code>0.0.0.0:8787</code> that you get by using <code>-p 8787:8787</code> option.  This can prevent unintended external access to the instance, e.g. see <a href="https://stackoverflow.com/questions/3693434">SO</a>.)</p>
+
+<h3 id="custom-usernames-and-user-ids">Custom usernames and user IDs</h3>
 
 <p>In this example, the default user remains <code>rstudio</code>, but now has a custom password.  (The password cannot be <code>rstudio</code> and is no longer set by default).  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by <code>root</code> instead. Check the user id on the host (<code>id</code>) and pass this value to the docker container as an environmental variable, <code>-e USERID=$UID</code>, where <code>$UID</code> is the local user id.</p>
 
@@ -176,7 +192,9 @@ when running an interactive shell.</p>
 
 <p>For users accessing R through RStudio, this is not necessary.  The docker container will run as root, but a user logs in through the RStudio server web interface as the non-root user &ldquo;rstudio&rdquo;, and thus any changes made to linked volumes will not alter file permissions on the home directory.  When running RStudio from a container, do no specify a user with <code>--user</code>! The container needs root to launch RStudio.</p>
 
-<p>In RStudio containers, you can also add the non-root user to the <code>sudoers</code> group when the container is launched simply by specifying the environmental variable, <code>-e ROOT=TRUE</code> in your <code>docker run</code> command.</p>
+<h2 id="root-sudo-privileges-in-rstudio-containers">Root (sudo) privileges in RStudio containers</h2>
+
+<p>In RStudio containers, you can also add the non-root user to the <code>sudoers</code> group when the container is launched simply by specifying the environmental variable, <code>-e ROOT=true</code> in your <code>docker run</code> command.  Note that if you have disabled authentication and not specified a password, the password to use <code>sudo</code>as  the <code>rstudio</code> user will also be <code>rstudio</code>.</p>
 
 	      </div>
       </div>
