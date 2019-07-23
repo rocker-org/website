@@ -131,7 +131,7 @@ This stack builds on `debian:testing` and `debian:unstable`.  This is a branched
 <tbody>
 <tr>
 <td><a href="https://hub.docker.com/r/rocker/r-devel-san">r-devel-san</a></td>
-<td>as r-devel, but built with compiler sanatizers</td>
+<td>as r-devel, but built with compiler sanitizers</td>
 <td><a href="https://microbadger.com/images/rocker/r-devel-san"><img src="https://images.microbadger.com/badges/image/rocker/r-devel-san.svg" alt="" /></a></td>
 <td><a href="https://hub.docker.com/r/rocker/r-devel-san"><img src="https://img.shields.io/docker/pulls/rocker/r-devel-san.svg" alt="" /></a></td>
 <td><a href="https://hub.docker.com/r/rocker/r-devel-san/builds"><img src="https://img.shields.io/docker/automated/rocker/r-devel-san.svg" alt="" /></a></td>
@@ -139,7 +139,7 @@ This stack builds on `debian:testing` and `debian:unstable`.  This is a branched
 
 <tr>
 <td><a href="https://hub.docker.com/r/rocker/r-devel-ubsan-clang">r-devel-ubsan-clan</a></td>
-<td>Sanatizers, clang c compiler (instead of gcc)</td>
+<td>Sanitizers, clang c compiler (instead of gcc)</td>
 <td><a href="https://microbadger.com/images/rocker/r-devel-ubsan-clang"><img src="https://images.microbadger.com/badges/image/rocker/r-devel-ubsan-clang.svg" alt="" /></a></td>
 <td><a href="https://hub.docker.com/r/rocker/r-devel-ubsan-clang"><img src="https://img.shields.io/docker/pulls/rocker/r-devel-ubsan-clang.svg" alt="" /></a></td>
 <td><a href="https://hub.docker.com/r/rocker/r-devel-ubsan-clang/builds"><img src="https://img.shields.io/docker/automated/rocker/r-devel-ubsan-clang.svg" alt="" /></a></td>
