@@ -98,7 +98,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[menu.footer]]
   weight = 3
   name = "Code of Conduct"
-  pre = "<i class=\"button-icon fa fa-2x user-friends\"></i> "
+  pre = "<i class=\"material-icons\">people</i> "
   url = "/conduct"
 
 
@@ -108,6 +108,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   background = "/img/goldengate.jpg"
   icon = "img/rocker-bw.png"
   custom_css = ["https://fonts.googleapis.com/icon?family=Material+Icons",
-                "https://cdn.jsdelivr.net/gh/gaborcsardi/r-font/rlogo.css",
-                "https://cdn.jsdelivr.net/gh/wesbos/Font-Awesome-Docker-Icon/fontcustom/fontcustom.css"]
+                "https://cdn.rawgit.com/gaborcsardi/r-font/master/rlogo.css",
+                "https://cdn.rawgit.com/wesbos/Font-Awesome-Docker-Icon/master/fontcustom/fontcustom.css"]
 #  custom_js = ["js/custom.js"]
