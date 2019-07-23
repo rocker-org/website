@@ -95,7 +95,11 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   name = "Docker Hub"
   pre = "<i class=\"button-icon fa fa-2x fa-docker\"></i> "
   url = "https://hub.docker.com/u/rocker"
-
+[[menu.footer]]
+  weight = 3
+  name = "Code of Conduct"
+  pre = "<i class=\"button-icon fa fa-2x user-friends\"></i> "
+  url = "/conduct"
 
 
 [params]
