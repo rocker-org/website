@@ -2,7 +2,6 @@
 title: "Extending images"
 ---
 
-
 Rocker images provide a few utility functions to streamline this process, including the 
 [littler](https://cran.r-project.org/package=littler) scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.
 
@@ -20,6 +19,14 @@ a personal account on the Docker Hub.  While this is sometimes convenient, we en
 consider writing Dockerfiles instead whenever possible, as this creates a more transparent
 and reproducible mechanism to accomplish the same thing.  
 
+Users should understand how the Dockerfile on which Rocker images are built works before writing new
+Dockerfiles that extend the images we provide. See [here](https://github.com/rocker-org/rocker-versioned/blob/master/r-ver/Dockerfile) for the source code that defines the `rocker/r-ver` image that many Rocker images
+are based on.
 
+An example is changing the default `repos` used by the container. This could be changed back to CRAN
+repos by adding the following line to an appropriate place in your Dockerfile:
 
+```
+  echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
+```
 
