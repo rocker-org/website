@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.55.6" />                                                                   
+  <meta name="generator" content="Hugo 0.57.2" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -159,6 +159,16 @@ the <code>docker commit</code> mechanism, which creates a new binary image which
 a personal account on the Docker Hub.  While this is sometimes convenient, we encourage users to
 consider writing Dockerfiles instead whenever possible, as this creates a more transparent
 and reproducible mechanism to accomplish the same thing.</p>
+
+<p>Users should understand how the Dockerfile on which Rocker images are built works before writing new
+Dockerfiles that extend the images we provide. See <a href="https://github.com/rocker-org/rocker-versioned/blob/master/r-ver/Dockerfile">here</a> for the source code that defines the <code>rocker/r-ver</code> image that many Rocker images
+are based on.</p>
+
+<p>An example is changing the default <code>repos</code> used by the container. This could be changed back to CRAN
+repos by adding the following line to an appropriate place in your Dockerfile:</p>
+
+<pre><code>  echo &quot;options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')&quot; &gt;&gt; /usr/local/lib/R/etc/Rprofile.site
+</code></pre>
 
 	      </div>
       </div>

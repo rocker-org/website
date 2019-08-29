@@ -3,18 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/about/</loc>
+    <lastmod>2017-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2017-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/conduct/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>/signup/</loc>
+  </url>
+  
+  <url>
     <loc>/archives/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/profile/</loc>
   </url>
   
   <url>
@@ -22,11 +38,11 @@
   </url>
   
   <url>
-    <loc>/use/managing_users/</loc>
+    <loc>/use/managing_containers/</loc>
   </url>
   
   <url>
-    <loc>/use/managing_containers/</loc>
+    <loc>/use/managing_users/</loc>
   </url>
   
   <url>
@@ -51,7 +67,6 @@
   
   <url>
     <loc>/tags/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -59,12 +74,11 @@
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/use/</loc>
   </url>
   
   <url>
-    <loc>/use/</loc>
-    <priority>0</priority>
+    <loc>/landing/</loc>
   </url>
   
 </urlset>

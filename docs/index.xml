@@ -6,9 +6,20 @@
     <description>Recent content in The Rocker Project on Rocker Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 13 Apr 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Policies</title>
+      <link>/about/</link>
+      <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Prerequisites You should be generally numerically literate, and some prior programming experience will be helpful. Students new to programming might find Hands on Programming with R to be helpful. Students with significant experience in programming and statistical analysis should find themselves well prepared but should find plenty still to learn in each lesson.
+Instructional Methods As a flipped classroom, students are provided with either reading or video material that they are expected to view/read prior to class.</description>
+    </item>
     
     <item>
       <title></title>
@@ -18,6 +29,24 @@
       <guid>/conduct/</guid>
       <description>Contributor Covenant Code of Conduct Our Pledge In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 Our Standards Examples of behavior that contributes to creating a positive environment include:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/signup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/signup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Christian Louboutin</title>
+      <link>/profile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/profile/</guid>
+      <description> timeline Climate Change    bug_report Ecological simulation    directions_boat Overfishing    my_location Spatial movement    trending_down Mass Extinctions    cloud Cloud computing    Concepts CO2 concentration Global mean temperature Sea level rise Land ice sheet melt Arctic sea ice cover   Skills  Data wrangling: plain text formats Tidy data (intro) Data visualization Smoothing     Left Column  right column    Wide entry    unit 4 L  unit 4 R    unit 5 L  unit 5 R    unit 5 L  unit 5 R       </description>
     </item>
     
     <item>
@@ -31,6 +60,16 @@ RUN install2.r pkg1 pgk2 pkg3 ...  Users writing their own Dockerfiles are encou
     </item>
     
     <item>
+      <title>Managing containers</title>
+      <link>/use/managing_containers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/use/managing_containers/</guid>
+      <description>The simplest tools to monitor containers are docker log and docker stats commands.
+Cleaning up stale instances Most of the examples shown here include the use of the --rm flag, which will cause this container to be removed after it has exited. By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using docker start, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).</description>
+    </item>
+    
+    <item>
       <title>Managing Users</title>
       <link>/use/managing_users/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -39,16 +78,6 @@ RUN install2.r pkg1 pgk2 pkg3 ...  Users writing their own Dockerfiles are encou
       <description>RStudio-based instances now always require a custom password as an environmental variable -e:
 docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio  Without a password, the container will exit with a warning message instead.
 RStudio without authentication If you are certain you are running in a secure environment (e.g. not a publicly accessible server such as AWS instance), you can disable authentication for RStudio by setting an environmental variable DISABLE_AUTH=true, e.</description>
-    </item>
-    
-    <item>
-      <title>Managing containers</title>
-      <link>/use/managing_containers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/use/managing_containers/</guid>
-      <description>The simplest tools to monitor containers are docker log and docker stats commands.
-Cleaning up stale instances Most of the examples shown here include the use of the --rm flag, which will cause this container to be removed after it has exited. By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using docker start, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).</description>
     </item>
     
     <item>
@@ -107,6 +136,15 @@ singularity pull --name rstudio.simg docker://rocker/rstudio:latest  If addition
       <guid>/images/</guid>
       <description>The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.
 The versioned stack   image description size metrics build status     r-ver Specify R version in docker tag. Builds on debian:stable      rstudio Adds rstudio      tidyverse Adds tidyverse &amp;amp; devtools      verse Adds tex &amp;amp; publishing-related packages      geospatial Adds geospatial libraries       This stack builds on stable Debian releases (debian:8 for versions &amp;lt; 3.</description>
+    </item>
+    
+    <item>
+      <title>Write the best title for your page.</title>
+      <link>/landing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/landing/</guid>
+      <description>Let&#39;s talk product This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&#39;t scroll to get here. Add a button if you want the user to see more.   chat  First Feature Divide details about your product or agency work into parts. Write a few lines about each one.</description>
     </item>
     
   </channel>
