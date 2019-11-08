@@ -8,7 +8,7 @@ markup: "mmark"
 
 ## <i class="fa fa-rocket"></i> Getting Started ##
 
-Ensure you have [Docker installed](https://docs.docker.com/installation/) and start R inside a container with: 
+Ensure you have [Docker installed](https://docs.docker.com/installation/) and start R inside a container with:
 
 ```
 docker run --rm -ti rocker/r-base
@@ -24,30 +24,32 @@ and point your browser to `localhost:8787`.  Log in with user/password `rstudio`
 
 For more information and further options, see the [use](/use) page.
 
-
 &nbsp;
-<div class="section">
 <h2> <i class="material-icons">people</i> Team </h2>
 <div class = "row">
-<div class="col-md-4 col-md-offset-2">
+<div class="col-md-4">
 <a href="https://twitter.com/cboettig"><img class="img-circle img-raised img-responsive center-block" src="/img/cboettig.jpg"/></a>
 </div>
 <div class="col-md-4">
 <a href="https://twitter.com/eddelbuettel"><img class="img-circle img-raised img-responsive center-block" src="/img/edd.jpg"/></a>
 </div>
+<div class="col-md-4">
+<a href="https://twitter.com/noamross"><img class="img-circle img-raised img-responsive center-block" src="/img/noamross.jpg"/></a>
 </div>
-<br/>
-
-
-The Rocker project is maintained by Carl Boettiger and Dirk Eddelbuettel with significant contributions from a broad community of users and developers. Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports, feature requests, or other feedback. 
-
 </div>
 
+The Rocker project is maintained by <a href="https://twitter.com/cboettig">Carl Boettiger</a>, <a href="https://twitter.com/eddelbuettel">Dirk Eddelbuettel</a>, and <a href="https://twitter.com/noamross">Noam Ross</a>, with significant contributions from a broad community of users and developers. Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports, feature requests, or other feedback.
 
 
 ## <i class="fa fa-balance-scale"></i> License ##
 
 The Rocker Dockerfiles are licensed under the GPL 2 or later.
+
+## <i class="fa fa-handshake-o"></i> Support ##
+
+We are grateful for support from the <a href="https://chanzuckerberg.com/">Chan-Zuckerberg Initiative</a>'s Essential Open Source Software for Science Program.
+
+ <a href="https://chanzuckerberg.com/"><img style="max-width:100px;" class="img-responsive center-block" src="/img/czi-logo.png"/></a>
 
 ##  <i class="fa fa-trademark"></i> Trademarks ##
 
