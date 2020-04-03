@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.58.3" />                                                                   
+  <meta name="generator" content="Hugo 0.68.1" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -137,37 +137,24 @@
     	</div>
     </nav>
   <div class="wrapper">
-    <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
+    <div class="header header-filter" style="background-image: url('/img/rockerwoodcut.jpg');">
     </div>
 		<div class="main main-raised">
 			<div class="container">
 		  	<div class="section text-left">
 		  	  <h2 class="title text-center">Managing Users</h2>
-	            
-
-<p>RStudio-based instances now always require a custom password as an environmental variable <code>-e</code>:</p>
-
-<pre><code class="language-bash">docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
-</code></pre>
-
-<p>Without a password, the container will exit with a warning message instead.</p>
-
+	            <p>RStudio-based instances now always require a custom password as an environmental variable <code>-e</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -d -p 8787:8787 -e PASSWORD<span style="color:#f92672">=</span>clever-custom-password rocker/rstudio
+</code></pre></div><p>Without a password, the container will exit with a warning message instead.</p>
 <h3 id="rstudio-without-authentication">RStudio without authentication</h3>
-
 <p>If you are certain you are running in a secure environment (e.g. not a publicly accessible server such as AWS instance), you can disable authentication for RStudio by setting an environmental variable <code>DISABLE_AUTH=true</code>, e.g.:</p>
-
-<pre><code class="language-bash">docker run --rm \
-  -p 127.0.0.1:8787:8787 \
-  -e DISABLE_AUTH=true \
-  rocker/rstudio
-</code></pre>
-
-<p>When you visit <a href="https://localhost:8787">https://localhost:8787</a>, you will now automatically be logged in as the user <code>rstudio</code> without having to first enter a user name and password.  (Note this example explicitly binds <code>127.0.0.1:8787</code> instead of the default <code>0.0.0.0:8787</code> that you get by using <code>-p 8787:8787</code> option.  This can prevent unintended external access to the instance, e.g. see <a href="https://stackoverflow.com/questions/3693434">SO</a>.)</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -p 127.0.0.1:8787:8787 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -e DISABLE_AUTH<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  rocker/rstudio
+</code></pre></div><p>When you visit <a href="https://localhost:8787">https://localhost:8787</a>, you will now automatically be logged in as the user <code>rstudio</code> without having to first enter a user name and password.  (Note this example explicitly binds <code>127.0.0.1:8787</code> instead of the default <code>0.0.0.0:8787</code> that you get by using <code>-p 8787:8787</code> option.  This can prevent unintended external access to the instance, e.g. see <a href="https://stackoverflow.com/questions/3693434">SO</a>.)</p>
 <h3 id="custom-usernames-and-user-ids">Custom usernames and user IDs</h3>
-
 <p>In this example, the default user remains <code>rstudio</code>, but now has a custom password.  (The password cannot be <code>rstudio</code> and is no longer set by default).  There is generally no need to set a custom user name, even when sharing volumes with the host user.  On Linux-based hosts, sharing volumes requires that the the UID on the container match the UID on the host, otherwise any files edited or created in the container will be owned by <code>root</code> instead. Check the user id on the host (<code>id</code>) and pass this value to the docker container as an environmental variable, <code>-e USERID=$UID</code>, where <code>$UID</code> is the local user id.</p>
-
 <p>By default, all rocker containers run as
 root. This is consistent with standard Docker practice, allowing both
 interactive users and downstream Dockerfiles to install software (with <code>apt-get</code>)
@@ -177,23 +164,13 @@ result in the local file being owned by <code>root</code> and not the default us
 To avoid this, specify the non-root user at runtime (username <code>docker</code>
 on the <code>r-base</code> stack, or <code>rstudio</code> on images deriving from rstudio)
 when running an interactive shell.</p>
-
 <p>By default, all rocker images run as root.  This means that when running a terminal session such as <code>R</code> or <code>bash</code>, you will be a root user.  This allows you to easily install additional software on the container with <code>apt-get</code> and perform other admin tasks. However, if you are sharing a local volume with the host, any files you create or modify will become owned by <code>root</code>.  To avoid this, run interactive terminal sessions with the default user (<code>docker</code> for <code>r-base</code> containers, <code>rstudio</code> for RStudio-derived containers) when sharing volumes with the host, e.g.:</p>
-
-<pre><code class="language-bash">docker run --rm -ti -v $(pwd):/home/rstudio --user rstudio rocker/verse bash
-</code></pre>
-
-<p>or</p>
-
-<pre><code class="language-bash">docker run --rm -ti -v $(pwd):/home/docker --user docker r-base 
-</code></pre>
-
-<p>In these examples, we link the current working directory, <code>$(pwd)</code>, to a user-owned location on the image, and specify the approriate user name.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -ti -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/home/rstudio --user rstudio rocker/verse bash
+</code></pre></div><p>or</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -ti -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/home/docker --user docker r-base 
+</code></pre></div><p>In these examples, we link the current working directory, <code>$(pwd)</code>, to a user-owned location on the image, and specify the approriate user name.</p>
 <p>For users accessing R through RStudio, this is not necessary.  The docker container will run as root, but a user logs in through the RStudio server web interface as the non-root user &ldquo;rstudio&rdquo;, and thus any changes made to linked volumes will not alter file permissions on the home directory.  When running RStudio from a container, do no specify a user with <code>--user</code>! The container needs root to launch RStudio.</p>
-
 <h2 id="root-sudo-privileges-in-rstudio-containers">Root (sudo) privileges in RStudio containers</h2>
-
 <p>In RStudio containers, you can also add the non-root user to the <code>sudoers</code> group when the container is launched simply by specifying the environmental variable, <code>-e ROOT=true</code> in your <code>docker run</code> command.  Note that if you have disabled authentication and not specified a password, the password to use <code>sudo</code>as  the <code>rstudio</code> user will also be <code>rstudio</code>.</p>
 
 	      </div>
@@ -207,14 +184,14 @@ when running an interactive shell.</p>
         
 
         <li>
-          <a href="../../https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="../../https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       
