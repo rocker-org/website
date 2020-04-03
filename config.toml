@@ -105,7 +105,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [params]
   profile = "/img/rocker.png"
   dateFormat = "January 2, 2006"
-  background = "/img/rockerwoodcut.jpg"
+  background = "https://upload.wikimedia.org/wikipedia/commons/8/8b/The_Arctic_whaleman%3B_or%2C_Winter_in_the_Arctic_Ocean-_being_a_narrative_of_the_wreck_of_the_whale_ship_Citizen_%281857%29_%2814772622522%29.jpg"
   icon = "img/rocker-bw.png"
   custom_css = ["https://fonts.googleapis.com/icon?family=Material+Icons",
                 "https://cdn.rawgit.com/gaborcsardi/r-font/master/rlogo.css",
