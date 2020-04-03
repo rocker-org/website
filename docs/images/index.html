@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.58.3" />                                                                   
+  <meta name="generator" content="Hugo 0.68.1" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -12,8 +12,11 @@
 	<link rel="icon" type="image/png" href="../img/favicon.png">
 	
 	
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+SC:400&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English:400,400i&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Alegreya:400italic,400,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gaborcsardi/r-font/rlogo.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wesbos/Font-Awesome-Docker-Icon/fontcustom/fontcustom.css">
@@ -137,171 +140,34 @@
     	</div>
     </nav>
   <div class="wrapper">
-    <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
+    <div class="header header-filter" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8b/The_Arctic_whaleman%3B_or%2C_Winter_in_the_Arctic_Ocean-_being_a_narrative_of_the_wreck_of_the_whale_ship_Citizen_%281857%29_%2814772622522%29.jpg');">
     </div>
 		<div class="main main-raised">
 			<div class="container">
 		  	<div class="section text-left">
 		  	  <h2 class="title text-center">The Rocker Images: choosing a container</h2>
-	            
-
-<p>The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.</p>
-
+	            <p>The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.</p>
 <h3 id="the-versioned-stack">The versioned stack</h3>
-
-<table class="table table-condensed table-striped">
-<thead>
-<tr>
-<th>image</th>
-<th>description</th>
-<th>size</th>
-<th>metrics</th>
-<th>build status</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/r-ver">r-ver</a></td>
-<td>Specify R version in docker tag. Builds on <code>debian:stable</code></td>
-<td><a href="https://microbadger.com/images/rocker/r-ver"><img src="https://images.microbadger.com/badges/image/rocker/r-ver.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-ver"><img src="https://img.shields.io/docker/pulls/rocker/r-ver.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-ver/builds"><img src="https://img.shields.io/docker/automated/rocker/r-ver.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/rstudio">rstudio</a></td>
-<td>Adds rstudio</td>
-<td><a href="https://microbadger.com/"><img src="https://images.microbadger.com/badges/image/rocker/rstudio-stable.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/rstudio"><img src="https://img.shields.io/docker/pulls/rocker/rstudio.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/rstudio/builds"><img src="https://img.shields.io/docker/automated/rocker/rstudio.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/tidyverse">tidyverse</a></td>
-<td>Adds tidyverse &amp; devtools</td>
-<td><a href="https://microbadger.com/images/rocker/tidyverse"><img src="https://images.microbadger.com/badges/image/rocker/tidyverse.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/tidyverse"><img src="https://img.shields.io/docker/pulls/rocker/tidyverse.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/tidyverse/builds"><img src="https://img.shields.io/docker/automated/rocker/tidyverse.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/verse">verse</a></td>
-<td>Adds tex &amp; publishing-related packages</td>
-<td><a href="https://microbadger.com/images/rocker/verse"><img src="https://images.microbadger.com/badges/image/rocker/verse.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/verse"><img src="https://img.shields.io/docker/pulls/rocker/verse.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/verse/builds"><img src="https://img.shields.io/docker/automated/rocker/verse.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/geospatial">geospatial</a></td>
-<td>Adds geospatial libraries</td>
-<td><a href="https://microbadger.com/images/rocker/geospatial"><img src="https://images.microbadger.com/badges/image/rocker/geospatial.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/geospatial"><img src="https://img.shields.io/docker/pulls/rocker/geospatial.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/geospatial/builds"><img src="https://img.shields.io/docker/automated/rocker/geospatial.svg" alt="" /></a></td>
-</tr>
-</tbody>
-</table>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>This stack builds on stable Debian releases (<code>debian:8</code> for versions &lt; <code>3.4.1</code>, <code>debian:9</code> after). Images in this stack accept a version tag specifying which version of R is desired, e.g. <code>rocker/rstudio:3.4.0</code> for R <code>3.4.0</code>.  Version-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available (though Debian system libraries will still recieve any security patches.)  Omit the tag or specify <code>:latest</code> to always recieve the latest (nightly build) versions, or <code>:devel</code> for an image running on the current development (pre-release) version of R.  This is a linear stack, with each image extending the previous one.</p>
-
 <h3 id="the-base-stack">The base stack</h3>
-
-<table class="table table-condensed table-striped">
-<thead>
-<tr>
-<th>image</th>
-<th>description</th>
-<th>size</th>
-<th>metrics</th>
-<th>build status</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="https://hub.docker.com/r/_/r-base">r-base</a></td>
-<td>Current R via apt-get with <code>debian:testing</code> &amp; <code>unstable</code> repos</td>
-<td><a href="https://microbadger.com/images/library/r-base"><img src="https://images.microbadger.com/badges/image/library/r-base.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/library/r-base"><img src="https://img.shields.io/docker/pulls/library/r-base.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/library/r-base/builds"><img src="https://img.shields.io/docker/automated/rocker/r-base.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/r-devel">r-devel</a></td>
-<td>R-devel added side-by-side onto r-base (using alias <code>RD</code>)</td>
-<td><a href="https://microbadger.com/images/rocker/r-devel"><img src="https://images.microbadger.com/badges/image/rocker/r-devel.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel"><img src="https://img.shields.io/docker/pulls/rocker/r-devel.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel/builds"><img src="https://img.shields.io/docker/automated/rocker/r-devel.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/drd">drd</a></td>
-<td>lighter r-devel, built not quite daily</td>
-<td><a href="https://microbadger.com/images/rocker/drd"><img src="https://images.microbadger.com/badges/image/rocker/drd.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/drd"><img src="https://img.shields.io/docker/pulls/rocker/drd.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/drd/builds"><img src="https://img.shields.io/docker/automated/rocker/drd.svg" alt="" /></a></td>
-</tr>
-</tbody>
-</table>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>This stack builds on <code>debian:testing</code> and <code>debian:unstable</code>.  This is a branched stack, with all other images extending <code>r-base</code>.  Use this stack if you want access to the latest versions of system libraries and compilers through <code>apt-get</code>.</p>
-
 <h3 id="additional-images">Additional images</h3>
-
-<table  class="table table-condensed table-striped">
-<thead>
-<tr>
-<th>image</th>
-<th>description</th>
-<th>size</th>
-<th>metrics</th>
-<th>build status</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-san">r-devel-san</a></td>
-<td>as r-devel, but built with compiler sanitizers</td>
-<td><a href="https://microbadger.com/images/rocker/r-devel-san"><img src="https://images.microbadger.com/badges/image/rocker/r-devel-san.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-san"><img src="https://img.shields.io/docker/pulls/rocker/r-devel-san.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-san/builds"><img src="https://img.shields.io/docker/automated/rocker/r-devel-san.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-ubsan-clang">r-devel-ubsan-clan</a></td>
-<td>Sanitizers, clang c compiler (instead of gcc)</td>
-<td><a href="https://microbadger.com/images/rocker/r-devel-ubsan-clang"><img src="https://images.microbadger.com/badges/image/rocker/r-devel-ubsan-clang.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-ubsan-clang"><img src="https://img.shields.io/docker/pulls/rocker/r-devel-ubsan-clang.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-ubsan-clang/builds"><img src="https://img.shields.io/docker/automated/rocker/r-devel-ubsan-clang.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-san">rstudio:testing</a></td>
-<td>rstudio on debian:testing</td>
-<td><a href="https://microbadger.com/images/rocker/r-devel-san"><img src="https://images.microbadger.com/badges/image/rocker/r-devel-san.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-san"><img src="https://img.shields.io/docker/pulls/rocker/r-devel-san.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-devel-san/builds"><img src="https://img.shields.io/docker/automated/rocker/r-devel-san.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/shiny">shiny</a></td>
-<td>shiny-server on r-base</td>
-<td><a href="https://microbadger.com/images/rocker/shiny"><img src="https://images.microbadger.com/badges/image/rocker/shiny.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/shiny"><img src="https://img.shields.io/docker/pulls/rocker/shiny.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/shiny/builds"><img src="https://img.shields.io/docker/automated/rocker/shiny.svg" alt="" /></a></td>
-</tr>
-
-<tr>
-<td><a href="https://hub.docker.com/r/rocker/r-apt">r-apt</a></td>
-<td>(R plus CRAN + marutter repo information)</td>
-<td><a href="https://microbadger.com/images/rocker/r-apt"><img src="https://images.microbadger.com/badges/image/rocker/r-apt.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-apt"><img src="https://img.shields.io/docker/pulls/rocker/r-apt.svg" alt="" /></a></td>
-<td><a href="https://hub.docker.com/r/rocker/r-apt/builds"><img src="https://img.shields.io/docker/automated/rocker/r-apt.svg" alt="" /></a></td>
-</tr>
-</tbody>
-</table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
 	      </div>
       </div>
@@ -314,14 +180,14 @@
         
 
         <li>
-          <a href="../https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="../https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       

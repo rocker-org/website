@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.58.3" />                                                                   
+  <meta name="generator" content="Hugo 0.68.1" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -12,8 +12,11 @@
 	<link rel="icon" type="image/png" href="../../img/favicon.png">
 	
 	
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+SC:400&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English:400,400i&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Alegreya:400italic,400,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gaborcsardi/r-font/rlogo.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wesbos/Font-Awesome-Docker-Icon/fontcustom/fontcustom.css">
@@ -137,63 +140,39 @@
     	</div>
     </nav>
   <div class="wrapper">
-    <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
+    <div class="header header-filter" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8b/The_Arctic_whaleman%3B_or%2C_Winter_in_the_Arctic_Ocean-_being_a_narrative_of_the_wreck_of_the_whale_ship_Citizen_%281857%29_%2814772622522%29.jpg');">
     </div>
 		<div class="main main-raised">
 			<div class="container">
 		  	<div class="section text-left">
 		  	  <h2 class="title text-center">Other topics</h2>
-	            
-
-<h3 id="selecting-the-blas-implementation-used-by-r">selecting the BLAS implementation used by R</h3>
-
-<p>By default <strong>rocker/r-ver</strong> uses the OpenBLAS (<a href="http://www.openblas.net">http://www.openblas.net</a>) implementation for Linear Algebra (cf <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS">https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS</a>).
+	            <h3 id="selecting-the-blas-implementation-used-by-r">selecting the BLAS implementation used by R</h3>
+<p>By default <strong>rocker/r-ver</strong> uses the OpenBLAS (<a href="http://www.openblas.net">http://www.openblas.net</a>) implementation for Linear Algebra (cf <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS)">https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS)</a>.
 But it is possible to switch for the reference BLAS implementation (<a href="http://www.netlib.org/blas/">http://www.netlib.org/blas/</a>) (as provided by the
-Debian package libblas-dev) using the Shared BLAS setup (cf <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS">https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS</a>).</p>
-
+Debian package libblas-dev) using the Shared BLAS setup (cf <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS)">https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS)</a>.</p>
 <h4 id="checking-which-blas-is-in-use">checking which BLAS is in use</h4>
-
 <p>You can see the current BLAS configuration in your image by using <code>sessionInfo()</code> from the R console; e.g.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">sessionInfo</span>()
+R version <span style="color:#ae81ff">3.5.0</span> (<span style="color:#ae81ff">2018-04-23</span>)
+Platform<span style="color:#f92672">:</span> x86_64<span style="color:#f92672">-</span>pc<span style="color:#f92672">-</span>linux<span style="color:#f92672">-</span><span style="color:#a6e22e">gnu </span>(<span style="color:#ae81ff">64</span><span style="color:#f92672">-</span>bit)
+Running under<span style="color:#f92672">:</span> Debian GNU<span style="color:#f92672">/</span>Linux <span style="color:#ae81ff">9</span> (stretch)
 
-<pre><code class="language-r">&gt; sessionInfo()
-R version 3.5.0 (2018-04-23)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Debian GNU/Linux 9 (stretch)
-
-Matrix products: default
-BLAS: /usr/lib/openblas-base/libblas.so.3
-LAPACK: /usr/lib/libopenblasp-r0.2.19.so
-</code></pre>
-
-<p>Here for instance R uses OpenBLAS.</p>
-
+Matrix products<span style="color:#f92672">:</span> default
+BLAS<span style="color:#f92672">:</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>openblas<span style="color:#f92672">-</span>base<span style="color:#f92672">/</span>libblas.so.3
+LAPACK<span style="color:#f92672">:</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>libopenblasp<span style="color:#f92672">-</span>r0.2.19.so
+</code></pre></div><p>Here for instance R uses OpenBLAS.</p>
 <h4 id="switching-blas-implementations">switching BLAS implementations</h4>
-
 <p>You can switch from withing the docker container using the Debian <code>update-alternatives</code> script:</p>
-
 <pre><code># switch to libblas
 update-alternatives --set libblas.so.3-x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/blas/libblas.so.3
 # switch to openBlas
 update-alternatives --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3
-</code></pre>
-
-<p>You can also pre-select which BLAS to use when running the docker using the <code>LD_LIBRARY_PATH</code> environment variable, e.g:</p>
-
+</code></pre><p>You can also pre-select which BLAS to use when running the docker using the <code>LD_LIBRARY_PATH</code> environment variable, e.g:</p>
 <pre><code># run R with the libblas
 docker run -ti -e LD_LIBRARY_PATH=/usr/lib/libblas rocker/r-ver
-</code></pre>
-
-<h3 id="x11">X11</h3>
-
-<div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
-<i class="material-icons">info_outline</i></div>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true"><i class="material-icons">clear</i></span></button>
-Coming soon...
-</div></div>
-
-<h2 id="singularity-use-singularity"><a href="../../use/singularity">Singularity</a></h2>
-
+</code></pre><h3 id="x11">X11</h3>
+<!-- raw HTML omitted -->
+<h2 id="singularityusesingularity"><a href="../../use/singularity">Singularity</a></h2>
 <p>See <a href="../../use/singularity">Singularity</a> for use in HPC environments without Docker installed.</p>
 
 	      </div>
@@ -207,14 +186,14 @@ Coming soon...
         
 
         <li>
-          <a href="../../https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="../../https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       

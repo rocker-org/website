@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.58.3" />                                                                   
+  <meta name="generator" content="Hugo 0.68.1" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -12,8 +12,11 @@
 	<link rel="icon" type="image/png" href="../../img/favicon.png">
 	
 	
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+SC:400&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English:400,400i&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Alegreya:400italic,400,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gaborcsardi/r-font/rlogo.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wesbos/Font-Awesome-Docker-Icon/fontcustom/fontcustom.css">
@@ -137,30 +140,19 @@
     	</div>
     </nav>
   <div class="wrapper">
-    <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
+    <div class="header header-filter" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8b/The_Arctic_whaleman%3B_or%2C_Winter_in_the_Arctic_Ocean-_being_a_narrative_of_the_wreck_of_the_whale_ship_Citizen_%281857%29_%2814772622522%29.jpg');">
     </div>
 		<div class="main main-raised">
 			<div class="container">
 		  	<div class="section text-left">
 		  	  <h2 class="title text-center">Shared Volumes</h2>
-	            
-
-<p>A common configuration with Rocker containers is to share volumes between the container and the host filesystem.  This allows the container to access and modify local files in directories you specify.  In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container.</p>
-
+	            <p>A common configuration with Rocker containers is to share volumes between the container and the host filesystem.  This allows the container to access and modify local files in directories you specify.  In this way, the container can be treated as ephemeral while files you create will persist after the container is destroyed. Because the container only has access to files within the directories you specify, this can also prevent a user from accidentally modifying unrelated files on the file system when using software inside the container.</p>
 <p>To share a volume with the host we use the <code>-v</code> or <code>--volume</code> flag. Simply indicate the location on the host machine on the left side of <code>:</code>, and indicate the location on the container to the right.  For instance:</p>
-
-<pre><code class="language-bash">docker run -d  -e PASSWORD=yourpassword -p 8787:8787 -v /Users/bob/Documents:/home/rstudio/Documents rocker/rstudio
-</code></pre>
-
-<p>would link the User <code>bob</code>&rsquo;s Documents directory to the default <code>rstudio</code> user&rsquo;s directory on the container.  The above example shows a typical path on a Mac host, which can share any subdirectory under <code>Users</code>.  A Linux host can link an arbitrary path.  The same method should work on Windows paths as well, e.g.</p>
-
-<pre><code class="language-bash">docker run -d  -e PASSWORD=yourpassword -p 8787:8787 -v /c/Users/foobar:/home/rstudio/foobar rocker/rstudio
-</code></pre>
-
-<p>Would share the host&rsquo;s file <code>C:/Users/foobar</code></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -d  -e PASSWORD<span style="color:#f92672">=</span>yourpassword -p 8787:8787 -v /Users/bob/Documents:/home/rstudio/Documents rocker/rstudio
+</code></pre></div><p>would link the User <code>bob</code>'s Documents directory to the default <code>rstudio</code> user&rsquo;s directory on the container.  The above example shows a typical path on a Mac host, which can share any subdirectory under <code>Users</code>.  A Linux host can link an arbitrary path.  The same method should work on Windows paths as well, e.g.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -d  -e PASSWORD<span style="color:#f92672">=</span>yourpassword -p 8787:8787 -v /c/Users/foobar:/home/rstudio/foobar rocker/rstudio
+</code></pre></div><p>Would share the host&rsquo;s file <code>C:/Users/foobar</code></p>
 <h3 id="kitematic">Kitematic</h3>
-
 <p>Users of the Docker&rsquo;s GUI interface, <a href="https://kitematic.com">Kitematic</a>, who use the
 <code>rstudio</code>-derived images will automatically have their local kitematic
 directory linked to the <code>/home/rstudio/kitematic</code> directory on the
@@ -178,14 +170,14 @@ images without any need for shell commands.</p>
         
 
         <li>
-          <a href="../../https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="../../https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       

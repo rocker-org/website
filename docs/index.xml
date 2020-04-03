@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The Rocker Project on Rocker Project</title>
@@ -6,20 +6,9 @@
     <description>Recent content in The Rocker Project on Rocker Project</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Apr 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Policies</title>
-      <link>/about/</link>
-      <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Prerequisites You should be generally numerically literate, and some prior programming experience will be helpful. Students new to programming might find Hands on Programming with R to be helpful. Students with significant experience in programming and statistical analysis should find themselves well prepared but should find plenty still to learn in each lesson.
-Instructional Methods As a flipped classroom, students are provided with either reading or video material that they are expected to view/read prior to class.</description>
-    </item>
     
     <item>
       <title></title>
@@ -29,24 +18,6 @@ Instructional Methods As a flipped classroom, students are provided with either 
       <guid>/conduct/</guid>
       <description>Contributor Covenant Code of Conduct Our Pledge In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 Our Standards Examples of behavior that contributes to creating a positive environment include:</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/signup/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/signup/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Christian Louboutin</title>
-      <link>/profile/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/profile/</guid>
-      <description> timeline Climate Change    bug_report Ecological simulation    directions_boat Overfishing    my_location Spatial movement    trending_down Mass Extinctions    cloud Cloud computing    Concepts CO2 concentration Global mean temperature Sea level rise Land ice sheet melt Arctic sea ice cover   Skills  Data wrangling: plain text formats Tidy data (intro) Data visualization Smoothing     Left Column  right column    Wide entry    unit 4 L  unit 4 R    unit 5 L  unit 5 R    unit 5 L  unit 5 R       </description>
     </item>
     
     <item>
@@ -76,8 +47,8 @@ Cleaning up stale instances Most of the examples shown here include the use of t
       
       <guid>/use/managing_users/</guid>
       <description>RStudio-based instances now always require a custom password as an environmental variable -e:
-docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio  Without a password, the container will exit with a warning message instead.
-RStudio without authentication If you are certain you are running in a secure environment (e.g. not a publicly accessible server such as AWS instance), you can disable authentication for RStudio by setting an environmental variable DISABLE_AUTH=true, e.</description>
+docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio Without a password, the container will exit with a warning message instead.
+RStudio without authentication If you are certain you are running in a secure environment (e.g. not a publicly accessible server such as AWS instance), you can disable authentication for RStudio by setting an environmental variable DISABLE_AUTH=true, e.g.:</description>
     </item>
     
     <item>
@@ -86,7 +57,7 @@ RStudio without authentication If you are certain you are running in a secure en
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/use/networking/</guid>
-      <description>https HTTPS Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.) The easiest way to connect over a secure https connection is to use a reverse proxy server, such as Caddy. To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</description>
+      <description>httpsHTTPS Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.) The easiest way to connect over a secure https connection is to use a reverse proxy server, such as Caddy. To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</description>
     </item>
     
     <item>
@@ -96,7 +67,7 @@ RStudio without authentication If you are certain you are running in a secure en
       
       <guid>/use/other_topics/</guid>
       <description>selecting the BLAS implementation used by R By default rocker/r-ver uses the OpenBLAS (http://www.openblas.net) implementation for Linear Algebra (cf https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS). But it is possible to switch for the reference BLAS implementation (http://www.netlib.org/blas/) (as provided by the Debian package libblas-dev) using the Shared BLAS setup (cf https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS).
-checking which BLAS is in use You can see the current BLAS configuration in your image by using sessionInfo() from the R console; e.</description>
+checking which BLAS is in use You can see the current BLAS configuration in your image by using sessionInfo() from the R console; e.g.</description>
     </item>
     
     <item>
@@ -125,7 +96,7 @@ checking which BLAS is in use You can see the current BLAS configuration in your
       <guid>/use/singularity/</guid>
       <description>Singularity is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters. Rocker images can be imported and run using Singularity, with optional custom password support.
 Importing a Rocker Image Use the singularity pull command to import the desired Rocker image from Docker Hub into a SquashFS (compressed, read-only) image:
-singularity pull --name rstudio.simg docker://rocker/rstudio:latest  If additional Debian software packages are needed, see the Singularity documentation for building a writable image or writable sandbox directory (note that sudo privileges are required).</description>
+singularity pull --name rstudio.simg docker://rocker/rstudio:latest If additional Debian software packages are needed, see the Singularity documentation for building a writable image or writable sandbox directory (note that sudo privileges are required).</description>
     </item>
     
     <item>
@@ -135,16 +106,7 @@ singularity pull --name rstudio.simg docker://rocker/rstudio:latest  If addition
       
       <guid>/images/</guid>
       <description>The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.
-The versioned stack   image description size metrics build status     r-ver Specify R version in docker tag. Builds on debian:stable      rstudio Adds rstudio      tidyverse Adds tidyverse &amp;amp; devtools      verse Adds tex &amp;amp; publishing-related packages      geospatial Adds geospatial libraries       This stack builds on stable Debian releases (debian:8 for versions &amp;lt; 3.</description>
-    </item>
-    
-    <item>
-      <title>Write the best title for your page.</title>
-      <link>/landing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/landing/</guid>
-      <description>Let&#39;s talk product This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&#39;t scroll to get here. Add a button if you want the user to see more.   chat  First Feature Divide details about your product or agency work into parts. Write a few lines about each one.</description>
+The versioned stack This stack builds on stable Debian releases (debian:8 for versions &amp;lt; 3.4.1, debian:9 after). Images in this stack accept a version tag specifying which version of R is desired, e.g. rocker/rstudio:3.4.0 for R 3.</description>
     </item>
     
   </channel>

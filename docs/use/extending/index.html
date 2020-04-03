@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.58.3" />                                                                   
+  <meta name="generator" content="Hugo 0.68.1" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -12,8 +12,11 @@
 	<link rel="icon" type="image/png" href="../../img/favicon.png">
 	
 	
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+SC:400&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English:400,400i&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Alegreya:400italic,400,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gaborcsardi/r-font/rlogo.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wesbos/Font-Awesome-Docker-Icon/fontcustom/fontcustom.css">
@@ -137,7 +140,7 @@
     	</div>
     </nav>
   <div class="wrapper">
-    <div class="header header-filter" style="background-image: url('/img/goldengate.jpg');">
+    <div class="header header-filter" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8b/The_Arctic_whaleman%3B_or%2C_Winter_in_the_Arctic_Ocean-_being_a_narrative_of_the_wreck_of_the_whale_ship_Citizen_%281857%29_%2814772622522%29.jpg');">
     </div>
 		<div class="main main-raised">
 			<div class="container">
@@ -145,31 +148,24 @@
 		  	  <h2 class="title text-center">Extending images</h2>
 	            <p>Rocker images provide a few utility functions to streamline this process, including the
 <a href="https://cran.r-project.org/package=littler">littler</a> scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.</p>
-
 <pre><code>RUN install2.r pkg1 pgk2 pkg3 ...
 </code></pre>
-
 <p>Users writing their own Dockerfiles are encouraged to follow the same practices as the
 Rocker Project, such as the <a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>, the use of automated builds,
 and when appropriate, versioned tags.  Users can ensure their automated builds are rebuilt
 every time the relevant upstream Dockerfile is updated by using build triggers on Docker Hub.</p>
-
 <p>Note that users can also preserve changes to Rocker images that they have modified interactively using
 the <code>docker commit</code> mechanism, which creates a new binary image which can be pushed back to
 a personal account on the Docker Hub.  While this is sometimes convenient, we encourage users to
 consider writing Dockerfiles instead whenever possible, as this creates a more transparent
 and reproducible mechanism to accomplish the same thing.</p>
-
 <p>Users should understand how the Dockerfile on which Rocker images are built works before writing new
 Dockerfiles that extend the images we provide. See <a href="https://github.com/rocker-org/rocker-versioned/blob/master/r-ver/Dockerfile">here</a> for the source code that defines the <code>rocker/r-ver</code> image that many Rocker images
 are based on.</p>
-
 <p>An example is changing the default <code>repos</code> used by the container. This could be changed back to CRAN
 repos by adding the following line to an appropriate place in your Dockerfile:</p>
-
 <pre><code>  echo &quot;options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')&quot; &gt;&gt; /usr/local/lib/R/etc/Rprofile.site
 </code></pre>
-
 	      </div>
       </div>
 		</div>
@@ -181,14 +177,14 @@ repos by adding the following line to an appropriate place in your Dockerfile:</
         
 
         <li>
-          <a href="../../https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="../../https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       
