@@ -20,7 +20,7 @@ consider writing Dockerfiles instead whenever possible, as this creates a more t
 and reproducible mechanism to accomplish the same thing.  
 
 Users should understand how the Dockerfile on which Rocker images are built works before writing new
-Dockerfiles that extend the images we provide. See [here](https://github.com/rocker-org/rocker-versioned/blob/master/r-ver/Dockerfile) for the source code that defines the `rocker/r-ver` image that many Rocker images
+Dockerfiles that extend the images we provide. See [here](https://github.com/rocker-org/rocker-versioned/blob/master/r-ver/latest.Dockerfile) for the source code that defines the `rocker/r-ver` image that many Rocker images
 are based on.
 
 An example is changing the default `repos` used by the container. This could be changed back to CRAN
