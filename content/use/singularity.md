@@ -36,6 +36,29 @@ PASSWORD='...' singularity exec rstudio.simg rserver --auth-none=0  --auth-pam-h
 
 After pointing your browser to http://_hostname_:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.
 
+### Additional Options for RStudio >= 1.3.x
+
+RStudio 1.3.x wants to create a revocation-list file at (by default) /run/rstudio-server/revocation-list
+
+If you are working e.g. on an HPC-Cluster you might not have permission to create this file. 
+To work around, you can bind-mount a writable directory `myrun` to run:
+
+```
+--bind myrun:/run
+```
+
+A per-user /tmp should also be bind-mounted when running on a multi-tenant HPC cluster that has singularity configured to bind mount the host /tmp, to avoid the case where another user is or was running rstudio server on the same compute node, and created a /tmp/rstudio-server directory their own.
+
+In addition, RStudio >= 1.3.x enforces a stricter policy for session timeout, defaulting to 60 Minutes. You can opt in to the legacy behaviour by adding the following parameters:
+```
+--auth-timeout-minutes=0 --auth-stay-signed-in-days=30
+```
+
+The full call to run your rstudio server session with rstudio>=1.3.x might look like:
+```
+PASSWORD='...' singularity exec --bind myrun:/run --bind mytmp:/tmp rstudio.simg rserver --auth-none=0  --auth-pam-helper-path=pam-helper --auth-timeout-minutes=0 --auth-stay-signed-in-days=30
+```
+
 ### SLURM job script
 
 On an HPC cluster, a Rocker Singularity container can be started on a compute node using the cluster's job scheduler, allowing it to access compute, memory, and storage resources that may far exceed those found in a typical desktop workstation.
