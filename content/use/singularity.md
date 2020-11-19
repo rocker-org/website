@@ -28,7 +28,7 @@ listening on 127.0.0.1:8787.
 
 ### Running a Rocker Singularity container with password authentication
 
-To enable password authentication, set the PASSWORD environment variable and add the `--auth-none=0 --auth-pam-helper-path=pam-helper ` options:
+To enable password authentication, set the PASSWORD environment variable and add the `--auth-none=0 --auth-pam-helper-path=pam-helper` options:
 
 ```
 PASSWORD='...' singularity exec rstudio.simg rserver --auth-none=0  --auth-pam-helper-path=pam-helper
