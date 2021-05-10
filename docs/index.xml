@@ -95,8 +95,8 @@ checking which BLAS is in use You can see the current BLAS configuration in your
       
       <guid>/use/singularity/</guid>
       <description>Singularity is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters. Rocker images can be imported and run using Singularity, with optional custom password support.
-Importing a Rocker Image Use the singularity pull command to import the desired Rocker image from Docker Hub into a SquashFS (compressed, read-only) image:
-singularity pull --name rstudio.simg docker://rocker/rstudio:latest If additional Debian software packages are needed, see the Singularity documentation for building a writable image or writable sandbox directory (note that sudo privileges are required).</description>
+Importing a Rocker Image Use the singularity pull command to import the desired Rocker image from Docker Hub into a (compressed, read-only) Singularity Image File:
+singularity pull docker://rocker/rstudio:4.0.4 If additional Debian (or other) software packages are needed, a Rocker base image can be extended in a Singularity definition file.</description>
     </item>
     
     <item>
