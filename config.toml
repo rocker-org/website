@@ -105,7 +105,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [params]
   profile = "/img/rocker.png"
   dateFormat = "January 2, 2006"
-  background = "/img/rockerwhale-optim.png"
+  background = "https://www.rocker-project.org/img/rockerwhale-optim.png"
   icon = "img/rocker-bw.png"
   custom_css = ["https://fonts.googleapis.com/icon?family=Material+Icons",
                 "https://cdn.rawgit.com/gaborcsardi/r-font/master/rlogo.css",
