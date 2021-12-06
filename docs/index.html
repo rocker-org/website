@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.68.3" />                                                                   
+  <meta name="generator" content="Hugo 0.89.4" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -159,10 +159,11 @@
 	            <h2 id="i-classfa-farocketi-getting-started"><i class="fa fa-rocket"></i> Getting Started</h2>
 
 <p>Ensure you have <a href="https://docs.docker.com/installation/">Docker installed</a> and start R inside a container with:</p>
-<pre><code>docker run --rm -ti rocker/r-base</code></pre>
+<pre tabindex="0"><code>docker run --rm -ti rocker/r-base</code></pre>
 <p>Or get started with an RStudio® instance:</p>
-<pre><code>docker run -e PASSWORD=yourpassword --rm -p 8787:8787 rocker/rstudio</code></pre>
-<p>and point your browser to <code>localhost:8787</code>.  Log in with user/password <code>rstudio</code>/<code>yourpassword</code> (Please set your own password; it cannot be <code>rstudio</code>).</p>
+<pre tabindex="0"><code>docker run -e PASSWORD=yourpassword --rm -p 8787:8787 rocker/rstudio</code></pre>
+<p>and point your browser to <code>localhost:8787</code>.  Log in with user/password <code>rstudio</code>/<code>yourpassword</code>.
+<strong>If a password is not provided, a randomly generated password will be given in the docker log for the container</strong>.  Check the terminal output or use <code>docker logs</code> command to check.</p>
 
 <p>For more information and further options, see the <a href="./use">use</a> page.</p>
 
@@ -209,14 +210,14 @@
         
 
         <li>
-          <a href="./https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="./https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       

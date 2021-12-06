@@ -8,7 +8,7 @@ RStudio-based instances now always require a custom password as an environmental
 docker run -d -p 8787:8787 -e PASSWORD=clever-custom-password rocker/rstudio
 ```
 
-Without a password, the container will exit with a warning message instead.
+**If a password is not provided, a randomly generated password will be given in the docker log for the container**.  Check the terminal output or use `docker logs` command to check.
 
 ### RStudio without authentication
 

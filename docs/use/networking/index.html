@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.68.3" />                                                                   
+  <meta name="generator" content="Hugo 0.89.4" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -149,7 +149,7 @@
 	            <h3 id="i-classmaterial-iconshttpsi-https"><!-- raw HTML omitted -->https<!-- raw HTML omitted --> HTTPS</h3>
 <p>Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as <a href="https://caddyserver.com">Caddy</a>.  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example <code>Caddyfile</code> specifying the necessary configuration, along with a <code>docker-compose</code> file which sets up an RStudio server instance behind a separate container running <code>caddy</code>.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:</p>
 <p>Example <code>site/Caddyfile</code>:</p>
-<pre><code>rstudio.example.com {
+<pre tabindex="0"><code>rstudio.example.com {
   
   tls you@email.com
   proxy / rstudio:8787 {
@@ -159,26 +159,26 @@
 }
 
 </code></pre><p>Example docker-compose file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;2&#39;</span>
-<span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">caddy</span>:  
-    <span style="color:#66d9ef">image</span>: joshix/caddy
-    <span style="color:#66d9ef">links</span>:
-      - rstudio
-    <span style="color:#66d9ef">volumes</span>:
-      - ./site/:/var/www/html
-      - ./.caddy/:/.caddy
-    <span style="color:#66d9ef">ports</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;2&#39;</span>
+<span style="color:#f92672">services</span>:
+  <span style="color:#f92672">caddy</span>:  
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">joshix/caddy</span>
+    <span style="color:#f92672">links</span>:
+      - <span style="color:#ae81ff">rstudio</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./site/:/var/www/html</span>
+      - <span style="color:#ae81ff">./.caddy/:/.caddy</span>
+    <span style="color:#f92672">ports</span>:
       - <span style="color:#ae81ff">80</span>:<span style="color:#ae81ff">80</span>
       - <span style="color:#ae81ff">443</span>:<span style="color:#ae81ff">443</span>
-    <span style="color:#66d9ef">restart</span>: always
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 
-  <span style="color:#66d9ef">rstudio</span>:
-    <span style="color:#66d9ef">image</span>: rocker/verse 
-    <span style="color:#66d9ef">env_file</span>: .password 
-    <span style="color:#66d9ef">volumes</span>:
-      - $HOME/students:/home/
-    <span style="color:#66d9ef">restart</span>: always
+  <span style="color:#f92672">rstudio</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">rocker/verse </span>
+    <span style="color:#f92672">env_file</span>: <span style="color:#ae81ff">.password </span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">$HOME/students:/home/</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </code></pre></div><p>More details about the use of <a href="https://docs.docker.com/compose/">docker-compose</a> and <a href="https://caddyserver.com/">Caddy Server</a> are found on their websites.</p>
 <h3 id="i-classmaterial-iconsdata_usagei-monitoring"><!-- raw HTML omitted -->data_usage<!-- raw HTML omitted --> Monitoring</h3>
 <h3 id="i-classfa-fa-databasei-linking-database-containers"><!-- raw HTML omitted --><!-- raw HTML omitted --> Linking database containers</h3>
@@ -194,14 +194,14 @@
         
 
         <li>
-          <a href="../../https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="../../https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       

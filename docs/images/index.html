@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="generator" content="Hugo 0.68.3" />                                                                   
+  <meta name="generator" content="Hugo 0.89.4" />                                                                   
                
     
   <title>Rocker Project</title>
@@ -154,15 +154,16 @@
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<p>This stack builds on stable Debian releases (<code>debian:8</code> for versions &lt; <code>3.4.1</code>, <code>debian:9</code> after). Images in this stack accept a version tag specifying which version of R is desired, e.g. <code>rocker/rstudio:3.4.0</code> for R <code>3.4.0</code>.  Version-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available (though Debian system libraries will still recieve any security patches.)  Omit the tag or specify <code>:latest</code> to always recieve the latest (nightly build) versions, or <code>:devel</code> for an image running on the current development (pre-release) version of R.  This is a linear stack, with each image extending the previous one.</p>
+<p>This stack builds on stable Debian releases (for versions &lt;= <code>3.6.3</code>) or Ubuntu LTS (for versions &gt;= <code>4.0.0</code>). Images in this stack accept a version tag specifying which version of R is desired, e.g. <code>rocker/rstudio:3.4.0</code> for R <code>3.4.0</code>.  Version-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available (though Debian system libraries will still recieve any security patches.)  Omit the tag or specify <code>:latest</code> to always recieve the latest (nightly build) versions, or <code>:devel</code> for an image running on the current development (pre-release) version of R.  This is a linear stack, with each image extending the previous one.</p>
+<p>See <a href="https://github.com/rocker-org/rocker-versioned2">the rocker-versioned2 repository</a> for details.</p>
 <h3 id="the-base-stack">The base stack</h3>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <p>This stack builds on <code>debian:testing</code> and <code>debian:unstable</code>.  This is a branched stack, with all other images extending <code>r-base</code>.  Use this stack if you want access to the latest versions of system libraries and compilers through <code>apt-get</code>.</p>
+<p>See <a href="https://github.com/rocker-org/rocker">the rocker repository</a> for details.</p>
 <h3 id="additional-images">Additional images</h3>
-<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -180,14 +181,14 @@
         
 
         <li>
-          <a href="../https:/github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
+          <a href="https://github.com/rocker-org"><i class="button-icon fa fa-2x fa-github"></i>  GitHub</a>
         </li>
         
       
         
 
         <li>
-          <a href="../https:/hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
+          <a href="https://hub.docker.com/u/rocker"><i class="button-icon fa fa-2x fa-docker"></i>  Docker Hub</a>
         </li>
         
       
