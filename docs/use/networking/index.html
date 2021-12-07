@@ -146,7 +146,7 @@
 			<div class="container">
 		  	<div class="section text-left">
 		  	  <h2 class="title text-center">Networking: tips and tricks</h2>
-	            <h3 id="i-classmaterial-iconshttpsi-https"><!-- raw HTML omitted -->https<!-- raw HTML omitted --> HTTPS</h3>
+	            <h3 id="i-classmaterial-iconshttpsi-https"><i class="material-icons">https</i> HTTPS</h3>
 <p>Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as <a href="https://caddyserver.com">Caddy</a>.  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example <code>Caddyfile</code> specifying the necessary configuration, along with a <code>docker-compose</code> file which sets up an RStudio server instance behind a separate container running <code>caddy</code>.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:</p>
 <p>Example <code>site/Caddyfile</code>:</p>
 <pre tabindex="0"><code>rstudio.example.com {
@@ -180,8 +180,8 @@
       - <span style="color:#ae81ff">$HOME/students:/home/</span>
     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </code></pre></div><p>More details about the use of <a href="https://docs.docker.com/compose/">docker-compose</a> and <a href="https://caddyserver.com/">Caddy Server</a> are found on their websites.</p>
-<h3 id="i-classmaterial-iconsdata_usagei-monitoring"><!-- raw HTML omitted -->data_usage<!-- raw HTML omitted --> Monitoring</h3>
-<h3 id="i-classfa-fa-databasei-linking-database-containers"><!-- raw HTML omitted --><!-- raw HTML omitted --> Linking database containers</h3>
+<h3 id="i-classmaterial-iconsdata_usagei-monitoring"><i class="material-icons">data_usage</i> Monitoring</h3>
+<h3 id="i-classfa-fa-databasei-linking-database-containers"><i class="fa fa-database"></i> Linking database containers</h3>
 
 	      </div>
       </div>

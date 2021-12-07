@@ -43,7 +43,7 @@ RStudio without authentication If you are certain you are running in a secure en
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/use/networking/</guid>
-      <description>httpsHTTPS Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.) The easiest way to connect over a secure https connection is to use a reverse proxy server, such as Caddy. To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</description>
+      <description>https HTTPS Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.) The easiest way to connect over a secure https connection is to use a reverse proxy server, such as Caddy. To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</description>
     </item>
     
     <item>

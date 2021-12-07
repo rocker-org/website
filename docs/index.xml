@@ -53,7 +53,7 @@ RStudio without authentication If you are certain you are running in a secure en
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/use/networking/</guid>
-      <description>httpsHTTPS Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.) The easiest way to connect over a secure https connection is to use a reverse proxy server, such as Caddy. To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</description>
+      <description>https HTTPS Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.) The easiest way to connect over a secure https connection is to use a reverse proxy server, such as Caddy. To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address.</description>
     </item>
     
     <item>
@@ -102,7 +102,7 @@ singularity pull docker://rocker/rstudio:4.0.4 If additional Debian (or other) s
       
       <guid>/images/</guid>
       <description>The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.
-The versioned stack This stack builds on stable Debian releases (for versions &amp;lt;= 3.6.3) or Ubuntu LTS (for versions &amp;gt;= 4.0.0). Images in this stack accept a version tag specifying which version of R is desired, e.</description>
+The versioned stack   image description metrics     r-ver Specify R version in docker tag. Builds on debian:stable    rstudio Adds rstudio    tidyverse Adds tidyverse &amp;amp; devtools    verse Adds tex &amp;amp; publishing-related packages    geospatial Adds geospatial libraries     This stack builds on stable Debian releases (for versions &amp;lt;= 3.</description>
     </item>
     
   </channel>
