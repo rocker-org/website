@@ -9,6 +9,10 @@ relativeurls = true
 publishDir = "docs"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [permalinks]
   post = "/:year/:month/:slug/"
