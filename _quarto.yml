@@ -17,6 +17,8 @@ website:
     right:
       - text: Home
         href: index.md
+      - text: Code of Conduct
+        href: CODE_OF_CONDUCT.md
       - sidebar:images
       - sidebar:use
       - icon: github
@@ -27,6 +29,8 @@ website:
       title: Images
       contents:
         - images.md
+        - text: r-base (Docker Official Image)
+          href: https://hub.docker.com/_/r-base
     - id: use
       title: Use
       contents:

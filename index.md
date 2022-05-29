@@ -9,6 +9,9 @@ about:
   image-shape: rectangle
   image-width: 8em
   links:
+    - icon: people-fill
+      text: Code of Conduct
+      href: CODE_OF_CONDUCT.md
     - icon: github
       text: GitHub
       href: https://github.com/rocker-org
