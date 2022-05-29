@@ -7,6 +7,9 @@ website:
   description: "Docker Containers for the R Environment"
   favicon: img/favicon.png
   image: img/rocker.png
+  repo-url: https://github.com/rocker-org/website
+  repo-actions: [source, edit]
+  repo-branch: master
   navbar:
     logo: img/rocker-bw.png
     background: primary
