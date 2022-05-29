@@ -1,4 +1,8 @@
-# Contributor Covenant Code of Conduct
+---
+title: Contributor Covenant Code of Conduct
+aliases:
+  - conduct.html
+---
 
 ## Our Pledge
 
