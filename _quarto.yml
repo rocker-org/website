@@ -14,24 +14,25 @@ website:
     right:
       - text: Home
         href: index.md
-      - text: Images
-        href: images.md
-      - text: Use
-        menu:
-          - text: Shared volumes
-            href: use/shared_volumes.md
-          - text: Managing users
-            href: use/managing_users.md
-          - text: Networking
-            href: use/networking.md
-          - text: Container management
-            href: use/managing_containers.md
-          - text: Expanding images
-            href: use/extending.md
-          - text: Other topics
-            href: use/other_topics.md
+      - sidebar:images
+      - sidebar:use
       - icon: github
         href: https://github.com/rocker-org
+  sidebar:
+    - id: images
+      style: docked
+      title: Images
+      contents:
+        - images.md
+    - id: use
+      title: Use
+      contents:
+        - use/shared_volumes.md
+        - use/managing_users.md
+        - use/networking.md
+        - use/managing_containers.md
+        - use/extending.md
+        - use/other_topics.md
 
 format:
   html:
