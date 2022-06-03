@@ -35,7 +35,7 @@ docker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio
 
 and point your browser to `localhost:8787`. Log in with user/password `rstudio`/`yourpassword`.
 
-For more information and further options, see the use page.
+For more information and further options, see [the use page](./use/).
 
 ## 👥Team
 
