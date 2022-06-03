@@ -11,7 +11,7 @@ website:
   repo-actions: [source, edit]
   repo-branch: master
   page-footer:
-    center: "![CC-BY](img/cc-by.svg)"
+    center: "![CC-BY](/img/cc-by.svg)"
   navbar:
     logo: img/rocker-bw.png
     background: primary
