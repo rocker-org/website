@@ -1,5 +1,7 @@
 ---
 title: "Extending images"
+aliases:
+  - /use/extending/
 ---
 
 Rocker images provide a few utility functions to streamline this process, including the 

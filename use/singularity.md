@@ -1,5 +1,7 @@
 ---
 title: "Singularity"
+aliases:
+  - /use/singularity/
 ---
 
 [Singularity](https://www.sylabs.io/guides/latest/user-guide/) is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters.

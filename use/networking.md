@@ -1,5 +1,7 @@
 ---
 title: "Networking: tips and tricks"
+aliases:
+  - /use/networking/
 ---
 
 ###  <i class="material-icons">https</i> HTTPS 

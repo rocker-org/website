@@ -1,5 +1,7 @@
 ---
 title: Managing Users
+aliases:
+  - /use/managing_users/
 ---
 
 RStudio-based instances now always require a custom password as an environmental variable `-e`:

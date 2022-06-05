@@ -1,5 +1,7 @@
 ---
 title: Other topics
+aliases:
+  - /use/other_topics/
 ---
 
 
