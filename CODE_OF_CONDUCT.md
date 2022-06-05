@@ -1,7 +1,7 @@
 ---
 title: Contributor Covenant Code of Conduct
 aliases:
-  - conduct.html
+  - /conduct/
 ---
 
 ## Our Pledge
