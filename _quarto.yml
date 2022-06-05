@@ -30,7 +30,7 @@ website:
       style: docked
       title: Images
       contents:
-        - images.md
+        - images/index.md
         - text: r-base (Docker Official Image)
           href: https://hub.docker.com/_/r-base
     - id: use
