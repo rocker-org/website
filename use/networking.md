@@ -57,3 +57,35 @@ More details about the use of [docker-compose](https://docs.docker.com/compose/)
 
 
 ### <i class="fa fa-database"></i> Linking database containers
+
+Here is an example of a compose file that configures a Shiny Server that can connect to a database (PostgreSQL).
+
+```yml
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    expose:
+      - 5432
+
+  shiny:
+    image: rocker/shiny-verse:4
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+    depends_on:
+      - db
+    volumes:
+      - ./app/app.R:/srv/shiny-server/app/app.R:ro
+    ports:
+      - 3838:3838
+
+volumes:
+  pgdata:
+```
