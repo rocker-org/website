@@ -43,7 +43,7 @@ jobs:
         timeout-minutes: 1
 
       - name: Deploy to Netlify
-        if: ${{ github.ref == 'refs/heads/main'}}
+        if: ${{ github.ref == 'refs/heads/master'}}
         uses: nwtgck/actions-netlify@v1
         with:
           production-deploy: true
