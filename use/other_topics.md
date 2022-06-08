@@ -46,15 +46,8 @@ docker run -ti -e LD_LIBRARY_PATH=/usr/lib/libblas rocker/r-ver
 
 ### X11
 
-<div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon">
-<i class="material-icons">info_outline</i></div>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true"><i class="material-icons">clear</i></span></button>
 Coming soon...
-</div></div>
-
 
 ## [Singularity](/use/singularity)
 
 See [Singularity](/use/singularity) for use in HPC environments without Docker installed.
-
