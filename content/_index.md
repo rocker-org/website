@@ -39,7 +39,7 @@ For more information and further options, see the [use](/use) page.
 </div>
 </div>
 
-The Rocker project was created by <a href="https://twitter.com/cboettig">Carl Boettiger</a> and <a href="https://twitter.com/eddelbuettel">Dirk Eddelbuettel</a>, and is now maintained by Carl, Dirk, and <a href="https://twitter.com/noamross">Noam Ross</a>, with significant contributions from a broad community of users and developers. Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports, feature requests, or other feedback.
+The Rocker project was created by <a href="https://twitter.com/cboettig">Carl Boettiger</a> and <a href="https://twitter.com/eddelbuettel">Dirk Eddelbuettel</a>, and is now maintained by Carl, Dirk, <a href="https://twitter.com/noamross">Noam Ross</a>, and <a href="https://twitter.com/eitsupi">SHIMA Tatsuya</a>, with significant contributions from a broad community of users and developers. Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports, feature requests, or other feedback.
 
 
 ## <i class="fa fa-balance-scale"></i> License ##
