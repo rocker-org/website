@@ -1,0 +1,54 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Rocker Project"
+  description: "Docker Containers for the R Environment"
+  favicon: img/favicon.png
+  image: img/rocker.png
+  repo-url: https://github.com/rocker-org/website
+  repo-actions: [source, edit]
+  repo-branch: master
+  page-footer:
+    center: "![CC-BY](/img/cc-by.svg)"
+  navbar:
+    logo: img/rocker-bw.png
+    background: primary
+    search: true
+    right:
+      - text: Home
+        href: index.md
+      - text: Code of Conduct
+        href: CODE_OF_CONDUCT.md
+      - sidebar:images
+      - sidebar:use
+      - icon: github
+        href: https://github.com/rocker-org
+  sidebar:
+    - id: images
+      style: docked
+      title: Images
+      contents:
+        - images/index.md
+        - text: r-base (Docker Official Image)
+          href: https://hub.docker.com/_/r-base
+    - id: use
+      title: Use
+      contents:
+        - use/shared_volumes.md
+        - use/managing_users.md
+        - use/networking.md
+        - use/managing_containers.md
+        - use/extending.md
+        - use/other_topics.md
+
+format:
+  html:
+    theme: [yeti, custom.scss]
+    css: styles.css
+    title-block-style: default
+    title-block-banner: img/rockerwhale-optim.png
+    title-block-banner-color: white
+    page-layout: full
+    toc: true
