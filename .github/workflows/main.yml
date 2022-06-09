@@ -6,9 +6,12 @@ on:
       - master
     paths:
       - "**.md"
+      - _quarto.yml
+      - "!README.md"
   pull_request:
     paths:
       - "**.md"
+      - _quarto.yml
       - "!README.md"
   workflow_dispatch:
 
@@ -22,12 +25,12 @@ jobs:
     environment: github-pages
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/install-quarto@v1
         with:
-          hugo-version: "0.89.4"
+          version: "0.9.550"
       - name: Build
-        run: hugo
+        run: quarto render
 
       - name: Deploy preview to Netlify
         if: ${{ github.event_name == 'pull_request' }}
