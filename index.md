@@ -50,7 +50,8 @@ For more information and further options, see [the use page](./use/).
 :::
 
 The Rocker project was created by [Carl Boettiger](https://twitter.com/cboettig) and [Dirk Eddelbuettel](https://twitter.com/eddelbuettel),
-and is now maintained by Carl, Dirk, and [Noam Ross](https://twitter.com/noamross),
+and is now maintained by Carl, Dirk, [Noam Ross](https://twitter.com/noamross),
+and [SHIMA Tatsuya](https://twitter.com/eitsupi),
 with significant contributions from a broad community of users and developers.
 Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports,
 feature requests, or other feedback.
