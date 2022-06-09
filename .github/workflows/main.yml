@@ -6,9 +6,12 @@ on:
       - master
     paths:
       - "**.md"
+      - _quarto.yml
+      - "!README.md"
   pull_request:
     paths:
       - "**.md"
+      - _quarto.yml
       - "!README.md"
   workflow_dispatch:
 
