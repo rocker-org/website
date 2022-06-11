@@ -20,12 +20,3 @@ docker run -d  -e PASSWORD=yourpassword -p 8787:8787 -v /c/Users/foobar:/home/rs
 ```
 
 Would share the host's file `C:/Users/foobar`
-
-### Kitematic
-
-
-Users of the Docker's GUI interface, [Kitematic](https://kitematic.com), who use the
-`rstudio`-derived images will automatically have their local kitematic
-directory linked to the `/home/rstudio/kitematic` directory on the
-Docker container.  This provides a seamless interface to Docker and the Rocker
-images without any need for shell commands.
