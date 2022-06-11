@@ -53,3 +53,4 @@ format:
     title-block-banner-color: white
     page-layout: full
     toc: true
+    code-overflow: wrap
