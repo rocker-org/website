@@ -2,9 +2,14 @@
 title: "The Rocker Images: choosing a container"
 ---
 
+## Overview
 
+The Rocker Project provides a collection of (Linux) containers suited for different needs.
+Find a base image to extend or images with popular software and optimized libraries pre-installed.
 
-The rocker project provides a collection of containers suited for different needs. find a base image to extend or images with popular software and optimized libraries pre-installed. Get the latest version or a reproducibly fixed environment.
+Get the latest version or a reproducibly fixed environment.
+
+## Images
 
 ### The versioned stack
 
@@ -22,7 +27,15 @@ The rocker project provides a collection of containers suited for different need
 | [`rocker/ml`](https://hub.docker.com/r/rocker/ml)                   | `rocker/cuda`                               | Adds CUDA support to `rocker/tidyverse`                                        | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/ml)          |
 | [`rocker/ml-verse`](https://hub.docker.com/r/rocker/ml-verse)       | `rocker/ml`                                 | Adds CUDA support to `rocker/geospatial`                                       | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/ml-verse)    |
 
-This stack builds on stable Debian releases (for versions <= `3.6.3`) or Ubuntu LTS (for versions >= `4.0.0`). Images in this stack accept a version tag specifying which version of R is desired, e.g. `rocker/rstudio:3.4.0` for R `3.4.0`.  Version-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available (though Debian system libraries will still recieve any security patches.)  Omit the tag or specify `:latest` to always recieve the latest (nightly build) versions, or `:devel` for an image running on the current development (pre-release) version of R.  This is a linear stack, with each image extending the previous one.
+This stack builds on stable Debian releases (for R versions <= `3.6.3`) or Ubuntu LTS (for R versions >= `4.0.0`).
+Images in this stack accept a version tag specifying which version of R is desired, e.g. `rocker/rstudio:3.4.0` for R `3.4.0`.
+The `latest` tag always follows the latest release version of R.
+
+Some images (e.g. `rocker/r-ver`) also have the `devel` tag, which installs the development version of R.
+
+Version-tagged images are designed to be stable, consistently providing the same versions of all software
+(R, R packages, system libraries) rather than the latest available
+(though Debian system libraries will still recieve any security patches.)
 
 See [the rocker-versioned2 repository](https://github.com/rocker-org/rocker-versioned2) for details.
 
@@ -37,7 +50,11 @@ See [the rocker-versioned2 repository](https://github.com/rocker-org/rocker-vers
 | [`rocker/r-devel-san`](https://hub.docker.com/r/rocker/r-devel-san)                                       | `r-base`                                            | as `rocker/r-devel`, but built with compiler sanitizers    | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/r-devel-san.svg)                                                            |
 | [`rocker/r-devel-ubsan-clang`](https://hub.docker.com/r/rocker/r-devel-ubsan-clang)                       | `r-base`                                            | Sanitizers, clang c compiler (instead of gcc)              | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/r-devel-ubsan-clang.svg)                                                    |
 
-This stack builds on `debian:testing` and `debian:unstable`.  This is a branched stack, with all other images extending `r-base`.  Use this stack if you want access to the latest versions of system libraries and compilers through `apt-get`.
+This stack builds on `debian:testing` and Debian ustable repo.
+Use this stack if you want access to the latest versions of system libraries and compilers through `apt-get`.
+
+`r-base` (Docker Official image) and `rocker/r-base` are built from the same Dockerfile,
+but with different build systems.
 
 See [the rocker repository](https://github.com/rocker-org/rocker) for details.
 
