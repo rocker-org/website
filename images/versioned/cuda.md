@@ -1,4 +1,4 @@
-# Rocker stack for Machine Learning in R
+# cuda, ml, ml-verse
 
 `rocker/cuda`, `rocker/ml`, and `rocker/ml-verse` are Docker images for machine learning and GPU-based computation in R.
 
@@ -22,7 +22,7 @@ See <https://github.com/rocker-org/rocker-versioned2/wiki> for details of availa
 
 Run a bash shell or R command line:
 
-```shell
+```bash
 # CPU-only
 docker run --rm -ti rocker/ml R
 # Machines with nvidia-docker and GPU support
@@ -31,14 +31,9 @@ docker run --gpus all --rm -ti rocker/ml R
 
 Or run in RStudio instance:
 
-```shell
+```bash
 docker run --gpus all -e PASSWORD=mu -p 8787:8787 rocker/ml
 ```
-
-## Tags
-
-See [current `ml` tags](https://hub.docker.com/r/rocker/ml/tags?page=1&ordering=last_updated)
-See [current `ml-verse` tags](https://hub.docker.com/r/rocker/ml-verse/tags?page=1&ordering=last_updated)
 
 ## Python versions and virtualenvs
 
