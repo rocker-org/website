@@ -1,5 +1,6 @@
 ---
-title: "Networking: tips and tricks"
+title: Networking
+description: Connect R containers to reverse proxy servers and DBs.
 aliases:
   - /use/networking/
 ---

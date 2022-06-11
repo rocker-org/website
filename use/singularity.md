@@ -1,5 +1,6 @@
 ---
 title: "Singularity"
+description: Run RStudio Server containers by Singularity.
 aliases:
   - /use/singularity/
 ---

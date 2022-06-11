@@ -1,5 +1,6 @@
 ---
 title: Managing containers
+description: Basic usage of Docker commands
 aliases:
   - /use/managing_containers/
 ---

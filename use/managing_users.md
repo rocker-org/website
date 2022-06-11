@@ -1,5 +1,6 @@
 ---
 title: Managing Users
+description: Settings for users in containers.
 aliases:
   - /use/managing_users/
 ---

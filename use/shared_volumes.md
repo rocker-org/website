@@ -1,5 +1,6 @@
 ---
 title: Shared Volumes
+description: Use bind mounts and docker volumes to save files.
 aliases:
   - /use/shared_volumes/
 ---
