@@ -39,7 +39,7 @@ docker run --gpus all -e PASSWORD=mu -p 8787:8787 rocker/ml
 
 The ML images configure a default python virtualenv using the Ubuntu system python (3.8.5 for current Ubuntu 20.04 LTS), see [install_python.sh](https://github.com/rocker-org/rocker-versioned2/blob/master/scripts/install_python.sh).  This virtualenv is user-writable and the default detected by `reticulate` (using `WORKON_HOME` and `PYTHON_VENV_PATH` variables).
 
-Images also configure [pipenv](https://github.com/pypa/pipenv) with [pyenv](https://github.com/pyenv/pyenv) by default.  This makes it very easy to manage projects that require specific versions of Python as well as specific python modules.  For instance, a project using the popular `[greta](https://greta-stats.org/)` package for GPU-accelerated Bayesian inference needs Tensorflow 1.x, which requires Python <= 3.7, might do:
+Images also configure [pipenv](https://github.com/pypa/pipenv) with [pyenv](https://github.com/pyenv/pyenv) by default.  This makes it very easy to manage projects that require specific versions of Python as well as specific python modules.  For instance, a project using the popular [`greta`](https://greta-stats.org/) package for GPU-accelerated Bayesian inference needs Tensorflow 1.x, which requires Python <= 3.7, might do:
 
 ```bash
 pipenv --python 3.7
