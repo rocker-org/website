@@ -1,9 +1,7 @@
 ---
-title: Other topics
-aliases:
-  - /use/other_topics/
+title: BLAS
+description: Setting of blas for Rocker containers.
 ---
-
 
 ### selecting the BLAS implementation used by R
 
@@ -43,11 +41,3 @@ You can also pre-select which BLAS to use when running the docker using the `LD_
 # run R with the libblas
 docker run -ti -e LD_LIBRARY_PATH=/usr/lib/libblas rocker/r-ver
 ```
-
-### X11
-
-Coming soon...
-
-## [Singularity](/use/singularity)
-
-See [Singularity](/use/singularity) for use in HPC environments without Docker installed.

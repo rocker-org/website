@@ -41,7 +41,8 @@ website:
         - use/networking.md
         - use/managing_containers.md
         - use/extending.md
-        - use/other_topics.md
+        - use/blas.md
+        - use/gui.md
 
 format:
   html:
