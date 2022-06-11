@@ -51,12 +51,6 @@ services:
 
 More details about the use of [docker-compose](https://docs.docker.com/compose/) and [Caddy Server](https://caddyserver.com/) are found on their websites.
 
-
-
-### Monitoring 
-
-
-
 ### Linking database containers
 
 Here is an example of a compose file that configures a Shiny Server that can connect to a database (PostgreSQL).
