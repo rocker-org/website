@@ -33,6 +33,9 @@ website:
         - images/index.md
         - text: r-base (Docker Official Image)
           href: https://hub.docker.com/_/r-base
+        - section: versioned images
+          contents:
+          - images/versioned/cuda.md
     - id: use
       title: Use
       contents:
