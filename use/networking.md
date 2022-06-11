@@ -11,7 +11,7 @@ Any RStudio instance on a remote server is accessed over an unencrypted http by 
 
 Example `site/Caddyfile`:
 
-```
+```default
 rstudio.example.com {
   
   tls you@email.com
