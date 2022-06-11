@@ -1,5 +1,6 @@
 ---
-title: "The Rocker Images: choosing a container"
+title: The Rocker Images
+description: Choose a container for your needs.
 ---
 
 ## Overview
