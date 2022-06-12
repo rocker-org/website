@@ -38,6 +38,7 @@ website:
           - images/versioned/r-ver.md
           - images/versioned/rstudio.md
           - images/versioned/binder.md
+          - images/versioned/shiny.md
           - images/versioned/cuda.md
     - id: use
       title: Use
