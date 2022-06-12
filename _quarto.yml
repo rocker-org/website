@@ -31,15 +31,18 @@ website:
       title: Images
       contents:
         - images/index.md
-        - text: r-base (Docker Official Image)
-          href: https://hub.docker.com/_/r-base
-        - section: versioned images
+        - section: ---
+        - section: versioned stack
           contents:
-          - images/versioned/r-ver.md
-          - images/versioned/rstudio.md
-          - images/versioned/binder.md
-          - images/versioned/shiny.md
-          - images/versioned/cuda.md
+            - images/versioned/r-ver.md
+            - images/versioned/rstudio.md
+            - images/versioned/binder.md
+            - images/versioned/shiny.md
+            - images/versioned/cuda.md
+        - section: base stack
+          contents:
+            - text: r-base (Docker Official Image)
+              href: https://hub.docker.com/_/r-base
     - id: use
       title: Use
       contents:
