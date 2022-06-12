@@ -35,6 +35,7 @@ website:
           href: https://hub.docker.com/_/r-base
         - section: versioned images
           contents:
+          - images/versioned/r-ver.md
           - images/versioned/cuda.md
     - id: use
       title: Use
