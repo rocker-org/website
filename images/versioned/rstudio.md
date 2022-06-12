@@ -44,6 +44,14 @@ The non-root default user `rstudio` is set up as RStudio Server user,
 so please enter the username `rstudio` and a randomly generated password
 which is displayed in the console to the RStudio login form.
 
+Since RStudio Server is run by the `/init` command,
+RStudio will not start if the default command is overridden.
+So, to use R on the command line, specify the `R` command as follows.
+
+```sh
+docker run --rm -ti rocker/tidyverse R
+```
+
 :::{.callout-note}
 
 This document is for R 4.0.0 >= images. For R <= 3.6 images,
