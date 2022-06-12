@@ -2,21 +2,36 @@
 title: cuda, ml, ml-verse
 ---
 
-`rocker/cuda`, `rocker/ml`, and `rocker/ml-verse` are Docker images for machine learning and GPU-based computation in R. All images are based on the current Ubuntu LTS and based on the official [NVIDIA CUDA docker build recipes](https://gitlab.com/nvidia/container-images/cuda/).
+## Quick reference
 
-These images are built in modular build system at <https://github.com/rocker-org/rocker-versioned2>.
+- Source repository: [rocker-org/rocker-versioned2](https://github.com/rocker-org/rocker-versioned2)
+- Dockerfile
+  - [rocker/cuda](https://github.com/rocker-org/rocker-versioned2/blob/master/dockerfiles/cuda_devel.Dockerfile)
+  - [rocker/ml](https://github.com/rocker-org/rocker-versioned2/blob/master/dockerfiles/ml_devel.Dockerfile)
+  - [rocker/ml-verse](https://github.com/rocker-org/rocker-versioned2/blob/master/dockerfiles/ml-verse_devel.Dockerfile)
+- tags
+  - rocker/cuda
+    - [DockerHub](https://hub.docker.com/r/rocker/cuda/tags)
+    - [GitHub Container Registry](https://github.com/rocker-org/rocker-versioned2/pkgs/container/cuda/versions)
+  - rocker/ml
+    - [DockerHub](https://hub.docker.com/r/rocker/ml/tags)
+    - [GitHub Container Registry](https://github.com/rocker-org/rocker-versioned2/pkgs/container/ml/versions)
+  - rocker/ml-verse
+    - [DockerHub](https://hub.docker.com/r/rocker/ml-verse/tags)
+    - [GitHub Container Registry](https://github.com/rocker-org/rocker-versioned2/pkgs/container/ml-verse/versions)
+- Published image details: [rocker-org/rocker-versioned2's wiki](https://github.com/rocker-org/rocker-versioned2/wiki)
+- Non-root default user:
+  - rocker/cuda: not exist
+  - rocker/ml: `rstudio`
+  - rocker/ml-verse: `rstudio`
 
-The dependency stack looks like so:
+## Overview
 
-```txt
--| rocker/cuda
-  -| rocker/ml
-    -| rocker/ml-verse
-```
+`rocker/cuda`, `rocker/ml`, and `rocker/ml-verse` are Docker images for machine learning and GPU-based computation in R.
+These images correspond to [`rocker/r-ver`](r-ver.md),
+[`rocker/tidyverse`, and `rocker/geospatial`](rstudio.md), respectively.
 
-All three are CUDA compatible and will optionally take R version tags (`rocker/ml:4.0.5`) with the option of additional trailing CUDA version tag (e.g. `rocker/ml:4.0.5-cuda10.1`).
-
-See <https://github.com/rocker-org/rocker-versioned2/wiki> for details of available tags and images.
+All images are based on the current Ubuntu LTS and based on the official [NVIDIA CUDA docker build recipes](https://gitlab.com/nvidia/container-images/cuda/).
 
 :::{.callout-note}
 
@@ -26,19 +41,24 @@ Older images, `rocker/ml-gpu`, `rocker/tensorflow` and `rocker/tensorflow-gpu`, 
 
 ## Quick start
 
-Run a bash shell or R command line:
+The basic usage is the same as [`rocker/r-ver`](r-ver.md) or [`rocker/rstudio`](rstudio.md) except for the GPU setting.
+
+R command line:
 
 ```bash
 # CPU-only
-docker run --rm -ti rocker/ml R
+docker run --rm -ti rocker/cuda
 # Machines with nvidia-docker and GPU support
-docker run --gpus all --rm -ti rocker/ml R
+docker run --gpus all --rm -ti rocker/cuda
 ```
 
-Or run in RStudio instance:
+RStudio Server instance:
 
 ```bash
-docker run --gpus all -e PASSWORD=mu -p 8787:8787 rocker/ml
+# CPU-only
+docker run -p 8787:8787 rocker/ml
+# Machines with nvidia-docker and GPU support
+docker run --gpus all -p 8787:8787 rocker/ml
 ```
 
 :::{.callout-important}
