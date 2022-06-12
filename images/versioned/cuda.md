@@ -1,6 +1,8 @@
-# cuda, ml, ml-verse
+---
+title: cuda, ml, ml-verse
+---
 
-`rocker/cuda`, `rocker/ml`, and `rocker/ml-verse` are Docker images for machine learning and GPU-based computation in R.
+`rocker/cuda`, `rocker/ml`, and `rocker/ml-verse` are Docker images for machine learning and GPU-based computation in R. All images are based on the current Ubuntu LTS and based on the official [NVIDIA CUDA docker build recipes](https://gitlab.com/nvidia/container-images/cuda/).
 
 These images are built in modular build system at <https://github.com/rocker-org/rocker-versioned2>.
 
@@ -16,9 +18,13 @@ All three are CUDA compatible and will optionally take R version tags (`rocker/m
 
 See <https://github.com/rocker-org/rocker-versioned2/wiki> for details of available tags and images.
 
-## Quick start
+:::{.callout-note}
 
-**Note: GPU use requires [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/)** runtime to run!
+Older images, `rocker/ml-gpu`, `rocker/tensorflow` and `rocker/tensorflow-gpu`, built with cuda 9.0, are deprecated and no longer supported.
+
+:::
+
+## Quick start
 
 Run a bash shell or R command line:
 
@@ -34,6 +40,12 @@ Or run in RStudio instance:
 ```bash
 docker run --gpus all -e PASSWORD=mu -p 8787:8787 rocker/ml
 ```
+
+:::{.callout-important}
+
+GPU use requires [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/) runtime to run!
+
+:::
 
 ## Python versions and virtualenvs
 
@@ -58,9 +70,3 @@ We can now install tensorflow version needed, e.g.
 install.packages("tensorflow")
 tensorflow::install_tensorflow(version="1.14.0-gpu", extra_packages="tensorflow-probability==0.7.0")
 ```
-
-## Notes
-
-All images are based on the current Ubuntu LTS (ubuntu 20.04) and based on the official [NVIDIA CUDA docker build recipes](https://gitlab.com/nvidia/container-images/cuda/)
-
-**PLEASE NOTE**: older images, `rocker/ml-gpu`, `rocker/tensorflow` and `rocker/tensorflow-gpu`, built with cuda 9.0, are deprecated and no longer supported.
