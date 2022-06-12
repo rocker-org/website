@@ -36,6 +36,8 @@ website:
         - section: versioned images
           contents:
           - images/versioned/r-ver.md
+          - images/versioned/rstudio.md
+          - images/versioned/binder.md
           - images/versioned/cuda.md
     - id: use
       title: Use
@@ -56,3 +58,4 @@ format:
     title-block-banner-color: white
     page-layout: full
     toc: true
+    toc-depth: 4
