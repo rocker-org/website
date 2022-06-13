@@ -64,4 +64,5 @@ format:
     page-layout: full
     toc: true
     toc-depth: 4
+    number-sections: true
     code-overflow: wrap

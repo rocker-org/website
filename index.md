@@ -3,6 +3,7 @@ title: "The Rocker Project"
 description: "Docker Containers for the R Environment"
 title-block-banner: false
 sidebar: false
+number-sections: false
 about:
   template: jolla
   image: img/rocker.png
