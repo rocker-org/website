@@ -27,7 +27,7 @@ website:
         href: https://github.com/rocker-org
   sidebar:
     - id: images
-      style: docked
+      style: floating
       title: Images
       contents:
         - images/index.md
