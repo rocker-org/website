@@ -1,5 +1,6 @@
 ---
 title: Managing containers
+description: Basic usage of Docker commands
 aliases:
   - /use/managing_containers/
 ---
@@ -10,13 +11,13 @@ The simplest tools to monitor containers are `docker log` and `docker stats` com
 
 Most of the examples shown here include the use of the `--rm` flag, which will cause this container to be removed after it has exited.  By default, a container that is stopped (i.e. exited from) is not removed, and can be resumed later using `docker start`, be saved as a new docker image, or have files copied from it to the host (see the offical Docker documentation).  However, most of the time we just forget about these containers, though they are still taking up disk space.  You can view all stopped as well as running containers by using the `-a` flag to `docker ps`:
 
-```
+```bash
 docker ps -a
 ```
 
 and can remove all stopped containers by passing the id listed to `docker rm`.  A shortcut to remove all stopped containers (but not any actively running ones) is:
 
-```
+```bash
 docker rm -v $(docker ps -a -q)
 ```
 
@@ -33,7 +34,7 @@ Use `--restart=always` to have a container restart
 
 Sometimes we need to access a container that is already up and running in the background, such as to install additional libraries.  Some like to think of this as `ssh`-ing into their container, but there is no need to add `ssh` to accomplish this.  Access a running container using the `docker exec` command, e.g.
 
-```
+```bash
 docker exec -ti <container-id> bash
 ```
 
