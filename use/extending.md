@@ -1,5 +1,6 @@
 ---
 title: "Extending images"
+description: Install your favorite packages on the containers.
 aliases:
   - /use/extending/
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Singularity"
+description: Run RStudio Server containers by Singularity.
 aliases:
   - /use/singularity/
 ---
@@ -11,7 +12,7 @@ Rocker images can be imported and run using Singularity, with optional custom pa
 
 Use the `singularity pull` command to import the desired Rocker image from Docker Hub into a (compressed, read-only) Singularity Image File:
 
-```
+```bash
 singularity pull docker://rocker/rstudio:4.0.4
 ```
 
@@ -22,7 +23,7 @@ Modifications to the base Rocker image are not needed for installing R packages 
 
 ### Running a Rocker Singularity container (localhost, no password)
 
-```
+```bash
 mkdir -p run var-lib-rstudio-server
 
 printf 'provider=sqlite\ndirectory=/var/lib/rstudio-server\n' > database.conf
@@ -38,7 +39,7 @@ listening on 127.0.0.1:8787.
 
 To enable password authentication, set the PASSWORD environment variable and add the `--auth-none=0 --auth-pam-helper-path=pam-helper` options:
 
-```
+```bash
 PASSWORD='...' singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.0.4.sif rserver --auth-none=0  --auth-pam-helper-path=pam-helper
 ```
 
@@ -47,7 +48,8 @@ After pointing your browser to http://_hostname_:8787, enter your local user ID 
 ### Additional Options for RStudio >= 1.3.x
 
 In addition, RStudio >= 1.3.x enforces a stricter policy for session timeout, defaulting to 60 Minutes. You can opt in to the legacy behaviour by adding the following parameters:
-```
+
+```default
 --auth-timeout-minutes=0 --auth-stay-signed-in-days=30
 ```
 
@@ -58,7 +60,7 @@ A per-user /tmp should be bind-mounted when running on a multi-tenant HPC cluste
 
 The following example illustrates how this may be done with a SLURM job script.
 
-```
+```sh
 #!/bin/sh
 #SBATCH --time=08:00:00
 #SBATCH --signal=USR2
@@ -138,7 +140,7 @@ printf 'rserver exited' 1>&2
 
 The job script is submitted using the SLURM `sbatch` command:
 
-```
+```bash
 $ sbatch rstudio-server.job
 Submitted batch job 123456
 ```

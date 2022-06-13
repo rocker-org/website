@@ -1,5 +1,6 @@
 ---
-title: "Networking: tips and tricks"
+title: Networking
+description: Connect R containers to reverse proxy servers and DBs.
 aliases:
   - /use/networking/
 ---
@@ -10,7 +11,7 @@ Any RStudio instance on a remote server is accessed over an unencrypted http by 
 
 Example `site/Caddyfile`:
 
-```
+```default
 rstudio.example.com {
   
   tls you@email.com
@@ -49,12 +50,6 @@ services:
 
 
 More details about the use of [docker-compose](https://docs.docker.com/compose/) and [Caddy Server](https://caddyserver.com/) are found on their websites.
-
-
-
-### Monitoring 
-
-
 
 ### Linking database containers
 
