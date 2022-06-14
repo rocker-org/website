@@ -44,11 +44,11 @@ Please check the [rocker-org/rocker-versioned](https://github.com/rocker-org/roc
 
 ## Spacial tags
 
-### devel
+### `devel`
 
 The `devel` images are based on `ubuntu:latest` (the latest Ubuntu LTS version) and install [the latest R-devel daily snapshot](https://cloud.r-project.org/src/base-prerelease/).
 
-### cuda
+### `cuda`
 
 Tags which contain `cuda` (e.g. `rocker/r-ver:4.0.0-cuda10.1`) are alias of [`rocker/cuda`](cuda.md).
 
