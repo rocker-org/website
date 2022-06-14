@@ -43,6 +43,10 @@ website:
           contents:
             - text: r-base (Docker Official Image)
               href: https://hub.docker.com/_/r-base
+            - text: rocker/r-base
+              href: images/base/r-base.md
+            - text: r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang
+              href: images/base/r-debel.md
     - id: use
       title: Use
       contents:
