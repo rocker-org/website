@@ -46,7 +46,7 @@ website:
             - text: rocker/r-base
               href: images/base/r-base.md
             - text: r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang
-              href: images/base/r-debel.md
+              href: images/base/r-devel.md
         - section: Additional images
           contents:
             - text: r-ubuntu
