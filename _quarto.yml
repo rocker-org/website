@@ -47,6 +47,12 @@ website:
               href: images/base/r-base.md
             - text: r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang
               href: images/base/r-debel.md
+        - section: Additional images
+          contents:
+            - text: r-ubuntu
+              href: images/other/r-ubuntu.md
+            - text: r-bspm
+              href: images/other/r-bspm.md
     - id: use
       title: Use
       contents:
