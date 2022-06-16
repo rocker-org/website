@@ -29,16 +29,14 @@ Get the latest version or a reproducibly fixed environment.
 | [`rocker/ml-verse`](versioned/cuda.md)      | `rocker/ml`                                 | Adds CUDA support to `rocker/geospatial`                                       | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/ml-verse)    |
 
 This stack builds on stable Debian releases (for R versions <= `3.6.3`) or Ubuntu LTS (for R versions >= `4.0.0`).
-Images in this stack accept a version tag specifying which version of R is desired, e.g. `rocker/rstudio:3.4.0` for R `3.4.0`.
+Images in this stack accept a version tag specifying which version of R is desired, e.g. `rocker/rstudio:4.0.0` for R `4.0.0`.
 The `latest` tag always follows the latest release version of R.
 
 Some images (e.g. `rocker/r-ver`) also have the `devel` tag, which installs the development version of R.
 
 Version-tagged images are designed to be stable, consistently providing the same versions of all software
 (R, R packages, system libraries) rather than the latest available
-(though Debian system libraries will still recieve any security patches.)
-
-See [the rocker-versioned2 repository](https://github.com/rocker-org/rocker-versioned2) for details.
+(though Debian system libraries will still receive any security patches.)
 
 ### The base stack
 
@@ -56,8 +54,6 @@ Use this stack if you want access to the latest versions of system libraries and
 
 `r-base` (Docker Official image) and `rocker/r-base` are built from the same Dockerfile,
 but with different build systems.
-
-See [the rocker repository](https://github.com/rocker-org/rocker) for details.
 
 ### Additional images
 
