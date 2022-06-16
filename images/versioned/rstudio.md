@@ -33,6 +33,14 @@ and [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) 
 
 The basic usage of these images is the same, with the difference being the amount of additional (R) packages installed.
 
+- `rocker/tidyverse` has already installed [the tidyverse package](https://www.tidyverse.org/),
+  some [R Database Interface](https://dbi.r-dbi.org/) packages,
+  and [the Apache Arrow R package](https://arrow.apache.org/docs/r/).
+- `rocker/verse` has already installed TeX Live and some publishing-related R packages,
+  in addition to the packages installed in `rocker/tidyverse`.
+- `rocker/geospatial` has already installed some geospatial R packages in addition to the packages installed in `rocker/verse`.
+
+These images start RStudioServer with the default command.
 Since the RStudio Server port is set to `8787`,
 you can open the RStudio screen on `localhost:8787` from your browser with the following command.
 
@@ -44,9 +52,8 @@ The non-root default user `rstudio` is set up as RStudio Server user,
 so please enter the username `rstudio` and a randomly generated password
 which is displayed in the console to the RStudio login form.
 
-Since RStudio Server is run by the `/init` command,
-RStudio will not start if the default command is overridden.
-So, to use R on the command line, specify the `R` command as follows.
+RStudio will not start if the default command (`/init`) is overridden.
+To use R on the command line, specify the `R` command as follows.
 
 ```sh
 docker run --rm -ti rocker/tidyverse R
