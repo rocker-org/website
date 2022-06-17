@@ -13,6 +13,8 @@ When the PullRequest is merged, the website is updated by GitHub Actions.
 
 ## Local build
 
+### quarto cli
+
 Install [Quarto CLI](https://quarto.org/docs/get-started/) and run the folloing command.
 
 ```sh
@@ -24,3 +26,20 @@ and the generated website is located in the `docs` directory.
 
 Note that, the Quarto CLI version which build the deployed website
 may be specified in [the GitHub Actions workflow definition file](.github/workflows/main.yml).
+
+### docker compose
+
+You can use a Docker container instead of installing quarto cli locally
+with following [docker compose](https://docs.docker.com/compose/) command.
+
+```sh
+docker compose up
+```
+
+Then, open `localhost:8000` to preview the website.
+
+Once you have finished checking, you can delete the images and the container with the following command.
+
+```sh
+docker compose down --rmi all
+```
