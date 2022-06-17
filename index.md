@@ -3,6 +3,7 @@ title: "The Rocker Project"
 description: "Docker Containers for the R Environment"
 title-block-banner: false
 sidebar: false
+number-sections: false
 about:
   template: jolla
   image: img/rocker.png
@@ -35,7 +36,7 @@ docker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio
 
 and point your browser to `localhost:8787`. Log in with user/password `rstudio`/`yourpassword`.
 
-For more information and further options, see [the use page](./use/).
+For more information and further options, see [the image descriptions](images).
 
 ## 👥Team
 

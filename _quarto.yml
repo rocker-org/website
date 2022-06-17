@@ -27,12 +27,32 @@ website:
         href: https://github.com/rocker-org
   sidebar:
     - id: images
-      style: docked
+      style: floating
       title: Images
       contents:
         - images/index.md
-        - text: r-base (Docker Official Image)
-          href: https://hub.docker.com/_/r-base
+        - section: ---
+        - section: versioned stack
+          contents:
+            - images/versioned/r-ver.md
+            - images/versioned/rstudio.md
+            - images/versioned/binder.md
+            - images/versioned/shiny.md
+            - images/versioned/cuda.md
+        - section: base stack
+          contents:
+            - text: r-base (Docker Official Image)
+              href: https://hub.docker.com/_/r-base
+            - text: rocker/r-base
+              href: images/base/r-base.md
+            - text: r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang
+              href: images/base/r-devel.md
+        - section: Additional images
+          contents:
+            - text: r-ubuntu
+              href: images/other/r-ubuntu.md
+            - text: r-bspm
+              href: images/other/r-bspm.md
     - id: use
       title: Use
       contents:
@@ -53,4 +73,6 @@ format:
     title-block-banner-color: white
     page-layout: full
     toc: true
+    toc-depth: 4
+    number-sections: true
     code-overflow: wrap
