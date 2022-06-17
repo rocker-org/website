@@ -40,7 +40,7 @@ The basic usage of these images is the same, with the difference being the amoun
   in addition to the packages installed in `rocker/tidyverse`.
 - `rocker/geospatial` has already installed some geospatial R packages in addition to the packages installed in `rocker/verse`.
 
-These images start RStudioServer with the default command.
+These images start RStudio Server with the default command.
 Since the RStudio Server port is set to `8787`,
 you can open the RStudio screen on `localhost:8787` from your browser with the following command.
 
