@@ -57,3 +57,18 @@ Tags which contain `cuda` (e.g. `rocker/r-ver:4.0.0-cuda10.1`) are alias of [`ro
 cuda tags will be discontinued in the future, so please use `rocker/cuda` instead.
 
 :::
+
+## How to use
+
+### Switch the default CRAN mirror
+
+As explained in the overview, `rocker/r-ver` may have set a past CRAN snapshot as the default repository.
+This is determined by the options set in the `Rprofile`.
+To use a different CRAN mirror, simply write a new setting in the `Rprofile`.
+
+For example, the following Dockerfile sets the default repository to CRAN.
+
+```dockerfile
+FROM rocker/r-ver:4
+RUN echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >>"${R_HOME}/etc/Rprofile.site"
+```

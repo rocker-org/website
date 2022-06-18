@@ -8,9 +8,22 @@ aliases:
 If there are libraries needed on the container, it is recommended to write a Dockerfile and build the image.
 
 See [the Dockerfile reference](https://docs.docker.com/engine/reference/builder/) and
-[the Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) for Dockerfile.
+[the Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+for to write Dockerfiles.
+Also, please refer to [the reference page of each Rocker image](../images/index.md)
+for links to the respective Dockerfile of Rocker image.
 
-This section covers several topics related to R.
+This section covers several topics specific to the installation of R packages into Docker containers.
+
+:::{.callout-note}
+
+Users can also preserve changes to Docker images that they have modified interactively
+using [the `docker commit` mechanism.](https://docs.docker.com/engine/reference/commandline/commit/)
+
+While this is sometimes convenient, we encourage users to consider writing Dockerfiles instead whenever possible,
+as this creates a more transparent and reproducible mechanism to accomplish the same thing.
+
+:::
 
 ## Install R packages on Linux
 
@@ -151,41 +164,64 @@ Please chack package pages on conda-forge for details.
 
 ## Helper commands
 
-Rocker images provide a few utility functions to streamline this process, including the 
-[littler](https://cran.r-project.org/package=littler) scripts which provide a concise syntax for installing packages in Dockerfiles, e.g.
+Rocker images provide a few utility functions to streamline this process,
+including the [`littler`](https://cran.r-project.org/package=littler) scripts
+which provide a concise syntax for installing packages in Dockerfiles.
 
-```Dockerfile
-RUN install2.r pkg1 pgk2 pkg3 ...
+### `install2.r`
+
+[The `install2.r` command](https://github.com/eddelbuettel/littler/blob/master/inst/examples/install2.r)
+can be used to concisely describe the installation of the R package.
+
+For example, a Dockerfile that installs multiple R packages can be written as follows.
+
+```dockerfile
+FROM r-base:latest
+RUN install2.r pkg1 pgk2 pkg3
 ```
+
+If the same content were written using the `install.packages()` function,
+it would be more complicated, as shown below.
+
+```dockerfile
+FROM r-base:latest
+RUN R -q -e 'install.packages(c("pkg1", "pkg2", "pkg3"))'
+```
+
+The `install2.r` command also has several useful options.
 
 By setting the `--error` option, you can make the `docker build` command also fail if the package installation fails.
 And, you can also set the `--skipinstalled` option to skip installing installed packages and the `--ncpu -1` option
 to maximize parallelism of the installation.
 
-```Dockerfile
+```dockerfile
+FROM r-base:latest
 RUN install2.r --error --skipinstalled --ncpus -1 \
     pkg1 \
     pgk2 \
     pkg3 \
-    ...
+    && rm -rf /tmp/downloaded_packages
 ```
 
-Users writing their own Dockerfiles are encouraged to follow the same practices as the
-Rocker Project, such as the [Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/), the use of automated builds,
-and when appropriate, versioned tags.
+If you install R packages from CRAN using the `install2.r` command,
+the temporary files are stored in `/tmp/downloaded_packages` directory.
+Therefore, it is recommended to delete `/tmp/downloaded_packages` at the end if you use this command in Dockerfiles.
 
-Note that users can also preserve changes to Rocker images that they have modified interactively using
-the `docker commit` mechanism, which creates a new binary image which can be pushed back to
-a personal account on the Docker Hub.  While this is sometimes convenient, we encourage users to
-consider writing Dockerfiles instead whenever possible, as this creates a more transparent
-and reproducible mechanism to accomplish the same thing.
+:::{.callout-tip}
 
-Users should understand how the Dockerfile on which Rocker images are built works before writing new
-Dockerfiles that extend the images we provide. See [here](https://github.com/rocker-org/rocker-versioned2/blob/master/dockerfiles/r-ver_devel.Dockerfile) for the source code that defines the `rocker/r-ver` image that many Rocker images are based on.
+Binary-installed packages from RSPM are not stripped and may be larger in size.
+([rocker-org/rocker-versioned2#340](https://github.com/rocker-org/rocker-versioned2/issues/340))
 
-An example is changing the default `repos` used by the container. This could be changed back to CRAN
-repos by adding the following line to an appropriate place in your Dockerfile:
+Therefore, it may be possible to reduce the image size by stripping immediately after R package installation as follows.
 
-```Dockerfile
-RUN echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >> ${R_HOME}/etc/Rprofile.site
+```dockerfile
+FROM rocker/r-ver:4
+RUN install2.r --error --skipinstalled --ncpus -1 \
+    pkg1 \
+    pgk2 \
+    pkg3 \
+    && rm -rf /tmp/downloaded_packages \
+    && strip /usr/local/lib/R/site-library/*/libs/*.so
 ```
+
+:::
