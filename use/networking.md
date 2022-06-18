@@ -5,53 +5,74 @@ aliases:
   - /use/networking/
 ---
 
-### HTTPS 
+## HTTPS
 
-Any RStudio instance on a remote server is accessed over an unencrypted http by default (though RStudio encrypts the password entered to log in through client-side javascript.)  The easiest way to connect over a secure https connection is to use a reverse proxy server, such as [Caddy](https://caddyserver.com).  To establish an encrypted https connection, you must first have control of a registered domain name: https cannot be used when connecting directly to a given ip address. Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using LetsEncrypt certificates.  Below is an example `Caddyfile` specifying the necessary configuration, along with a `docker-compose` file which sets up an RStudio server instance behind a separate container running `caddy`.  This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:
+Any RStudio instance on a remote server is accessed over an unencrypted http by default
+(though RStudio encrypts the password entered to log in through client-side javascript).
 
-Example `site/Caddyfile`:
+The easiest way to connect over a secure https connection is to use a reverse proxy server,
+such as [Caddy](https://caddyserver.com).
+To establish an encrypted https connection, you must first have control of a registered domain name:
+https cannot be used when connecting directly to a given ip address.
+Once you have pointed your domain name at the ip address of the server, Caddy provides a quick way to get set up with https using Let's Encrypt certificates.
+
+Below is an example [Caddyfile](https://caddyserver.com/docs/caddyfile) specifying the necessary configuration,
+along with a [compose file](https://docs.docker.com/compose/compose-file/)
+which sets up an RStudio server instance behind a separate container running Caddy 2.
+You can access the RStudio Server on `https://rstudio.example.com`.
+This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:
+
+Example Caddyfile:
 
 ```default
-rstudio.example.com {
-  
-  tls you@email.com
-  proxy / rstudio:8787 {
-    header_upstream Host {host}
-  }
-
+{
+  you@email.com
 }
 
+rstudio.example.com {
+  reverse_proxy rstudio:8787
+}
 ```
 
-Example docker-compose file:
+Example compose file:
 
 ```yml
-version: '2'
 services:
-  caddy:  
-    image: joshix/caddy
-    links:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
       - rstudio
     volumes:
-      - ./site/:/var/www/html
-      - ./.caddy/:/.caddy
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
     ports:
       - 80:80
       - 443:443
-    restart: always
 
   rstudio:
-    image: rocker/verse 
-    env_file: .password 
-    volumes:
-      - $HOME/students:/home/
-    restart: always
+    image: rocker/verse:4
+    restart: unless-stopped
+    env_file: .rstudio.env
+    expose:
+      - 8787
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
 ```
 
+Example .rstudio.env file:
 
-More details about the use of [docker-compose](https://docs.docker.com/compose/) and [Caddy Server](https://caddyserver.com/) are found on their websites.
+```default
+PASSWORD=yourpassword
+```
 
-### Linking database containers
+More details about the use of [docker compose](https://docs.docker.com/compose/) and [Caddy Server](https://caddyserver.com/) are found on their websites.
+
+## Linking database containers
 
 Here is an example of a compose file that configures a Shiny Server that can connect to a database (PostgreSQL).
 
