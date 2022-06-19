@@ -3,7 +3,7 @@ title: GUI
 description: View plots etc. from the containers.
 ---
 
-If you do not use a web-based IDE (like RStudio Server, Jupyter, etc.) with integrated graphics devices,
+If you do not use a web-based IDE (like [RStudio Server, Jupyter, VSCode](editor.md), etc.) with integrated graphics devices,
 the following additional configuration is required to display plots of R running in your container.
 
 ## The `httpgd` R package
