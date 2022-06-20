@@ -52,6 +52,7 @@ If you try to source install the `curl` package without libcurl, the installatio
 
 In general, system requirements can be found on error messages on installation failures, the package's reference page,
 CRAN, or [METACRAN](https://www.r-pkg.org/).
+[The dashboard of system libraries linked by R packages on R-universe](https://r-universe.dev/sysdeps/) is useful as well.
 
 ### Install binary packages
 
@@ -61,7 +62,8 @@ so there are several ways to install binary R packages on Linux.
 #### [RStudio Public Package Manager](https://packagemanager.rstudio.com/)
 
 RStudio Package Manager (RSPM) provides binary R packages for specific Linux distributions[^rspm].
-RSPM behaves like CRAN, so users can install packages just as if they were installed from CRAN.
+Since RSPM provides all packages on CRAN as a CRAN mirror,
+users can install packages just as if they were installed from CRAN.
 
 [^rspm]: [RStudio Package Manager: Admin Guide](https://docs.rstudio.com/rspm/admin/serving-binaries/#supported-operating-systems)
 
