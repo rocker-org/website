@@ -176,6 +176,13 @@ The UID and GID of the default non-root user can be changed as follows:
 docker run --rm -ti -e USERID=1001 -e GROUPID=1001 -p 8787:8787 rocker/rstudio
 ```
 
+:::{.callout-warning}
+
+If these are set, ownership of the `/home/rstudio` directory in the container is updated by the root user.
+This will also overwrite the ownership of any files that are bind-mounted under the `/home/rstudio` directory.
+
+:::
+
 ### Setting files
 
 Recent RStudio Server's configuration files are saved in the `~/.config/rstudio/` directory[^rstudio_customizing].
