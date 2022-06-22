@@ -62,7 +62,6 @@ website:
         - use/networking.md
         - use/shared_volumes.md
         - use/managing_users.md
-        - use/managing_containers.md
         - use/singularity.md
 
 format:
