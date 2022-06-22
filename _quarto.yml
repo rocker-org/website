@@ -61,6 +61,7 @@ website:
         - use/editor.md
         - use/networking.md
         - use/shared_volumes.md
+        - use/reproducibility.md
         - use/singularity.md
 
 format:
