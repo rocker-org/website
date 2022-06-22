@@ -1,9 +1,38 @@
 ---
 title: Networking
-description: Connect R containers to reverse proxy servers and DBs.
+description: Connect R containers to networks.
 aliases:
   - /use/networking/
 ---
+
+## Corporate Proxy
+
+If you are behind a corporate proxy,
+you will need to set up a proxy to the container in order to connect the Docker container to the Internet.
+
+By setting it up as described in [the official documentation](https://docs.docker.com/network/proxy/),
+environment variables are set in the container, and many tools, including R,
+will use these environment variables to connect to the Internet.
+
+However, RStudio Server and Shiny Server do not respect container environment variables.
+This may prevent you from connecting to the Internet from RStudio IDE.
+If you want to use environment variables in sessions within these servers,
+you must write the variables to a `Renviron` file.
+
+:::{.callout-tip}
+
+[`rocker/rstudio`](../images/versioned/rstudio.md) and [`rocker/shiny`](../images/versioned/shiny.md)
+avoid the problem of RStudio Server and Shiny Server not recognizing container environment variables
+by writing them to `Renviron.site` at container startup.
+
+:::
+
+If you need to configure proxy settings directly in the `Renviron` file,
+it is possible to configure only one `ALL_PROXY` setting instead of writing `HTTP_PROXY` and `HTTPS_PROXY` respectively.
+
+```default
+ALL_PROXY=http://192.168.1.12:3128
+```
 
 ## HTTPS
 
