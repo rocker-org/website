@@ -93,6 +93,21 @@ So, R package installation on `rocker/r-ver` on arm64 platform will be source in
 
 :::
 
+:::{.callout-tip}
+
+Binary-installed packages from RSPM are not stripped and may be larger in size.
+([rocker-org/rocker-versioned2#340](https://github.com/rocker-org/rocker-versioned2/issues/340))
+
+Therefore, it may be possible to reduce the image size by stripping immediately after R package installation as follows.
+
+```dockerfile
+FROM rocker/r-ver:4
+RUN R -q -e 'install.packages("curl")' \
+    && strip /usr/local/lib/R/site-library/*/libs/*.so
+```
+
+:::
+
 #### System package management system
 
 Some Linux distributions allow installation of binary R packages with the system package management system.
@@ -190,11 +205,40 @@ FROM r-base:latest
 RUN R -q -e 'install.packages(c("pkg1", "pkg2", "pkg3"))'
 ```
 
+If you install R packages from CRAN using the `install2.r` command,
+the temporary files are stored in `/tmp/downloaded_packages` directory.
+Therefore, it is recommended to delete `/tmp/downloaded_packages` at the end if you use this command in Dockerfiles.
+
+```dockerfile
+FROM r-base:latest
+RUN install2.r pkg1 pgk2 pkg3 \
+    && rm -rf /tmp/downloaded_packages
+```
+
+#### Options
+
 The `install2.r` command also has several useful options.
 
+##### `-e`, `--error`
+
 By setting the `--error` option, you can make the `docker build` command also fail if the package installation fails.
-And, you can also set the `--skipinstalled` option to skip installing installed packages and the `--ncpu -1` option
-to maximize parallelism of the installation.
+
+##### `-s`, `--skipinstalled`
+
+`--skipinstalled` option to skip installing installed packages.
+
+##### `-n`, `--ncpus`
+
+You can set `--ncpu -1` to maximize parallelism of the installation.
+
+##### `-r`, `--repos`
+
+You can install R packages from specific repositories with this option.
+A special value `--repos getOption` means using R's `getOption("repos")` value.
+
+#### Examples
+
+Use with `r-base`; Install source R packages from CRAN.
 
 ```dockerfile
 FROM r-base:latest
@@ -205,16 +249,7 @@ RUN install2.r --error --skipinstalled --ncpus -1 \
     && rm -rf /tmp/downloaded_packages
 ```
 
-If you install R packages from CRAN using the `install2.r` command,
-the temporary files are stored in `/tmp/downloaded_packages` directory.
-Therefore, it is recommended to delete `/tmp/downloaded_packages` at the end if you use this command in Dockerfiles.
-
-:::{.callout-tip}
-
-Binary-installed packages from RSPM are not stripped and may be larger in size.
-([rocker-org/rocker-versioned2#340](https://github.com/rocker-org/rocker-versioned2/issues/340))
-
-Therefore, it may be possible to reduce the image size by stripping immediately after R package installation as follows.
+Use with `rocker/r-ver`; Install binary R packages from RSPM.
 
 ```dockerfile
 FROM rocker/r-ver:4
@@ -225,5 +260,35 @@ RUN install2.r --error --skipinstalled --ncpus -1 \
     && rm -rf /tmp/downloaded_packages \
     && strip /usr/local/lib/R/site-library/*/libs/*.so
 ```
+
+Use with `rocker/r-ver`;
+Install binary R packages from RSPM and source R packages from the R-universe ropensci repository.
+
+```dockerfile
+FROM rocker/r-ver:4
+RUN install2.r --error --skipinstalled --ncpus -1 \
+    --repos https://ropensci.r-universe.dev --repos getOption \
+    pkg1 \
+    pgk2 \
+    pkg3 \
+    && rm -rf /tmp/downloaded_packages \
+    && strip /usr/local/lib/R/site-library/*/libs/*.so
+```
+
+Use with `rocker/r-bspm`; Install binary R packages from system package repository.
+
+```dockerfile
+FROM rocker/r-bspm:testing
+RUN install2.r --error --skipinstalled \
+    pkg1 \
+    pgk2 \
+    pkg3 \
+    && rm -rf /var/lib/apt/lists/*
+```
+
+:::{.callout-note}
+
+If bspm is already set,
+some options have no effect because the system package manager is used to install the R packages.
 
 :::
