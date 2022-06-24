@@ -65,7 +65,7 @@ The Microsoft's Code OSS distribution, [Visual Studio Code](https://code.visuals
 has an extension, [Remote - Containers](https://code.visualstudio.com/docs/remote/containers).
 That makes a container the backend, which can be used to develop using software in the container.
 
-Remote - Containers extension builds images from definition files
+The Remote - Containers extension builds images from definition files
 and creates containers with installed VSCode Server and vscode extensions.
 Users can run the container and start working inside it without touching anything but the local VSCode.
 
@@ -73,6 +73,7 @@ The Remote - Containers extension also includes ready-to-use sample definition f
 The R's definition is [this](https://github.com/microsoft/vscode-dev-containers/tree/main/containers/r),
 which installs `languageserver` and `httpgd`,
 and also installs [`radian`](https://github.com/randy3k/radian) as R console.
+
 
 This definition can also be used in [GitHub Codespaces](https://github.com/features/codespaces).
 
