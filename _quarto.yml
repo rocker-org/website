@@ -31,7 +31,6 @@ website:
       title: Images
       contents:
         - images/index.md
-        - section: ---
         - section: versioned stack
           contents:
             - images/versioned/r-ver.md
@@ -53,6 +52,11 @@ website:
               href: images/other/r-ubuntu.md
             - text: r-bspm
               href: images/other/r-bspm.md
+        - section: ---
+        - section: Other projects
+          contents:
+            - text: External images
+              href: images/external.md
     - id: use
       title: Use
       contents:
