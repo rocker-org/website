@@ -7,7 +7,7 @@ A [website](https://rocker-project.org) for the Rocker Project.
 Feedbacks & contributions are welcome!
 
 If you find a documentation issue, please open an issue this repository
-or edit the Markdown file included in this repository and open a PullRequest.
+or edit the Markdown file included in this repository and open a Pull Request.
 
 When the PullRequest is merged, the website is updated by GitHub Actions.
 
@@ -15,7 +15,7 @@ When the PullRequest is merged, the website is updated by GitHub Actions.
 
 ### quarto cli
 
-Install [Quarto CLI](https://quarto.org/docs/get-started/) and run the folloing command.
+Install [Quarto CLI](https://quarto.org/docs/get-started/) and run the following command.
 
 ```sh
 quarto preview
