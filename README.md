@@ -6,7 +6,7 @@ A [website](https://rocker-project.org) for the Rocker Project.
 
 Feedbacks & contributions are welcome!
 
-If you find a documentation issue, please open an issue this repository
+If you find a documentation issue, please [open an issue this repository](https://github.com/rocker-org/website/issues/new)
 or edit the Markdown file included in this repository and open a Pull Request.
 
 When the PullRequest is merged, the website is updated by GitHub Actions.
