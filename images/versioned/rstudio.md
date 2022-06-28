@@ -32,9 +32,11 @@ These images are based on [`rocker/r-ver`](r-ver.md),
 and [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) is already installed.
 
 The basic usage of these images is the same, with the difference being the amount of additional (R) packages installed.
+(See [image details](https://github.com/rocker-org/rocker-versioned2/wiki) for lists of installation packages)
 
 - `rocker/tidyverse` has already installed [the tidyverse package](https://www.tidyverse.org/),
   some [R Database Interface](https://dbi.r-dbi.org/) packages,
+  [the `data.table` package](https://rdatatable.gitlab.io/data.table/), [the `fst` package](https://www.fstpackage.org/),
   and [the Apache Arrow R package](https://arrow.apache.org/docs/r/).
 - `rocker/verse` has already installed TeX Live and some publishing-related R packages,
   in addition to the packages installed in `rocker/tidyverse`.
