@@ -1,0 +1,11 @@
+services:
+  quarto:
+    build:
+      context: .build
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    ports:
+      - 8000:8000
+    command: |
+      /workspace/.build/start.sh "/workspace"
