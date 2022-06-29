@@ -57,6 +57,11 @@ with significant contributions from a broad community of users and developers.
 Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports,
 feature requests, or other feedback.
 
+## 📜Papers
+
+- [An Introduction to Rocker: Docker Containers for R](https://doi.org/10.32614/RJ-2017-065)
+- [The Rockerverse: Packages and Applications for Containerisation with R](https://doi.org/10.32614/RJ-2020-007)
+
 ## ⚖️License
 
 The Rocker Dockerfiles are licensed under the GPL 2 or later.
