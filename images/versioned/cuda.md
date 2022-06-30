@@ -31,13 +31,8 @@ title: cuda, ml, ml-verse
 These images correspond to [`rocker/r-ver`](r-ver.md),
 [`rocker/tidyverse`, and `rocker/geospatial`](rstudio.md), respectively.
 
-All images are based on the current Ubuntu LTS and based on the official [NVIDIA CUDA docker build recipes](https://gitlab.com/nvidia/container-images/cuda/).
-
-:::{.callout-note}
-
-Older images, `rocker/ml-gpu`, `rocker/tensorflow` and `rocker/tensorflow-gpu`, built with cuda 9.0, are deprecated and no longer supported.
-
-:::
+All images are based on the official [NVIDIA CUDA docker build recipes](https://gitlab.com/nvidia/container-images/cuda/),
+and are installed [the `reticulate` package](https://rstudio.github.io/reticulate/).
 
 ## Quick start
 
@@ -67,26 +62,40 @@ GPU use requires [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/) runti
 
 :::
 
-## Python versions and virtualenvs
+## How to use
 
-The ML images configure a default python virtualenv using the Ubuntu system python (3.8.5 for current Ubuntu 20.04 LTS), see [install_python.sh](https://github.com/rocker-org/rocker-versioned2/blob/master/scripts/install_python.sh).  This virtualenv is user-writable and the default detected by `reticulate` (using `WORKON_HOME` and `PYTHON_VENV_PATH` variables).
+See also [the `rocker/r-ver`'s reference](r-ver.md) (for `rocker/cuda`) and
+[the `rocker/rstudio`'s reference](rstudio.md) (for `rocker/ml` and `rocker/ml-verse`).
 
-Images also configure [pipenv](https://github.com/pypa/pipenv) with [pyenv](https://github.com/pyenv/pyenv) by default.  This makes it very easy to manage projects that require specific versions of Python as well as specific python modules.  For instance, a project using the popular [`greta`](https://greta-stats.org/) package for GPU-accelerated Bayesian inference needs Tensorflow 1.x, which requires Python <= 3.7, might do:
+### Python versions and environments
 
-```bash
-pipenv --python 3.7
-```
-
-In the bash terminal to set up a pipenv-managed virtualenv in the working directory using Python 3.7.  Then in R we can activate this virtualenv
-
-```r
-venv <- system("pipenv --venv", inter = TRUE)
-reticulate::use_virtualenv(venv, required = TRUE)
-```
-
-We can now install tensorflow version needed, e.g.
+If you want to switch the Python version called from `reticulate`,
+you can use [the `reticulate`'s functions](https://rstudio.github.io/reticulate/reference/index.html) to install Python.
+For example, with the following command, `reticulate` installs [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+and miniconda installs Python 3.7.
 
 ```r
-install.packages("tensorflow")
-tensorflow::install_tensorflow(version="1.14.0-gpu", extra_packages="tensorflow-probability==0.7.0")
+reticulate::install_miniconda()
+reticulate::conda_install(packages = "python=3.7")
 ```
+
+The Python version used by the `reticulate` package can be checked with the `reticulate::py_config()` function.
+
+```r
+reticulate::py_config()
+#> python:         /root/.local/share/r-miniconda/envs/r-reticulate/bin/python
+#> libpython:      /root/.local/share/r-miniconda/envs/r-reticulate/lib/libpython3.7m.so
+#> pythonhome:     /root/.local/share/r-miniconda/envs/r-reticulate:/root/.local/share/r-miniconda/envs/r-reticulate
+#> version:        3.7.12 | packaged by conda-forge | (default, Oct 26 2021, 06:08:21)  [GCC 9.4.0]
+#> numpy:          /root/.local/share/r-miniconda/envs/r-reticulate/lib/python3.7/site-packages/numpy
+#> numpy_version:  1.17.5
+```
+
+:::{.callout-important}
+
+[pyenv](https://github.com/pyenv/pyenv) and [pipenv](https://github.com/pypa/pipenv),
+which were previously installed, are no longer installed.
+And, the previously set environment variables `WORKON_HOME` and `PYTHON_VENV_PATH` are no longer set.
+([rocker-org/rocker-versioned2#494](https://github.com/rocker-org/rocker-versioned2/pull/494))
+
+:::
