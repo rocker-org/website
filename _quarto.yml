@@ -60,13 +60,13 @@ website:
     - id: use
       title: Use
       contents:
-        - use/shared_volumes.md
-        - use/managing_users.md
-        - use/networking.md
-        - use/managing_containers.md
         - use/extending.md
-        - use/blas.md
         - use/gui.md
+        - use/editor.md
+        - use/networking.md
+        - use/shared_volumes.md
+        - use/reproducibility.md
+        - use/singularity.md
 
 format:
   html:

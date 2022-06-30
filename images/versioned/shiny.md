@@ -78,6 +78,5 @@ docker run --rm -ti --user shiny -p 3838:3838 rocker/shiny
 
 ### See also
 
-- [Managing Users](../../use/managing_users.md)
 - [Shared Volumes](../../use/shared_volumes.md)
 - [Networking](../../use/networking.md)

@@ -20,6 +20,7 @@ title: r-bspm
 Binary R packages can be easily installed.
 Based on Debian, Ubuntu, Fedora, and OpenSUSE.
 
-Similar to [`rocker/r-ubuntu`](r-ubuntu.md) in that these install R binary packages and system dependencies,
-but thanks to bspm, these images automatically installs binary packages and system dependencies
+Similar to [`r-base`](https://hub.docker.com/_/r-base) and [`rocker/r-ubuntu`](r-ubuntu.md)
+in that these can install R binary packages and system dependencies.
+but thanks to bspm, `rocker/r-bspm` automatically installs binary packages and system dependencies
 even when using the R `install.packages()` function.

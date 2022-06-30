@@ -1,5 +1,7 @@
 ---
 title: r-ver
+aliases:
+  - /use/blas/
 ---
 
 ## Quick reference
@@ -57,3 +59,56 @@ Tags which contain `cuda` (e.g. `rocker/r-ver:4.0.0-cuda10.1`) are alias of [`ro
 cuda tags will be discontinued in the future, so please use `rocker/cuda` instead.
 
 :::
+
+## How to use
+
+### Switch the default CRAN mirror
+
+As explained in the overview, `rocker/r-ver` may have set a past CRAN snapshot as the default repository.
+This is determined by the options set in the `Rprofile`.
+To use a different CRAN mirror, simply write a new setting in the `Rprofile`.
+
+For example, the following Dockerfile sets the default repository to CRAN.
+
+```dockerfile
+FROM rocker/r-ver:4
+RUN echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >>"${R_HOME}/etc/Rprofile.site"
+```
+
+### Selecting the BLAS implementation used by R
+
+By default `rocker/r-ver` uses [the OpenBLAS](https://www.openblas.net/) implementation for Linear Algebra[^blas].
+But it is possible to switch for [the reference BLAS implementation](https://www.netlib.org/blas/)
+(as provided by the Debian package `libblas-dev`) using the Shared BLAS setup[^shared-blas].
+
+[^blas]: [R Installation and Administration A.3.1 BLAS](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS)
+[^shared-blas]: [R Installation and Administration A.3.1.4 Shared BLAS](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS)
+
+#### Checking which BLAS is in use
+
+You can see the current BLAS configuration for R by using `sessionInfo()` function in R console.
+
+```r
+sessionInfo()
+#> R version 4.2.0 (2022-04-22)
+#> Platform: x86_64-pc-linux-gnu (64-bit)
+#> Running under: Ubuntu 20.04.4 LTS
+#>
+#> Matrix products: default
+#> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+#> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3
+```
+
+Here for instance R uses OpenBLAS.
+
+#### Switching BLAS implementations
+
+You can switch BLAS used by R with the Debian `update-alternatives` script:
+
+```bash
+export ARCH=$(uname -m)
+# switch to libblas
+update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/blas/libblas.so.3"
+# switch to openblas
+update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/openblas-pthread/libblas.so.3"
+```

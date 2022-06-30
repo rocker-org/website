@@ -8,7 +8,7 @@ aliases:
 [Singularity](https://www.sylabs.io/guides/latest/user-guide/) is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters.
 Rocker images can be imported and run using Singularity, with optional custom password support.
 
-### Importing a Rocker Image
+## Importing a Rocker Image
 
 Use the `singularity pull` command to import the desired Rocker image from Docker Hub into a (compressed, read-only) Singularity Image File:
 
@@ -21,7 +21,7 @@ Note that sudo privileges are required to use the `singularity build` command, u
 Alternatively, a Rocker base image can be extended in a Dockerfile and a Singularity image built using the [docker2singularity](https://github.com/singularityhub/docker2singularity) Docker image.
 Modifications to the base Rocker image are not needed for installing R packages into a personal library in the user's home directory.
 
-### Running a Rocker Singularity container (localhost, no password)
+## Running a Rocker Singularity container (localhost, no password)
 
 ```bash
 mkdir -p run var-lib-rstudio-server
@@ -35,7 +35,7 @@ This will run rserver in a Singularity container.
 The `--www-address=127.0.0.1` option binds to localhost (the default is 0.0.0.0, or all IP addresses on the host).
 listening on 127.0.0.1:8787.
 
-### Running a Rocker Singularity container with password authentication
+## Running a Rocker Singularity container with password authentication
 
 To enable password authentication, set the PASSWORD environment variable and add the `--auth-none=0 --auth-pam-helper-path=pam-helper` options:
 
@@ -45,7 +45,7 @@ PASSWORD='...' singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/
 
 After pointing your browser to http://_hostname_:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.
 
-### Additional Options for RStudio >= 1.3.x
+## Additional Options for RStudio >= 1.3.x
 
 In addition, RStudio >= 1.3.x enforces a stricter policy for session timeout, defaulting to 60 Minutes. You can opt in to the legacy behaviour by adding the following parameters:
 
@@ -53,7 +53,7 @@ In addition, RStudio >= 1.3.x enforces a stricter policy for session timeout, de
 --auth-timeout-minutes=0 --auth-stay-signed-in-days=30
 ```
 
-### SLURM job script
+## SLURM job script
 
 On an HPC cluster, a Rocker Singularity container can be started on a compute node using the cluster's job scheduler, allowing it to access compute, memory, and storage resources that may far exceed those found in a typical desktop workstation.
 A per-user /tmp should be bind-mounted when running on a multi-tenant HPC cluster that has singularity configured to bind mount the host /tmp, to avoid an existing /tmp/rstudio-server owned by another user.
@@ -148,7 +148,8 @@ Submitted batch job 123456
 After the scheduled job begins execution, `rserver` is started in a Singularity container, and the connection information (including the compute node hostname, TCP port, and a randomly-generated custom password) is sent in the job script stderr to a file in the user's home directory named `rstudio-server.job.123456`.
 
 The `rserver` process (and resulting rsession process after login) will persist until:
+
 1. The job wall time (`--time=08:00:00`, or 8 hours) is reached.
-    + The `--signal=USR2` directive tells SLURM to send SIGUSR2 approximately 60 seconds before the wall time limit is reached.
+   1. The `--signal=USR2` directive tells SLURM to send SIGUSR2 approximately 60 seconds before the wall time limit is reached.
       This causes the `rsession` process to save user's session state to their home directory, so it can be resumed in a subsequent job.
 2. The SLURM `scancel` command is used to cancel the job.
