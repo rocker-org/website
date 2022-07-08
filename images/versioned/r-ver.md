@@ -106,9 +106,11 @@ Here for instance R uses OpenBLAS.
 You can switch BLAS used by R with the Debian `update-alternatives` script:
 
 ```bash
-export ARCH=$(uname -m)
+ARCH=$(uname -m)
 # switch to libblas
 update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/blas/libblas.so.3"
+update-alternatives --set "liblapack.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/lapack/liblapack.so.3"
 # switch to openblas
 update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/openblas-pthread/libblas.so.3"
+update-alternatives --set "liblapack.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/openblas-pthread/liblapack.so.3"
 ```
