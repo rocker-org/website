@@ -40,7 +40,7 @@ website:
             - images/versioned/cuda.md
         - section: base stack
           contents:
-            - text: r-base (Docker Official Image)
+            - text: r-base {{< fa arrow-up-right-from-square >}}
               href: https://hub.docker.com/_/r-base
             - text: rocker/r-base
               href: images/base/r-base.md
