@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Run RStudio Server containers by Singularity.">
+
+<title>Rocker Project - Singularity</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../img/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      color: white;
+background-image: url(../img/rockerwhale-optim.png);
+background-size: cover;
+    }
+    </style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <img src="../img/rocker-bw.png" alt="">
+    <span class="navbar-title">Rocker Project</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../CODE_OF_CONDUCT.html">Code of Conduct</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-images" role="button" data-bs-toggle="dropdown" aria-expanded="false">Images</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-images">    
+        <li>
+    <a class="dropdown-item" href="../images/index.html">
+ <span class="dropdown-text">The Rocker Images</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">versioned stack</li>
+        <li>
+    <a class="dropdown-item" href="../images/versioned/r-ver.html">
+ <span class="dropdown-text">r-ver</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/rstudio.html">
+ <span class="dropdown-text">rstudio, tidyverse, verse, geospatial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/binder.html">
+ <span class="dropdown-text">binder</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/shiny.html">
+ <span class="dropdown-text">shiny, shiny-verse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/cuda.html">
+ <span class="dropdown-text">cuda, ml, ml-verse</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">base stack</li>
+        <li>
+    <a class="dropdown-item" href="https://hub.docker.com/_/r-base">
+ <span class="dropdown-text">r-base (Docker Official Image)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/base/r-base.html">
+ <span class="dropdown-text">rocker/r-base</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/base/r-devel.html">
+ <span class="dropdown-text">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Additional images</li>
+        <li>
+    <a class="dropdown-item" href="../images/other/r-ubuntu.html">
+ <span class="dropdown-text">r-ubuntu</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/other/r-bspm.html">
+ <span class="dropdown-text">r-bspm</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Other projects</li>
+        <li>
+    <a class="dropdown-item" href="../images/external.html">
+ <span class="dropdown-text">External images</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="button" data-bs-toggle="dropdown" aria-expanded="false">Use</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-use">    
+        <li>
+    <a class="dropdown-item" href="../use/extending.html">
+ <span class="dropdown-text">Extending images</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/gui.html">
+ <span class="dropdown-text">GUI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/editor.html">
+ <span class="dropdown-text">Edit in containers</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/networking.html">
+ <span class="dropdown-text">Networking</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/shared_volumes.html">
+ <span class="dropdown-text">Shared Volumes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/reproducibility.html">
+ <span class="dropdown-text">Reproducibility</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/singularity.html">
+ <span class="dropdown-text">Singularity</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rocker-org"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Singularity</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">Singularity</h1>
+                  <div>
+        <div class="description">
+          Run RStudio Server containers by Singularity.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/extending.html" class="sidebar-item-text sidebar-link">Extending images</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/gui.html" class="sidebar-item-text sidebar-link">GUI</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/editor.html" class="sidebar-item-text sidebar-link">Edit in containers</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/networking.html" class="sidebar-item-text sidebar-link">Networking</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/shared_volumes.html" class="sidebar-item-text sidebar-link">Shared Volumes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/reproducibility.html" class="sidebar-item-text sidebar-link">Reproducibility</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/singularity.html" class="sidebar-item-text sidebar-link active">Singularity</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#importing-a-rocker-image" id="toc-importing-a-rocker-image" class="nav-link active" data-scroll-target="#importing-a-rocker-image"> <span class="header-section-number">1</span> Importing a Rocker Image</a></li>
+  <li><a href="#running-a-rocker-singularity-container-localhost-no-password" id="toc-running-a-rocker-singularity-container-localhost-no-password" class="nav-link" data-scroll-target="#running-a-rocker-singularity-container-localhost-no-password"> <span class="header-section-number">2</span> Running a Rocker Singularity container (localhost, no password)</a></li>
+  <li><a href="#running-a-rocker-singularity-container-with-password-authentication" id="toc-running-a-rocker-singularity-container-with-password-authentication" class="nav-link" data-scroll-target="#running-a-rocker-singularity-container-with-password-authentication"> <span class="header-section-number">3</span> Running a Rocker Singularity container with password authentication</a></li>
+  <li><a href="#additional-options-for-rstudio-1.3.x" id="toc-additional-options-for-rstudio-1.3.x" class="nav-link" data-scroll-target="#additional-options-for-rstudio-1.3.x"> <span class="header-section-number">4</span> Additional Options for RStudio &gt;= 1.3.x</a></li>
+  <li><a href="#slurm-job-script" id="toc-slurm-job-script" class="nav-link" data-scroll-target="#slurm-job-script"> <span class="header-section-number">5</span> SLURM job script</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/use/singularity.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/use/singularity.md" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
+
+
+
+
+<p><a href="https://www.sylabs.io/guides/latest/user-guide/">Singularity</a> is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters. Rocker images can be imported and run using Singularity, with optional custom password support.</p>
+<section id="importing-a-rocker-image" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="importing-a-rocker-image"><span class="header-section-number">1</span> Importing a Rocker Image</h2>
+<p>Use the <code>singularity pull</code> command to import the desired Rocker image from Docker Hub into a (compressed, read-only) Singularity Image File:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://rocker/rstudio:4.0.4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If additional Debian (or other) software packages are needed, a Rocker base image can be extended in a <a href="https://sylabs.io/guides/3.7/user-guide/definition_files.html">Singularity definition file</a>. Note that sudo privileges are required to use the <code>singularity build</code> command, unless using a remote builder such as the <a href="https://cloud.sylabs.io/builder">Sylabs Cloud Remote Builder</a>. Alternatively, a Rocker base image can be extended in a Dockerfile and a Singularity image built using the <a href="https://github.com/singularityhub/docker2singularity">docker2singularity</a> Docker image. Modifications to the base Rocker image are not needed for installing R packages into a personal library in the user’s home directory.</p>
+</section>
+<section id="running-a-rocker-singularity-container-localhost-no-password" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="running-a-rocker-singularity-container-localhost-no-password"><span class="header-section-number">2</span> Running a Rocker Singularity container (localhost, no password)</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> run var-lib-rstudio-server</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'provider=sqlite\ndirectory=/var/lib/rstudio-server\n'</span> <span class="op">&gt;</span> database.conf</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="at">--bind</span> run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.0.4.sif rserver <span class="at">--www-address</span><span class="op">=</span>127.0.0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will run rserver in a Singularity container. The <code>--www-address=127.0.0.1</code> option binds to localhost (the default is 0.0.0.0, or all IP addresses on the host). listening on 127.0.0.1:8787.</p>
+</section>
+<section id="running-a-rocker-singularity-container-with-password-authentication" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="running-a-rocker-singularity-container-with-password-authentication"><span class="header-section-number">3</span> Running a Rocker Singularity container with password authentication</h2>
+<p>To enable password authentication, set the PASSWORD environment variable and add the <code>--auth-none=0 --auth-pam-helper-path=pam-helper</code> options:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">PASSWORD</span><span class="op">=</span><span class="st">'...'</span> <span class="ex">singularity</span> exec <span class="at">--bind</span> run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.0.4.sif rserver <span class="at">--auth-none</span><span class="op">=</span>0  <span class="at">--auth-pam-helper-path</span><span class="op">=</span>pam-helper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After pointing your browser to http://<em>hostname</em>:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.</p>
+</section>
+<section id="additional-options-for-rstudio-1.3.x" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="additional-options-for-rstudio-1.3.x"><span class="header-section-number">4</span> Additional Options for RStudio &gt;= 1.3.x</h2>
+<p>In addition, RStudio &gt;= 1.3.x enforces a stricter policy for session timeout, defaulting to 60 Minutes. You can opt in to the legacy behaviour by adding the following parameters:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>--auth-timeout-minutes=0 --auth-stay-signed-in-days=30</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="slurm-job-script" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="slurm-job-script"><span class="header-section-number">5</span> SLURM job script</h2>
+<p>On an HPC cluster, a Rocker Singularity container can be started on a compute node using the cluster’s job scheduler, allowing it to access compute, memory, and storage resources that may far exceed those found in a typical desktop workstation. A per-user /tmp should be bind-mounted when running on a multi-tenant HPC cluster that has singularity configured to bind mount the host /tmp, to avoid an existing /tmp/rstudio-server owned by another user.</p>
+<p>The following example illustrates how this may be done with a SLURM job script.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=08:00:00</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --signal=USR2</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8192</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=/home/%u/rstudio-server.job.%j</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># customize --output path as appropriate (to a directory readable only by the user!)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create temporary directory to be populated with directories to bind-mount in the container</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># where writable file systems are necessary. Adjust path as appropriate for your computing environment.</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="va">workdir</span><span class="op">=</span><span class="va">$(</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import tempfile; print(tempfile.mkdtemp())'</span><span class="va">)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="at">-m</span> 700 <span class="va">${workdir}</span>/run <span class="va">${workdir}</span>/tmp <span class="va">${workdir}</span>/var/lib/rstudio-server</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> <span class="va">${workdir}</span>/database.conf <span class="op">&lt;&lt;END</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">provider=sqlite</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">directory=/var/lib/rstudio-server</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Set OMP_NUM_THREADS to prevent OpenBLAS (and any other OpenMP-enhanced</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># libraries used by R) from spawning more threads than the number of processors</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># allocated to the job.</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Set R_LIBS_USER to a path specific to rocker/rstudio to avoid conflicts with</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># personal libraries from any R installation in the host environment</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> <span class="va">${workdir}</span>/rsession.sh <span class="op">&lt;&lt;END</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/sh</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="st">export OMP_NUM_THREADS=</span><span class="va">${SLURM_JOB_CPUS_PER_NODE}</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="st">export R_LIBS_USER=</span><span class="va">${HOME}</span><span class="st">/R/rocker-rstudio/4.0</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="st">exec rsession "</span><span class="dt">\$</span><span class="st">{@}"</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x <span class="va">${workdir}</span>/rsession.sh</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITY_BIND</span><span class="op">=</span><span class="st">"</span><span class="va">${workdir}</span><span class="st">/run:/run,</span><span class="va">${workdir}</span><span class="st">/tmp:/tmp,</span><span class="va">${workdir}</span><span class="st">/database.conf:/etc/rstudio/database.conf,</span><span class="va">${workdir}</span><span class="st">/rsession.sh:/etc/rstudio/rsession.sh,</span><span class="va">${workdir}</span><span class="st">/var/lib/rstudio-server:/var/lib/rstudio-server"</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Do not suspend idle sessions.</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/rstudio/rstudio/blob/v1.4.1106/src/cpp/server/ServerSessionManager.cpp#L126</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_RSTUDIO_SESSION_TIMEOUT</span><span class="op">=</span>0</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_USER</span><span class="op">=</span><span class="va">$(</span><span class="fu">id</span> <span class="at">-un</span><span class="va">)</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_PASSWORD</span><span class="op">=</span><span class="va">$(</span><span class="ex">openssl</span> rand <span class="at">-base64</span> 15<span class="va">)</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co"># get unused socket per https://unix.stackexchange.com/a/132524</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># tiny race condition between the python &amp; singularity commands</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="bu">readonly</span> <span class="va">PORT</span><span class="op">=</span><span class="va">$(</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()'</span><span class="va">)</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span> <span class="op">&lt;&lt;END</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="st">1. SSH tunnel from your workstation using the following command:</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="st">   ssh -N -L 8787:</span><span class="va">${HOSTNAME}</span><span class="st">:</span><span class="va">${PORT}</span><span class="st"> </span><span class="va">${SINGULARITYENV_USER}</span><span class="st">@LOGIN-HOST</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="st">   and point your web browser to http://localhost:8787</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="st">2. log in to RStudio Server using the following credentials:</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="st">   user: </span><span class="va">${SINGULARITYENV_USER}</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="st">   password: </span><span class="va">${SINGULARITYENV_PASSWORD}</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="st">When done using RStudio Server, terminate the job by:</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="st">1. Exit the RStudio Session ("power" button in the top right corner of the RStudio window)</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="st">2. Issue the following command on the login node:</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="st">      scancel -f </span><span class="va">${SLURM_JOB_ID}</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="at">--cleanenv</span> rstudio_4.0.4.sif <span class="dt">\</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>    rserver <span class="at">--www-port</span> <span class="va">${PORT}</span> <span class="dt">\</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-none</span><span class="op">=</span>0 <span class="dt">\</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-pam-helper-path</span><span class="op">=</span>pam-helper <span class="dt">\</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-stay-signed-in-days</span><span class="op">=</span>30 <span class="dt">\</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-timeout-minutes</span><span class="op">=</span>0 <span class="dt">\</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>            <span class="at">--rsession-path</span><span class="op">=</span>/etc/rstudio/rsession.sh</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'rserver exited'</span> <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The job script is submitted using the SLURM <code>sbatch</code> command:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sbatch rstudio-server.job</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Submitted</span> batch job 123456</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After the scheduled job begins execution, <code>rserver</code> is started in a Singularity container, and the connection information (including the compute node hostname, TCP port, and a randomly-generated custom password) is sent in the job script stderr to a file in the user’s home directory named <code>rstudio-server.job.123456</code>.</p>
+<p>The <code>rserver</code> process (and resulting rsession process after login) will persist until:</p>
+<ol type="1">
+<li>The job wall time (<code>--time=08:00:00</code>, or 8 hours) is reached.
+<ol type="1">
+<li>The <code>--signal=USR2</code> directive tells SLURM to send SIGUSR2 approximately 60 seconds before the wall time limit is reached. This causes the <code>rsession</code> process to save user’s session state to their home directory, so it can be resumed in a subsequent job.</li>
+</ol></li>
+<li>The SLURM <code>scancel</code> command is used to cancel the job.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><img src="../img/cc-by.svg" class="img-fluid" alt="CC-BY"></div>
+  </div>
+</footer>
+
+
+
+</body></html>

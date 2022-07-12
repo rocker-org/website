@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Rocker Project - r-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../img/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      color: white;
+background-image: url(../../img/rockerwhale-optim.png);
+background-size: cover;
+    }
+    </style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <img src="../../img/rocker-bw.png" alt="">
+    <span class="navbar-title">Rocker Project</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../CODE_OF_CONDUCT.html">Code of Conduct</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-images" role="button" data-bs-toggle="dropdown" aria-expanded="false">Images</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-images">    
+        <li>
+    <a class="dropdown-item" href="../../images/index.html">
+ <span class="dropdown-text">The Rocker Images</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">versioned stack</li>
+        <li>
+    <a class="dropdown-item" href="../../images/versioned/r-ver.html">
+ <span class="dropdown-text">r-ver</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../images/versioned/rstudio.html">
+ <span class="dropdown-text">rstudio, tidyverse, verse, geospatial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../images/versioned/binder.html">
+ <span class="dropdown-text">binder</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../images/versioned/shiny.html">
+ <span class="dropdown-text">shiny, shiny-verse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../images/versioned/cuda.html">
+ <span class="dropdown-text">cuda, ml, ml-verse</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">base stack</li>
+        <li>
+    <a class="dropdown-item" href="https://hub.docker.com/_/r-base">
+ <span class="dropdown-text">r-base (Docker Official Image)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../images/base/r-base.html">
+ <span class="dropdown-text">rocker/r-base</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../images/base/r-devel.html">
+ <span class="dropdown-text">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Additional images</li>
+        <li>
+    <a class="dropdown-item" href="../../images/other/r-ubuntu.html">
+ <span class="dropdown-text">r-ubuntu</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../images/other/r-bspm.html">
+ <span class="dropdown-text">r-bspm</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Other projects</li>
+        <li>
+    <a class="dropdown-item" href="../../images/external.html">
+ <span class="dropdown-text">External images</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="button" data-bs-toggle="dropdown" aria-expanded="false">Use</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-use">    
+        <li>
+    <a class="dropdown-item" href="../../use/extending.html">
+ <span class="dropdown-text">Extending images</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../use/gui.html">
+ <span class="dropdown-text">GUI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../use/editor.html">
+ <span class="dropdown-text">Edit in containers</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../use/networking.html">
+ <span class="dropdown-text">Networking</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../use/shared_volumes.html">
+ <span class="dropdown-text">Shared Volumes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../use/reproducibility.html">
+ <span class="dropdown-text">Reproducibility</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../use/singularity.html">
+ <span class="dropdown-text">Singularity</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rocker-org"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">r-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">r-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/index.html" class="sidebar-item-text sidebar-link">The Rocker Images</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">versioned stack</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/versioned/r-ver.html" class="sidebar-item-text sidebar-link">r-ver</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/versioned/rstudio.html" class="sidebar-item-text sidebar-link">rstudio, tidyverse, verse, geospatial</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/versioned/binder.html" class="sidebar-item-text sidebar-link">binder</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/versioned/shiny.html" class="sidebar-item-text sidebar-link">shiny, shiny-verse</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/versioned/cuda.html" class="sidebar-item-text sidebar-link">cuda, ml, ml-verse</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">base stack</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://hub.docker.com/_/r-base" class="sidebar-item-text sidebar-link">r-base (Docker Official Image)</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/base/r-base.html" class="sidebar-item-text sidebar-link">rocker/r-base</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/base/r-devel.html" class="sidebar-item-text sidebar-link active">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Additional images</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/other/r-ubuntu.html" class="sidebar-item-text sidebar-link">r-ubuntu</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/other/r-bspm.html" class="sidebar-item-text sidebar-link">r-bspm</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Other projects</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../images/external.html" class="sidebar-item-text sidebar-link">External images</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link active" data-scroll-target="#quick-reference"> <span class="header-section-number">1</span> Quick reference</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"> <span class="header-section-number">2</span> Overview</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/images/base/r-devel.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/images/base/r-devel.md" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
+
+
+
+
+<section id="quick-reference" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="quick-reference"><span class="header-section-number">1</span> Quick reference</h2>
+<ul>
+<li>Source repository:
+<ul>
+<li><a href="https://github.com/rocker-org/r-devel">rocker-org/r-devel</a></li>
+<li><a href="https://github.com/rocker-org/drd">rocker-org/drd</a></li>
+<li><a href="https://github.com/rocker-org/drp">rocker-org/drp</a></li>
+<li><a href="https://github.com/rocker-org/r-devel-san">rocker-org/r-devel-san</a></li>
+<li><a href="https://github.com/rocker-org/r-devel-san-clang">rocker-org/r-devel-san-clang</a></li>
+</ul></li>
+<li>Dockerfile
+<ul>
+<li><a href="https://github.com/rocker-org/r-devel/blob/master/Dockerfile">rocker/r-devel</a></li>
+<li><a href="https://github.com/rocker-org/drd/blob/master/Dockerfile">rocker/drd</a></li>
+<li><a href="https://github.com/rocker-org/drp/blob/master/Dockerfile">rocker/drp</a></li>
+<li><a href="https://github.com/rocker-org/r-devel-san/blob/master/Dockerfile">rocker/r-devel-san</a></li>
+<li><a href="https://github.com/rocker-org/r-devel-san-clang/blob/master/Dockerfile">rocker/r-devel-ubsan-clang</a></li>
+</ul></li>
+<li>tags
+<ul>
+<li>rocker/r-devel
+<ul>
+<li><a href="https://hub.docker.com/r/rocker/r-devel/tags">DockerHub</a></li>
+</ul></li>
+<li>rocker/drd
+<ul>
+<li><a href="https://hub.docker.com/r/rocker/drd/tags">DockerHub</a></li>
+</ul></li>
+<li>rocker/drp
+<ul>
+<li><a href="https://hub.docker.com/r/rocker/drp/tags">DockerHub</a></li>
+</ul></li>
+<li>rocker/r-devel-san
+<ul>
+<li><a href="https://hub.docker.com/r/rocker/r-devel-san/tags">DockerHub</a></li>
+</ul></li>
+<li>rocker/r-devel-ubsan-clang
+<ul>
+<li><a href="https://hub.docker.com/r/rocker/r-devel-ubsan-clang">DockerHub</a></li>
+</ul></li>
+</ul></li>
+<li>Published image details: not available</li>
+<li>Non-root default user: <code>docker</code></li>
+</ul>
+</section>
+<section id="overview" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="overview"><span class="header-section-number">2</span> Overview</h2>
+<p>These images are based on <a href="https://hub.docker.com/_/r-base">r-base</a> and install <a href="https://cloud.r-project.org/src/base-prerelease/">prerelease version of R from source</a>, separately from the release version of R. These prerelease version R can be executed with <code>RD</code>(for R-devel) or <code>RP</code>(for R-patched).</p>
+<ul>
+<li>Both <code>rocker/r-devel</code> and <code>rocker/drd</code> are images for running R-devel; <code>rocker/drd</code> has a smaller image size because of the different Dockerfile configuration (layers).</li>
+<li><code>rocker/drp</code> has R-patched installed.</li>
+<li><code>rocker/r-devel-san</code> and <code>rocker/r-devel-ubsan-clang</code> provide R development binaries with Sanitizer support, for memory checking during R package development<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <code>rocker/r-devel-san</code> uses clang, and <code>rocker/r-devel-ubsan-clang</code> uses gcc.</li>
+</ul>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>rocker/r-devel-ubsan-clang</code> must be use with <a href="https://docs.docker.com/engine/reference/commandline/run/#options"><code>docker run</code>’s <code>--cap-add=SYS_PTRACE</code></a> option. Otherwise, instrumented processes fail to start due to lacking permissions.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">--cap-add</span><span class="op">=</span>SYS_PTRACE rocker/r-devel-ubsan-clang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, an instrumented process can be run with <code>ASAN_OPTIONS=detect_leaks=0</code>, but this turns off leak detection.</p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../../images/versioned/r-ver.html#devel"><code>rocker/r-ver:devel</code></a>, <a href="../../images/versioned/rstudio.html#devel"><code>rocker/rstudio:devel</code>, <code>rocker/tidyverse:devel</code>, <code>rocker/verse:devel</code></a> also have R-devel installed.</p>
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://cran.r-project.org/doc/manuals/r-devel/R-exts.html#Checking-memory-access">Writing R Extensions</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><img src="../../img/cc-by.svg" class="img-fluid" alt="CC-BY"></div>
+  </div>
+</footer>
+
+
+
+</body></html>
