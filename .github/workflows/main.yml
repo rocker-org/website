@@ -1,4 +1,4 @@
-name: Build and Deploy to Netlify
+name: Build and Deploy
 
 on:
   push:
@@ -22,7 +22,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
       - uses: actions/checkout@v3
       - name: Setup Quarto
@@ -32,33 +31,16 @@ jobs:
       - name: Build
         run: quarto render
 
-      - name: Deploy preview to Netlify
+      - name: Upload artifact
         if: ${{ github.event_name == 'pull_request' }}
-        uses: nwtgck/actions-netlify@v1
+        uses: actions/upload-artifact@v3
         with:
-          production-deploy: false
-          production-branch: master
-          publish-dir: ./docs
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          alias: deploy-preview-${{ github.event.number }}
-          enable-commit-comment: false
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+          name: docs
+          path: docs
 
-      - name: Deploy to Netlify
+      - name: Deploy to GitHub Pages
         if: ${{ github.ref == 'refs/heads/master'}}
-        uses: nwtgck/actions-netlify@v1
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          production-deploy: true
-          production-branch: master
-          publish-dir: ./docs
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-commit-comment: false
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
