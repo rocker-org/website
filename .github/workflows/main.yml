@@ -28,7 +28,7 @@ jobs:
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/install-quarto@v1
         with:
-          version: "1.0.8"
+          version: "1.0.15"
       - name: Build
         run: quarto render
 
