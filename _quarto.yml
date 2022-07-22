@@ -52,7 +52,7 @@ website:
               href: images/other/r-ubuntu.md
             - text: r-bspm
               href: images/other/r-bspm.md
-        - section: ---
+        - text: ---
         - section: Other projects
           contents:
             - text: External images
