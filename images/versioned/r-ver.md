@@ -105,12 +105,22 @@ Here for instance R uses OpenBLAS.
 
 You can switch BLAS used by R with the Debian `update-alternatives` script:
 
+:::{.panel-tabset}
+
+##### Switch to libblas
+
 ```bash
 ARCH=$(uname -m)
-# switch to libblas
 update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/blas/libblas.so.3"
 update-alternatives --set "liblapack.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/lapack/liblapack.so.3"
-# switch to openblas
+```
+
+##### Switch to openblas
+
+```bash
+ARCH=$(uname -m)
 update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/openblas-pthread/libblas.so.3"
 update-alternatives --set "liblapack.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/openblas-pthread/liblapack.so.3"
 ```
+
+:::

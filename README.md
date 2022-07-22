@@ -43,3 +43,14 @@ Once you have finished checking, you can delete the images and the container wit
 ```sh
 docker compose down --rmi all
 ```
+
+## License
+
+Content license: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+[The `_extensions` directory](_extensions) contains the source code of quarto extensions
+installed from external repositories.
+Please refer to these repositories for information on these licenses.
+
+- [quarto-ext/fontawesome](https://github.com/quarto-ext/fontawesome)
+- [quarto-ext/code-filename](https://github.com/quarto-ext/code-filename)

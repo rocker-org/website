@@ -3,6 +3,8 @@ title: Networking
 description: Connect R containers to networks.
 aliases:
   - /use/networking/
+filters:
+  - code-filename
 ---
 
 ## Corporate Proxy
@@ -30,7 +32,7 @@ by writing them to `Renviron.site` at container startup.
 If you need to configure proxy settings directly in the `Renviron` file,
 it is possible to configure only one `ALL_PROXY` setting instead of writing `HTTP_PROXY` and `HTTPS_PROXY` respectively.
 
-```default
+```{.default filename=".Renviron"}
 ALL_PROXY=http://192.168.1.12:3128
 ```
 
@@ -51,9 +53,7 @@ which sets up an RStudio server instance behind a separate container running Cad
 You can access the RStudio Server on `https://rstudio.example.com`.
 This approach also makes it easy to map ports to subdomains for cleaner-looking URLs:
 
-Example Caddyfile:
-
-```default
+```{.default filename="Caddyfile"}
 {
   you@email.com
 }
@@ -63,9 +63,7 @@ rstudio.example.com {
 }
 ```
 
-Example compose file:
-
-```yml
+```{.yml filename="compose.yml"}
 services:
   caddy:
     image: caddy:2
@@ -93,9 +91,9 @@ volumes:
   caddy_config:
 ```
 
-Example .rstudio.env file:
+In this example, the environment variable used in the rstudio container are set in the following `.env` file.
 
-```default
+```{.sh filename=".rstudio.env"}
 PASSWORD=yourpassword
 ```
 
@@ -105,7 +103,7 @@ More details about the use of [docker compose](https://docs.docker.com/compose/)
 
 Here is an example of a compose file that configures a Shiny Server that can connect to a database (PostgreSQL).
 
-```yml
+```{.yml filename="compose.yml"}
 services:
   db:
     image: postgres:13

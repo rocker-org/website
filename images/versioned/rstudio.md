@@ -1,5 +1,7 @@
 ---
 title: rstudio, tidyverse, verse, geospatial
+filters:
+  - code-filename
 ---
 
 ## Quick reference
@@ -194,7 +196,7 @@ Recent RStudio Server's configuration files are saved in the `~/.config/rstudio/
 So, if you want to manage your RStudio configuration in Git,
 you can use a compose file such as the following:
 
-```yml
+```{.yml filename="compose.yml"}
 services:
   rstudio:
     image: rocker/verse:4

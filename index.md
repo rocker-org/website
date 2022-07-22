@@ -16,7 +16,7 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/rocker-org
-    - text: Docker Hub
+    - text: "{{< fa brands docker >}} Docker Hub"
       href: https://hub.docker.com/u/rocker
 ---
 
