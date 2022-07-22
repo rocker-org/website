@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.550">
+<meta name="generator" content="quarto-1.0.35">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -36,7 +36,8 @@ ul.task-list{list-style: none;}
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,6 +79,12 @@ ul.task-list{list-style: none;}
       window['quarto-listing-loaded']();
     }
   });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 <style>
     .quarto-title-block .quarto-title-banner {
@@ -146,7 +153,7 @@ background-size: cover;
         <li class="dropdown-header">base stack</li>
         <li>
     <a class="dropdown-item" href="https://hub.docker.com/_/r-base">
- <span class="dropdown-text">r-base (Docker Official Image)</span></a>
+ <span class="dropdown-text">r-base <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../images/base/r-base.html">
@@ -252,7 +259,7 @@ background-size: cover;
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1657648769150" data-listing-reading-time-sort="1.56">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1658487173736" data-listing-reading-time-sort="1.56">
 <a href="../use/editor.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -269,7 +276,7 @@ Edit R code in the containers.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1657648769150" data-listing-reading-time-sort="5.395">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1658487173736" data-listing-reading-time-sort="5.395">
 <a href="../use/extending.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -286,7 +293,7 @@ Install your favorite packages on the containers.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1657648769150" data-listing-reading-time-sort="0.795">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1658487173736" data-listing-reading-time-sort="0.795">
 <a href="../use/gui.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -303,7 +310,7 @@ View plots etc. from the containers.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1657648769150" data-listing-reading-time-sort="2.78">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1658487173736" data-listing-reading-time-sort="2.865">
 <a href="../use/networking.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -320,7 +327,7 @@ Connect R containers to networks.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1657648769150" data-listing-reading-time-sort="0.805">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1658487173736" data-listing-reading-time-sort="0.805">
 <a href="../use/reproducibility.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -337,7 +344,7 @@ Reproducibility of Rocker Containers.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1657648769150" data-listing-reading-time-sort="1.22">
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1658487173736" data-listing-reading-time-sort="1.22">
 <a href="../use/shared_volumes.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -354,7 +361,7 @@ Use docker volumes and bind mounts to save files.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1657648769150" data-listing-reading-time-sort="4.095">
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1658487173736" data-listing-reading-time-sort="4.095">
 <a href="../use/singularity.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -378,6 +385,24 @@ No matching items
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.550">
+<meta name="generator" content="quarto-1.0.35">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -97,7 +97,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -176,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="dropdown-header">base stack</li>
         <li>
     <a class="dropdown-item" href="https://hub.docker.com/_/r-base">
- <span class="dropdown-text">r-base (Docker Official Image)</span></a>
+ <span class="dropdown-text">r-base <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./images/base/r-base.html">
@@ -285,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 30.0%;justify-content: center;">
 <figure class="figure">
 <p><a href="https://twitter.com/cboettig"><img src="img/cboettig.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Carl</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Carl</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 5.0%;justify-content: center;">
@@ -294,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 30.0%;justify-content: center;">
 <figure class="figure">
 <p><a href="https://twitter.com/eddelbuettel"><img src="img/edd.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Dirk</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Dirk</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 5.0%;justify-content: center;">
@@ -303,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 30.0%;justify-content: center;">
 <figure class="figure">
 <p><a href="https://twitter.com/noamross"><img src="img/noamross.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Noam</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Noam</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -348,13 +349,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      <span class="about-link-text">GitHub</span>
   </a>
   <a href="https://hub.docker.com/u/rocker" class="about-link">
-     <span class="about-link-text">Docker Hub</span>
+     <span class="about-link-text"><i class="fa-brands fa-docker"></i> Docker Hub</span>
   </a>
 </div>
 </div>
  <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
