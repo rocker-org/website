@@ -242,7 +242,7 @@
     "href": "images/other/r-bspm.html",
     "title": "r-bspm",
     "section": "",
-    "text": "Source repository: rocker-org/rocker\nDockerfile\n\nrocker/r-bspm:testing\nrocker/r-bspm:22.04\netc.\n\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
+    "text": "Source repository: rocker-org/bspm\nDockerfile\n\nrocker/r-bspm:testing\nrocker/r-bspm:22.04\netc.\n\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
   },
   {
     "objectID": "images/other/r-bspm.html#overview",
@@ -256,7 +256,7 @@
     "href": "images/other/r-ubuntu.html",
     "title": "r-ubuntu",
     "section": "",
-    "text": "Source repository: rocker-org/rocker\nDockerfile\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
+    "text": "Source repository: rocker-org/ubuntu-lts\nDockerfile\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
   },
   {
     "objectID": "images/other/r-ubuntu.html#overview",
