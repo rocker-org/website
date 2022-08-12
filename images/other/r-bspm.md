@@ -4,10 +4,10 @@ title: r-bspm
 
 ## Quick reference
 
-- Source repository: [rocker-org/rocker](https://github.com/rocker-org/rocker)
+- Source repository: [rocker-org/bspm](https://github.com/rocker-org/bspm)
 - Dockerfile
-  - [rocker/r-bspm:testing](https://github.com/rocker-org/rocker/blob/master/r-bspm/testing/Dockerfile)
-  - [rocker/r-bspm:22.04](https://github.com/rocker-org/rocker/blob/master/r-bspm/jammmy/Dockerfile)
+  - [rocker/r-bspm:testing](https://github.com/rocker-org/bspm/blob/master/testing/Dockerfile)
+  - [rocker/r-bspm:22.04](https://github.com/rocker-org/bspm/blob/master/jammy/Dockerfile)
   - etc.
 - tags
   - [DockerHub](https://hub.docker.com/r/rocker/r-bspm/tags)
