@@ -4,8 +4,8 @@ title: r-ubuntu
 
 ## Quick reference
 
-- Source repository: [rocker-org/rocker](https://github.com/rocker-org/rocker)
-- [Dockerfile](https://github.com/rocker-org/rocker/blob/master/r-ubuntu/jammy/Dockerfile)
+- Source repository: [rocker-org/ubuntu-lts](https://github.com/rocker-org/ubuntu-lts)
+- [Dockerfile](https://github.com/rocker-org/ubuntu-lts/blob/master/jammy/Dockerfile)
 - tags
   - [DockerHub](https://hub.docker.com/r/rocker/r-ubuntu/tags)
 - Published image details: not available
