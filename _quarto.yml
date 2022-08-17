@@ -55,7 +55,7 @@ website:
         - text: ---
         - section: Other projects
           contents:
-            - text: External images
+            - text: External images and tools for R
               href: images/external.md
     - id: use
       title: Use
