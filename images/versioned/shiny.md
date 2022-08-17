@@ -21,12 +21,14 @@ title: shiny, shiny-verse
 ## Overview
 
 These images are based on [`rocker/r-ver`](r-ver.md),
-and [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server/) is already installed.
+and [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server/) and some R packages for Shiny Server are already installed.
 
 The basic usage of these images is the same, with the difference being the amount of additional (R) packages installed.
 (See [image details](https://github.com/rocker-org/rocker-versioned2/wiki) for lists of installation packages)
 
-- `rocker/shiny-verse` has already installed [the tidyverse package](https://www.tidyverse.org/),
+- `rocker/shiny-verse` has already installed many R packages and their dependencies apt packages.
+  e.g. [the `tidyverse` package](https://www.tidyverse.org/),
+  [the `devtools` package](https://devtools.r-lib.org/),
   some [R Database Interface](https://dbi.r-dbi.org/) packages,
   [the `data.table` package](https://rdatatable.gitlab.io/data.table/), [the `fst` package](https://www.fstpackage.org/),
   and [the Apache Arrow R package](https://arrow.apache.org/docs/r/).

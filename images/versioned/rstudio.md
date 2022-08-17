@@ -36,7 +36,9 @@ and [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) 
 The basic usage of these images is the same, with the difference being the amount of additional (R) packages installed.
 (See [image details](https://github.com/rocker-org/rocker-versioned2/wiki) for lists of installation packages)
 
-- `rocker/tidyverse` has already installed [the tidyverse package](https://www.tidyverse.org/),
+- `rocker/tidyverse` has already installed many R packages and their dependencies apt packages.
+  e.g. [the `tidyverse` package](https://www.tidyverse.org/),
+  [the `devtools` package](https://devtools.r-lib.org/), [the `rmarkdown` package](https://rmarkdown.rstudio.com/),
   some [R Database Interface](https://dbi.r-dbi.org/) packages,
   [the `data.table` package](https://rdatatable.gitlab.io/data.table/), [the `fst` package](https://www.fstpackage.org/),
   and [the Apache Arrow R package](https://arrow.apache.org/docs/r/).
