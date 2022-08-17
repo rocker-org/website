@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/images/base/index.html",
+    "items": [
+      "/images/base/r-base.html",
+      "/images/base/r-devel.html"
+    ]
+  },
+  {
     "listing": "/images/versioned/index.html",
     "items": [
       "/images/versioned/binder.html",
@@ -7,13 +14,6 @@
       "/images/versioned/r-ver.html",
       "/images/versioned/rstudio.html",
       "/images/versioned/shiny.html"
-    ]
-  },
-  {
-    "listing": "/images/base/index.html",
-    "items": [
-      "/images/base/r-base.html",
-      "/images/base/r-devel.html"
     ]
   },
   {
