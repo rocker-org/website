@@ -2,7 +2,7 @@
 title: Other projects
 ---
 
-Here are some images that serve a similar purpose to the Rocker images.
+Here are some images and tools that serve a similar purpose to the Rocker images.
 Please refer to the links for more information.
 
 ## Docker images for R
@@ -40,3 +40,18 @@ These images are useful for you to run to debug your R package.
 
 A docker image for building R source packages and documentation,
 used in the [R-universe](https://r-universe.dev) build system.
+
+## Other tools
+
+### [Mamba](https://github.com/mamba-org/mamba)
+
+A package manager to install various packages from [conda-forge](https://conda-forge.org/) and others.
+
+If you use Mamba on Linux for R, it may be easier to install packages,
+see also the [Extending images](../use/extending.md#conda-forge) page.
+
+### [rig](https://github.com/r-lib/rig)
+
+An R Installation Manager (Previously known as rim).
+
+With rig, you can easily install and switch between specific versions of R.
