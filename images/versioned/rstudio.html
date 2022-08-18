@@ -413,7 +413,7 @@ background-size: cover;
   <li><a href="#disable_auth" id="toc-disable_auth" class="nav-link" data-scroll-target="#disable_auth"> <span class="header-section-number">4.1.3</span> <code>DISABLE_AUTH</code></a></li>
   <li><a href="#userid-and-groupid" id="toc-userid-and-groupid" class="nav-link" data-scroll-target="#userid-and-groupid"> <span class="header-section-number">4.1.4</span> <code>USERID</code> and <code>GROUPID</code></a></li>
   </ul></li>
-  <li><a href="#setting-files" id="toc-setting-files" class="nav-link" data-scroll-target="#setting-files"> <span class="header-section-number">4.2</span> Setting files</a></li>
+  <li><a href="#editing-work-on-rstudio-server" id="toc-editing-work-on-rstudio-server" class="nav-link" data-scroll-target="#editing-work-on-rstudio-server"> <span class="header-section-number">4.2</span> Editing work on RStudio Server</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"> <span class="header-section-number">4.3</span> See also</a></li>
   </ul></li>
   </ul>
@@ -468,7 +468,7 @@ background-size: cover;
 <p>These images are based on <a href="../../images/versioned/r-ver.html"><code>rocker/r-ver</code></a>, and <a href="https://www.rstudio.com/products/rstudio/download-server/">RStudio Server</a> is already installed.</p>
 <p>The basic usage of these images is the same, with the difference being the amount of additional (R) packages installed. (See <a href="https://github.com/rocker-org/rocker-versioned2/wiki">image details</a> for lists of installation packages)</p>
 <ul>
-<li><code>rocker/tidyverse</code> has already installed <a href="https://www.tidyverse.org/">the tidyverse package</a>, some <a href="https://dbi.r-dbi.org/">R Database Interface</a> packages, <a href="https://rdatatable.gitlab.io/data.table/">the <code>data.table</code> package</a>, <a href="https://www.fstpackage.org/">the <code>fst</code> package</a>, and <a href="https://arrow.apache.org/docs/r/">the Apache Arrow R package</a>.</li>
+<li><code>rocker/tidyverse</code> has already installed many R packages and their dependencies apt packages. e.g.&nbsp;<a href="https://www.tidyverse.org/">the <code>tidyverse</code> package</a>, <a href="https://devtools.r-lib.org/">the <code>devtools</code> package</a>, <a href="https://rmarkdown.rstudio.com/">the <code>rmarkdown</code> package</a>, some <a href="https://dbi.r-dbi.org/">R Database Interface</a> packages, <a href="https://rdatatable.gitlab.io/data.table/">the <code>data.table</code> package</a>, <a href="https://www.fstpackage.org/">the <code>fst</code> package</a>, and <a href="https://arrow.apache.org/docs/r/">the Apache Arrow R package</a>.</li>
 <li><code>rocker/verse</code> has already installed TeX Live and some publishing-related R packages, in addition to the packages installed in <code>rocker/tidyverse</code>.</li>
 <li><code>rocker/geospatial</code> has already installed some geospatial R packages in addition to the packages installed in <code>rocker/verse</code>.</li>
 </ul>
@@ -608,10 +608,15 @@ Warning
 </div>
 </section>
 </section>
-<section id="setting-files" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="setting-files"><span class="header-section-number">4.2</span> Setting files</h3>
-<p>Recent RStudio Server’s configuration files are saved in the <code>~/.config/rstudio/</code> directory<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p>So, if you want to manage your RStudio configuration in Git, you can use a compose file such as the following:</p>
+<section id="editing-work-on-rstudio-server" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="editing-work-on-rstudio-server"><span class="header-section-number">4.2</span> Editing work on RStudio Server</h3>
+<p>If you want to make repeated edits on RStudio Server, It would be useful to be able to share files edited on the container with the Docker host.</p>
+<p>Here are some hints for doing this and a sample compose file (for <a href="https://docs.docker.com/compose/">docker compose</a>).</p>
+<ol type="1">
+<li>Recent RStudio Server’s configuration files are saved in the <code>~/.config/rstudio/</code> directory<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
+<li>It is not recommended to bind-mount whole home directory on the container (<code>/home/rstudio</code>); RStudio Server may not work properly.</li>
+<li>Since RStudio Server opens the user’s home directory (<code>/home/rstudio</code>) by default, it is easier to use if a working directory is set up under <code>/home/rstudio</code>, e.g.&nbsp;<code>/home/rstudio/workspace</code>. However, for example, another directory such as the one containing CSV files should not necessarily have to be under the home directory, so it is recommended to bind-mount it under its own name directly under the root, e.g.&nbsp;<code>/other_dir</code>.</li>
+</ol>
 <div class="code-with-filename">
 <pre class="code-with-filename-file"><strong>compose.yml</strong></pre>
 <div class="sourceCode" id="cb8" data-filename="compose.yml"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
@@ -619,13 +624,18 @@ Warning
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> rocker/verse:4</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8787:8787"</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./.rstudio_config:/home/rstudio/.config/rstudio</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">PASSWORD</span><span class="kw">:</span><span class="at"> yourpassword</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./.rstudio_config:/home/rstudio/.config/rstudio</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ~/workspace:/home/rstudio/workspace</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /other_dir:/other_dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="see-also" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">4.3</span> See also</h3>
 <ul>
+<li><a href="../../use/networking.html">Networking</a></li>
 <li><a href="../../use/shared_volumes.html">Shared Volumes</a></li>
 </ul>
 
