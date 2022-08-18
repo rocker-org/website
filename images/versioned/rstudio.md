@@ -36,7 +36,9 @@ and [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) 
 The basic usage of these images is the same, with the difference being the amount of additional (R) packages installed.
 (See [image details](https://github.com/rocker-org/rocker-versioned2/wiki) for lists of installation packages)
 
-- `rocker/tidyverse` has already installed [the tidyverse package](https://www.tidyverse.org/),
+- `rocker/tidyverse` has already installed many R packages and their dependencies apt packages.
+  e.g. [the `tidyverse` package](https://www.tidyverse.org/),
+  [the `devtools` package](https://devtools.r-lib.org/), [the `rmarkdown` package](https://rmarkdown.rstudio.com/),
   some [R Database Interface](https://dbi.r-dbi.org/) packages,
   [the `data.table` package](https://rdatatable.gitlab.io/data.table/), [the `fst` package](https://www.fstpackage.org/),
   and [the Apache Arrow R package](https://arrow.apache.org/docs/r/).
@@ -187,14 +189,23 @@ This will also overwrite the ownership of any files that are bind-mounted under 
 
 :::
 
-### Setting files
+### Editing work on RStudio Server
 
-Recent RStudio Server's configuration files are saved in the `~/.config/rstudio/` directory[^rstudio_customizing].
+If you want to make repeated edits on RStudio Server,
+It would be useful to be able to share files edited on the container with the Docker host.
+
+Here are some hints for doing this and a sample compose file (for [docker compose](https://docs.docker.com/compose/)).
+
+1. Recent RStudio Server's configuration files are saved in the `~/.config/rstudio/` directory[^rstudio_customizing].
+2. It is not recommended to bind-mount whole home directory on the container (`/home/rstudio`);
+   RStudio Server may not work properly.
+3. Since RStudio Server opens the user's home directory (`/home/rstudio`) by default,
+   it is easier to use if a working directory is set up under `/home/rstudio`, e.g. `/home/rstudio/workspace`.
+   However, for example, another directory such as the one containing CSV files
+   should not necessarily have to be under the home directory,
+   so it is recommended to bind-mount it under its own name directly under the root, e.g. `/other_dir`.
 
 [^rstudio_customizing]: [RStudio Workbench Administration Guide](https://docs.rstudio.com/ide/server-pro/r_sessions/customizing_session_settings.html)
-
-So, if you want to manage your RStudio configuration in Git,
-you can use a compose file such as the following:
 
 ```{.yml filename="compose.yml"}
 services:
@@ -202,10 +213,15 @@ services:
     image: rocker/verse:4
     ports:
       - "8787:8787"
+    environment:
+      PASSWORD: yourpassword
     volumes:
       - ./.rstudio_config:/home/rstudio/.config/rstudio
+      - ~/workspace:/home/rstudio/workspace
+      - /other_dir:/other_dir
 ```
 
 ### See also
 
+- [Networking](../../use/networking.md)
 - [Shared Volumes](../../use/shared_volumes.md)
