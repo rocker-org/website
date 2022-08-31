@@ -1,7 +1,5 @@
 ---
 title: rstudio, tidyverse, verse, geospatial
-filters:
-  - code-filename
 ---
 
 ## Quick reference

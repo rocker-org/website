@@ -3,8 +3,6 @@ title: Networking
 description: Connect R containers to networks.
 aliases:
   - /use/networking/
-filters:
-  - code-filename
 ---
 
 ## Corporate Proxy

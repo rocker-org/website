@@ -53,4 +53,3 @@ installed from external repositories.
 Please refer to these repositories for information on these licenses.
 
 - [quarto-ext/fontawesome](https://github.com/quarto-ext/fontawesome)
-- [quarto-ext/code-filename](https://github.com/quarto-ext/code-filename)
