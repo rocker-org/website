@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.1.165">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -73,10 +78,14 @@ background-size: cover;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
-    <img src="../img/rocker-bw.png" alt="">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/rocker-bw.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Rocker Project</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -307,7 +316,6 @@ background-size: cover;
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other projects</a>
@@ -328,23 +336,23 @@ background-size: cover;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#docker-images-for-r" id="toc-docker-images-for-r" class="nav-link active" data-scroll-target="#docker-images-for-r"> <span class="header-section-number">1</span> Docker images for R</a>
-  <ul class="collapse">
-  <li><a href="#jupyter-docker-stacks" id="toc-jupyter-docker-stacks" class="nav-link" data-scroll-target="#jupyter-docker-stacks"> <span class="header-section-number">1.1</span> <span>Jupyter Docker Stacks</span></a></li>
-  <li><a href="#r-hubr-minimal" id="toc-r-hubr-minimal" class="nav-link" data-scroll-target="#r-hubr-minimal"> <span class="header-section-number">1.2</span> <span>r-hub/r-minimal</span></a></li>
-  <li><a href="#rstudio-r-docker-images" id="toc-rstudio-r-docker-images" class="nav-link" data-scroll-target="#rstudio-r-docker-images"> <span class="header-section-number">1.3</span> <span>RStudio R Docker Images</span></a></li>
-  <li><a href="#docker-containers-for-bioconductor" id="toc-docker-containers-for-bioconductor" class="nav-link" data-scroll-target="#docker-containers-for-bioconductor"> <span class="header-section-number">1.4</span> <span>Docker containers for Bioconductor</span></a></li>
-  <li><a href="#rhub-linux-builders" id="toc-rhub-linux-builders" class="nav-link" data-scroll-target="#rhub-linux-builders"> <span class="header-section-number">1.5</span> <span>rhub-linux-builders</span></a></li>
-  <li><a href="#runiversebase" id="toc-runiversebase" class="nav-link" data-scroll-target="#runiversebase"> <span class="header-section-number">1.6</span> <span>runiverse/base</span></a></li>
+  <li><a href="#docker-images-for-r" id="toc-docker-images-for-r" class="nav-link active" data-scroll-target="#docker-images-for-r"><span class="toc-section-number">1</span>  Docker images for R</a>
+  <ul>
+  <li><a href="#jupyter-docker-stacks" id="toc-jupyter-docker-stacks" class="nav-link" data-scroll-target="#jupyter-docker-stacks"><span class="toc-section-number">1.1</span>  Jupyter Docker Stacks</a></li>
+  <li><a href="#r-hubr-minimal" id="toc-r-hubr-minimal" class="nav-link" data-scroll-target="#r-hubr-minimal"><span class="toc-section-number">1.2</span>  r-hub/r-minimal</a></li>
+  <li><a href="#rstudio-r-docker-images" id="toc-rstudio-r-docker-images" class="nav-link" data-scroll-target="#rstudio-r-docker-images"><span class="toc-section-number">1.3</span>  RStudio R Docker Images</a></li>
+  <li><a href="#docker-containers-for-bioconductor" id="toc-docker-containers-for-bioconductor" class="nav-link" data-scroll-target="#docker-containers-for-bioconductor"><span class="toc-section-number">1.4</span>  Docker containers for Bioconductor</a></li>
+  <li><a href="#rhub-linux-builders" id="toc-rhub-linux-builders" class="nav-link" data-scroll-target="#rhub-linux-builders"><span class="toc-section-number">1.5</span>  rhub-linux-builders</a></li>
+  <li><a href="#runiversebase" id="toc-runiversebase" class="nav-link" data-scroll-target="#runiversebase"><span class="toc-section-number">1.6</span>  runiverse/base</a></li>
   </ul></li>
-  <li><a href="#other-tools" id="toc-other-tools" class="nav-link" data-scroll-target="#other-tools"> <span class="header-section-number">2</span> Other tools</a>
-  <ul class="collapse">
-  <li><a href="#mamba" id="toc-mamba" class="nav-link" data-scroll-target="#mamba"> <span class="header-section-number">2.1</span> <span>Mamba</span></a></li>
-  <li><a href="#rig" id="toc-rig" class="nav-link" data-scroll-target="#rig"> <span class="header-section-number">2.2</span> <span>rig</span></a></li>
+  <li><a href="#other-tools" id="toc-other-tools" class="nav-link" data-scroll-target="#other-tools"><span class="toc-section-number">2</span>  Other tools</a>
+  <ul>
+  <li><a href="#mamba" id="toc-mamba" class="nav-link" data-scroll-target="#mamba"><span class="toc-section-number">2.1</span>  Mamba</a></li>
+  <li><a href="#rig" id="toc-rig" class="nav-link" data-scroll-target="#rig"><span class="toc-section-number">2.2</span>  rig</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/images/external.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/images/external.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -470,7 +478,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);

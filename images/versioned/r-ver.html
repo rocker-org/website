@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.1.165">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -136,10 +141,14 @@ background-size: cover;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../../index.html">
-    <img src="../../img/rocker-bw.png" alt="">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/rocker-bw.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Rocker Project</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -370,7 +379,6 @@ background-size: cover;
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other projects</a>
@@ -391,24 +399,24 @@ background-size: cover;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link active" data-scroll-target="#quick-reference"> <span class="header-section-number">1</span> Quick reference</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"> <span class="header-section-number">2</span> Overview</a></li>
-  <li><a href="#spacial-tags" id="toc-spacial-tags" class="nav-link" data-scroll-target="#spacial-tags"> <span class="header-section-number">3</span> Spacial tags</a>
-  <ul class="collapse">
-  <li><a href="#devel" id="toc-devel" class="nav-link" data-scroll-target="#devel"> <span class="header-section-number">3.1</span> <code>devel</code></a></li>
-  <li><a href="#cuda" id="toc-cuda" class="nav-link" data-scroll-target="#cuda"> <span class="header-section-number">3.2</span> <code>cuda</code></a></li>
+  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link active" data-scroll-target="#quick-reference"><span class="toc-section-number">1</span>  Quick reference</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="toc-section-number">2</span>  Overview</a></li>
+  <li><a href="#spacial-tags" id="toc-spacial-tags" class="nav-link" data-scroll-target="#spacial-tags"><span class="toc-section-number">3</span>  Spacial tags</a>
+  <ul>
+  <li><a href="#devel" id="toc-devel" class="nav-link" data-scroll-target="#devel"><span class="toc-section-number">3.1</span>  <code>devel</code></a></li>
+  <li><a href="#cuda" id="toc-cuda" class="nav-link" data-scroll-target="#cuda"><span class="toc-section-number">3.2</span>  <code>cuda</code></a></li>
   </ul></li>
-  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use"> <span class="header-section-number">4</span> How to use</a>
+  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use"><span class="toc-section-number">4</span>  How to use</a>
+  <ul>
+  <li><a href="#switch-the-default-cran-mirror" id="toc-switch-the-default-cran-mirror" class="nav-link" data-scroll-target="#switch-the-default-cran-mirror"><span class="toc-section-number">4.1</span>  Switch the default CRAN mirror</a></li>
+  <li><a href="#selecting-the-blas-implementation-used-by-r" id="toc-selecting-the-blas-implementation-used-by-r" class="nav-link" data-scroll-target="#selecting-the-blas-implementation-used-by-r"><span class="toc-section-number">4.2</span>  Selecting the BLAS implementation used by R</a>
   <ul class="collapse">
-  <li><a href="#switch-the-default-cran-mirror" id="toc-switch-the-default-cran-mirror" class="nav-link" data-scroll-target="#switch-the-default-cran-mirror"> <span class="header-section-number">4.1</span> Switch the default CRAN mirror</a></li>
-  <li><a href="#selecting-the-blas-implementation-used-by-r" id="toc-selecting-the-blas-implementation-used-by-r" class="nav-link" data-scroll-target="#selecting-the-blas-implementation-used-by-r"> <span class="header-section-number">4.2</span> Selecting the BLAS implementation used by R</a>
-  <ul class="collapse">
-  <li><a href="#checking-which-blas-is-in-use" id="toc-checking-which-blas-is-in-use" class="nav-link" data-scroll-target="#checking-which-blas-is-in-use"> <span class="header-section-number">4.2.1</span> Checking which BLAS is in use</a></li>
-  <li><a href="#switching-blas-implementations" id="toc-switching-blas-implementations" class="nav-link" data-scroll-target="#switching-blas-implementations"> <span class="header-section-number">4.2.2</span> Switching BLAS implementations</a></li>
+  <li><a href="#checking-which-blas-is-in-use" id="toc-checking-which-blas-is-in-use" class="nav-link" data-scroll-target="#checking-which-blas-is-in-use"><span class="toc-section-number">4.2.1</span>  Checking which BLAS is in use</a></li>
+  <li><a href="#switching-blas-implementations" id="toc-switching-blas-implementations" class="nav-link" data-scroll-target="#switching-blas-implementations"><span class="toc-section-number">4.2.2</span>  Switching BLAS implementations</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -540,11 +548,11 @@ Warning
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1" role="doc-endnote"><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS">R Installation and Administration A.3.1 BLAS</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS">R Installation and Administration A.3.1.4 Shared BLAS</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS">R Installation and Administration A.3.1 BLAS</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS">R Installation and Administration A.3.1.4 Shared BLAS</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -616,7 +624,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);

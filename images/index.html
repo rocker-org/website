@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.1.165">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -74,10 +79,14 @@ background-size: cover;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
-    <img src="../img/rocker-bw.png" alt="">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/rocker-bw.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Rocker Project</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -313,7 +322,6 @@ background-size: cover;
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other projects</a>
@@ -334,16 +342,16 @@ background-size: cover;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"> <span class="header-section-number">1</span> Overview</a></li>
-  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images"> <span class="header-section-number">2</span> Images</a>
-  <ul class="collapse">
-  <li><a href="#the-versioned-stack" id="toc-the-versioned-stack" class="nav-link" data-scroll-target="#the-versioned-stack"> <span class="header-section-number">2.1</span> The versioned stack</a></li>
-  <li><a href="#the-base-stack" id="toc-the-base-stack" class="nav-link" data-scroll-target="#the-base-stack"> <span class="header-section-number">2.2</span> The base stack</a></li>
-  <li><a href="#additional-images" id="toc-additional-images" class="nav-link" data-scroll-target="#additional-images"> <span class="header-section-number">2.3</span> Additional images</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="toc-section-number">1</span>  Overview</a></li>
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images"><span class="toc-section-number">2</span>  Images</a>
+  <ul>
+  <li><a href="#the-versioned-stack" id="toc-the-versioned-stack" class="nav-link" data-scroll-target="#the-versioned-stack"><span class="toc-section-number">2.1</span>  The versioned stack</a></li>
+  <li><a href="#the-base-stack" id="toc-the-base-stack" class="nav-link" data-scroll-target="#the-base-stack"><span class="toc-section-number">2.2</span>  The base stack</a></li>
+  <li><a href="#additional-images" id="toc-additional-images" class="nav-link" data-scroll-target="#additional-images"><span class="toc-section-number">2.3</span>  Additional images</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/images/index.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/images/index.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -599,7 +607,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
