@@ -13,7 +13,7 @@ See also: [GUI](gui.md)
 [RStudio IDE](https://www.rstudio.com/products/rstudio/) is the most popular IDE for R.
 
 To use RStudio IDE on a container,
-[RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) is installed in the container.
+[RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) should be installed in the container.
 
 There are images [`rocker/rstudio` etc.](../images/versioned/rstudio.md) with RStudio Server installed,
 which can be used to immediately run RStudio Server.
