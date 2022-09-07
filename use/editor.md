@@ -78,7 +78,7 @@ and also installs [`radian`](https://github.com/randy3k/radian) as R console.
 
 This definition can also be used in [GitHub Codespaces](https://github.com/features/codespaces).
 
-### coder/code-server and  gitpod-io/openvscode-server
+### coder/code-server and gitpod-io/openvscode-server
 
 Both [coder's code-server](https://github.com/coder/code-server) and [gitpod's openvscode-server](https://github.com/gitpod-io/openvscode-server)
 can run VSCode server-side and use VSCode from a browser.
