@@ -349,7 +349,7 @@ background-size: cover;
   <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode"><span class="toc-section-number">3</span>  VSCode</a>
   <ul>
   <li><a href="#visual-studio-code-remote---containers" id="toc-visual-studio-code-remote---containers" class="nav-link" data-scroll-target="#visual-studio-code-remote---containers"><span class="toc-section-number">3.1</span>  Visual Studio Code Remote - Containers</a></li>
-  <li><a href="#code-serveropenvscode-server" id="toc-code-serveropenvscode-server" class="nav-link" data-scroll-target="#code-serveropenvscode-server"><span class="toc-section-number">3.2</span>  code-server/openvscode-server</a></li>
+  <li><a href="#codercode-server-and-gitpod-ioopenvscode-server" id="toc-codercode-server-and-gitpod-ioopenvscode-server" class="nav-link" data-scroll-target="#codercode-server-and-gitpod-ioopenvscode-server"><span class="toc-section-number">3.2</span>  coder/code-server and gitpod-io/openvscode-server</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/use/editor.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/use/editor.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -364,7 +364,8 @@ background-size: cover;
 <p>See also: <a href="../use/gui.html">GUI</a></p>
 <section id="rstudio-ide" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="rstudio-ide"><span class="header-section-number">1</span> RStudio IDE</h2>
-<p>To use RStudio IDE on a container, <a href="https://www.rstudio.com/products/rstudio/download-server/">RStudio Server</a> is installed in the container.</p>
+<p><a href="https://www.rstudio.com/products/rstudio/">RStudio IDE</a> is the most popular IDE for R.</p>
+<p>To use RStudio IDE on a container, <a href="https://www.rstudio.com/products/rstudio/download-server/">RStudio Server</a> should be installed in the container.</p>
 <p>There are images <a href="../images/versioned/rstudio.html"><code>rocker/rstudio</code> etc.</a> with RStudio Server installed, which can be used to immediately run RStudio Server.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8787:8787 rocker/rstudio:4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For more information on how to use these images, please check the image reference pages.</p>
@@ -402,9 +403,9 @@ Tip
 <p>The Remote - Containers extension also includes ready-to-use sample definition files. The R’s definition is <a href="https://github.com/microsoft/vscode-dev-containers/tree/main/containers/r">this</a>, which installs <code>languageserver</code> and <code>httpgd</code>, and also installs <a href="https://github.com/randy3k/radian"><code>radian</code></a> as R console.</p>
 <p>This definition can also be used in <a href="https://github.com/features/codespaces">GitHub Codespaces</a>.</p>
 </section>
-<section id="code-serveropenvscode-server" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="code-serveropenvscode-server"><span class="header-section-number">3.2</span> code-server/openvscode-server</h3>
-<p>Both <a href="https://github.com/coder/code-server">code-server</a> and <a href="https://github.com/gitpod-io/openvscode-server">openvscode-server</a> can run VSCode server-side and use VSCode from a browser. They can also be installed and used inside Docker containers.</p>
+<section id="codercode-server-and-gitpod-ioopenvscode-server" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="codercode-server-and-gitpod-ioopenvscode-server"><span class="header-section-number">3.2</span> coder/code-server and gitpod-io/openvscode-server</h3>
+<p>Both <a href="https://github.com/coder/code-server">coder’s code-server</a> and <a href="https://github.com/gitpod-io/openvscode-server">gitpod’s openvscode-server</a> can run VSCode server-side and use VSCode from a browser. They can also be installed and used inside Docker containers.</p>
 
 
 </section>
