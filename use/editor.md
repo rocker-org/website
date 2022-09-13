@@ -10,8 +10,10 @@ See also: [GUI](gui.md)
 
 ## RStudio IDE
 
+[RStudio IDE](https://www.rstudio.com/products/rstudio/) is the most popular IDE for R.
+
 To use RStudio IDE on a container,
-[RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) is installed in the container.
+[RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) should be installed in the container.
 
 There are images [`rocker/rstudio` etc.](../images/versioned/rstudio.md) with RStudio Server installed,
 which can be used to immediately run RStudio Server.
@@ -74,11 +76,10 @@ The R's definition is [this](https://github.com/microsoft/vscode-dev-containers/
 which installs `languageserver` and `httpgd`,
 and also installs [`radian`](https://github.com/randy3k/radian) as R console.
 
-
 This definition can also be used in [GitHub Codespaces](https://github.com/features/codespaces).
 
-### code-server/openvscode-server
+### coder/code-server and gitpod-io/openvscode-server
 
-Both [code-server](https://github.com/coder/code-server) and [openvscode-server](https://github.com/gitpod-io/openvscode-server)
+Both [coder's code-server](https://github.com/coder/code-server) and [gitpod's openvscode-server](https://github.com/gitpod-io/openvscode-server)
 can run VSCode server-side and use VSCode from a browser.
 They can also be installed and used inside Docker containers.
