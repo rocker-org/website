@@ -347,14 +347,14 @@
     "href": "use/singularity.html#running-a-rocker-singularity-container-localhost-no-password",
     "title": "Singularity",
     "section": "2 Running a Rocker Singularity container (localhost, no password)",
-    "text": "2 Running a Rocker Singularity container (localhost, no password)\nmkdir -p run var-lib-rstudio-server\n\nprintf 'provider=sqlite\\ndirectory=/var/lib/rstudio-server\\n' > database.conf\n\nsingularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.sif rserver --www-address=127.0.0.1\nThis will run rserver in a Singularity container. The --www-address=127.0.0.1 option binds to localhost (the default is 0.0.0.0, or all IP addresses on the host). listening on 127.0.0.1:8787."
+    "text": "2 Running a Rocker Singularity container (localhost, no password)\nmkdir -p run var-lib-rstudio-server\n\nprintf 'provider=sqlite\\ndirectory=/var/lib/rstudio-server\\n' > database.conf\n\nsingularity exec \\\n   --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf \\\n   rstudio_4.2.sif \\\n   /usr/lib/rstudio-server/bin/rserver --www-address=127.0.0.1\nThis will run rserver in a Singularity container. The --www-address=127.0.0.1 option binds to localhost (the default is 0.0.0.0, or all IP addresses on the host). listening on 127.0.0.1:8787."
   },
   {
     "objectID": "use/singularity.html#running-a-rocker-singularity-container-with-password-authentication",
     "href": "use/singularity.html#running-a-rocker-singularity-container-with-password-authentication",
     "title": "Singularity",
     "section": "3 Running a Rocker Singularity container with password authentication",
-    "text": "3 Running a Rocker Singularity container with password authentication\nTo enable password authentication, set the PASSWORD environment variable and add the --auth-none=0 --auth-pam-helper-path=pam-helper options:\nPASSWORD='...' singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.sif rserver --auth-none=0  --auth-pam-helper-path=pam-helper\nAfter pointing your browser to http://hostname:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable."
+    "text": "3 Running a Rocker Singularity container with password authentication\nTo enable password authentication, set the PASSWORD environment variable and add the --auth-none=0 --auth-pam-helper-path=pam-helper options:\nPASSWORD='...' singularity exec \\\n   --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf \\\n   rstudio_4.2.sif \\\n   /usr/lib/rstudio-server/bin/rserver --auth-none=0 --auth-pam-helper-path=pam-helper\nAfter pointing your browser to http://hostname:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable."
   },
   {
     "objectID": "use/singularity.html#additional-options-for-rstudio-1.3.x",
