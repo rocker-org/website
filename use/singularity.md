@@ -13,7 +13,7 @@ Rocker images can be imported and run using Singularity, with optional custom pa
 Use the `singularity pull` command to import the desired Rocker image from Docker Hub into a (compressed, read-only) Singularity Image File:
 
 ```bash
-singularity pull docker://rocker/rstudio:4.0.4
+singularity pull docker://rocker/rstudio:4.2
 ```
 
 If additional Debian (or other) software packages are needed, a Rocker base image can be extended in a [Singularity definition file](https://sylabs.io/guides/3.7/user-guide/definition_files.html).
@@ -28,7 +28,7 @@ mkdir -p run var-lib-rstudio-server
 
 printf 'provider=sqlite\ndirectory=/var/lib/rstudio-server\n' > database.conf
 
-singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.0.4.sif rserver --www-address=127.0.0.1
+singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.sif rserver --www-address=127.0.0.1
 ```
 
 This will run rserver in a Singularity container.
@@ -40,7 +40,7 @@ listening on 127.0.0.1:8787.
 To enable password authentication, set the PASSWORD environment variable and add the `--auth-none=0 --auth-pam-helper-path=pam-helper` options:
 
 ```bash
-PASSWORD='...' singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.0.4.sif rserver --auth-none=0  --auth-pam-helper-path=pam-helper
+PASSWORD='...' singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.sif rserver --auth-none=0  --auth-pam-helper-path=pam-helper
 ```
 
 After pointing your browser to http://_hostname_:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.
@@ -90,8 +90,8 @@ END
 cat > ${workdir}/rsession.sh <<END
 #!/bin/sh
 export OMP_NUM_THREADS=${SLURM_JOB_CPUS_PER_NODE}
-export R_LIBS_USER=${HOME}/R/rocker-rstudio/4.0
-exec rsession "\${@}"
+export R_LIBS_USER=${HOME}/R/rocker-rstudio/4.2
+exec /usr/lib/rstudio-server/bin/rsession "\${@}"
 END
 
 chmod +x ${workdir}/rsession.sh
@@ -128,8 +128,8 @@ When done using RStudio Server, terminate the job by:
       scancel -f ${SLURM_JOB_ID}
 END
 
-singularity exec --cleanenv rstudio_4.0.4.sif \
-    rserver --www-port ${PORT} \
+singularity exec --cleanenv rstudio_4.2.sif \
+    /usr/lib/rstudio-server/bin/rserver --www-port ${PORT} \
             --auth-none=0 \
             --auth-pam-helper-path=pam-helper \
             --auth-stay-signed-in-days=30 \
