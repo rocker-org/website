@@ -28,7 +28,10 @@ mkdir -p run var-lib-rstudio-server
 
 printf 'provider=sqlite\ndirectory=/var/lib/rstudio-server\n' > database.conf
 
-singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.sif rserver --www-address=127.0.0.1
+singularity exec \
+   --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf \
+   rstudio_4.2.sif \
+   /usr/lib/rstudio-server/bin/rserver --www-address=127.0.0.1
 ```
 
 This will run rserver in a Singularity container.
@@ -40,7 +43,10 @@ listening on 127.0.0.1:8787.
 To enable password authentication, set the PASSWORD environment variable and add the `--auth-none=0 --auth-pam-helper-path=pam-helper` options:
 
 ```bash
-PASSWORD='...' singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.sif rserver --auth-none=0  --auth-pam-helper-path=pam-helper
+PASSWORD='...' singularity exec \
+   --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf \
+   rstudio_4.2.sif \
+   /usr/lib/rstudio-server/bin/rserver --auth-none=0 --auth-pam-helper-path=pam-helper
 ```
 
 After pointing your browser to http://_hostname_:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.
