@@ -54,7 +54,7 @@ This stack builds on `debian:testing` and Debian ustable repo.
 Use this stack if you want access to the latest versions of system libraries and compilers through `apt-get`.
 
 `r-base` (Docker Official image) and `rocker/r-base` are built from the same Dockerfile,
-but with different build systems.
+but with different build tools.
 
 ### Additional images
 

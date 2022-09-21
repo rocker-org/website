@@ -16,5 +16,5 @@ title: r-base
 Install current R from unstable repos.
 
 [`r-base`](https://hub.docker.com/_/r-base) and `rocker/r-base` are built from the same Dockerfile,
-but with different build systems.
+but with different build tools.
 The timing of updates and available platforms are different.
