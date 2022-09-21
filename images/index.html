@@ -451,7 +451,7 @@ background-size: cover;
 </table>
 <p>This stack builds on stable Debian releases (for R versions &lt;= <code>3.6.3</code>) or Ubuntu LTS (for R versions &gt;= <code>4.0.0</code>). Images in this stack accept a version tag specifying which version of R is desired, e.g.&nbsp;<code>rocker/rstudio:4.0.0</code> for R <code>4.0.0</code>. The <code>latest</code> tag always follows the latest release version of R.</p>
 <p>Some images (e.g.&nbsp;<code>rocker/r-ver</code>) also have the <code>devel</code> tag, which installs the development version of R.</p>
-<p>Version-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available (though Debian system libraries will still receive any security patches.)</p>
+<p>Version-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available, though Debian system libraries will still receive any security patches. Please check <a href="https://github.com/rocker-org/rocker-versioned2/wiki/Versions">the document about versions</a> for details.</p>
 </section>
 <section id="the-base-stack" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="the-base-stack"><span class="header-section-number">2.2</span> The base stack</h3>
@@ -504,7 +504,7 @@ background-size: cover;
 </tbody>
 </table>
 <p>This stack builds on <code>debian:testing</code> and Debian ustable repo. Use this stack if you want access to the latest versions of system libraries and compilers through <code>apt-get</code>.</p>
-<p><code>r-base</code> (Docker Official image) and <code>rocker/r-base</code> are built from the same Dockerfile, but with different build systems.</p>
+<p><code>r-base</code> (Docker Official image) and <code>rocker/r-base</code> are built from the same Dockerfile, but with different build tools.</p>
 </section>
 <section id="additional-images" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="additional-images"><span class="header-section-number">2.3</span> Additional images</h3>
