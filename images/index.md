@@ -35,8 +35,9 @@ The `latest` tag always follows the latest release version of R.
 Some images (e.g. `rocker/r-ver`) also have the `devel` tag, which installs the development version of R.
 
 Version-tagged images are designed to be stable, consistently providing the same versions of all software
-(R, R packages, system libraries) rather than the latest available
-(though Debian system libraries will still receive any security patches.)
+(R, R packages, system libraries) rather than the latest available,
+though Debian system libraries will still receive any security patches.
+Please check [the document about versions](https://github.com/rocker-org/rocker-versioned2/wiki/Versions) for details.
 
 ### The base stack
 
@@ -53,7 +54,7 @@ This stack builds on `debian:testing` and Debian ustable repo.
 Use this stack if you want access to the latest versions of system libraries and compilers through `apt-get`.
 
 `r-base` (Docker Official image) and `rocker/r-base` are built from the same Dockerfile,
-but with different build systems.
+but with different build tools.
 
 ### Additional images
 
