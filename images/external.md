@@ -62,7 +62,7 @@ These images are useful for you to run to debug your R package.
 ### [runiverse/base](https://github.com/r-universe-org/base-image)
 
 A docker image for building R source packages and documentation,
-used in the [R-universe](https://r-universe.dev) build system.
+used in the [R-universe](https://r-universe.dev) build tool.
 
 ## Docker images for Python
 
