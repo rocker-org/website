@@ -87,23 +87,3 @@ R.
 It is meant for installing
 [official releases of R source code](https://cran.r-project.org/src/base/)
 on Debian-based Linux distributions, e.g. Ubuntu, using a docker container.
-
-### [gsi](https://github.com/b-data/gsi)
-
-Intended for system administrators who want to perform a source-installation of
-[Git](https://github.com/git/git).
-
-It is meant for installing
-[tagged Git releases](https://github.com/git/git/tags) on Debian-based Linux
-distributions, e.g. Ubuntu, using a docker container.
-
-### [glfsi](https://github.com/b-data/glfsi)
-
-Intended for system administrators who want to perform an installation of Git
-LFS on any Linux distribution using a docker container.
-
-### [ghc4pandoc](https://github.com/benz0li/ghc4pandoc)
-
-The multi-arch (`linux/amd64`, `linux/arm64/v8`) docker image used to build the
-Linux amd64 and arm64 binary
-[releases of pandoc](https://github.com/jgm/pandoc/releases).
