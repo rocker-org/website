@@ -18,7 +18,7 @@ such as [`jupyter/r-notebook`](https://jupyter-docker-stacks.readthedocs.io/en/l
 and [`jupyter/datascience-notebook`](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook),
 so you can immediately run R on Jupyter.
 
-### [JupyterLab R docker stack](https://github.com/b-data/jupyterlab-r-docker-stack)
+### [b-data/jupyterlab-r-docker-stack](https://github.com/b-data/jupyterlab-r-docker-stack)
 
 Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images:
 
@@ -29,7 +29,7 @@ Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images:
 * [`registry.gitlab.b-data.ch/jupyterlab/r/geospatial`](https://gitlab.b-data.ch/jupyterlab/r/geospatial/container_registry)  
 
 Images considered stable for R versions ≥ 4.2.0. Differences to
-[The Rocker Images](/images) and the
+[The Rocker versioned stack](../index.md) and the
 [Jupyter Docker Stacks](#jupyter-docker-stacks):
 
 1. Multi-arch: `linux/amd64`, `linux/arm64/v8`  
