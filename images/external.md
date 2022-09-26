@@ -22,14 +22,14 @@ so you can immediately run R on Jupyter.
 
 Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images:
 
-* [`registry.gitlab.b-data.ch/jupyterlab/r/base`](https://gitlab.b-data.ch/jupyterlab/r/base/container_registry)  
+* [`registry.gitlab.b-data.ch/jupyterlab/r/base`](https://gitlab.b-data.ch/jupyterlab/r/base/container_registry)
   * [`registry.gitlab.b-data.ch/jupyterlab/r/r-ver`](https://gitlab.b-data.ch/jupyterlab/r/r-ver/container_registry) (4.0.4 ≤ version < 4.2.0)
-* [`registry.gitlab.b-data.ch/jupyterlab/r/tidyverse`](https://gitlab.b-data.ch/jupyterlab/r/tidyverse/container_registry)  
-* [`registry.gitlab.b-data.ch/jupyterlab/r/verse`](https://gitlab.b-data.ch/jupyterlab/r/verse/container_registry)  
-* [`registry.gitlab.b-data.ch/jupyterlab/r/geospatial`](https://gitlab.b-data.ch/jupyterlab/r/geospatial/container_registry)  
+* [`registry.gitlab.b-data.ch/jupyterlab/r/tidyverse`](https://gitlab.b-data.ch/jupyterlab/r/tidyverse/container_registry)
+* [`registry.gitlab.b-data.ch/jupyterlab/r/verse`](https://gitlab.b-data.ch/jupyterlab/r/verse/container_registry)
+* [`registry.gitlab.b-data.ch/jupyterlab/r/geospatial`](https://gitlab.b-data.ch/jupyterlab/r/geospatial/container_registry)
 
 Images considered stable for R versions ≥ 4.2.0. Differences to
-[The Rocker Images](/images) and the
+[The Rocker versioned stack](../index.md) and the
 [Jupyter Docker Stacks](#jupyter-docker-stacks):
 
 1. Multi-arch: `linux/amd64`, `linux/arm64/v8`  
