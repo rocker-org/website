@@ -64,40 +64,6 @@ These images are useful for you to run to debug your R package.
 A docker image for building R source packages and documentation,
 used in the [R-universe](https://r-universe.dev) build tool.
 
-## Docker images for Python
-
-### [JupyterLab Python docker stack](https://github.com/b-data/jupyterlab-python-docker-stack)
-
-Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images:
-
-* [`registry.gitlab.b-data.ch/jupyterlab/python/base`](https://gitlab.b-data.ch/jupyterlab/python/base/container_registry)
-* [`registry.gitlab.b-data.ch/jupyterlab/python/scipy`](https://gitlab.b-data.ch/jupyterlab/python/scipy/container_registry)
-
-Images considered stable for Python versions ≥ 3.10.5. Differences to the
-[Jupyter Docker Stacks](#jupyter-docker-stacks):
-
-1. Multi-arch: `linux/amd64`, `linux/arm64/v8`
-1. Base image: [Debian](https://hub.docker.com/_/debian) instead of
-   [Ubuntu](https://hub.docker.com/_/ubuntu)
-1. IDE: [code-server](https://github.com/coder/code-server) next to
-   [JupyterLab](https://github.com/jupyterlab/jupyterlab)
-1. Just Python – no [Conda](https://github.com/conda/conda) /
-   [Mamba](https://github.com/mamba-org/mamba)
-
-## Docker images for Julia
-
-### [JupyterLab Julia docker stack](https://github.com/b-data/jupyterlab-julia-docker-stack)
-
-Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images:
-
-* [`registry.gitlab.b-data.ch/jupyterlab/julia/base`](https://gitlab.b-data.ch/jupyterlab/julia/base/container_registry)
-  * [`registry.gitlab.b-data.ch/jupyterlab/julia/ver`](https://gitlab.b-data.ch/jupyterlab/julia/ver/container_registry) (1.5.4 ≤ version < 1.7.3)
-* [`registry.gitlab.b-data.ch/jupyterlab/julia/pubtools`](https://gitlab.b-data.ch/jupyterlab/julia/pubtools/container_registry)
-
-Images considered stable for Julia versions ≥ 1.7.3. For the differences to the
-[Jupyter Docker Stacks](#jupyter-docker-stacks) see
-[JupyterLab Python docker stack](#jupyterlab-python-docker-stack).
-
 ## Other tools
 
 ### [Mamba](https://github.com/mamba-org/mamba)
