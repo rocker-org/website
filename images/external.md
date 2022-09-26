@@ -20,26 +20,10 @@ so you can immediately run R on Jupyter.
 
 ### [b-data/jupyterlab-r-docker-stack](https://github.com/b-data/jupyterlab-r-docker-stack)
 
-Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images:
+Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images based on
+[Debian](https://hub.docker.com/_/debian) including [code-server](https://github.com/coder/code-server).
 
-* [`registry.gitlab.b-data.ch/jupyterlab/r/base`](https://gitlab.b-data.ch/jupyterlab/r/base/container_registry)
-  * [`registry.gitlab.b-data.ch/jupyterlab/r/r-ver`](https://gitlab.b-data.ch/jupyterlab/r/r-ver/container_registry) (4.0.4 ≤ version < 4.2.0)
-* [`registry.gitlab.b-data.ch/jupyterlab/r/tidyverse`](https://gitlab.b-data.ch/jupyterlab/r/tidyverse/container_registry)
-* [`registry.gitlab.b-data.ch/jupyterlab/r/verse`](https://gitlab.b-data.ch/jupyterlab/r/verse/container_registry)
-* [`registry.gitlab.b-data.ch/jupyterlab/r/geospatial`](https://gitlab.b-data.ch/jupyterlab/r/geospatial/container_registry)
-
-Images considered stable for R versions ≥ 4.2.0. Differences to
-[The Rocker versioned stack](../index.md) and the
-[Jupyter Docker Stacks](#jupyter-docker-stacks):
-
-1. Multi-arch: `linux/amd64`, `linux/arm64/v8`  
-   → Since R v4.0.4 (2021-02-15)
-1. Base image: [Debian](https://hub.docker.com/_/debian) instead of
-   [Ubuntu](https://hub.docker.com/_/ubuntu)
-1. IDE: [code-server](https://github.com/coder/code-server) instead of
-   [RStudio](https://github.com/rstudio/rstudio)
-1. Just Python – no [Conda](https://github.com/conda/conda) /
-   [Mamba](https://github.com/mamba-org/mamba)
+Images considered stable for R versions ≥ 4.2.0.
 
 ### [r-hub/r-minimal](https://github.com/r-hub/r-minimal)
 
