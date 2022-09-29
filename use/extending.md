@@ -175,7 +175,7 @@ RUN mamba install -y r-curl \
 :::{.callout-note}
 
 Package versions may differ due to CPU architecture (amd64 and arm64).
-Please chack package pages on conda-forge for details.
+Please check package pages on conda-forge for details.
 
 :::
 
