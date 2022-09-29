@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/images/other/index.html",
+    "items": [
+      "/images/other/r-bspm.html",
+      "/images/other/r-ubuntu.html"
+    ]
+  },
+  {
     "listing": "/images/base/index.html",
     "items": [
       "/images/base/r-base.html",
@@ -14,13 +21,6 @@
       "/images/versioned/r-ver.html",
       "/images/versioned/rstudio.html",
       "/images/versioned/shiny.html"
-    ]
-  },
-  {
-    "listing": "/images/other/index.html",
-    "items": [
-      "/images/other/r-bspm.html",
-      "/images/other/r-ubuntu.html"
     ]
   },
   {
