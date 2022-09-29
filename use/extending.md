@@ -64,6 +64,26 @@ pak::pkg_system_requirements("curl", "ubuntu", "20.04")
 #> [2] "apt-get install -y libssl-dev"
 ```
 
+:::{.callout-tip}
+
+On supported systems, installing packages using the functions provided by `pak` may automatically install dependencies.
+
+```sh
+$ R -q -e 'pak::pak("curl")'
+> pak::pak("curl")
+✔ Loading metadata database ... done
+ 
+ℹ No downloads are needed
+ℹ Installing system requirements
+ℹ Executing `sudo sh -c apt-get install -y libcurl4-openssl-dev`
+ℹ Executing `sudo sh -c apt-get install -y libssl-dev`
+✔ 1 pkg: kept 1 [11.8s]
+```
+
+Check [the `pak` package documentation](https://pak.r-lib.org/index.html) for details.
+
+:::
+
 ### Install binary packages
 
 Source installations generally take longer than binary installations,
