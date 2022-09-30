@@ -117,7 +117,7 @@ docker run --rm -ti -e USERID=1001 -e GROUPID=1001 --user rstudio rocker/tidyver
 
 #### `PASSWORD`
 
-You can set a custom passoword to log in the RStudio instance.
+You can set a custom password to log in the RStudio instance.
 Please set your password as an environmental variable `PASSWORD` like this:
 
 ```sh
