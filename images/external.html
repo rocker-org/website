@@ -343,16 +343,18 @@ background-size: cover;
   <li><a href="#docker-images-for-r" id="toc-docker-images-for-r" class="nav-link active" data-scroll-target="#docker-images-for-r"><span class="toc-section-number">1</span>  Docker images for R</a>
   <ul>
   <li><a href="#jupyter-docker-stacks" id="toc-jupyter-docker-stacks" class="nav-link" data-scroll-target="#jupyter-docker-stacks"><span class="toc-section-number">1.1</span>  Jupyter Docker Stacks</a></li>
-  <li><a href="#r-hubr-minimal" id="toc-r-hubr-minimal" class="nav-link" data-scroll-target="#r-hubr-minimal"><span class="toc-section-number">1.2</span>  r-hub/r-minimal</a></li>
-  <li><a href="#rstudio-r-docker-images" id="toc-rstudio-r-docker-images" class="nav-link" data-scroll-target="#rstudio-r-docker-images"><span class="toc-section-number">1.3</span>  RStudio R Docker Images</a></li>
-  <li><a href="#docker-containers-for-bioconductor" id="toc-docker-containers-for-bioconductor" class="nav-link" data-scroll-target="#docker-containers-for-bioconductor"><span class="toc-section-number">1.4</span>  Docker containers for Bioconductor</a></li>
-  <li><a href="#rhub-linux-builders" id="toc-rhub-linux-builders" class="nav-link" data-scroll-target="#rhub-linux-builders"><span class="toc-section-number">1.5</span>  rhub-linux-builders</a></li>
-  <li><a href="#runiversebase" id="toc-runiversebase" class="nav-link" data-scroll-target="#runiversebase"><span class="toc-section-number">1.6</span>  runiverse/base</a></li>
+  <li><a href="#b-datajupyterlab-r-docker-stack" id="toc-b-datajupyterlab-r-docker-stack" class="nav-link" data-scroll-target="#b-datajupyterlab-r-docker-stack"><span class="toc-section-number">1.2</span>  b-data/jupyterlab-r-docker-stack</a></li>
+  <li><a href="#r-hubr-minimal" id="toc-r-hubr-minimal" class="nav-link" data-scroll-target="#r-hubr-minimal"><span class="toc-section-number">1.3</span>  r-hub/r-minimal</a></li>
+  <li><a href="#rstudio-r-docker-images" id="toc-rstudio-r-docker-images" class="nav-link" data-scroll-target="#rstudio-r-docker-images"><span class="toc-section-number">1.4</span>  RStudio R Docker Images</a></li>
+  <li><a href="#docker-containers-for-bioconductor" id="toc-docker-containers-for-bioconductor" class="nav-link" data-scroll-target="#docker-containers-for-bioconductor"><span class="toc-section-number">1.5</span>  Docker containers for Bioconductor</a></li>
+  <li><a href="#rhub-linux-builders" id="toc-rhub-linux-builders" class="nav-link" data-scroll-target="#rhub-linux-builders"><span class="toc-section-number">1.6</span>  rhub-linux-builders</a></li>
+  <li><a href="#runiversebase" id="toc-runiversebase" class="nav-link" data-scroll-target="#runiversebase"><span class="toc-section-number">1.7</span>  runiverse/base</a></li>
   </ul></li>
   <li><a href="#other-tools" id="toc-other-tools" class="nav-link" data-scroll-target="#other-tools"><span class="toc-section-number">2</span>  Other tools</a>
   <ul>
   <li><a href="#mamba" id="toc-mamba" class="nav-link" data-scroll-target="#mamba"><span class="toc-section-number">2.1</span>  Mamba</a></li>
   <li><a href="#rig" id="toc-rig" class="nav-link" data-scroll-target="#rig"><span class="toc-section-number">2.2</span>  rig</a></li>
+  <li><a href="#rsi" id="toc-rsi" class="nav-link" data-scroll-target="#rsi"><span class="toc-section-number">2.3</span>  rsi</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/images/external.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/images/external.md" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -371,25 +373,30 @@ background-size: cover;
 <p>The stack of Docker images by <a href="https://jupyter.org/">Project Jupyter</a>, based on Ubuntu, install packages from <a href="https://conda-forge.org/">conda-forge</a>, and configured to run Jupyter.</p>
 <p>It includes several images with the R package already installed, such as <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-r-notebook"><code>jupyter/r-notebook</code></a> and <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook"><code>jupyter/datascience-notebook</code></a>, so you can immediately run R on Jupyter.</p>
 </section>
-<section id="r-hubr-minimal" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="r-hubr-minimal"><span class="header-section-number">1.2</span> <a href="https://github.com/r-hub/r-minimal">r-hub/r-minimal</a></h3>
+<section id="b-datajupyterlab-r-docker-stack" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="b-datajupyterlab-r-docker-stack"><span class="header-section-number">1.2</span> <a href="https://github.com/b-data/jupyterlab-r-docker-stack">b-data/jupyterlab-r-docker-stack</a></h3>
+<p>Multi-arch (<code>linux/amd64</code>, <code>linux/arm64/v8</code>) docker images based on <a href="https://hub.docker.com/_/debian">Debian</a> including <a href="https://github.com/coder/code-server">code-server</a> (<a href="https://github.com/microsoft/vscode">vscode</a> in the browser).</p>
+<p>Images considered stable for R versions ≥ 4.2.0.</p>
+</section>
+<section id="r-hubr-minimal" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="r-hubr-minimal"><span class="header-section-number">1.3</span> <a href="https://github.com/r-hub/r-minimal">r-hub/r-minimal</a></h3>
 <p>Very small size image with R installed on <a href="https://hub.docker.com/_/alpine">alpine</a>.</p>
 </section>
-<section id="rstudio-r-docker-images" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="rstudio-r-docker-images"><span class="header-section-number">1.3</span> <a href="https://github.com/rstudio/r-docker">RStudio R Docker Images</a></h3>
+<section id="rstudio-r-docker-images" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="rstudio-r-docker-images"><span class="header-section-number">1.4</span> <a href="https://github.com/rstudio/r-docker">RStudio R Docker Images</a></h3>
 <p>Images of RStudio built and installed R binaries.</p>
 </section>
-<section id="docker-containers-for-bioconductor" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="docker-containers-for-bioconductor"><span class="header-section-number">1.4</span> <a href="https://bioconductor.org/help/docker/">Docker containers for Bioconductor</a></h3>
+<section id="docker-containers-for-bioconductor" class="level3" data-number="1.5">
+<h3 data-number="1.5" class="anchored" data-anchor-id="docker-containers-for-bioconductor"><span class="header-section-number">1.5</span> <a href="https://bioconductor.org/help/docker/">Docker containers for Bioconductor</a></h3>
 <p><a href="https://bioconductor.org/">Bioconductor</a> docker images with system dependencies to install all packages. Based on <a href="../images/versioned/rstudio.html"><code>rocker/rstudio</code></a>.</p>
 </section>
-<section id="rhub-linux-builders" class="level3" data-number="1.5">
-<h3 data-number="1.5" class="anchored" data-anchor-id="rhub-linux-builders"><span class="header-section-number">1.5</span> <a href="https://github.com/r-hub/rhub-linux-builders">rhub-linux-builders</a></h3>
+<section id="rhub-linux-builders" class="level3" data-number="1.6">
+<h3 data-number="1.6" class="anchored" data-anchor-id="rhub-linux-builders"><span class="header-section-number">1.6</span> <a href="https://github.com/r-hub/rhub-linux-builders">rhub-linux-builders</a></h3>
 <p>Docker configuration for the Linux builders of <a href="https://builder.r-hub.io/advanced">the R-hub package builder</a>. These images are useful for you to run to debug your R package.</p>
 </section>
-<section id="runiversebase" class="level3" data-number="1.6">
-<h3 data-number="1.6" class="anchored" data-anchor-id="runiversebase"><span class="header-section-number">1.6</span> <a href="https://github.com/r-universe-org/base-image">runiverse/base</a></h3>
-<p>A docker image for building R source packages and documentation, used in the <a href="https://r-universe.dev">R-universe</a> build system.</p>
+<section id="runiversebase" class="level3" data-number="1.7">
+<h3 data-number="1.7" class="anchored" data-anchor-id="runiversebase"><span class="header-section-number">1.7</span> <a href="https://github.com/r-universe-org/base-image">runiverse/base</a></h3>
+<p>A docker image for building R source packages and documentation, used in the <a href="https://r-universe.dev">R-universe</a> build tool.</p>
 </section>
 </section>
 <section id="other-tools" class="level2" data-number="2">
@@ -403,6 +410,11 @@ background-size: cover;
 <h3 data-number="2.2" class="anchored" data-anchor-id="rig"><span class="header-section-number">2.2</span> <a href="https://github.com/r-lib/rig">rig</a></h3>
 <p>An R Installation Manager (Previously known as rim).</p>
 <p>With rig, you can easily install and switch between specific versions of R.</p>
+</section>
+<section id="rsi" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="rsi"><span class="header-section-number">2.3</span> <a href="https://github.com/b-data/rsi">rsi</a></h3>
+<p>Intended for system administrators who want to perform a source-installation of R.</p>
+<p>It is meant for installing <a href="https://cran.r-project.org/src/base/">official releases of R source code</a> on Debian-based Linux distributions, e.g.&nbsp;Ubuntu, using a docker container.</p>
 
 
 </section>
