@@ -22,7 +22,8 @@ so you can immediately run R on Jupyter.
 
 Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images based on
 [Debian](https://hub.docker.com/_/debian) including
-[code-server](https://github.com/coder/code-server) (VS Code in the browser).
+[code-server](https://github.com/coder/code-server)
+([vscode](https://github.com/microsoft/vscode) in the browser).
 
 Images considered stable for R versions ≥ 4.2.0.
 
