@@ -44,7 +44,7 @@ Please check the [rocker-org/rocker-versioned](https://github.com/rocker-org/roc
 
 :::
 
-## Spacial tags
+## Special tags
 
 ### `devel`
 
