@@ -52,7 +52,37 @@ If you try to source install the `curl` package without libcurl, the installatio
 
 In general, system requirements can be found on error messages on installation failures, the package's reference page,
 CRAN, or [METACRAN](https://www.r-pkg.org/).
-[The dashboard of system libraries linked by R packages on R-universe](https://r-universe.dev/sysdeps/) is useful as well.
+[The rstudio/r-system-requirements repository](https://github.com/rstudio/r-system-requirements) and
+[The dashboard of system libraries linked by R packages on R-universe](https://r-universe.dev/sysdeps/) are also useful.
+
+In R, the [`pak::pkg_system_requirements()`](https://pak.r-lib.org/reference/local_system_requirements.html) function
+can be used to find system requirements for a package.
+
+```r
+pak::pkg_system_requirements("curl", "ubuntu", "20.04")
+#> [1] "apt-get install -y libcurl4-openssl-dev"
+#> [2] "apt-get install -y libssl-dev"
+```
+
+:::{.callout-tip}
+
+On supported systems, installing packages using the functions provided by `pak` may automatically install dependencies.
+
+```sh
+$ R -q -e 'pak::pak("curl")'
+> pak::pak("curl")
+✔ Loading metadata database ... done
+ 
+ℹ No downloads are needed
+ℹ Installing system requirements
+ℹ Executing `sudo sh -c apt-get install -y libcurl4-openssl-dev`
+ℹ Executing `sudo sh -c apt-get install -y libssl-dev`
+✔ 1 pkg: kept 1 [11.8s]
+```
+
+Check [the `pak` package documentation](https://pak.r-lib.org/index.html) for details.
+
+:::
 
 ### Install binary packages
 
