@@ -18,6 +18,15 @@ such as [`jupyter/r-notebook`](https://jupyter-docker-stacks.readthedocs.io/en/l
 and [`jupyter/datascience-notebook`](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook),
 so you can immediately run R on Jupyter.
 
+### [b-data/jupyterlab-r-docker-stack](https://github.com/b-data/jupyterlab-r-docker-stack)
+
+Multi-arch (`linux/amd64`, `linux/arm64/v8`) docker images based on
+[Debian](https://hub.docker.com/_/debian) including
+[code-server](https://github.com/coder/code-server)
+([vscode](https://github.com/microsoft/vscode) in the browser).
+
+Images considered stable for R versions ≥ 4.2.0.
+
 ### [r-hub/r-minimal](https://github.com/r-hub/r-minimal)
 
 Very small size image with R installed on [alpine](https://hub.docker.com/_/alpine).
@@ -39,7 +48,7 @@ These images are useful for you to run to debug your R package.
 ### [runiverse/base](https://github.com/r-universe-org/base-image)
 
 A docker image for building R source packages and documentation,
-used in the [R-universe](https://r-universe.dev) build system.
+used in the [R-universe](https://r-universe.dev) build tool.
 
 ## Other tools
 
@@ -55,3 +64,12 @@ see also the [Extending images](../use/extending.md#conda-forge) page.
 An R Installation Manager (Previously known as rim).
 
 With rig, you can easily install and switch between specific versions of R.
+
+### [rsi](https://github.com/b-data/rsi)
+
+Intended for system administrators who want to perform a source-installation of
+R.
+
+It is meant for installing
+[official releases of R source code](https://cran.r-project.org/src/base/)
+on Debian-based Linux distributions, e.g. Ubuntu, using a docker container.
