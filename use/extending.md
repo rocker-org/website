@@ -169,7 +169,17 @@ as they have installed R from source.
 
 :::{.callout-note}
 
-Not all packages available in CRAN are available.
+Not all packages on CRAN are necessarily available.
+
+:::
+
+:::{.callout-tip}
+
+[r2u](https://eddelbuettel.github.io/r2u/),
+provided by Rocker Project member [@eddelbuettel](https://twitter.com/eddelbuettel),
+offers faster package installation on Ubuntu (amd64).
+Also, more CRAN packages and BioConductor packages are being registered.
+Please check the `r2u` document for details.
 
 :::
 
