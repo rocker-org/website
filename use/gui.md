@@ -27,7 +27,8 @@ plot(mtcars)
 
 :::{.callout-tip}
 
-Docker images built from [the `rocker-org/devcontainer-images` repo](https://github.com/rocker-org/devcontainer-images)
+Docker images built from
+[the `rocker-org/devcontainer-images` repository](https://github.com/rocker-org/devcontainer-images)
 are `httpgd` pre-installed.
 
 :::
