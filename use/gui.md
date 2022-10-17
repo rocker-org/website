@@ -13,15 +13,23 @@ the following additional configuration is required to display plots of R running
 Start the httpgd server in the container that published a port,
 and you can access the plot viewer in your browser.
 
-```sh
-docker run --rm -ti -p 8000:8000 <imagename> R
+For example, you can create a container with the following command
+and start the `httpgd` server from within the R terminal.
+
+```{.sh filename="Terminal"}
+docker run --rm -ti -p 8000:8000 ghcr.io/rocker-org/devcontainer/r-ver:4 R
 ```
 
-:::{.callout-note}
+```{.r filename="R Terminal"}
+httpgd::hgd(host = "0.0.0.0", port = 8000)
+plot(mtcars)
+```
 
-Since the `httpgd` package is not installed in the Rocker project images,
-you will need to build your own image with `httpgd` installed
-(or, install `httpgd` in your container).
+:::{.callout-tip}
+
+Docker images built from
+[the `rocker-org/devcontainer-images` repository](https://github.com/rocker-org/devcontainer-images)
+are `httpgd` pre-installed.
 
 :::
 
@@ -42,6 +50,6 @@ X11 forwarding by connecting the X11 server in the container to the X11 client o
 Commands vary depending on the situation, but for example,
 the commands like below are used.
 
-```sh
+```{.sh filename="Terminal"}
 docker run --rm -ti -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix <imagename> R
 ```

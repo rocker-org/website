@@ -61,18 +61,20 @@ When editing R in VSCode, [vscode-R](https://github.com/REditorSupport/vscode-R)
 This extension is recommended to be used with
 [`languageserver`](https://github.com/REditorSupport/languageserver) and [`httpgd`](https://nx10.github.io/httpgd/).
 
-### Visual Studio Code Remote - Containers
+### Visual Studio Code Dev Containers
 
 The Microsoft's Code OSS distribution, [Visual Studio Code](https://code.visualstudio.com/),
-has an extension, [Remote - Containers](https://code.visualstudio.com/docs/remote/containers).
+has an extension, [Dev Containers](https://code.visualstudio.com/docs/remote/containers).
+(Formerly known as "Remote - Containers".)
+
 That makes a container the backend, which can be used to develop using software in the container.
 
-The Remote - Containers extension builds images from definition files
+The Dev Containers extension builds images from definition files
 and creates containers with installed VSCode Server and vscode extensions.
 Users can run the container and start working inside it without touching anything but the local VSCode.
 
-The Remote - Containers extension also includes ready-to-use sample definition files.
-The R's definition is [this](https://github.com/microsoft/vscode-dev-containers/tree/main/containers/r),
+The Dev Containers extension can load and use templates published on the web.
+The R's definition is [this](https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver),
 which installs `languageserver` and `httpgd`,
 and also installs [`radian`](https://github.com/randy3k/radian) as R console.
 
@@ -80,6 +82,7 @@ This definition can also be used in [GitHub Codespaces](https://github.com/featu
 
 ### coder/code-server and gitpod-io/openvscode-server
 
-Both [coder's code-server](https://github.com/coder/code-server) and [gitpod's openvscode-server](https://github.com/gitpod-io/openvscode-server)
-can run VSCode server-side and use VSCode from a browser.
-They can also be installed and used inside Docker containers.
+Both [coder's code-server](https://github.com/coder/code-server) and
+[gitpod's openvscode-server](https://github.com/gitpod-io/openvscode-server)
+can run Code - OSS server-side and you can use it from the browser.
+To use them in a Docker container, they must be installed in the container.
