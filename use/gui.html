@@ -360,18 +360,31 @@ background-size: cover;
 <h2 data-number="1" class="anchored" data-anchor-id="the-httpgd-r-package"><span class="header-section-number">1</span> The <code>httpgd</code> R package</h2>
 <p><a href="https://nx10.github.io/httpgd/index.html"><code>httpgd</code></a> is a graphics device for R that is accessible via HTTP.</p>
 <p>Start the httpgd server in the container that published a port, and you can access the plot viewer in your browser.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8000:8000 <span class="op">&lt;</span>imagename<span class="op">&gt;</span> R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<p>For example, you can create a container with the following command and start the <code>httpgd</code> server from within the R terminal.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8000:8000 ghcr.io/rocker-org/devcontainer/r-ver:4 R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>R Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>httpgd<span class="sc">::</span><span class="fu">hgd</span>(<span class="at">host =</span> <span class="st">"0.0.0.0"</span>, <span class="at">port =</span> <span class="dv">8000</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Since the <code>httpgd</code> package is not installed in the Rocker project images, you will need to build your own image with <code>httpgd</code> installed (or, install <code>httpgd</code> in your container).</p>
+<p>Docker images built from <a href="https://github.com/rocker-org/devcontainer-images">the <code>rocker-org/devcontainer-images</code> repository</a> are <code>httpgd</code> pre-installed.</p>
 </div>
 </div>
 <p>For details, please check <a href="https://nx10.github.io/httpgd/articles/b03_docker.html">the <code>httpgd</code>’s vignette for Docker</a>.</p>
@@ -393,7 +406,12 @@ Important
 </div>
 <p>X11 forwarding by connecting the X11 server in the container to the X11 client on the local machine.</p>
 <p>Commands vary depending on the situation, but for example, the commands like below are used.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-e</span> DISPLAY=<span class="va">$DISPLAY</span> <span class="at">-v</span> /tmp/.X11-unix:/tmp/.X11-unix <span class="op">&lt;</span>imagename<span class="op">&gt;</span> R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-e</span> DISPLAY=<span class="va">$DISPLAY</span> <span class="at">-v</span> /tmp/.X11-unix:/tmp/.X11-unix <span class="op">&lt;</span>imagename<span class="op">&gt;</span> R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>

@@ -348,7 +348,7 @@ background-size: cover;
   <li><a href="#jupyter" id="toc-jupyter" class="nav-link" data-scroll-target="#jupyter"><span class="toc-section-number">2</span>  Jupyter</a></li>
   <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode"><span class="toc-section-number">3</span>  VSCode</a>
   <ul>
-  <li><a href="#visual-studio-code-remote---containers" id="toc-visual-studio-code-remote---containers" class="nav-link" data-scroll-target="#visual-studio-code-remote---containers"><span class="toc-section-number">3.1</span>  Visual Studio Code Remote - Containers</a></li>
+  <li><a href="#visual-studio-code-dev-containers" id="toc-visual-studio-code-dev-containers" class="nav-link" data-scroll-target="#visual-studio-code-dev-containers"><span class="toc-section-number">3.1</span>  Visual Studio Code Dev Containers</a></li>
   <li><a href="#codercode-server-and-gitpod-ioopenvscode-server" id="toc-codercode-server-and-gitpod-ioopenvscode-server" class="nav-link" data-scroll-target="#codercode-server-and-gitpod-ioopenvscode-server"><span class="toc-section-number">3.2</span>  coder/code-server and gitpod-io/openvscode-server</a></li>
   </ul></li>
   </ul>
@@ -396,16 +396,17 @@ Tip
 <h2 data-number="3" class="anchored" data-anchor-id="vscode"><span class="header-section-number">3</span> VSCode</h2>
 <p><a href="https://github.com/microsoft/vscode">Visual Studio Code - Open Source (Code - OSS)</a> is currently one of the most popular editors.</p>
 <p>When editing R in VSCode, <a href="https://github.com/REditorSupport/vscode-R">vscode-R</a> is a popular extension. This extension is recommended to be used with <a href="https://github.com/REditorSupport/languageserver"><code>languageserver</code></a> and <a href="https://nx10.github.io/httpgd/"><code>httpgd</code></a>.</p>
-<section id="visual-studio-code-remote---containers" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="visual-studio-code-remote---containers"><span class="header-section-number">3.1</span> Visual Studio Code Remote - Containers</h3>
-<p>The Microsoft’s Code OSS distribution, <a href="https://code.visualstudio.com/">Visual Studio Code</a>, has an extension, <a href="https://code.visualstudio.com/docs/remote/containers">Remote - Containers</a>. That makes a container the backend, which can be used to develop using software in the container.</p>
-<p>The Remote - Containers extension builds images from definition files and creates containers with installed VSCode Server and vscode extensions. Users can run the container and start working inside it without touching anything but the local VSCode.</p>
-<p>The Remote - Containers extension also includes ready-to-use sample definition files. The R’s definition is <a href="https://github.com/microsoft/vscode-dev-containers/tree/main/containers/r">this</a>, which installs <code>languageserver</code> and <code>httpgd</code>, and also installs <a href="https://github.com/randy3k/radian"><code>radian</code></a> as R console.</p>
+<section id="visual-studio-code-dev-containers" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="visual-studio-code-dev-containers"><span class="header-section-number">3.1</span> Visual Studio Code Dev Containers</h3>
+<p>The Microsoft’s Code OSS distribution, <a href="https://code.visualstudio.com/">Visual Studio Code</a>, has an extension, <a href="https://code.visualstudio.com/docs/remote/containers">Dev Containers</a>. (Formerly known as “Remote - Containers”.)</p>
+<p>That makes a container the backend, which can be used to develop using software in the container.</p>
+<p>The Dev Containers extension builds images from definition files and creates containers with installed VSCode Server and vscode extensions. Users can run the container and start working inside it without touching anything but the local VSCode.</p>
+<p>The Dev Containers extension can load and use templates published on the web. The R’s definition is <a href="https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver">this</a>, which installs <code>languageserver</code> and <code>httpgd</code>, and also installs <a href="https://github.com/randy3k/radian"><code>radian</code></a> as R console.</p>
 <p>This definition can also be used in <a href="https://github.com/features/codespaces">GitHub Codespaces</a>.</p>
 </section>
 <section id="codercode-server-and-gitpod-ioopenvscode-server" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="codercode-server-and-gitpod-ioopenvscode-server"><span class="header-section-number">3.2</span> coder/code-server and gitpod-io/openvscode-server</h3>
-<p>Both <a href="https://github.com/coder/code-server">coder’s code-server</a> and <a href="https://github.com/gitpod-io/openvscode-server">gitpod’s openvscode-server</a> can run VSCode server-side and use VSCode from a browser. They can also be installed and used inside Docker containers.</p>
+<p>Both <a href="https://github.com/coder/code-server">coder’s code-server</a> and <a href="https://github.com/gitpod-io/openvscode-server">gitpod’s openvscode-server</a> can run Code - OSS server-side and you can use it from the browser. To use them in a Docker container, they must be installed in the container.</p>
 
 
 </section>
