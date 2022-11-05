@@ -7,11 +7,13 @@ on:
     paths:
       - "**.md"
       - _quarto.yml
+      - _extensions/**
       - "!README.md"
   pull_request:
     paths:
       - "**.md"
       - _quarto.yml
+      - _extensions/**
       - "!README.md"
   workflow_dispatch:
 
@@ -27,7 +29,7 @@ jobs:
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.1.165"
+          version: "1.2.262"
       - name: Build
         run: quarto render
 
