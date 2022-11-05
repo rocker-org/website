@@ -84,6 +84,17 @@ But it is possible to switch for [the reference BLAS implementation](https://www
 [^blas]: [R Installation and Administration A.3.1 BLAS](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#BLAS)
 [^shared-blas]: [R Installation and Administration A.3.1.4 Shared BLAS](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Shared-BLAS)
 
+:::{.callout-important}
+
+Calling Python `numpy` by the `reticulate` package on R using OpenBLAS may cause a segfault.
+This causes an error when trying to use Python packages like `matplotlib` or `scikit-learn`.
+([rocker-org/rocker-versioned2#471](https://github.com/rocker-org/rocker-versioned2/issues/471),
+[numpy/numpy#21643](https://github.com/numpy/numpy/issues/21643))
+
+If this error occurs, change the BLAS used by R to libblas as described below.
+
+:::
+
 #### Checking which BLAS is in use
 
 You can see the current BLAS configuration for R by using `sessionInfo()` function in R console.
