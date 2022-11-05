@@ -7,11 +7,13 @@ on:
     paths:
       - "**.md"
       - _quarto.yml
+      - _extensions/**
       - "!README.md"
   pull_request:
     paths:
       - "**.md"
       - _quarto.yml
+      - _extensions/**
       - "!README.md"
   workflow_dispatch:
 
