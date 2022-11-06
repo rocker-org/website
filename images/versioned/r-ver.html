@@ -519,6 +519,20 @@ Warning
 <section id="selecting-the-blas-implementation-used-by-r" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="selecting-the-blas-implementation-used-by-r"><span class="header-section-number">4.2</span> Selecting the BLAS implementation used by R</h3>
 <p>By default <code>rocker/r-ver</code> uses <a href="https://www.openblas.net/">the OpenBLAS</a> implementation for Linear Algebra<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. But it is possible to switch for <a href="https://www.netlib.org/blas/">the reference BLAS implementation</a> (as provided by the Debian package <code>libblas-dev</code>) using the Shared BLAS setup<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calling Python <code>numpy</code> by the <code>reticulate</code> package on R using OpenBLAS may cause a segfault. This causes an error when trying to use Python packages like <code>matplotlib</code> or <code>scikit-learn</code>. (<a href="https://github.com/rocker-org/rocker-versioned2/issues/471">rocker-org/rocker-versioned2#471</a>, <a href="https://github.com/numpy/numpy/issues/21643">numpy/numpy#21643</a>)</p>
+<p>If this error occurs, change the BLAS used by R to libblas as described below.</p>
+</div>
+</div>
 <section id="checking-which-blas-is-in-use" class="level4" data-number="4.2.1">
 <h4 data-number="4.2.1" class="anchored" data-anchor-id="checking-which-blas-is-in-use"><span class="header-section-number">4.2.1</span> Checking which BLAS is in use</h4>
 <p>You can see the current BLAS configuration for R by using <code>sessionInfo()</code> function in R console.</p>
