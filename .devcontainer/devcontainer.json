@@ -1,0 +1,19 @@
+{
+	"name": "${localWorkspaceFolderBasename}",
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {
+			"version": "1.2.262"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"yzhang.markdown-all-in-one",
+				"DavidAnson.vscode-markdownlint",
+				"bierner.github-markdown-preview"
+			]
+		}
+	}
+}
