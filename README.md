@@ -44,6 +44,12 @@ Once you have finished checking, you can delete the images and the container wit
 docker compose down --rmi all
 ```
 
+### Dev Containers
+
+You can quickly build a development environment for this repository
+by building a [Dev Container](https://containers.dev/)
+on [GitHub Codespaces](https://github.com/features/codespaces), etc.
+
 ## License
 
 Content license: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
