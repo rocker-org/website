@@ -53,6 +53,17 @@ website:
             - text: r-bspm
               href: images/other/r-bspm.md
         - text: ---
+        - section: Dev Container
+          contents:
+            - text: Overview
+              href: images/devcontainer/index.md
+            - text: Features
+              href: images/devcontainer/features.md
+            - text: Images
+              href: images/devcontainer/images.md
+            - text: Temlates
+              href: images/devcontainer/templates.md
+        - text: ---
         - section: Other projects
           contents:
             - text: External images and tools for R
