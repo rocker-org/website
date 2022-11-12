@@ -55,8 +55,6 @@ website:
         - text: ---
         - section: Dev Container
           contents:
-            - text: Overview
-              href: images/devcontainer/index.md
             - text: Features
               href: images/devcontainer/features.md
             - text: Images
