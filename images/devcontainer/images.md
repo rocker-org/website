@@ -31,7 +31,7 @@ and `ghcr.io/rocker-org/devcontainer/geospatial` are correspond to [`rocker/r-ve
 
 ### devcontainer.json
 
-Specify the image in `devcontainer.json` as follows.
+Specify the image in [`devcontainer.json`](https://containers.dev/implementors/spec/#devcontainerjson) as follows.
 
 ```{.json filename=".devcontainer/devcontainer.json"}
 {
@@ -54,6 +54,8 @@ FROM ghcr.io/rocker-org/devcontainer/tidyverse:4
     }
 }
 ```
+
+[The Dev Container Templates provided by the Rocker Project](templates.md) include `devcontainer.json` like these.
 
 ### Command line
 

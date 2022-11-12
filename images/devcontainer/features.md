@@ -17,7 +17,8 @@ These can be used to easily configure R on containers without R installed,
 or to make containers for R even more useful.
 And of course, we can use them independently of R! (except for the Features to install R)
 
-For example, install R on the default image of Codespaces by editing the `devcontainer.json` file as follows:
+For example, install R on the default image of Codespaces
+by editing [the `devcontainer.json` file](https://containers.dev/implementors/spec/#devcontainerjson) as follows:
 
 ```{.json filename=".devcontainer/devcontainer.json"}
 {
