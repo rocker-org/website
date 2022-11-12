@@ -60,3 +60,8 @@ Some tips for choosing:
   you can use `r-rig` to install any version of R or only the R package without installing R.
 - If you want to install packages that exist in the conda-forge,
   you can use `miniforge` for fast installation with `mamba`.
+
+## See also
+
+- [Dev Container Images](images.md)
+- [Dev Container Templates](templates.md)

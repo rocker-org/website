@@ -2,11 +2,22 @@
 title: Dev Container Templates
 ---
 
+## Overview
+
+The Rocker Project provides some [Dev Container Templates](https://containers.dev/implementors/templates/)
+for building an R development environment.
+
 - Source repository: [rocker-org/devcontainer-templates](https://github.com/rocker-org/devcontainer-templates)
 
-For example, the following command creates `.devcontainer` directory
-from the [Template](https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver).
+These are displayed on the GitHub Codespaces or on the VS Code Dev Containers UI.
+
+These can also be use from [the devcontainer CLI](https://github.com/devcontainers/cli).
 
 ```{.sh filename="Terminal"}
 devcontainer templates apply -t ghcr.io/rocker-org/devcontainer-templates/r-ver
 ```
+
+## See also
+
+- [Dev Container Features](features.md)
+- [Dev Container Images](images.md)
