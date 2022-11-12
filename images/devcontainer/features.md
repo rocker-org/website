@@ -4,7 +4,8 @@ title: Dev Container Features
 
 ## Overview
 
-The Rocker Project provides some Dev Container Features for installing R or installing software often used with R.
+The Rocker Project provides some [Dev Container Features](https://containers.dev/implementors/features/)
+for installing R or installing software often used with R.
 
 - Source repository: [rocker-org/devcontainer-features](https://github.com/rocker-org/devcontainer-features)
 
