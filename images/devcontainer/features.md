@@ -42,11 +42,12 @@ Check the source repository for details on each Feature.
 Each of these installations of R will be configured to allow installation of R binary packages in the following ways.
 
 1. [System package management system (`apt`)](../../use/extending.md#system-package-management-system)
-2. [RStudio Public Package Manager (R functions e.g. `install.packages`)](../../use/extending.md#rstudio-public-package-manager)[^rspm]
+2. [Posit Public Package Manager (R functions e.g. `install.packages`)](../../use/extending.md#rstudio-public-package-manager)[^rspm]
 3. [conda-forge (`mamba` or `conda`)](../../use/extending.md#conda-forge)
 
 [^rspm]: Of the amd64 and arm64 Debian and Ubuntu platforms that can use `r-rig`,
-only amd64 Ubuntu can use RSPM, and RSPM is not configured on the other platforms.
+only amd64 Ubuntu can use Posit Public Package Manager,
+and Posit Public Package Manager will be not configured on the other platforms.
 
 Therefore, which of these you use to install R
 may depend on which method you wish to use to install the R binary packages.
