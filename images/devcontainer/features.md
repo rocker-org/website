@@ -54,7 +54,7 @@ may depend on which method you wish to use to install the R binary packages.
 
 Some tips for choosing:
 
-- When installing R packages via `apt` or `mamba` (`conda`), dependencies are installed automatically.
+- When installing R packages via `apt` or `mamba` (`conda`), dependencies outside of R are installed automatically.
   But, installing R packages via R function (`install.packages`)
   may require separate `apt` installations of system libraries that are dependencies.
 - Generally `r-apt` installs R packages faster than `r-rig`.
