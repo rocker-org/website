@@ -53,7 +53,7 @@
     "href": "images/index.html#images",
     "title": "The Rocker Images",
     "section": "2 Images",
-    "text": "2 Images\n\n2.1 The versioned stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ver\nubuntu\nInstall R from source and set RSPM as default CRAN mirror\n\n\n\nrocker/rstudio\nrocker/r-ver\nAdds RStudio Server\n\n\n\nrocker/tidyverse\nrocker/rstudio\nAdds tidyverse packages & devtools\n\n\n\nrocker/verse\nrocker/tidyverse\nAdds tex & publishing-related package\n\n\n\nrocker/geospatial\nrocker/verse\nAdds geospatial packages\n\n\n\nrocker/binder\nrocker/geospatial\nAdds requirements to run repositories on mybinder.org\n\n\n\nrocker/shiny\nrocker/r-ver\nAdds shiny server\n\n\n\nrocker/shiny-verse\nrocker/shiny\nAdds tidyverse packages\n\n\n\nrocker/cuda\nrocker/r-ver\nAdds CUDA support to rocker/r-ver\n\n\n\nrocker/ml\nrocker/cuda\nAdds CUDA support to rocker/tidyverse\n\n\n\nrocker/ml-verse\nrocker/ml\nAdds CUDA support to rocker/geospatial\n\n\n\n\nThis stack builds on stable Debian releases (for R versions <= 3.6.3) or Ubuntu LTS (for R versions >= 4.0.0). Images in this stack accept a version tag specifying which version of R is desired, e.g. rocker/rstudio:4.0.0 for R 4.0.0. The latest tag always follows the latest release version of R.\nSome images (e.g. rocker/r-ver) also have the devel tag, which installs the development version of R.\nVersion-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available, though Debian system libraries will still receive any security patches. Please check the document about versions for details.\n\n\n2.2 The base stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nr-baserocker/r-base\ndebian:testing\nInstall current R from unstable repos\n\n\n\nrocker/r-devel\nr-base\nR-devel added side-by-side onto r-base (using alias RD)\n\n\n\nrocker/drd\nr-base\nLighter rocker/r-devel\n\n\n\nrocker/drp\nr-base\nR-patched added side-by-side onto r-base (using alias RP)\n\n\n\nrocker/r-devel-san\nr-base\nas rocker/r-devel, but built with compiler sanitizers\n\n\n\nrocker/r-devel-ubsan-clang\nr-base\nSanitizers, clang c compiler (instead of gcc)\n\n\n\n\nThis stack builds on debian:testing and Debian unstable repo. Use this stack if you want access to the latest versions of system libraries and compilers through apt-get.\nr-base (Docker Official image) and rocker/r-base are built from the same Dockerfile, but with different build tools.\n\n\n2.3 Additional images\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ubuntu\nubuntu\nClose to r-base, but based on ubuntu\n\n\n\nrocker/r-bspm\nr-base, rocker/r-ubuntu, archlinux, fedora, opensuse/tumbleweed\nBinary installation of R packages has been configured, powered by bspm"
+    "text": "2 Images\n\n2.1 The versioned stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ver\nubuntu\nInstall R from source and set RSPM as default CRAN mirror\n\n\n\nrocker/rstudio\nrocker/r-ver\nAdds RStudio Server\n\n\n\nrocker/tidyverse\nrocker/rstudio\nAdds tidyverse packages & devtools\n\n\n\nrocker/verse\nrocker/tidyverse\nAdds tex & publishing-related package\n\n\n\nrocker/geospatial\nrocker/verse\nAdds geospatial packages\n\n\n\nrocker/binder\nrocker/geospatial\nAdds requirements to run repositories on mybinder.org\n\n\n\nrocker/shiny\nrocker/r-ver\nAdds shiny server\n\n\n\nrocker/shiny-verse\nrocker/shiny\nAdds tidyverse packages\n\n\n\nrocker/cuda\nrocker/r-ver\nAdds CUDA support to rocker/r-ver\n\n\n\nrocker/ml\nrocker/cuda\nAdds CUDA support to rocker/tidyverse\n\n\n\nrocker/ml-verse\nrocker/ml\nAdds CUDA support to rocker/geospatial\n\n\n\n\nThis stack builds on stable Debian releases (for R versions <= 3.6.3) or Ubuntu LTS (for R versions >= 4.0.0). Images in this stack accept a version tag specifying which version of R is desired, e.g. rocker/rstudio:4.0.0 for R 4.0.0. The latest tag always follows the latest release version of R.\nSome images (e.g. rocker/r-ver) also have the devel tag, which installs the development version of R.\nVersion-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available, though Debian system libraries will still receive any security patches. Please check the document about versions for details.\n\n\n2.2 The base stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nr-baserocker/r-base\ndebian:testing\nInstall current R from unstable repos\n\n\n\nrocker/r-devel\nr-base\nR-devel added side-by-side onto r-base (using alias RD)\n\n\n\nrocker/drd\nr-base\nLighter rocker/r-devel\n\n\n\nrocker/drp\nr-base\nR-patched added side-by-side onto r-base (using alias RP)\n\n\n\nrocker/r-devel-san\nr-base\nas rocker/r-devel, but built with compiler sanitizers\n\n\n\nrocker/r-devel-ubsan-clang\nr-base\nSanitizers, clang c compiler (instead of gcc)\n\n\n\n\nThis stack builds on debian:testing and Debian unstable repo. Use this stack if you want access to the latest versions of system libraries and compilers through apt-get.\nr-base (Docker Official image) and rocker/r-base are built from the same Dockerfile, but with different build tools.\n\n\n2.3 Additional images\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ubuntu\nubuntu\nClose to r-base, but based on ubuntu\n\n\n\nrocker/r-bspm\nr-base, rocker/r-ubuntu, archlinux, fedora, opensuse/tumbleweed\nBinary installation of R packages has been configured, powered by bspm\n\n\n\n\n\n\n2.4 Dev Container Images\nImages built by the devcontainer CLI. See the Dev Container Images page for details."
   },
   {
     "objectID": "images/base/index.html",
@@ -280,6 +280,76 @@
     "text": "2 Overview\nbspm configured containers. Binary R packages can be easily installed. Based on Debian, Ubuntu, Fedora, and OpenSUSE.\nSimilar to r-base and rocker/r-ubuntu in that these can install R binary packages and system dependencies. but thanks to bspm, rocker/r-bspm automatically installs binary packages and system dependencies even when using the R install.packages() function."
   },
   {
+    "objectID": "images/devcontainer/index.html",
+    "href": "images/devcontainer/index.html",
+    "title": "Development Container Resources",
+    "section": "",
+    "text": "Dev Container Features\n\n\n\n\n\n\n\n\n\n\n\n\n\nDev Container Templates\n\n\n\n\n\n\n\n\n\n\n\n\n\nPre-built Dev Container Images\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "images/devcontainer/features.html",
+    "href": "images/devcontainer/features.html",
+    "title": "Dev Container Features",
+    "section": "",
+    "text": "The Rocker Project provides some Dev Container Features for installing R or installing software often used with R.\n\nSource repository: rocker-org/devcontainer-features\n\nYou can find them on the Dev Containers site, the GitHub Codespaces Dev Container Editor, or, VSCode Dev Containers.\nThese can be used to easily configure R on containers without R installed, or to make containers for R even more useful. And of course, we can use them independently of R! (except for the Features to install R)\nFor example, install R on the default image of Codespaces by editing the devcontainer.json file as follows:\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"image\": \"mcr.microsoft.com/devcontainers/universal:2\",\n    \"features\": {\n        \"ghcr.io/rocker-org/devcontainer-features/r-apt:latest\": {}\n    }\n}\n\nCheck the source repository for details on each Feature."
+  },
+  {
+    "objectID": "images/devcontainer/features.html#install-r-on-dev-containers",
+    "href": "images/devcontainer/features.html#install-r-on-dev-containers",
+    "title": "Dev Container Features",
+    "section": "2 Install R on Dev Containers",
+    "text": "2 Install R on Dev Containers\n\nr-apt\nr-rig\nminiforge1\n\nEach of these installations of R will be configured to allow installation of R binary packages in the following ways.\n\nSystem package management system (apt)\nPosit Public Package Manager (R functions e.g. install.packages)2\nconda-forge (mamba or conda)\n\nTherefore, which of these you use to install R may depend on which method you wish to use to install the R binary packages.\nSome tips for choosing:\n\nWhen installing R packages via apt or mamba (conda), dependencies outside of R are installed automatically. But, installing R packages via R function (install.packages) may require separate apt installations of system libraries that are dependencies.\nGenerally r-apt installs R packages faster than r-rig. Therefore, if you want to add R to a container, we recommend trying r-apt first. However, r-apt does not support ubuntu on arm64 platform, so if you want to use ubuntu on arm64 platform, use r-rig instead.\nIf you want to install any version of R or use R already installed in the container, you can use r-rig to install any version of R or only the R package without installing R.\nIf you want to install packages that exist in the conda-forge, you can use miniforge for fast installation with mamba."
+  },
+  {
+    "objectID": "images/devcontainer/features.html#see-also",
+    "href": "images/devcontainer/features.html#see-also",
+    "title": "Dev Container Features",
+    "section": "3 See also",
+    "text": "3 See also\n\nDev Container Images\nDev Container Templates"
+  },
+  {
+    "objectID": "images/devcontainer/templates.html",
+    "href": "images/devcontainer/templates.html",
+    "title": "Dev Container Templates",
+    "section": "",
+    "text": "The Rocker Project provides some Dev Container Templates for building an R development environment.\n\nSource repository: rocker-org/devcontainer-templates\n\nThese are displayed on the GitHub Codespaces or on the VS Code Dev Containers UI.\nThese can also be use from the devcontainer CLI.\n\n\nTerminal\n\ndevcontainer templates apply -t ghcr.io/rocker-org/devcontainer-templates/r-ver"
+  },
+  {
+    "objectID": "images/devcontainer/templates.html#see-also",
+    "href": "images/devcontainer/templates.html#see-also",
+    "title": "Dev Container Templates",
+    "section": "2 See also",
+    "text": "2 See also\n\nDev Container Features\nDev Container Images"
+  },
+  {
+    "objectID": "images/devcontainer/images.html",
+    "href": "images/devcontainer/images.html",
+    "title": "Pre-built Dev Container Images",
+    "section": "",
+    "text": "Source repository: rocker-org/devcontainer-images\nSource\n\nr-ver\ntidyverse, geospatial\n\ntags\n\nr-ver\ntidyverse\ngeospatial\n\nPublished image details: not available\nNon-root default user: rstudio"
+  },
+  {
+    "objectID": "images/devcontainer/images.html#overview",
+    "href": "images/devcontainer/images.html#overview",
+    "title": "Pre-built Dev Container Images",
+    "section": "2 Overview",
+    "text": "2 Overview\nThe Rocker Project provides some Docker container images which built with Dev Container Features. Packages commonly used for development are already installed.\nThese images are intended to be images for R that can be used like the Dev Container images built from devcontainers/images for each language.\nghcr.io/rocker-org/devcontainer/r-ver, ghcr.io/rocker-org/devcontainer/tidyverse, and ghcr.io/rocker-org/devcontainer/geospatial are correspond to rocker/r-ver, rocker/tidyverse, and rocker/geospatial, respectively."
+  },
+  {
+    "objectID": "images/devcontainer/images.html#how-to-use",
+    "href": "images/devcontainer/images.html#how-to-use",
+    "title": "Pre-built Dev Container Images",
+    "section": "3 How to use",
+    "text": "3 How to use\n\n3.1 devcontainer.json\nSpecify the image in devcontainer.json as follows.\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"name\": \"${localWorkspaceFolderBasename}\",\n    \"image\": \"ghcr.io/rocker-org/devcontainer/r-ver:4\"\n}\n\nOr, we can use it as a base image in a Dockerfile.\n\n\n.devcontainer/Dockerfile\n\nFROM ghcr.io/rocker-org/devcontainer/tidyverse:4\n\nTo install the R package on the Dockerfile, please refer to the Extending images page.\nWhen used with a Dockerfile, the devcontainer.json file must be rewritten to refer to the Dockerfile.\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"name\": \"${localWorkspaceFolderBasename}\",\n    \"build\": {\n        \"dockerfile\": \"Dockerfile\"\n    }\n}\n\nThe Dev Container Templates provided by the Rocker Project include devcontainer.json like these.\n\n\n3.2 Command line\nWe can use radian instead of the default R console.\n\n\nTerminal\n\ndocker run --rm -ti ghcr.io/rocker-org/devcontainer/r-ver:4 radian\n\nAlso httpgd is already installed so we can expose the container port to show the plot in the browser. See the GUI page for details.\n\n\n3.3 RStudio Server\nghcr.io/rocker-org/devcontainer/tidyverse and ghcr.io/rocker-org/devcontainer/geospatial have already installed RStudio Server. See the rocker/rstudio reference page for usage."
+  },
+  {
+    "objectID": "images/devcontainer/images.html#see-also",
+    "href": "images/devcontainer/images.html#see-also",
+    "title": "Pre-built Dev Container Images",
+    "section": "4 See also",
+    "text": "4 See also\n\nDev Container Features\nDev Container Templates"
+  },
+  {
     "objectID": "CODE_OF_CONDUCT.html",
     "href": "CODE_OF_CONDUCT.html",
     "title": "Contributor Covenant Code of Conduct",
@@ -438,7 +508,7 @@
     "href": "use/editor.html#vscode",
     "title": "Edit in containers",
     "section": "3 VSCode",
-    "text": "3 VSCode\nVisual Studio Code - Open Source (Code - OSS) is currently one of the most popular editors.\nWhen editing R in VSCode, vscode-R is a popular extension. This extension is recommended to be used with languageserver and httpgd.\n\n3.1 Visual Studio Code Dev Containers\nThe Microsoft’s Code OSS distribution, Visual Studio Code, has an extension, Dev Containers. (Formerly known as “Remote - Containers”.)\nThat makes a container the backend, which can be used to develop using software in the container.\nThe Dev Containers extension builds images from definition files and creates containers with installed VSCode Server and vscode extensions. Users can run the container and start working inside it without touching anything but the local VSCode.\nThe Dev Containers extension can load and use templates published on the web. The R’s definition is this, which installs languageserver and httpgd, and also installs radian as R console.\nThis definition can also be used in GitHub Codespaces.\n\n\n3.2 coder/code-server and gitpod-io/openvscode-server\nBoth coder’s code-server and gitpod’s openvscode-server can run Code - OSS server-side and you can use it from the browser. To use them in a Docker container, they must be installed in the container."
+    "text": "3 VSCode\nVisual Studio Code - Open Source (Code - OSS) is currently one of the most popular editors.\nWhen editing R in VSCode, vscode-R is a popular extension. This extension is recommended to be used with languageserver and httpgd.\n\n3.1 Visual Studio Code Dev Containers\nThe Microsoft’s Code OSS distribution, Visual Studio Code, has an extension, Dev Containers. (Formerly known as “Remote - Containers”.)\nThat makes a container the backend, which can be used to develop using software in the container.\nThe Dev Containers extension builds images from definition files and creates containers with installed VSCode Server and vscode extensions. Users can run the container and start working inside it without touching anything but the local VSCode.\nThe Dev Containers extension can load and use templates published on the web. The R’s definition is this, which installs languageserver and httpgd, and also installs radian as R console.\nThis definition can also be used in GitHub Codespaces.\nSee also\n\nDev Container Templates\nDev Container Images\nDev Container Features\n\n\n\n3.2 coder/code-server and gitpod-io/openvscode-server\nBoth coder’s code-server and gitpod’s openvscode-server can run Code - OSS server-side and you can use it from the browser. To use them in a Docker container, they must be installed in the container."
   },
   {
     "objectID": "use/gui.html",

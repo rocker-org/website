@@ -24,6 +24,14 @@
     ]
   },
   {
+    "listing": "/images/devcontainer/index.html",
+    "items": [
+      "/images/devcontainer/features.html",
+      "/images/devcontainer/templates.html",
+      "/images/devcontainer/images.html"
+    ]
+  },
+  {
     "listing": "/use/index.html",
     "items": [
       "/use/editor.html",
