@@ -80,6 +80,12 @@ and also installs [`radian`](https://github.com/randy3k/radian) as R console.
 
 This definition can also be used in [GitHub Codespaces](https://github.com/features/codespaces).
 
+See also
+
+- [Dev Container Templates](../images/devcontainer/templates.md)
+- [Dev Container Images](../images/devcontainer/images.md)
+- [Dev Container Features](../images/devcontainer/features.md)
+
 ### coder/code-server and gitpod-io/openvscode-server
 
 Both [coder's code-server](https://github.com/coder/code-server) and
