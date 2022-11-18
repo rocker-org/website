@@ -59,7 +59,7 @@ website:
               href: images/devcontainer/features.md
             - text: Images
               href: images/devcontainer/images.md
-            - text: Temlates
+            - text: Templates
               href: images/devcontainer/templates.md
         - text: ---
         - section: Other projects
