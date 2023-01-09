@@ -69,6 +69,18 @@ Some tips for choosing:
 - If you want to install packages that exist in the conda-forge,
   you can use `miniforge` for fast installation with `mamba`.
 
+## Install R packages on Dev Containers
+
+Several Dev Container Features allow R package installation to be defined on `devcontainer.json`.
+
+1. [`apt-packages`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-apt)
+2. [`r-packages`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-packages)
+
+These support package installation via apt or R function ([`pak::pak()`](https://pak.r-lib.org/reference/pak.html)).
+
+There is also [the [`renv-cache`] Feature](https://github.com/rocker-org/devcontainer-features/tree/main/src/renv-cache)
+that supports package installation via [`renv`](https://rstudio.github.io/renv/) after container startup.
+
 ## See also
 
 - [Dev Container Images](images.md)
