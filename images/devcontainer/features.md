@@ -33,9 +33,12 @@ Check the source repository for details on each Feature.
 
 ## Install R on Dev Containers
 
+There are some Dev Container Features that can be used to install R.
+
 1. [`r-apt`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-apt)
 2. [`r-rig`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-rig)
 3. [`miniforge`](https://github.com/rocker-org/devcontainer-features/tree/main/src/miniforge)[^miniforge]
+   (See also [`micromamba`](https://github.com/mamba-org/devcontainer-features/tree/main/src/micromamba) provided by mamba-org)
 
 [^miniforge]: This Feature does not directly install R, but it configures mamba so we can use mamba to install R.
 
