@@ -29,7 +29,7 @@ and `ghcr.io/rocker-org/devcontainer/geospatial` are correspond to [`rocker/r-ve
 
 ## How to use
 
-### devcontainer.json
+### devcontainer.json and Dockerfile
 
 Specify the image in [`devcontainer.json`](https://containers.dev/implementors/spec/#devcontainerjson) as follows.
 
@@ -39,6 +39,8 @@ Specify the image in [`devcontainer.json`](https://containers.dev/implementors/s
     "image": "ghcr.io/rocker-org/devcontainer/r-ver:4"
 }
 ```
+
+The basic usage is to customize by adding [Dev Container Features](https://containers.dev/features) here.
 
 Or, we can use it as a base image in a Dockerfile.
 
@@ -58,8 +60,6 @@ When used with a Dockerfile, the `devcontainer.json` file must be rewritten to r
     }
 }
 ```
-
-[The Dev Container Templates provided by the Rocker Project](templates.md) include `devcontainer.json` like these.
 
 ### Command line
 
