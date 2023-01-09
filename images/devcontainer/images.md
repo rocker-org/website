@@ -1,5 +1,5 @@
 ---
-title: Pre-built Dev Container Images
+title: Rocker Pre-built Dev Container Images
 ---
 
 ## Quick reference
@@ -81,5 +81,5 @@ See [the `rocker/rstudio` reference page](../versioned/rstudio.md) for usage.
 
 ## See also
 
-- [Dev Container Features](features.md)
-- [Dev Container Templates](templates.md)
+- [Rocker Dev Container Features](features.md)
+- [Rocker Dev Container Templates](templates.md)

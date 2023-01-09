@@ -63,7 +63,7 @@ but with different build tools.
 | [`rocker/r-ubuntu`](other/r-ubuntu.md) | `ubuntu`                                                                  | Close to `r-base`, but based on `ubuntu`                                                                          | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/r-ubuntu.svg) |
 | [`rocker/r-bspm`](other/r-bspm.md)     | `r-base`, `rocker/r-ubuntu`, `archlinux`, `fedora`, `opensuse/tumbleweed` | Binary installation of R packages has been configured, powered by [bspm](https://cran.r-project.org/package=bspm) | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/r-bspm.svg)   |
 
-### Dev Container Images
+### Rocker Pre-built Dev Container Images
 
-Images built by [the devcontainer CLI](https://github.com/devcontainers/cli).
-See [the Dev Container Images page](devcontainer/images.md) for details.
+Images built by [the Dev Container CLI](https://github.com/devcontainers/cli).
+See [the Rocker Dev Container Images page](devcontainer/images.md) for details.

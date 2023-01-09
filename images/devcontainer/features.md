@@ -1,5 +1,5 @@
 ---
-title: Dev Container Features
+title: Rocker Dev Container Features
 ---
 
 ## Overview
@@ -83,5 +83,5 @@ that supports package installation via [`renv`](https://rstudio.github.io/renv/)
 
 ## See also
 
-- [Dev Container Images](images.md)
-- [Dev Container Templates](templates.md)
+- [Rocker Dev Container Images](images.md)
+- [Rocker Dev Container Templates](templates.md)
