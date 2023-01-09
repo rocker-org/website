@@ -24,8 +24,8 @@ These images are intended to be images for R that can be used like the Dev Conta
 built from [`devcontainers/images`](https://github.com/devcontainers/images) for each language.
 
 `ghcr.io/rocker-org/devcontainer/r-ver`, `ghcr.io/rocker-org/devcontainer/tidyverse`,
-and `ghcr.io/rocker-org/devcontainer/geospatial` are correspond to [`rocker/r-ver`](r-ver.md),
-[`rocker/tidyverse`, and `rocker/geospatial`](rstudio.md), respectively.
+and `ghcr.io/rocker-org/devcontainer/geospatial` are correspond to [`rocker/r-ver`](../versioned/r-ver.md),
+[`rocker/tidyverse`, and `rocker/geospatial`](../versioned/rstudio.md), respectively.
 
 ## How to use
 
