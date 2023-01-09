@@ -50,7 +50,8 @@ FROM ghcr.io/rocker-org/devcontainer/tidyverse:4
 
 To install the R package on the Dockerfile, please refer to [the Extending images page](../../use/extending.md).
 
-When used with a Dockerfile, the `devcontainer.json` file must be rewritten to refer to the Dockerfile.
+When using a combination of a `devcontainer.json` and a Dockerfile,
+the `devcontainer.json` file must be rewritten to refer to the Dockerfile.
 
 ```{.json filename=".devcontainer/devcontainer.json"}
 {
