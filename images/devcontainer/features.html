@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rocker Project - Dev Container Features</title>
+<title>Rocker Project - Rocker Dev Container Features</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -287,7 +287,7 @@ background-size: cover;
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Dev Container Features</h1>
+      <h1 class="quarto-secondary-nav-title">Rocker Dev Container Features</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -298,7 +298,7 @@ background-size: cover;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Dev Container Features</h1>
+      <h1 class="title d-none d-lg-block">Rocker Dev Container Features</h1>
                       </div>
   </div>
     
@@ -454,7 +454,8 @@ background-size: cover;
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="toc-section-number">1</span>  Overview</a></li>
   <li><a href="#install-r-on-dev-containers" id="toc-install-r-on-dev-containers" class="nav-link" data-scroll-target="#install-r-on-dev-containers"><span class="toc-section-number">2</span>  Install R on Dev Containers</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="toc-section-number">3</span>  See also</a></li>
+  <li><a href="#install-r-packages-on-dev-containers" id="toc-install-r-packages-on-dev-containers" class="nav-link" data-scroll-target="#install-r-packages-on-dev-containers"><span class="toc-section-number">3</span>  Install R packages on Dev Containers</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="toc-section-number">4</span>  See also</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/images/devcontainer/features.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/images/devcontainer/features.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -488,10 +489,11 @@ background-size: cover;
 </section>
 <section id="install-r-on-dev-containers" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="install-r-on-dev-containers"><span class="header-section-number">2</span> Install R on Dev Containers</h2>
+<p>There are some Dev Container Features that can be used to install R.</p>
 <ol type="1">
 <li><a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/r-apt"><code>r-apt</code></a></li>
 <li><a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/r-rig"><code>r-rig</code></a></li>
-<li><a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/miniforge"><code>miniforge</code></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/miniforge"><code>miniforge</code></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (See also <a href="https://github.com/mamba-org/devcontainer-features/tree/main/src/micromamba"><code>micromamba</code></a> provided by mamba-org)</li>
 </ol>
 <p>Each of these installations of R will be configured to allow installation of R binary packages in the following ways.</p>
 <ol type="1">
@@ -508,11 +510,21 @@ background-size: cover;
 <li>If you want to install packages that exist in the conda-forge, you can use <code>miniforge</code> for fast installation with <code>mamba</code>.</li>
 </ul>
 </section>
-<section id="see-also" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">3</span> See also</h2>
+<section id="install-r-packages-on-dev-containers" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="install-r-packages-on-dev-containers"><span class="header-section-number">3</span> Install R packages on Dev Containers</h2>
+<p>Several Dev Container Features allow R package installation to be defined on <code>devcontainer.json</code>.</p>
+<ol type="1">
+<li><a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/r-apt"><code>apt-packages</code></a></li>
+<li><a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/r-packages"><code>r-packages</code></a></li>
+</ol>
+<p>These support package installation via <code>apt</code> or R function (<a href="https://pak.r-lib.org/reference/pak.html"><code>pak::pak()</code></a>).</p>
+<p>There is also <a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/renv-cache">the <code>renv-cache</code> Feature</a> that supports package installation via <a href="https://rstudio.github.io/renv/">the <code>renv</code> R package</a> after container startup.</p>
+</section>
+<section id="see-also" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="see-also"><span class="header-section-number">4</span> See also</h2>
 <ul>
-<li><a href="../../images/devcontainer/images.html">Dev Container Images</a></li>
-<li><a href="../../images/devcontainer/templates.html">Dev Container Templates</a></li>
+<li><a href="../../images/devcontainer/images.html">Rocker Dev Container Images</a></li>
+<li><a href="../../images/devcontainer/templates.html">Rocker Dev Container Templates</a></li>
 </ul>
 
 

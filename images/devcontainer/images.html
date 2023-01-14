@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rocker Project - Pre-built Dev Container Images</title>
+<title>Rocker Project - Rocker Pre-built Dev Container Images</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -287,7 +287,7 @@ background-size: cover;
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Pre-built Dev Container Images</h1>
+      <h1 class="quarto-secondary-nav-title">Rocker Pre-built Dev Container Images</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -298,7 +298,7 @@ background-size: cover;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Pre-built Dev Container Images</h1>
+      <h1 class="title d-none d-lg-block">Rocker Pre-built Dev Container Images</h1>
                       </div>
   </div>
     
@@ -456,7 +456,7 @@ background-size: cover;
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="toc-section-number">2</span>  Overview</a></li>
   <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use"><span class="toc-section-number">3</span>  How to use</a>
   <ul>
-  <li><a href="#devcontainer.json" id="toc-devcontainer.json" class="nav-link" data-scroll-target="#devcontainer.json"><span class="toc-section-number">3.1</span>  devcontainer.json</a></li>
+  <li><a href="#devcontainer.json-and-dockerfile" id="toc-devcontainer.json-and-dockerfile" class="nav-link" data-scroll-target="#devcontainer.json-and-dockerfile"><span class="toc-section-number">3.1</span>  devcontainer.json and Dockerfile</a></li>
   <li><a href="#command-line" id="toc-command-line" class="nav-link" data-scroll-target="#command-line"><span class="toc-section-number">3.2</span>  Command line</a></li>
   <li><a href="#rstudio-server" id="toc-rstudio-server" class="nav-link" data-scroll-target="#rstudio-server"><span class="toc-section-number">3.3</span>  RStudio Server</a></li>
   </ul></li>
@@ -493,12 +493,12 @@ background-size: cover;
 <h2 data-number="2" class="anchored" data-anchor-id="overview"><span class="header-section-number">2</span> Overview</h2>
 <p>The Rocker Project provides some Docker container images which built with Dev Container Features. Packages commonly used for development are already installed.</p>
 <p>These images are intended to be images for R that can be used like the Dev Container images built from <a href="https://github.com/devcontainers/images"><code>devcontainers/images</code></a> for each language.</p>
-<p><code>ghcr.io/rocker-org/devcontainer/r-ver</code>, <code>ghcr.io/rocker-org/devcontainer/tidyverse</code>, and <code>ghcr.io/rocker-org/devcontainer/geospatial</code> are correspond to <a href="r-ver.md"><code>rocker/r-ver</code></a>, <a href="rstudio.md"><code>rocker/tidyverse</code>, and <code>rocker/geospatial</code></a>, respectively.</p>
+<p><code>ghcr.io/rocker-org/devcontainer/r-ver</code>, <code>ghcr.io/rocker-org/devcontainer/tidyverse</code>, and <code>ghcr.io/rocker-org/devcontainer/geospatial</code> are correspond to <a href="../../images/versioned/r-ver.html"><code>rocker/r-ver</code></a>, <a href="../../images/versioned/rstudio.html"><code>rocker/tidyverse</code>, and <code>rocker/geospatial</code></a>, respectively.</p>
 </section>
 <section id="how-to-use" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="how-to-use"><span class="header-section-number">3</span> How to use</h2>
-<section id="devcontainer.json" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="devcontainer.json"><span class="header-section-number">3.1</span> devcontainer.json</h3>
+<section id="devcontainer.json-and-dockerfile" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="devcontainer.json-and-dockerfile"><span class="header-section-number">3.1</span> devcontainer.json and Dockerfile</h3>
 <p>Specify the image in <a href="https://containers.dev/implementors/spec/#devcontainerjson"><code>devcontainer.json</code></a> as follows.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -509,6 +509,7 @@ background-size: cover;
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"image"</span><span class="fu">:</span> <span class="st">"ghcr.io/rocker-org/devcontainer/r-ver:4"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The basic usage is to customize by adding <a href="https://containers.dev/features">Dev Container Features</a> here.</p>
 <p>Or, we can use it as a base image in a Dockerfile.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -517,7 +518,7 @@ background-size: cover;
 <div class="sourceCode" id="cb2"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> ghcr.io/rocker-org/devcontainer/tidyverse:4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To install the R package on the Dockerfile, please refer to <a href="../../use/extending.html">the Extending images page</a>.</p>
-<p>When used with a Dockerfile, the <code>devcontainer.json</code> file must be rewritten to refer to the Dockerfile.</p>
+<p>When using a combination of a <code>devcontainer.json</code> and a Dockerfile, the <code>devcontainer.json</code> file must be rewritten to refer to the Dockerfile.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>.devcontainer/devcontainer.json</strong></pre>
@@ -529,7 +530,6 @@ background-size: cover;
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="../../images/devcontainer/templates.html">The Dev Container Templates provided by the Rocker Project</a> include <code>devcontainer.json</code> like these.</p>
 </section>
 <section id="command-line" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="command-line"><span class="header-section-number">3.2</span> Command line</h3>
@@ -550,8 +550,8 @@ background-size: cover;
 <section id="see-also" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="see-also"><span class="header-section-number">4</span> See also</h2>
 <ul>
-<li><a href="../../images/devcontainer/features.html">Dev Container Features</a></li>
-<li><a href="../../images/devcontainer/templates.html">Dev Container Templates</a></li>
+<li><a href="../../images/devcontainer/features.html">Rocker Dev Container Features</a></li>
+<li><a href="../../images/devcontainer/templates.html">Rocker Dev Container Templates</a></li>
 </ul>
 
 
