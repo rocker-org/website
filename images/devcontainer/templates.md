@@ -1,5 +1,5 @@
 ---
-title: Dev Container Templates
+title: Rocker Dev Container Templates
 ---
 
 ## Overview
@@ -19,5 +19,5 @@ devcontainer templates apply -t ghcr.io/rocker-org/devcontainer-templates/r-ver
 
 ## See also
 
-- [Dev Container Features](features.md)
-- [Dev Container Images](images.md)
+- [Rocker Dev Container Features](features.md)
+- [Rocker Dev Container Images](images.md)

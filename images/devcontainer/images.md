@@ -1,5 +1,5 @@
 ---
-title: Pre-built Dev Container Images
+title: Rocker Pre-built Dev Container Images
 ---
 
 ## Quick reference
@@ -24,12 +24,12 @@ These images are intended to be images for R that can be used like the Dev Conta
 built from [`devcontainers/images`](https://github.com/devcontainers/images) for each language.
 
 `ghcr.io/rocker-org/devcontainer/r-ver`, `ghcr.io/rocker-org/devcontainer/tidyverse`,
-and `ghcr.io/rocker-org/devcontainer/geospatial` are correspond to [`rocker/r-ver`](r-ver.md),
-[`rocker/tidyverse`, and `rocker/geospatial`](rstudio.md), respectively.
+and `ghcr.io/rocker-org/devcontainer/geospatial` are correspond to [`rocker/r-ver`](../versioned/r-ver.md),
+[`rocker/tidyverse`, and `rocker/geospatial`](../versioned/rstudio.md), respectively.
 
 ## How to use
 
-### devcontainer.json
+### devcontainer.json and Dockerfile
 
 Specify the image in [`devcontainer.json`](https://containers.dev/implementors/spec/#devcontainerjson) as follows.
 
@@ -40,6 +40,8 @@ Specify the image in [`devcontainer.json`](https://containers.dev/implementors/s
 }
 ```
 
+The basic usage is to customize by adding [Dev Container Features](https://containers.dev/features) here.
+
 Or, we can use it as a base image in a Dockerfile.
 
 ```{.dockerfile filename=".devcontainer/Dockerfile"}
@@ -48,7 +50,8 @@ FROM ghcr.io/rocker-org/devcontainer/tidyverse:4
 
 To install the R package on the Dockerfile, please refer to [the Extending images page](../../use/extending.md).
 
-When used with a Dockerfile, the `devcontainer.json` file must be rewritten to refer to the Dockerfile.
+When using a combination of a `devcontainer.json` and a Dockerfile,
+the `devcontainer.json` file must be rewritten to refer to the Dockerfile.
 
 ```{.json filename=".devcontainer/devcontainer.json"}
 {
@@ -58,8 +61,6 @@ When used with a Dockerfile, the `devcontainer.json` file must be rewritten to r
     }
 }
 ```
-
-[The Dev Container Templates provided by the Rocker Project](templates.md) include `devcontainer.json` like these.
 
 ### Command line
 
@@ -81,5 +82,5 @@ See [the `rocker/rstudio` reference page](../versioned/rstudio.md) for usage.
 
 ## See also
 
-- [Dev Container Features](features.md)
-- [Dev Container Templates](templates.md)
+- [Rocker Dev Container Features](features.md)
+- [Rocker Dev Container Templates](templates.md)

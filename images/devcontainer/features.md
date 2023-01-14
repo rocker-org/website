@@ -1,5 +1,5 @@
 ---
-title: Dev Container Features
+title: Rocker Dev Container Features
 ---
 
 ## Overview
@@ -33,9 +33,12 @@ Check the source repository for details on each Feature.
 
 ## Install R on Dev Containers
 
+There are some Dev Container Features that can be used to install R.
+
 1. [`r-apt`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-apt)
 2. [`r-rig`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-rig)
 3. [`miniforge`](https://github.com/rocker-org/devcontainer-features/tree/main/src/miniforge)[^miniforge]
+   (See also [`micromamba`](https://github.com/mamba-org/devcontainer-features/tree/main/src/micromamba) provided by mamba-org)
 
 [^miniforge]: This Feature does not directly install R, but it configures mamba so we can use mamba to install R.
 
@@ -66,7 +69,19 @@ Some tips for choosing:
 - If you want to install packages that exist in the conda-forge,
   you can use `miniforge` for fast installation with `mamba`.
 
+## Install R packages on Dev Containers
+
+Several Dev Container Features allow R package installation to be defined on `devcontainer.json`.
+
+1. [`apt-packages`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-apt)
+2. [`r-packages`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-packages)
+
+These support package installation via `apt` or R function ([`pak::pak()`](https://pak.r-lib.org/reference/pak.html)).
+
+There is also [the `renv-cache` Feature](https://github.com/rocker-org/devcontainer-features/tree/main/src/renv-cache)
+that supports package installation via [the `renv` R package](https://rstudio.github.io/renv/) after container startup.
+
 ## See also
 
-- [Dev Container Images](images.md)
-- [Dev Container Templates](templates.md)
+- [Rocker Dev Container Images](images.md)
+- [Rocker Dev Container Templates](templates.md)
