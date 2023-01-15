@@ -12,7 +12,7 @@ title: Rocker Pre-built Dev Container Images
   - [r-ver](https://github.com/rocker-org/devcontainer-images/pkgs/container/devcontainer%2Fr-ver)
   - [tidyverse](https://github.com/rocker-org/devcontainer-images/pkgs/container/devcontainer%2Ftidyverse)
   - [geospatial](https://github.com/rocker-org/devcontainer-images/pkgs/container/devcontainer%2Fgeospatial)
-- Published image details: not available
+- Published image details: [rocker-org/devcontainer-images's wiki](https://github.com/rocker-org/devcontainer-images/wiki)
 - Non-root default user: `rstudio`
 
 ## Overview
