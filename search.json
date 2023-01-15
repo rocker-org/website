@@ -53,7 +53,7 @@
     "href": "images/devcontainer/images.html",
     "title": "Rocker Pre-built Dev Container Images",
     "section": "",
-    "text": "Source repository: rocker-org/devcontainer-images\nSource\n\nr-ver\ntidyverse, geospatial\n\ntags\n\nr-ver\ntidyverse\ngeospatial\n\nPublished image details: not available\nNon-root default user: rstudio"
+    "text": "Source repository: rocker-org/devcontainer-images\nSource\n\nr-ver\ntidyverse, geospatial\n\ntags\n\nr-ver\ntidyverse\ngeospatial\n\nPublished image details: rocker-org/devcontainer-images’s wiki\nNon-root default user: rstudio"
   },
   {
     "objectID": "images/devcontainer/images.html#overview",
