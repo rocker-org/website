@@ -75,6 +75,18 @@ FROM rocker/r-ver:4
 RUN echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >>"${R_HOME}/etc/Rprofile.site"
 ```
 
+Or, if you want to temporarily change the CRAN mirror during an R session, use the `options()` function.
+
+A common use case is when developing an R package and using the `devtools::check()` function;
+if the CRAN mirror is not changed from the default, an error like
+`cannot open URL 'packagemanager.posit.co/cran/__linux__/jammy/latest/web/packages/packages.rds': HTTP status was '404 Not Found'`
+may occur.
+
+```r
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+devtools::check()
+```
+
 ### Selecting the BLAS implementation used by R
 
 By default `rocker/r-ver` uses [the OpenBLAS](https://www.openblas.net/) implementation for Linear Algebra[^blas].
