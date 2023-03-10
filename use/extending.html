@@ -371,7 +371,7 @@ background-size: cover;
   <li><a href="#install-source-packages" id="toc-install-source-packages" class="nav-link" data-scroll-target="#install-source-packages"><span class="toc-section-number">1.1</span>  Install source packages</a></li>
   <li><a href="#install-binary-packages" id="toc-install-binary-packages" class="nav-link" data-scroll-target="#install-binary-packages"><span class="toc-section-number">1.2</span>  Install binary packages</a>
   <ul class="collapse">
-  <li><a href="#rstudio-public-package-manager" id="toc-rstudio-public-package-manager" class="nav-link" data-scroll-target="#rstudio-public-package-manager"><span class="toc-section-number">1.2.1</span>  RStudio Public Package Manager</a></li>
+  <li><a href="#posit-public-package-manager" id="toc-posit-public-package-manager" class="nav-link" data-scroll-target="#posit-public-package-manager"><span class="toc-section-number">1.2.1</span>  Posit Public Package Manager</a></li>
   <li><a href="#system-package-management-system" id="toc-system-package-management-system" class="nav-link" data-scroll-target="#system-package-management-system"><span class="toc-section-number">1.2.2</span>  System package management system</a></li>
   <li><a href="#bspm" id="toc-bspm" class="nav-link" data-scroll-target="#bspm"><span class="toc-section-number">1.2.3</span>  bspm</a></li>
   <li><a href="#conda-forge" id="toc-conda-forge" class="nav-link" data-scroll-target="#conda-forge"><span class="toc-section-number">1.2.4</span>  conda-forge</a></li>
@@ -457,10 +457,10 @@ Tip
 <section id="install-binary-packages" class="level3" data-number="1.2">
 <h3 data-number="1.2" class="anchored" data-anchor-id="install-binary-packages"><span class="header-section-number">1.2</span> Install binary packages</h3>
 <p>Source installations generally take longer than binary installations, so there are several ways to install binary R packages on Linux.</p>
-<section id="rstudio-public-package-manager" class="level4" data-number="1.2.1">
-<h4 data-number="1.2.1" class="anchored" data-anchor-id="rstudio-public-package-manager"><span class="header-section-number">1.2.1</span> <a href="https://packagemanager.rstudio.com/">RStudio Public Package Manager</a></h4>
-<p>RStudio Package Manager (RSPM) provides binary R packages for specific Linux distributions<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Since RSPM provides all packages on CRAN as a CRAN mirror, users can install packages just as if they were installed from CRAN.</p>
-<p>For example, Ubuntu based image <a href="../images/versioned/r-ver.html"><code>rocker/r-ver:4</code></a> on amd64 platform, which has already set up the public version of RSPM (RStudio Public Package Manager) as its default CRAN mirror, can install the <code>curl</code> package as follows.</p>
+<section id="posit-public-package-manager" class="level4" data-number="1.2.1">
+<h4 data-number="1.2.1" class="anchored" data-anchor-id="posit-public-package-manager"><span class="header-section-number">1.2.1</span> <a href="https://packagemanager.rstudio.com/">Posit Public Package Manager</a></h4>
+<p>Posit Package Manager (Formerly “RStudio Package Manager”, RSPM) provides binary R packages for specific Linux distributions<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Since RSPM provides all packages on CRAN as a CRAN mirror, users can install packages just as if they were installed from CRAN.</p>
+<p>For example, Ubuntu based image <a href="../images/versioned/r-ver.html"><code>rocker/r-ver:4</code></a> on amd64 platform, which has already set up the public version of RSPM (Posit Public Package Manager) as its default CRAN mirror, can install the <code>curl</code> package as follows.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/r-ver:4</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">R</span> <span class="at">-q</span> <span class="at">-e</span> <span class="st">'install.packages("curl")'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -474,7 +474,7 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p>Some packages (e.g.&nbsp;<a href="https://CRAN.R-project.org/package=sf"><code>sf</code></a>) will fail to load if the system requirements are not met when the package is attempted to be loaded. In such cases, the system libraries must be installed as in the case of source installation.</p>
-<p>Please check <a href="https://support.rstudio.com/hc/en-us/articles/360046703913">frequently asked questions for RStudio Public Package Manager</a>.</p>
+<p>Please check <a href="https://support.posit.co/hc/en-us/articles/360046703913">FAQ for Posit Public Package Manager</a>.</p>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -687,7 +687,7 @@ Note
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><a href="https://docs.rstudio.com/rspm/admin/serving-binaries/#supported-operating-systems">RStudio Package Manager: Admin Guide</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://docs.posit.co/rspm/admin/serving-binaries/#supported-operating-systems">Posit Package Manager: Admin Guide</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

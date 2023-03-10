@@ -1,13 +1,5 @@
 [
   {
-    "listing": "/images/devcontainer/index.html",
-    "items": [
-      "/images/devcontainer/features.html",
-      "/images/devcontainer/templates.html",
-      "/images/devcontainer/images.html"
-    ]
-  },
-  {
     "listing": "/images/other/index.html",
     "items": [
       "/images/other/r-bspm.html",
@@ -29,6 +21,14 @@
     "items": [
       "/images/base/r-base.html",
       "/images/base/r-devel.html"
+    ]
+  },
+  {
+    "listing": "/images/devcontainer/index.html",
+    "items": [
+      "/images/devcontainer/features.html",
+      "/images/devcontainer/templates.html",
+      "/images/devcontainer/images.html"
     ]
   },
   {
