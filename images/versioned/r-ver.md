@@ -31,7 +31,8 @@ Compared to `r-base`,
   (the `r-base` stack gets the latest R version as a binary from Debian unstable).
 - The only platforms available are `linux/amd64` and `linux/arm64`
   (arm64 images are experimental and only available for `rocker/r-ver` 4.1.0 or later).
-- Set [the RStudio Public Package Manager (RSPM)](https://packagemanager.rstudio.com) as default CRAN mirror.
+- Set [the Posit Public Package Manager (RStudio Package Manager, RSPM)](https://packagemanager.rstudio.com)
+  as default CRAN mirror.
   For the amd64 platform, RSPM serves compiled Linux binaries of R packages and greatly speeds up package installs.
 - Non-latest R version images installs all R packages from a fixed snapshot of CRAN mirror at a given date.
   This setting ensures that the same version of the R package is installed no matter when the installation is performed.
@@ -70,9 +71,21 @@ To use a different CRAN mirror, simply write a new setting in the `Rprofile`.
 
 For example, the following Dockerfile sets the default repository to CRAN.
 
-```dockerfile
+```{.dockerfile filename="Dockerfile"}
 FROM rocker/r-ver:4
 RUN echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >>"${R_HOME}/etc/Rprofile.site"
+```
+
+Or, if you want to temporarily change the CRAN mirror during an R session, use the `options()` function.
+
+A common use case is when developing an R package and using the `devtools::check()` function;
+if the CRAN mirror is not changed from the default, an error like
+`cannot open URL 'packagemanager.posit.co/cran/__linux__/jammy/latest/web/packages/packages.rds': HTTP status was '404 Not Found'`
+may occur.
+
+```{.r filename="R Terminal"}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+devtools::check()
 ```
 
 ### Selecting the BLAS implementation used by R
@@ -99,7 +112,7 @@ If this error occurs, change the BLAS used by R to libblas as described below.
 
 You can see the current BLAS configuration for R by using `sessionInfo()` function in R console.
 
-```r
+```{.r filename="R Terminal"}
 sessionInfo()
 #> R version 4.2.0 (2022-04-22)
 #> Platform: x86_64-pc-linux-gnu (64-bit)
@@ -120,7 +133,7 @@ You can switch BLAS used by R with the Debian `update-alternatives` script:
 
 ##### Switch to libblas
 
-```bash
+```{.bash filename="Terminal"}
 ARCH=$(uname -m)
 update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/blas/libblas.so.3"
 update-alternatives --set "liblapack.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/lapack/liblapack.so.3"
@@ -128,7 +141,7 @@ update-alternatives --set "liblapack.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-l
 
 ##### Switch to openblas
 
-```bash
+```{.bash filename="Terminal"}
 ARCH=$(uname -m)
 update-alternatives --set "libblas.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/openblas-pthread/libblas.so.3"
 update-alternatives --set "liblapack.so.3-${ARCH}-linux-gnu" "/usr/lib/${ARCH}-linux-gnu/openblas-pthread/liblapack.so.3"

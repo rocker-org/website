@@ -89,16 +89,16 @@ Check [the `pak` package documentation](https://pak.r-lib.org/index.html) for de
 Source installations generally take longer than binary installations,
 so there are several ways to install binary R packages on Linux.
 
-#### [RStudio Public Package Manager](https://packagemanager.rstudio.com/)
+#### [Posit Public Package Manager](https://packagemanager.rstudio.com/)
 
-RStudio Package Manager (RSPM) provides binary R packages for specific Linux distributions[^rspm].
+Posit Package Manager (Formerly "RStudio Package Manager", RSPM) provides binary R packages for specific Linux distributions[^rspm].
 Since RSPM provides all packages on CRAN as a CRAN mirror,
 users can install packages just as if they were installed from CRAN.
 
-[^rspm]: [RStudio Package Manager: Admin Guide](https://docs.rstudio.com/rspm/admin/serving-binaries/#supported-operating-systems)
+[^rspm]: [Posit Package Manager: Admin Guide](https://docs.posit.co/rspm/admin/serving-binaries/#supported-operating-systems)
 
 For example, Ubuntu based image [`rocker/r-ver:4`](../images/versioned/r-ver.md) on amd64 platform,
-which has already set up the public version of RSPM (RStudio Public Package Manager) as its default CRAN mirror,
+which has already set up the public version of RSPM (Posit Public Package Manager) as its default CRAN mirror,
 can install the `curl` package as follows.
 
 ```dockerfile
@@ -112,7 +112,7 @@ Some packages (e.g. [`sf`](https://CRAN.R-project.org/package=sf))
 will fail to load if the system requirements are not met when the package is attempted to be loaded.
 In such cases, the system libraries must be installed as in the case of source installation.
 
-Please check [frequently asked questions for RStudio Public Package Manager](https://support.rstudio.com/hc/en-us/articles/360046703913).
+Please check [FAQ for Posit Public Package Manager](https://support.posit.co/hc/en-us/articles/360046703913).
 
 :::
 
