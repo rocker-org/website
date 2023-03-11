@@ -76,6 +76,16 @@ FROM rocker/r-ver:4
 RUN echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >>"${R_HOME}/etc/Rprofile.site"
 ```
 
+:::{.callout-tip}
+
+To do the same thing by a non-root user in a container, for example, the following command can be used.
+
+```{.bash filename="Terminal"}
+echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' | sudo sh -c 'cat - >>"${R_HOME}/etc/Rprofile.site"'
+```
+
+:::
+
 Or, if you want to temporarily change the CRAN mirror during an R session, use the `options()` function.
 
 A common use case is when developing an R package and using the `devtools::check()` function;
