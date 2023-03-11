@@ -560,14 +560,33 @@ Warning
 <div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/r-ver:4</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">'options(repos = c(CRAN = "https://cloud.r-project.org"))'</span> <span class="op">&gt;&gt;</span><span class="st">"</span><span class="va">${R_HOME}</span><span class="st">/etc/Rprofile.site"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To do the same thing by a non-root user in a container, for example, the following command can be used.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'options(repos = c(CRAN = "https://cloud.r-project.org"))'</span> <span class="kw">|</span> <span class="fu">sudo</span> sh <span class="at">-c</span> <span class="st">'cat - &gt;&gt;"${R_HOME}/etc/Rprofile.site"'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <p>Or, if you want to temporarily change the CRAN mirror during an R session, use the <code>options()</code> function.</p>
 <p>A common use case is when developing an R package and using the <code>devtools::check()</code> function; if the CRAN mirror is not changed from the default, an error like <code>cannot open URL 'packagemanager.posit.co/cran/__linux__/jammy/latest/web/packages/packages.rds': HTTP status was '404 Not Found'</code> may occur.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>R Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="selecting-the-blas-implementation-used-by-r" class="level3" data-number="4.2">
@@ -594,14 +613,14 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>R Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.2.0 (2022-04-22)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.2.0 (2022-04-22)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here for instance R uses OpenBLAS.</p>
 </section>
@@ -616,9 +635,9 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/blas/libblas.so.3"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/lapack/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/blas/libblas.so.3"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/lapack/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -626,9 +645,9 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/libblas.so.3"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/libblas.so.3"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
