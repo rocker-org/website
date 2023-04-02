@@ -1,0 +1,3 @@
+default: true
+
+MD045: false # For compatibility with Quarto syntax

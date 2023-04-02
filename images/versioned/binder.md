@@ -43,18 +43,12 @@ This document is for R 4.0.0 >= images.
 ### Use outside of Binder
 
 If you use this image with Docker,
-the default command runs [Jupyter Notebook](https://jupyter-notebook.readthedocs.io/en/latest/).
-Since the Jupyter Notebook port is set to `8888`,
-you can open the Jupyter Notebook screen on `localhost:8888` from your browser with the following command.
+the default command runs [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/).
+Since the JupyterLab port is set to `8888`,
+you can open the JupyterLab screen on `localhost:8888` from your browser with the following command.
 
 ```sh
 docker run --rm -ti -p 8888:8888 rocker/binder
-```
-
-Or, start [JupyterLab](https://github.com/jupyterlab/jupyterlab) instead of Jupyter Notebook like this.
-
-```sh
-docker run --rm -ti -p 8888:8888 rocker/binder sh -c "jupyter lab --ip 0.0.0.0 --no-browser"
 ```
 
 You can log in by entering the token displayed in the terminal as your password.
