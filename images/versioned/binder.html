@@ -506,13 +506,11 @@ Note
 <h2 data-number="3" class="anchored" data-anchor-id="how-to-use"><span class="header-section-number">3</span> How to use</h2>
 <section id="use-outside-of-binder" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="use-outside-of-binder"><span class="header-section-number">3.1</span> Use outside of Binder</h3>
-<p>If you use this image with Docker, the default command runs <a href="https://jupyter-notebook.readthedocs.io/en/latest/">Jupyter Notebook</a>. Since the Jupyter Notebook port is set to <code>8888</code>, you can open the Jupyter Notebook screen on <code>localhost:8888</code> from your browser with the following command.</p>
+<p>If you use this image with Docker, the default command runs <a href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a>. Since the JupyterLab port is set to <code>8888</code>, you can open the JupyterLab screen on <code>localhost:8888</code> from your browser with the following command.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8888:8888 rocker/binder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or, start <a href="https://github.com/jupyterlab/jupyterlab">JupyterLab</a> instead of Jupyter Notebook like this.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8888:8888 rocker/binder sh <span class="at">-c</span> <span class="st">"jupyter lab --ip 0.0.0.0 --no-browser"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can log in by entering the token displayed in the terminal as your password.</p>
 <p>If you want to set your own password for Jupyter, you can set it as a environment variable <code>JUPYTER_TOKEN</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-e</span> JUPYTER_TOKEN=yourpassword <span class="at">-p</span> 8888:8888 rocker/binder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-e</span> JUPYTER_TOKEN=yourpassword <span class="at">-p</span> 8888:8888 rocker/binder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -527,7 +525,7 @@ Tip
 </div>
 </div>
 <p>To run RStudio Server directly as in <a href="../../images/versioned/rstudio.html"><code>rocker/rstudio</code></a>, execute <code>/init</code> command with the root user specified.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8787:8787 <span class="at">--user</span> root rocker/binder /init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8787:8787 <span class="at">--user</span> root rocker/binder /init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

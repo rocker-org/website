@@ -1,458 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "The Rocker Project",
+    "objectID": "use/reproducibility.html",
+    "href": "use/reproducibility.html",
+    "title": "Reproducibility",
     "section": "",
-    "text": "Ensure you have Docker installed and start R inside a container with:\ndocker run --rm -ti r-base\nOr get started with an RStudio® instance:\ndocker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio\nand point your browser to localhost:8787. Log in with user/password rstudio/yourpassword.\nFor more information and further options, see the image descriptions."
-  },
-  {
-    "objectID": "index.html#team",
-    "href": "index.html#team",
-    "title": "The Rocker Project",
-    "section": "👥Team",
-    "text": "👥Team\n\n\n\n\n\nCarl\n\n\n\n \n\n\n\n\nDirk\n\n\n\n \n\n\n\n\nNoam\n\n\n\n\nThe Rocker project was created by Carl Boettiger and Dirk Eddelbuettel, and is now maintained by Carl, Dirk, Noam Ross, and SHIMA Tatsuya, with significant contributions from a broad community of users and developers. Get in touch on GitHub issues with bug reports, feature requests, or other feedback."
-  },
-  {
-    "objectID": "index.html#papers",
-    "href": "index.html#papers",
-    "title": "The Rocker Project",
-    "section": "📜Papers",
-    "text": "📜Papers\n\nAn Introduction to Rocker: Docker Containers for R\nThe Rockerverse: Packages and Applications for Containerisation with R"
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "The Rocker Project",
-    "section": "⚖️License",
-    "text": "⚖️License\nThe Rocker Dockerfiles are licensed under the GPL 2 or later."
-  },
-  {
-    "objectID": "index.html#support",
-    "href": "index.html#support",
-    "title": "The Rocker Project",
-    "section": "🤝Support",
-    "text": "🤝Support\nWe are grateful for support from the Chan-Zuckerberg Initiative’s Essential Open Source Software for Science Program."
-  },
-  {
-    "objectID": "index.html#trademarks",
-    "href": "index.html#trademarks",
-    "title": "The Rocker Project",
-    "section": "™️Trademarks",
-    "text": "™️Trademarks\nRStudio® is a registered trademark of RStudio, Inc. The use of the trademarked term RStudio® and the distribution of the RStudio binaries through the images hosted on Docker Hub has been granted by explicit permission of RStudio Inc. Please review RStudio’s trademark use policy and address inquiries about further distribution or other questions to permissions@rstudio.com."
-  },
-  {
-    "objectID": "CODE_OF_CONDUCT.html",
-    "href": "CODE_OF_CONDUCT.html",
-    "title": "Contributor Covenant Code of Conduct",
-    "section": "",
-    "text": "In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation."
-  },
-  {
-    "objectID": "CODE_OF_CONDUCT.html#our-standards",
-    "href": "CODE_OF_CONDUCT.html#our-standards",
-    "title": "Contributor Covenant Code of Conduct",
-    "section": "2 Our Standards",
-    "text": "2 Our Standards\nExamples of behavior that contributes to creating a positive environment include:\n\nUsing welcoming and inclusive language\nBeing respectful of differing viewpoints and experiences\nGracefully accepting constructive criticism\nFocusing on what is best for the community\nShowing empathy towards other community members\n\nExamples of unacceptable behavior by participants include:\n\nThe use of sexualized language or imagery and unwelcome sexual attention or advances\nTrolling, insulting/derogatory comments, and personal or political attacks\nPublic or private harassment\nPublishing others’ private information, such as a physical or electronic address, without explicit permission\nOther conduct which could reasonably be considered inappropriate in a professional setting"
-  },
-  {
-    "objectID": "CODE_OF_CONDUCT.html#our-responsibilities",
-    "href": "CODE_OF_CONDUCT.html#our-responsibilities",
-    "title": "Contributor Covenant Code of Conduct",
-    "section": "3 Our Responsibilities",
-    "text": "3 Our Responsibilities\nProject maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.\nProject maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful."
-  },
-  {
-    "objectID": "CODE_OF_CONDUCT.html#scope",
-    "href": "CODE_OF_CONDUCT.html#scope",
-    "title": "Contributor Covenant Code of Conduct",
-    "section": "4 Scope",
-    "text": "4 Scope\nThis Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers."
-  },
-  {
-    "objectID": "CODE_OF_CONDUCT.html#enforcement",
-    "href": "CODE_OF_CONDUCT.html#enforcement",
-    "title": "Contributor Covenant Code of Conduct",
-    "section": "5 Enforcement",
-    "text": "5 Enforcement\nInstances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at cboettig@gmail.com. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.\nProject maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project’s leadership."
-  },
-  {
-    "objectID": "CODE_OF_CONDUCT.html#attribution",
-    "href": "CODE_OF_CONDUCT.html#attribution",
-    "title": "Contributor Covenant Code of Conduct",
-    "section": "6 Attribution",
-    "text": "6 Attribution\nThis Code of Conduct is adapted from the Contributor Covenant, version 1.4, available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html\nFor answers to common questions about this code of conduct, see https://www.contributor-covenant.org/faq"
-  },
-  {
-    "objectID": "images/index.html",
-    "href": "images/index.html",
-    "title": "The Rocker Images",
-    "section": "",
-    "text": "The Rocker Project provides a collection of (Linux) containers suited for different needs. Find a base image to extend or images with popular software and optimized libraries pre-installed.\nGet the latest version or a reproducibly fixed environment."
-  },
-  {
-    "objectID": "images/index.html#images",
-    "href": "images/index.html#images",
-    "title": "The Rocker Images",
-    "section": "2 Images",
-    "text": "2 Images\n\n2.1 The versioned stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ver\nubuntu\nInstall R from source and set RSPM as default CRAN mirror\n\n\n\nrocker/rstudio\nrocker/r-ver\nAdds RStudio Server\n\n\n\nrocker/tidyverse\nrocker/rstudio\nAdds tidyverse packages & devtools\n\n\n\nrocker/verse\nrocker/tidyverse\nAdds tex & publishing-related package\n\n\n\nrocker/geospatial\nrocker/verse\nAdds geospatial packages\n\n\n\nrocker/binder\nrocker/geospatial\nAdds requirements to run repositories on mybinder.org\n\n\n\nrocker/shiny\nrocker/r-ver\nAdds shiny server\n\n\n\nrocker/shiny-verse\nrocker/shiny\nAdds tidyverse packages\n\n\n\nrocker/cuda\nrocker/r-ver\nAdds CUDA support to rocker/r-ver\n\n\n\nrocker/ml\nrocker/cuda\nAdds CUDA support to rocker/tidyverse\n\n\n\nrocker/ml-verse\nrocker/ml\nAdds CUDA support to rocker/geospatial\n\n\n\n\nThis stack builds on stable Debian releases (for R versions <= 3.6.3) or Ubuntu LTS (for R versions >= 4.0.0). Images in this stack accept a version tag specifying which version of R is desired, e.g. rocker/rstudio:4.0.0 for R 4.0.0. The latest tag always follows the latest release version of R.\nSome images (e.g. rocker/r-ver) also have the devel tag, which installs the development version of R.\nVersion-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available, though Debian system libraries will still receive any security patches. Please check the document about versions for details.\n\n\n2.2 The base stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nr-baserocker/r-base\ndebian:testing\nInstall current R from unstable repos\n\n\n\nrocker/r-devel\nr-base\nR-devel added side-by-side onto r-base (using alias RD)\n\n\n\nrocker/drd\nr-base\nLighter rocker/r-devel\n\n\n\nrocker/drp\nr-base\nR-patched added side-by-side onto r-base (using alias RP)\n\n\n\nrocker/r-devel-san\nr-base\nas rocker/r-devel, but built with compiler sanitizers\n\n\n\nrocker/r-devel-ubsan-clang\nr-base\nSanitizers, clang c compiler (instead of gcc)\n\n\n\n\nThis stack builds on debian:testing and Debian unstable repo. Use this stack if you want access to the latest versions of system libraries and compilers through apt-get.\nr-base (Docker Official image) and rocker/r-base are built from the same Dockerfile, but with different build tools.\n\n\n2.3 Additional images\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ubuntu\nubuntu\nClose to r-base, but based on ubuntu\n\n\n\nrocker/r-bspm\nr-base, rocker/r-ubuntu, archlinux, fedora, opensuse/tumbleweed\nBinary installation of R packages has been configured, powered by bspm\n\n\n\n\n\n\n2.4 Rocker Pre-built Dev Container Images\nImages built by the Dev Container CLI. See the Rocker Dev Container Images page for details."
-  },
-  {
-    "objectID": "images/other/index.html",
-    "href": "images/other/index.html",
-    "title": "Additional images",
-    "section": "",
-    "text": "r-bspm\n\n\n\n\n\n\n\n\n\n\n\n\n\nr-ubuntu\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "images/other/r-ubuntu.html",
-    "href": "images/other/r-ubuntu.html",
-    "title": "r-ubuntu",
-    "section": "",
-    "text": "Source repository: rocker-org/ubuntu-lts\nDockerfile\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
-  },
-  {
-    "objectID": "images/other/r-ubuntu.html#overview",
-    "href": "images/other/r-ubuntu.html#overview",
-    "title": "r-ubuntu",
-    "section": "2 Overview",
-    "text": "2 Overview\nInstall current R and R packages on Ubuntu LTS, from PPA maintained by Michael Rutter. This image is close to r-base.\nYou can use apt to install binary R packages (r-cran-<package name>) along with its dependencies, as shown in the example below.\napt-get install -y --no-install-recommends r-cran-tidyverse"
-  },
-  {
-    "objectID": "images/other/r-bspm.html",
-    "href": "images/other/r-bspm.html",
-    "title": "r-bspm",
-    "section": "",
-    "text": "Source repository: rocker-org/bspm\nDockerfile\n\nrocker/r-bspm:testing\nrocker/r-bspm:22.04\netc.\n\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
-  },
-  {
-    "objectID": "images/other/r-bspm.html#overview",
-    "href": "images/other/r-bspm.html#overview",
-    "title": "r-bspm",
-    "section": "2 Overview",
-    "text": "2 Overview\nbspm configured containers. Binary R packages can be easily installed. Based on Debian, Ubuntu, Fedora, and OpenSUSE.\nSimilar to r-base and rocker/r-ubuntu in that these can install R binary packages and system dependencies. but thanks to bspm, rocker/r-bspm automatically installs binary packages and system dependencies even when using the R install.packages() function."
-  },
-  {
-    "objectID": "images/versioned/index.html",
-    "href": "images/versioned/index.html",
-    "title": "Version-stable Rocker images",
-    "section": "",
-    "text": "binder\n\n\n\n\n\n\n\n\n\n\n\n\n\ncuda, ml, ml-verse\n\n\n\n\n\n\n\n\n\n\n\n\n\nr-ver\n\n\n\n\n\n\n\n\n\n\n\n\n\nrstudio, tidyverse, verse, geospatial\n\n\n\n\n\n\n\n\n\n\n\n\n\nshiny, shiny-verse\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "images/versioned/shiny.html",
-    "href": "images/versioned/shiny.html",
-    "title": "shiny, shiny-verse",
-    "section": "",
-    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\n\nrocker/shiny\nrocker/shiny-verse\n\ntags\n\nrocker/shiny\n\nDockerHub\nGitHub Container Registry\n\nrocker/shiny-verse\n\nDockerHub\nGitHub Container Registry\n\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: not exist"
-  },
-  {
-    "objectID": "images/versioned/shiny.html#overview",
-    "href": "images/versioned/shiny.html#overview",
-    "title": "shiny, shiny-verse",
-    "section": "2 Overview",
-    "text": "2 Overview\nThese images are based on rocker/r-ver, and Shiny Server and some R packages for Shiny Server are already installed.\nThe basic usage of these images is the same, with the difference being the amount of additional (R) packages installed. (See image details for lists of installation packages)\n\nrocker/shiny-verse has already installed many R packages and their dependencies apt packages. e.g. the tidyverse package, the devtools package, some R Database Interface packages, the data.table package, the fst package, and the Apache Arrow R package.\n\nSince the Shiny Server port is set to 3838, you can open the Shiny screen on localhost:3838 from your browser with the following command.\ndocker run --rm -ti -p 3838:3838 rocker/shiny\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images. For R <= 3.6 images, please check the rocker-org/shiny repository."
-  },
-  {
-    "objectID": "images/versioned/shiny.html#how-to-use",
-    "href": "images/versioned/shiny.html#how-to-use",
-    "title": "shiny, shiny-verse",
-    "section": "3 How to use",
-    "text": "3 How to use\n\n3.1 Environment variables\nSeveral special environment variables can be set to modify Shiny Server’s behavior.\n\n3.1.1 APPLICATION_LOGS_TO_STDOUT\nThe Shiny Server log and all application logs are written to stdout and can be viewed using the docker logs command.\nThe logs for individual apps are still kept in the /var/log/shiny-server directory1. If you want to avoid printing the logs to stdout, set the environment variable APPLICATION_LOGS_TO_STDOUT to false.\ndocker run --rm -ti -e APPLICATION_LOGS_TO_STDOUT=false -p 3838:3838 rocker/shiny\n\n\n\n3.2 Run by non-root user\nShiny Server is normally run by the root user, and sessions within the Shiny Server use the non-root user with UID 999 named shiny.\nBy setting the --user option as follows, Shiny Server can be run by the shiny user.\ndocker run --rm -ti --user shiny -p 3838:3838 rocker/shiny\n\n\n3.3 See also\n\nShared Volumes\nNetworking"
-  },
-  {
-    "objectID": "images/versioned/binder.html",
-    "href": "images/versioned/binder.html",
-    "title": "binder",
-    "section": "",
-    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\ntags\n\nDockerHub\nGitHub Container Registry\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: rstudio"
-  },
-  {
-    "objectID": "images/versioned/binder.html#overview",
-    "href": "images/versioned/binder.html#overview",
-    "title": "binder",
-    "section": "2 Overview",
-    "text": "2 Overview\nThis image is based on rocker/geospatial and configured to run RStudio Server on Binder, thanks to jupyter-rsession-proxy.\nFor instructions on how to use this image with Binder for your project, see the rocker-org/binder, a template repository.\nBy placing the following badge  in README.md of your project, RStudio can be started and used in the browser by simply clicking on the badge.\n[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/<GITHUB_USER>/<REPO>/<BRANCH>?urlpath=rstudio)\nYou can also make a Binder badge with usethis::use_binder_badge() R function.\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images."
-  },
-  {
-    "objectID": "images/versioned/binder.html#how-to-use",
-    "href": "images/versioned/binder.html#how-to-use",
-    "title": "binder",
-    "section": "3 How to use",
-    "text": "3 How to use\n\n3.1 Use outside of Binder\nIf you use this image with Docker, the default command runs Jupyter Notebook. Since the Jupyter Notebook port is set to 8888, you can open the Jupyter Notebook screen on localhost:8888 from your browser with the following command.\ndocker run --rm -ti -p 8888:8888 rocker/binder\nOr, start JupyterLab instead of Jupyter Notebook like this.\ndocker run --rm -ti -p 8888:8888 rocker/binder sh -c \"jupyter lab --ip 0.0.0.0 --no-browser\"\nYou can log in by entering the token displayed in the terminal as your password.\nIf you want to set your own password for Jupyter, you can set it as a environment variable JUPYTER_TOKEN1.\ndocker run --rm -ti -e JUPYTER_TOKEN=yourpassword -p 8888:8888 rocker/binder\n\n\n\n\n\n\nTip\n\n\n\nRStudio Server started from Jupyter does not read environment variables set at container startup; if you want to use environment variables on your RStudio instance, set them on the .Renviron file.\n\n\nTo run RStudio Server directly as in rocker/rstudio, execute /init command with the root user specified.\ndocker run --rm -ti -p 8787:8787 --user root rocker/binder /init"
-  },
-  {
-    "objectID": "images/versioned/r-ver.html",
-    "href": "images/versioned/r-ver.html",
-    "title": "r-ver",
-    "section": "",
-    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\ntags\n\nDockerHub\nGitHub Container Registry\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: not exist"
-  },
-  {
-    "objectID": "images/versioned/r-ver.html#overview",
-    "href": "images/versioned/r-ver.html#overview",
-    "title": "r-ver",
-    "section": "2 Overview",
-    "text": "2 Overview\nrocker/r-ver is alternate image to r-base, with an emphasis on reproducibility.\nCompared to r-base,\n\nBuilds on Ubuntu LTS rather than Debian and system libraries are tied to the Ubuntu version. Images will use the most recent LTS available at the time when the corresponding R version was released.\n\nSince compatibility problems are likely to occur immediately after the release of a new Ubuntu LTS, the version to be used is the one that is at least 90 days past release.\n\nrocker/r-ver:4.0.0 is based on Ubuntu 20.04 (ubuntu:focal) because no interval was set at the time of the Ubuntu 20.04 release.\n\n\nInstalls a fixed version of R itself from source, rather than whatever is already packaged for Ubuntu (the r-base stack gets the latest R version as a binary from Debian unstable).\nThe only platforms available are linux/amd64 and linux/arm64 (arm64 images are experimental and only available for rocker/r-ver 4.1.0 or later).\nSet the Posit Public Package Manager (RStudio Package Manager, RSPM) as default CRAN mirror. For the amd64 platform, RSPM serves compiled Linux binaries of R packages and greatly speeds up package installs.\nNon-latest R version images installs all R packages from a fixed snapshot of CRAN mirror at a given date. This setting ensures that the same version of the R package is installed no matter when the installation is performed.\nProvides images that are generally smaller than the r-base series.\n\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images. Please check the rocker-org/rocker-versioned repository for R <= 3.6.3 images."
-  },
-  {
-    "objectID": "images/versioned/r-ver.html#special-tags",
-    "href": "images/versioned/r-ver.html#special-tags",
-    "title": "r-ver",
-    "section": "3 Special tags",
-    "text": "3 Special tags\n\n3.1 devel\nThe devel images are based on ubuntu:latest (the latest Ubuntu LTS version) and install the latest R-devel daily snapshot.\n\n\n3.2 cuda\nTags which contain cuda (e.g. rocker/r-ver:4.0.0-cuda10.1) are alias of rocker/cuda.\n\n\n\n\n\n\nWarning\n\n\n\ncuda tags will be discontinued in the future, so please use rocker/cuda instead."
-  },
-  {
-    "objectID": "images/versioned/r-ver.html#how-to-use",
-    "href": "images/versioned/r-ver.html#how-to-use",
-    "title": "r-ver",
-    "section": "4 How to use",
-    "text": "4 How to use\n\n4.1 Switch the default CRAN mirror\nAs explained in the overview, rocker/r-ver may have set a past CRAN snapshot as the default repository. This is determined by the options set in the Rprofile. To use a different CRAN mirror, simply write a new setting in the Rprofile.\nFor example, the following Dockerfile sets the default repository to CRAN.\n\n\nDockerfile\n\nFROM rocker/r-ver:4\nRUN echo 'options(repos = c(CRAN = \"https://cloud.r-project.org\"))' >>\"${R_HOME}/etc/Rprofile.site\"\n\n\n\n\n\n\n\nTip\n\n\n\nTo do the same thing by a non-root user in a container, for example, the following command can be used.\n\n\nTerminal\n\necho 'options(repos = c(CRAN = \"https://cloud.r-project.org\"))' | sudo sh -c 'cat - >>\"${R_HOME}/etc/Rprofile.site\"'\n\n\n\nOr, if you want to temporarily change the CRAN mirror during an R session, use the options() function.\nA common use case is when developing an R package and using the devtools::check() function; if the CRAN mirror is not changed from the default, an error like cannot open URL 'packagemanager.posit.co/cran/__linux__/jammy/latest/web/packages/packages.rds': HTTP status was '404 Not Found' may occur.\n\n\nR Terminal\n\noptions(repos = c(CRAN = \"https://cloud.r-project.org\"))\ndevtools::check()\n\n\n\n4.2 Selecting the BLAS implementation used by R\nBy default rocker/r-ver uses the OpenBLAS implementation for Linear Algebra1. But it is possible to switch for the reference BLAS implementation (as provided by the Debian package libblas-dev) using the Shared BLAS setup2.\n\n\n\n\n\n\nImportant\n\n\n\nCalling Python numpy by the reticulate package on R using OpenBLAS may cause a segfault. This causes an error when trying to use Python packages like matplotlib or scikit-learn. (rocker-org/rocker-versioned2#471, numpy/numpy#21643)\nIf this error occurs, change the BLAS used by R to libblas as described below.\n\n\n\n4.2.1 Checking which BLAS is in use\nYou can see the current BLAS configuration for R by using sessionInfo() function in R console.\n\n\nR Terminal\n\nsessionInfo()\n#> R version 4.2.0 (2022-04-22)\n#> Platform: x86_64-pc-linux-gnu (64-bit)\n#> Running under: Ubuntu 20.04.4 LTS\n#>\n#> Matrix products: default\n#> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3\n#> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3\n\nHere for instance R uses OpenBLAS.\n\n\n4.2.2 Switching BLAS implementations\nYou can switch BLAS used by R with the Debian update-alternatives script:\n\nSwitch to libblasSwitch to openblas\n\n\n\n\nTerminal\n\nARCH=$(uname -m)\nupdate-alternatives --set \"libblas.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/blas/libblas.so.3\"\nupdate-alternatives --set \"liblapack.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/lapack/liblapack.so.3\"\n\n\n\n\n\nTerminal\n\nARCH=$(uname -m)\nupdate-alternatives --set \"libblas.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/openblas-pthread/libblas.so.3\"\nupdate-alternatives --set \"liblapack.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/openblas-pthread/liblapack.so.3\""
-  },
-  {
-    "objectID": "images/versioned/cuda.html",
-    "href": "images/versioned/cuda.html",
-    "title": "cuda, ml, ml-verse",
-    "section": "",
-    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\n\nrocker/cuda\nrocker/ml\nrocker/ml-verse\n\ntags\n\nrocker/cuda\n\nDockerHub\nGitHub Container Registry\n\nrocker/ml\n\nDockerHub\nGitHub Container Registry\n\nrocker/ml-verse\n\nDockerHub\nGitHub Container Registry\n\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user:\n\nrocker/cuda: not exist\nrocker/ml: rstudio\nrocker/ml-verse: rstudio"
-  },
-  {
-    "objectID": "images/versioned/cuda.html#overview",
-    "href": "images/versioned/cuda.html#overview",
-    "title": "cuda, ml, ml-verse",
-    "section": "2 Overview",
-    "text": "2 Overview\nrocker/cuda, rocker/ml, and rocker/ml-verse are Docker images for machine learning and GPU-based computation in R. These images correspond to rocker/r-ver, rocker/tidyverse, and rocker/geospatial, respectively.\nAll images are based on the official NVIDIA CUDA docker build recipes, and are installed the reticulate package."
-  },
-  {
-    "objectID": "images/versioned/cuda.html#quick-start",
-    "href": "images/versioned/cuda.html#quick-start",
-    "title": "cuda, ml, ml-verse",
-    "section": "3 Quick start",
-    "text": "3 Quick start\nThe basic usage is the same as rocker/r-ver or rocker/rstudio except for the GPU setting.\nR command line:\n# CPU-only\ndocker run --rm -ti rocker/cuda\n# Machines with nvidia-docker and GPU support\ndocker run --gpus all --rm -ti rocker/cuda\nRStudio Server instance:\n# CPU-only\ndocker run -p 8787:8787 rocker/ml\n# Machines with nvidia-docker and GPU support\ndocker run --gpus all -p 8787:8787 rocker/ml\n\n\n\n\n\n\nImportant\n\n\n\nGPU use requires nvidia-docker runtime to run!"
-  },
-  {
-    "objectID": "images/versioned/cuda.html#how-to-use",
-    "href": "images/versioned/cuda.html#how-to-use",
-    "title": "cuda, ml, ml-verse",
-    "section": "4 How to use",
-    "text": "4 How to use\nSee also the rocker/r-ver’s reference (for rocker/cuda) and the rocker/rstudio’s reference (for rocker/ml and rocker/ml-verse).\n\n4.1 Python versions and environments\nIf you want to switch the Python version called from reticulate, you can use the reticulate’s functions to install Python. For example, with the following command, reticulate installs miniconda and miniconda installs Python 3.7.\nreticulate::install_miniconda()\nreticulate::conda_install(packages = \"python=3.7\")\nThe Python version used by the reticulate package can be checked with the reticulate::py_config() function.\nreticulate::py_config()\n#> python:         /root/.local/share/r-miniconda/envs/r-reticulate/bin/python\n#> libpython:      /root/.local/share/r-miniconda/envs/r-reticulate/lib/libpython3.7m.so\n#> pythonhome:     /root/.local/share/r-miniconda/envs/r-reticulate:/root/.local/share/r-miniconda/envs/r-reticulate\n#> version:        3.7.12 | packaged by conda-forge | (default, Oct 26 2021, 06:08:21)  [GCC 9.4.0]\n#> numpy:          /root/.local/share/r-miniconda/envs/r-reticulate/lib/python3.7/site-packages/numpy\n#> numpy_version:  1.17.5\n\n\n\n\n\n\nImportant\n\n\n\npyenv and pipenv, which were previously installed, are no longer installed. And, the previously set environment variables WORKON_HOME and PYTHON_VENV_PATH are no longer set. (rocker-org/rocker-versioned2#494)"
-  },
-  {
-    "objectID": "images/versioned/rstudio.html",
-    "href": "images/versioned/rstudio.html",
-    "title": "rstudio, tidyverse, verse, geospatial",
-    "section": "",
-    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\n\nrocker/rstudio\nrocker/tidyverse\nrocker/verse\nrocker/geospatial\n\ntags\n\nrocker/rstudio\n\nDockerHub\nGitHub Container Registry\n\nrocker/tidyverse\n\nDockerHub\nGitHub Container Registry\n\nrocker/verse\n\nDockerHub\nGitHub Container Registry\n\nrocker/geospatial\n\nDockerHub\nGitHub Container Registry\n\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: rstudio"
-  },
-  {
-    "objectID": "images/versioned/rstudio.html#overview",
-    "href": "images/versioned/rstudio.html#overview",
-    "title": "rstudio, tidyverse, verse, geospatial",
-    "section": "2 Overview",
-    "text": "2 Overview\nThese images are based on rocker/r-ver, and RStudio Server is already installed.\nThe basic usage of these images is the same, with the difference being the amount of additional (R) packages installed. (See image details for lists of installation packages)\n\nrocker/tidyverse has already installed many R packages and their dependencies apt packages. e.g. the tidyverse package, the devtools package, the rmarkdown package, some R Database Interface packages, the data.table package, the fst package, and the Apache Arrow R package.\nrocker/verse has already installed TeX Live and some publishing-related R packages, in addition to the packages installed in rocker/tidyverse.\nrocker/geospatial has already installed some geospatial R packages in addition to the packages installed in rocker/verse.\n\nThese images start RStudio Server with the default command. Since the RStudio Server port is set to 8787, you can open the RStudio screen on localhost:8787 from your browser with the following command.\ndocker run --rm -ti -p 8787:8787 rocker/rstudio\nThe non-root default user rstudio is set up as RStudio Server user, so please enter the username rstudio and a randomly generated password which is displayed in the console to the RStudio login form.\nRStudio will not start if the default command (/init) is overridden. To use R on the command line, specify the R command as follows.\ndocker run --rm -ti rocker/tidyverse R\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images. For R <= 3.6 images, please check the rocker-org/rocker-versioned repository and the rocker-org/geospatial repository."
-  },
-  {
-    "objectID": "images/versioned/rstudio.html#spatial-tags",
-    "href": "images/versioned/rstudio.html#spatial-tags",
-    "title": "rstudio, tidyverse, verse, geospatial",
-    "section": "3 Spatial tags",
-    "text": "3 Spatial tags\n\n3.1 devel\nThe devel images are based on rocker/r-ver:devel, witch install the latest R-devel daily snapshot.\ndevel tags are available for rocker/rstudio, rocker/tidyverse, and rocker/verse.\n\n\n3.2 latest-daily\nThe latest-daily images are based on rocker/r-ver:latest and install the latest RStudio daily build.\nlatest-daily tags are available for rocker/rstudio, rocker/tidyverse, and rocker/verse.\n\n\n3.3 Spacial tags for geospatial toolkit\nrocker/geospatial:ubuntugis (rocker/geospatial:X.Y.Z-ubuntugis) and rocker/geospatial:dev-osgeo are special images that differ slightly from the regular rocker/geospatial.\n\nubuntugis is built on packages installed from the ubuntugis-unstable PPA.\ndev-osgeo is built on the latest release of PROJ, GDAL, and GEOS."
-  },
-  {
-    "objectID": "images/versioned/rstudio.html#how-to-use",
-    "href": "images/versioned/rstudio.html#how-to-use",
-    "title": "rstudio, tidyverse, verse, geospatial",
-    "section": "4 How to use",
-    "text": "4 How to use\n\n4.1 Environment variables\nSeveral special environment variables can be set to modify RStudio Server’s behavior.\n\n\n\n\n\n\nNote\n\n\n\nThe process of referencing these environment variables is done by the /init command, which is the default command set for the container. Therefore, if the /init command is not executed, nothing will happen.\nFor example, if you enter the container with the following command, the uid of the user rstudio is unchanged and remains 1000.\ndocker run --rm -ti -e USERID=1001 -e GROUPID=1001 --user rstudio rocker/tidyverse bash\n\n\n\n4.1.1 PASSWORD\nYou can set a custom password to log in the RStudio instance. Please set your password as an environmental variable PASSWORD like this:\ndocker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio\n\n\n4.1.2 ROOT\nIf ROOT is set to true, the default non-root user will be added to the sudoers group when the server init process.\ndocker run --rm -ti -e ROOT=true -p 8787:8787 rocker/rstudio\nThis configuration allows you to execute sudo commands, like sudo apt update, on the terminal on RStudio.\n\n\n\n\n\n\nNote\n\n\n\nWhen using the sudo command, you must enter the same password you used to log into RStudio.\n\n\n\n\n4.1.3 DISABLE_AUTH\nYou can disable authentication for RStudio Server by setting an environmental variable DISABLE_AUTH=true.\ndocker run --rm -ti -e DISABLE_AUTH=true -p 127.0.0.1:8787:8787 rocker/rstudio\nWith this example, when you visit localhost:8787, you will now automatically be logged in as the user rstudio without having to first enter a user name and password.\n\n\n\n\n\n\nWarning\n\n\n\nUse this setting only in a secure environment. Without authentication, anyone who has access to that port can log in the RStudio Server.\nIf you are using a container on your local computer, it is recommended that you configure the port publishing as -p 127.0.0.1:8787:8787, as in the example, so that it can only be accessed from the same computer.\n\n\n\n\n\n\n\n\nNote\n\n\n\nDISABLE_AUTH=true setting only skips the RStudio log in page. So you will still need to enter the password when use the sudo command with ROOT=true option.\n\n\n\n\n4.1.4 USERID and GROUPID\nThe UID and GID of the default non-root user can be changed as follows:\ndocker run --rm -ti -e USERID=1001 -e GROUPID=1001 -p 8787:8787 rocker/rstudio\n\n\n\n\n\n\nWarning\n\n\n\nIf these are set, ownership of the /home/rstudio directory in the container is updated by the root user. This will also overwrite the ownership of any files that are bind-mounted under the /home/rstudio directory.\n\n\n\n\n\n4.2 Editing work on RStudio Server\nIf you want to make repeated edits on RStudio Server, It would be useful to be able to share files edited on the container with the Docker host.\nHere are some hints for doing this and a sample compose file (for docker compose).\n\nRecent RStudio Server’s configuration files are saved in the ~/.config/rstudio/ directory1.\nIt is not recommended to bind-mount whole home directory on the container (/home/rstudio); RStudio Server may not work properly.\nSince RStudio Server opens the user’s home directory (/home/rstudio) by default, it is easier to use if a working directory is set up under /home/rstudio, e.g. /home/rstudio/workspace. However, for example, another directory such as the one containing CSV files should not necessarily have to be under the home directory, so it is recommended to bind-mount it under its own name directly under the root, e.g. /other_dir.\n\n\n\ncompose.yml\n\nservices:\n  rstudio:\n    image: rocker/verse:4\n    ports:\n      - \"8787:8787\"\n    environment:\n      PASSWORD: yourpassword\n    volumes:\n      - ./.rstudio_config:/home/rstudio/.config/rstudio\n      - ~/workspace:/home/rstudio/workspace\n      - /other_dir:/other_dir\n\n\n\n4.3 See also\n\nNetworking\nShared Volumes"
-  },
-  {
-    "objectID": "images/base/r-devel.html",
-    "href": "images/base/r-devel.html",
-    "title": "r-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang",
-    "section": "",
-    "text": "Source repository:\n\nrocker-org/r-devel\nrocker-org/drd\nrocker-org/drp\nrocker-org/r-devel-san\nrocker-org/r-devel-san-clang\n\nDockerfile\n\nrocker/r-devel\nrocker/drd\nrocker/drp\nrocker/r-devel-san\nrocker/r-devel-ubsan-clang\n\ntags\n\nrocker/r-devel\n\nDockerHub\n\nrocker/drd\n\nDockerHub\n\nrocker/drp\n\nDockerHub\n\nrocker/r-devel-san\n\nDockerHub\n\nrocker/r-devel-ubsan-clang\n\nDockerHub\n\n\nPublished image details: not available\nNon-root default user: docker"
-  },
-  {
-    "objectID": "images/base/r-devel.html#overview",
-    "href": "images/base/r-devel.html#overview",
-    "title": "r-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang",
-    "section": "2 Overview",
-    "text": "2 Overview\nThese images are based on r-base and install prerelease version of R from source, separately from the release version of R. These prerelease version R can be executed with RD(for R-devel) or RP(for R-patched).\n\nBoth rocker/r-devel and rocker/drd are images for running R-devel; rocker/drd has a smaller image size because of the different Dockerfile configuration (layers).\nrocker/drp has R-patched installed.\nrocker/r-devel-san and rocker/r-devel-ubsan-clang provide R development binaries with Sanitizer support, for memory checking during R package development1. rocker/r-devel-san uses clang, and rocker/r-devel-ubsan-clang uses gcc.\n\n\n\n\n\n\n\nImportant\n\n\n\nrocker/r-devel-ubsan-clang must be use with docker run’s --cap-add=SYS_PTRACE option. Otherwise, instrumented processes fail to start due to lacking permissions.\ndocker run --rm -ti --cap-add=SYS_PTRACE rocker/r-devel-ubsan-clang\nAlternatively, an instrumented process can be run with ASAN_OPTIONS=detect_leaks=0, but this turns off leak detection.\n\n\n\n\n\n\n\n\nTip\n\n\n\nrocker/r-ver:devel, rocker/rstudio:devel, rocker/tidyverse:devel, rocker/verse:devel also have R-devel installed."
-  },
-  {
-    "objectID": "images/base/r-base.html",
-    "href": "images/base/r-base.html",
-    "title": "r-base",
-    "section": "",
-    "text": "Source repository: rocker-org/rocker\nDockerfile\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
-  },
-  {
-    "objectID": "images/base/r-base.html#overview",
-    "href": "images/base/r-base.html#overview",
-    "title": "r-base",
-    "section": "2 Overview",
-    "text": "2 Overview\nInstall current R from unstable repos.\nr-base and rocker/r-base are built from the same Dockerfile, but with different build tools. The timing of updates and available platforms are different."
-  },
-  {
-    "objectID": "images/base/index.html",
-    "href": "images/base/index.html",
-    "title": "r-base stack",
-    "section": "",
-    "text": "r-base\n\n\n\n\n\n\n\n\n\n\n\n\n\nr-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "images/devcontainer/index.html",
-    "href": "images/devcontainer/index.html",
-    "title": "Development Container Resources",
-    "section": "",
-    "text": "Rocker Dev Container Features\n\n\n\n\n\n\n\n\n\n\n\n\n\nRocker Dev Container Templates\n\n\n\n\n\n\n\n\n\n\n\n\n\nRocker Pre-built Dev Container Images\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "images/devcontainer/templates.html",
-    "href": "images/devcontainer/templates.html",
-    "title": "Rocker Dev Container Templates",
-    "section": "",
-    "text": "The Rocker Project provides some Dev Container Templates for building an R development environment.\n\nSource repository: rocker-org/devcontainer-templates\n\nThese are displayed on the GitHub Codespaces or on the VS Code Dev Containers UI.\nThese can also be use from the devcontainer CLI.\n\n\nTerminal\n\ndevcontainer templates apply -t ghcr.io/rocker-org/devcontainer-templates/r-ver"
-  },
-  {
-    "objectID": "images/devcontainer/templates.html#see-also",
-    "href": "images/devcontainer/templates.html#see-also",
-    "title": "Rocker Dev Container Templates",
-    "section": "2 See also",
-    "text": "2 See also\n\nRocker Dev Container Features\nRocker Dev Container Images"
-  },
-  {
-    "objectID": "images/devcontainer/features.html",
-    "href": "images/devcontainer/features.html",
-    "title": "Rocker Dev Container Features",
-    "section": "",
-    "text": "The Rocker Project provides some Dev Container Features for installing R or installing software often used with R.\n\nSource repository: rocker-org/devcontainer-features\n\nYou can find them on the Dev Containers site, the GitHub Codespaces Dev Container Editor, or, VSCode Dev Containers.\nThese can be used to easily configure R on containers without R installed, or to make containers for R even more useful. And of course, we can use them independently of R! (except for the Features to install R)\nFor example, install R on the default image of Codespaces by editing the devcontainer.json file as follows:\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"image\": \"mcr.microsoft.com/devcontainers/universal:2\",\n    \"features\": {\n        \"ghcr.io/rocker-org/devcontainer-features/r-apt:latest\": {}\n    }\n}\n\nCheck the source repository for details on each Feature."
-  },
-  {
-    "objectID": "images/devcontainer/features.html#install-r-on-dev-containers",
-    "href": "images/devcontainer/features.html#install-r-on-dev-containers",
-    "title": "Rocker Dev Container Features",
-    "section": "2 Install R on Dev Containers",
-    "text": "2 Install R on Dev Containers\nThere are some Dev Container Features that can be used to install R.\n\nr-apt\nr-rig\nminiforge1 (See also micromamba provided by mamba-org)\n\nEach of these installations of R will be configured to allow installation of R binary packages in the following ways.\n\nSystem package management system (apt)\nPosit Public Package Manager (R functions e.g. install.packages)2\nconda-forge (mamba or conda)\n\nTherefore, which of these you use to install R may depend on which method you wish to use to install the R binary packages.\nSome tips for choosing:\n\nWhen installing R packages via apt or mamba (conda), dependencies outside of R are installed automatically. But, installing R packages via R function (install.packages) may require separate apt installations of system libraries that are dependencies.\nGenerally r-apt installs R packages faster than r-rig. Therefore, if you want to add R to a container, we recommend trying r-apt first. However, r-apt does not support ubuntu on arm64 platform, so if you want to use ubuntu on arm64 platform, use r-rig instead.\nIf you want to install any version of R or use R already installed in the container, you can use r-rig to install any version of R or only the R package without installing R.\nIf you want to install packages that exist in the conda-forge, you can use miniforge for fast installation with mamba."
-  },
-  {
-    "objectID": "images/devcontainer/features.html#install-r-packages-on-dev-containers",
-    "href": "images/devcontainer/features.html#install-r-packages-on-dev-containers",
-    "title": "Rocker Dev Container Features",
-    "section": "3 Install R packages on Dev Containers",
-    "text": "3 Install R packages on Dev Containers\nSeveral Dev Container Features allow R package installation to be defined on devcontainer.json.\n\napt-packages\nr-packages\n\nThese support package installation via apt or R function (pak::pak()).\nThere is also the renv-cache Feature that supports package installation via the renv R package after container startup."
-  },
-  {
-    "objectID": "images/devcontainer/features.html#see-also",
-    "href": "images/devcontainer/features.html#see-also",
-    "title": "Rocker Dev Container Features",
-    "section": "4 See also",
-    "text": "4 See also\n\nRocker Dev Container Images\nRocker Dev Container Templates"
-  },
-  {
-    "objectID": "images/devcontainer/images.html",
-    "href": "images/devcontainer/images.html",
-    "title": "Rocker Pre-built Dev Container Images",
-    "section": "",
-    "text": "Source repository: rocker-org/devcontainer-images\nSource\n\nr-ver\ntidyverse, geospatial\n\ntags\n\nr-ver\ntidyverse\ngeospatial\n\nPublished image details: rocker-org/devcontainer-images’s wiki\nNon-root default user: rstudio"
-  },
-  {
-    "objectID": "images/devcontainer/images.html#overview",
-    "href": "images/devcontainer/images.html#overview",
-    "title": "Rocker Pre-built Dev Container Images",
-    "section": "2 Overview",
-    "text": "2 Overview\nThe Rocker Project provides some Docker container images which built with Dev Container Features. Packages commonly used for development are already installed.\nThese images are intended to be images for R that can be used like the Dev Container images built from devcontainers/images for each language.\nghcr.io/rocker-org/devcontainer/r-ver, ghcr.io/rocker-org/devcontainer/tidyverse, and ghcr.io/rocker-org/devcontainer/geospatial are correspond to rocker/r-ver, rocker/tidyverse, and rocker/geospatial, respectively."
-  },
-  {
-    "objectID": "images/devcontainer/images.html#how-to-use",
-    "href": "images/devcontainer/images.html#how-to-use",
-    "title": "Rocker Pre-built Dev Container Images",
-    "section": "3 How to use",
-    "text": "3 How to use\n\n3.1 devcontainer.json and Dockerfile\nSpecify the image in devcontainer.json as follows.\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"name\": \"${localWorkspaceFolderBasename}\",\n    \"image\": \"ghcr.io/rocker-org/devcontainer/r-ver:4\"\n}\n\nThe basic usage is to customize by adding Dev Container Features here.\nOr, we can use it as a base image in a Dockerfile.\n\n\n.devcontainer/Dockerfile\n\nFROM ghcr.io/rocker-org/devcontainer/tidyverse:4\n\nTo install the R package on the Dockerfile, please refer to the Extending images page.\nWhen using a combination of a devcontainer.json and a Dockerfile, the devcontainer.json file must be rewritten to refer to the Dockerfile.\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"name\": \"${localWorkspaceFolderBasename}\",\n    \"build\": {\n        \"dockerfile\": \"Dockerfile\"\n    }\n}\n\n\n\n3.2 Command line\nWe can use radian instead of the default R console.\n\n\nTerminal\n\ndocker run --rm -ti ghcr.io/rocker-org/devcontainer/r-ver:4 radian\n\nAlso httpgd is already installed so we can expose the container port to show the plot in the browser. See the GUI page for details.\n\n\n3.3 RStudio Server\nghcr.io/rocker-org/devcontainer/tidyverse and ghcr.io/rocker-org/devcontainer/geospatial have already installed RStudio Server. See the rocker/rstudio reference page for usage."
-  },
-  {
-    "objectID": "images/devcontainer/images.html#see-also",
-    "href": "images/devcontainer/images.html#see-also",
-    "title": "Rocker Pre-built Dev Container Images",
-    "section": "4 See also",
-    "text": "4 See also\n\nRocker Dev Container Features\nRocker Dev Container Templates"
-  },
-  {
-    "objectID": "images/external.html",
-    "href": "images/external.html",
-    "title": "Other projects",
-    "section": "",
-    "text": "Here are some images and tools that serve a similar purpose to the Rocker images. Please refer to the links for more information."
-  },
-  {
-    "objectID": "images/external.html#docker-images-for-r",
-    "href": "images/external.html#docker-images-for-r",
-    "title": "Other projects",
-    "section": "1 Docker images for R",
-    "text": "1 Docker images for R\n\n1.1 Jupyter Docker Stacks\nThe stack of Docker images by Project Jupyter, based on Ubuntu, install packages from conda-forge, and configured to run Jupyter.\nIt includes several images with the R package already installed, such as jupyter/r-notebook and jupyter/datascience-notebook, so you can immediately run R on Jupyter.\n\n\n1.2 b-data/jupyterlab-r-docker-stack\nMulti-arch (linux/amd64, linux/arm64/v8) docker images based on Debian including code-server (vscode in the browser).\nImages considered stable for R versions ≥ 4.2.0.\n\n\n1.3 r-hub/r-minimal\nVery small size image with R installed on alpine.\n\n\n1.4 RStudio R Docker Images\nImages of RStudio built and installed R binaries.\n\n\n1.5 Docker containers for Bioconductor\nBioconductor docker images with system dependencies to install all packages. Based on rocker/rstudio.\n\n\n1.6 rhub-linux-builders\nDocker configuration for the Linux builders of the R-hub package builder. These images are useful for you to run to debug your R package.\n\n\n1.7 runiverse/base\nA docker image for building R source packages and documentation, used in the R-universe build tool."
-  },
-  {
-    "objectID": "images/external.html#other-tools",
-    "href": "images/external.html#other-tools",
-    "title": "Other projects",
-    "section": "2 Other tools",
-    "text": "2 Other tools\n\n2.1 Mamba\nA package manager to install various packages from conda-forge and others.\nIf you use Mamba on Linux for R, it may be easier to install packages, see also the Extending images page.\n\n\n2.2 rig\nAn R Installation Manager (Previously known as rim).\nWith rig, you can easily install and switch between specific versions of R.\n\n\n2.3 rsi\nIntended for system administrators who want to perform a source-installation of R.\nIt is meant for installing official releases of R source code on Debian-based Linux distributions, e.g. Ubuntu, using a docker container."
-  },
-  {
-    "objectID": "use/index.html",
-    "href": "use/index.html",
-    "title": "Use",
-    "section": "",
-    "text": "Edit in containers\n\n\n1 min\n\n\nEdit R code in the containers.\n\n\n\n\n\n\n\n\n\n\nExtending images\n\n\n5 min\n\n\nInstall your favorite packages on the containers.\n\n\n\n\n\n\n\n\n\n\nGUI\n\n\n0 min\n\n\nView plots etc. from the containers.\n\n\n\n\n\n\n\n\n\n\nNetworking\n\n\n2 min\n\n\nConnect R containers to networks.\n\n\n\n\n\n\n\n\n\n\nReproducibility\n\n\n0 min\n\n\nReproducibility of Rocker Containers.\n\n\n\n\n\n\n\n\n\n\nShared Volumes\n\n\n1 min\n\n\nUse docker volumes and bind mounts to save files.\n\n\n\n\n\n\n\n\n\n\nSingularity\n\n\n4 min\n\n\nRun RStudio Server containers by Singularity.\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "use/editor.html",
-    "href": "use/editor.html",
-    "title": "Edit in containers",
-    "section": "",
-    "text": "To edit source code in a container, an editor must be installed in the container. This section presents several R integrated development environments that can be used within containers.\nSee also: GUI"
-  },
-  {
-    "objectID": "use/editor.html#rstudio-ide",
-    "href": "use/editor.html#rstudio-ide",
-    "title": "Edit in containers",
-    "section": "1 RStudio IDE",
-    "text": "1 RStudio IDE\nRStudio IDE is the most popular IDE for R.\nTo use RStudio IDE on a container, RStudio Server should be installed in the container.\nThere are images rocker/rstudio etc. with RStudio Server installed, which can be used to immediately run RStudio Server.\ndocker run --rm -ti -p 8787:8787 rocker/rstudio:4\nFor more information on how to use these images, please check the image reference pages.\n\n\n\n\n\n\nTip\n\n\n\nLooking for Docker images for RStudio professional products? Check out the rstudio/rstudio-docker-products repository."
-  },
-  {
-    "objectID": "use/editor.html#jupyter",
-    "href": "use/editor.html#jupyter",
-    "title": "Edit in containers",
-    "section": "2 Jupyter",
-    "text": "2 Jupyter\nJupyter is a web-based IDE that allows you to run Python and other programming languages interactively like notebook.\nTo use R on Jupyter, install the IRkernel R package in addition to installing Jupyter itself.\nrocker/binder has already installed these and starts Jupyter Notebook by default.\ndocker run --rm -ti -p 8888:8888 rocker/binder:4\nThere are also Docker images with many R packages installed maintained by Project Jupyter, e.g. jupyter/r-notebook.\ndocker run --rm -ti -p 8888:8888 jupyter/r-notebook:latest"
-  },
-  {
-    "objectID": "use/editor.html#vscode",
-    "href": "use/editor.html#vscode",
-    "title": "Edit in containers",
-    "section": "3 VSCode",
-    "text": "3 VSCode\nVisual Studio Code - Open Source (Code - OSS) is currently one of the most popular editors.\nWhen editing R in VSCode, vscode-R is a popular extension. This extension is recommended to be used with languageserver and httpgd.\n\n3.1 Visual Studio Code Dev Containers\nThe Microsoft’s Code OSS distribution, Visual Studio Code, has an extension, Dev Containers. (Formerly known as “Remote - Containers”.)\nThat makes a container the backend, which can be used to develop using software in the container.\nThe Dev Containers extension builds images from definition files and creates containers with installed VSCode Server and vscode extensions. Users can run the container and start working inside it without touching anything but the local VSCode.\nThe Dev Containers extension can load and use templates published on the web. The R’s definition is this, which installs languageserver and httpgd, and also installs radian as R console.\nThis definition can also be used in GitHub Codespaces.\nSee also\n\nDev Container Templates\nDev Container Images\nDev Container Features\n\n\n\n3.2 coder/code-server and gitpod-io/openvscode-server\nBoth coder’s code-server and gitpod’s openvscode-server can run Code - OSS server-side and you can use it from the browser. To use them in a Docker container, they must be installed in the container."
-  },
-  {
-    "objectID": "use/gui.html",
-    "href": "use/gui.html",
-    "title": "GUI",
-    "section": "",
-    "text": "If you do not use a web-based IDE (like RStudio Server, Jupyter, VSCode, etc.) with integrated graphics devices, the following additional configuration is required to display plots of R running in your container."
-  },
-  {
-    "objectID": "use/gui.html#the-httpgd-r-package",
-    "href": "use/gui.html#the-httpgd-r-package",
-    "title": "GUI",
-    "section": "1 The httpgd R package",
-    "text": "1 The httpgd R package\nhttpgd is a graphics device for R that is accessible via HTTP.\nStart the httpgd server in the container that published a port, and you can access the plot viewer in your browser.\nFor example, you can create a container with the following command and start the httpgd server from within the R terminal.\n\n\nTerminal\n\ndocker run --rm -ti -p 8000:8000 ghcr.io/rocker-org/devcontainer/r-ver:4 R\n\n\n\nR Terminal\n\nhttpgd::hgd(host = \"0.0.0.0\", port = 8000)\nplot(mtcars)\n\n\n\n\n\n\n\nTip\n\n\n\nDocker images built from the rocker-org/devcontainer-images repository are httpgd pre-installed.\n\n\nFor details, please check the httpgd’s vignette for Docker."
-  },
-  {
-    "objectID": "use/gui.html#x11",
-    "href": "use/gui.html#x11",
-    "title": "GUI",
-    "section": "2 X11",
-    "text": "2 X11\n\n\n\n\n\n\nImportant\n\n\n\nWhile this approach is generic, it is often difficult to configure or perform well, especially on non-Linux operating systems.\n\n\nX11 forwarding by connecting the X11 server in the container to the X11 client on the local machine.\nCommands vary depending on the situation, but for example, the commands like below are used.\n\n\nTerminal\n\ndocker run --rm -ti -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix <imagename> R"
+    "text": "Users need to be aware of the meaning of tags when using Docker images repeatedly.\nFor example, a tag latest used by many images (docker automatically complements latest if the tag is not specified) is generally constantly updated to follow the latest version. The following command will run R 3.6.1 at some point in the past, R 4.2.0 today, and another version of R a year later.\ndocker run --rm -ti rocker/r-ver:latest\nThen, how about the following command then? Since the tags of rocker/r-ver represents the R version, this command will always run R 4.2.0.\ndocker run --rm -ti rocker/r-ver:4.2.0\nHowever, rocker/r-ver images are periodically rebuilt, so software versions other than R are not fixed (they receive security updates through periodic rebuilds).\nIf you want to always use the exact same image, you generally need to specify the image with a digest rather than a tag.\ndocker run --rm -ti rocker/r-ver@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3\nDigests can also be used on Dockerfiles.\nFROM rocker/r-ver:4.2.0\nFROM rocker/r-ver@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3\n\n\n\n\n\n\nTip\n\n\n\nIf a tag and digest are specified at the same time, the digest is used.\nFROM rocker/r-ver:latest@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3\nFROM rocker/r-ver:4.2.0@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3"
   },
   {
     "objectID": "use/extending.html",
@@ -476,11 +28,11 @@
     "text": "2 Helper commands\nRocker images provide a few utility functions to streamline this process, including the littler scripts which provide a concise syntax for installing packages in Dockerfiles.\n\n2.1 install2.r\nThe install2.r command can be used to concisely describe the installation of the R package.\nFor example, a Dockerfile that installs multiple R packages can be written as follows.\nFROM r-base:latest\nRUN install2.r pkg1 pgk2 pkg3\nIf the same content were written using the install.packages() function, it would be more complicated, as shown below.\nFROM r-base:latest\nRUN R -q -e 'install.packages(c(\"pkg1\", \"pkg2\", \"pkg3\"))'\nIf you install R packages from CRAN using the install2.r command, the temporary files are stored in /tmp/downloaded_packages directory. Therefore, it is recommended to delete /tmp/downloaded_packages at the end if you use this command in Dockerfiles.\nFROM r-base:latest\nRUN install2.r pkg1 pgk2 pkg3 \\\n    && rm -rf /tmp/downloaded_packages\n\n2.1.1 Options\nThe install2.r command also has several useful options.\n\n2.1.1.1 -e, --error\nBy setting the --error option, you can make the docker build command also fail if the package installation fails.\n\n\n2.1.1.2 -s, --skipinstalled\n--skipinstalled option to skip installing installed packages.\n\n\n2.1.1.3 -n, --ncpus\nYou can set --ncpu -1 to maximize parallelism of the installation.\n\n\n2.1.1.4 -r, --repos\nYou can install R packages from specific repositories with this option. A special value --repos getOption means using R’s getOption(\"repos\") value.\n\n\n\n2.1.2 Examples\nUse with r-base; Install source R packages from CRAN.\nFROM r-base:latest\nRUN install2.r --error --skipinstalled --ncpus -1 \\\n    pkg1 \\\n    pgk2 \\\n    pkg3 \\\n    && rm -rf /tmp/downloaded_packages\nUse with rocker/r-ver; Install binary R packages from RSPM.\nFROM rocker/r-ver:4\nRUN install2.r --error --skipinstalled --ncpus -1 \\\n    pkg1 \\\n    pgk2 \\\n    pkg3 \\\n    && rm -rf /tmp/downloaded_packages \\\n    && strip /usr/local/lib/R/site-library/*/libs/*.so\nUse with rocker/r-ver; Install binary R packages from RSPM and source R packages from the R-universe ropensci repository.\nFROM rocker/r-ver:4\nRUN install2.r --error --skipinstalled --ncpus -1 \\\n    --repos https://ropensci.r-universe.dev --repos getOption \\\n    pkg1 \\\n    pgk2 \\\n    pkg3 \\\n    && rm -rf /tmp/downloaded_packages \\\n    && strip /usr/local/lib/R/site-library/*/libs/*.so\nUse with rocker/r-bspm; Install binary R packages from system package repository.\nFROM rocker/r-bspm:testing\nRUN install2.r --error --skipinstalled \\\n    pkg1 \\\n    pgk2 \\\n    pkg3 \\\n    && rm -rf /var/lib/apt/lists/*\n\n\n\n\n\n\nNote\n\n\n\nIf bspm is already set, some options have no effect because the system package manager is used to install the R packages."
   },
   {
-    "objectID": "use/reproducibility.html",
-    "href": "use/reproducibility.html",
-    "title": "Reproducibility",
+    "objectID": "use/index.html",
+    "href": "use/index.html",
+    "title": "Use",
     "section": "",
-    "text": "Users need to be aware of the meaning of tags when using Docker images repeatedly.\nFor example, a tag latest used by many images (docker automatically complements latest if the tag is not specified) is generally constantly updated to follow the latest version. The following command will run R 3.6.1 at some point in the past, R 4.2.0 today, and another version of R a year later.\ndocker run --rm -ti rocker/r-ver:latest\nThen, how about the following command then? Since the tags of rocker/r-ver represents the R version, this command will always run R 4.2.0.\ndocker run --rm -ti rocker/r-ver:4.2.0\nHowever, rocker/r-ver images are periodically rebuilt, so software versions other than R are not fixed (they receive security updates through periodic rebuilds).\nIf you want to always use the exact same image, you generally need to specify the image with a digest rather than a tag.\ndocker run --rm -ti rocker/r-ver@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3\nDigests can also be used on Dockerfiles.\nFROM rocker/r-ver:4.2.0\nFROM rocker/r-ver@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3\n\n\n\n\n\n\nTip\n\n\n\nIf a tag and digest are specified at the same time, the digest is used.\nFROM rocker/r-ver:latest@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3\nFROM rocker/r-ver:4.2.0@sha256:f32b3e9e353fa63092093f2ce590d819f56eac92f6f79e97906d4f2b0eee5ef3"
+    "text": "Edit in containers\n\n\n1 min\n\n\nEdit R code in the containers.\n\n\n\n\n\n\n\n\n\n\nExtending images\n\n\n5 min\n\n\nInstall your favorite packages on the containers.\n\n\n\n\n\n\n\n\n\n\nGUI\n\n\n0 min\n\n\nView plots etc. from the containers.\n\n\n\n\n\n\n\n\n\n\nNetworking\n\n\n2 min\n\n\nConnect R containers to networks.\n\n\n\n\n\n\n\n\n\n\nReproducibility\n\n\n0 min\n\n\nReproducibility of Rocker Containers.\n\n\n\n\n\n\n\n\n\n\nShared Volumes\n\n\n1 min\n\n\nUse docker volumes and bind mounts to save files.\n\n\n\n\n\n\n\n\n\n\nSingularity\n\n\n4 min\n\n\nRun RStudio Server containers by Singularity.\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "use/networking.html",
@@ -558,5 +110,453 @@
     "title": "Singularity",
     "section": "5 SLURM job script",
     "text": "5 SLURM job script\nOn an HPC cluster, a Rocker Singularity container can be started on a compute node using the cluster’s job scheduler, allowing it to access compute, memory, and storage resources that may far exceed those found in a typical desktop workstation. A per-user /tmp should be bind-mounted when running on a multi-tenant HPC cluster that has singularity configured to bind mount the host /tmp, to avoid an existing /tmp/rstudio-server owned by another user.\nThe following example illustrates how this may be done with a SLURM job script.\n#!/bin/sh\n#SBATCH --time=08:00:00\n#SBATCH --signal=USR2\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=2\n#SBATCH --mem=8192\n#SBATCH --output=/home/%u/rstudio-server.job.%j\n# customize --output path as appropriate (to a directory readable only by the user!)\n\n# Create temporary directory to be populated with directories to bind-mount in the container\n# where writable file systems are necessary. Adjust path as appropriate for your computing environment.\nworkdir=$(python -c 'import tempfile; print(tempfile.mkdtemp())')\n\nmkdir -p -m 700 ${workdir}/run ${workdir}/tmp ${workdir}/var/lib/rstudio-server\ncat > ${workdir}/database.conf <<END\nprovider=sqlite\ndirectory=/var/lib/rstudio-server\nEND\n\n# Set OMP_NUM_THREADS to prevent OpenBLAS (and any other OpenMP-enhanced\n# libraries used by R) from spawning more threads than the number of processors\n# allocated to the job.\n#\n# Set R_LIBS_USER to a path specific to rocker/rstudio to avoid conflicts with\n# personal libraries from any R installation in the host environment\n\ncat > ${workdir}/rsession.sh <<END\n#!/bin/sh\nexport OMP_NUM_THREADS=${SLURM_JOB_CPUS_PER_NODE}\nexport R_LIBS_USER=${HOME}/R/rocker-rstudio/4.2\nexec /usr/lib/rstudio-server/bin/rsession \"\\${@}\"\nEND\n\nchmod +x ${workdir}/rsession.sh\n\nexport SINGULARITY_BIND=\"${workdir}/run:/run,${workdir}/tmp:/tmp,${workdir}/database.conf:/etc/rstudio/database.conf,${workdir}/rsession.sh:/etc/rstudio/rsession.sh,${workdir}/var/lib/rstudio-server:/var/lib/rstudio-server\"\n\n# Do not suspend idle sessions.\n# Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf\n# https://github.com/rstudio/rstudio/blob/v1.4.1106/src/cpp/server/ServerSessionManager.cpp#L126\nexport SINGULARITYENV_RSTUDIO_SESSION_TIMEOUT=0\n\nexport SINGULARITYENV_USER=$(id -un)\nexport SINGULARITYENV_PASSWORD=$(openssl rand -base64 15)\n# get unused socket per https://unix.stackexchange.com/a/132524\n# tiny race condition between the python & singularity commands\nreadonly PORT=$(python -c 'import socket; s=socket.socket(); s.bind((\"\", 0)); print(s.getsockname()[1]); s.close()')\ncat 1>&2 <<END\n1. SSH tunnel from your workstation using the following command:\n\n   ssh -N -L 8787:${HOSTNAME}:${PORT} ${SINGULARITYENV_USER}@LOGIN-HOST\n\n   and point your web browser to http://localhost:8787\n\n2. log in to RStudio Server using the following credentials:\n\n   user: ${SINGULARITYENV_USER}\n   password: ${SINGULARITYENV_PASSWORD}\n\nWhen done using RStudio Server, terminate the job by:\n\n1. Exit the RStudio Session (\"power\" button in the top right corner of the RStudio window)\n2. Issue the following command on the login node:\n\n      scancel -f ${SLURM_JOB_ID}\nEND\n\nsingularity exec --cleanenv rstudio_4.2.sif \\\n    /usr/lib/rstudio-server/bin/rserver --www-port ${PORT} \\\n            --auth-none=0 \\\n            --auth-pam-helper-path=pam-helper \\\n            --auth-stay-signed-in-days=30 \\\n            --auth-timeout-minutes=0 \\\n            --rsession-path=/etc/rstudio/rsession.sh\nprintf 'rserver exited' 1>&2\nThe job script is submitted using the SLURM sbatch command:\n$ sbatch rstudio-server.job\nSubmitted batch job 123456\nAfter the scheduled job begins execution, rserver is started in a Singularity container, and the connection information (including the compute node hostname, TCP port, and a randomly-generated custom password) is sent in the job script stderr to a file in the user’s home directory named rstudio-server.job.123456.\nThe rserver process (and resulting rsession process after login) will persist until:\n\nThe job wall time (--time=08:00:00, or 8 hours) is reached.\n\nThe --signal=USR2 directive tells SLURM to send SIGUSR2 approximately 60 seconds before the wall time limit is reached. This causes the rsession process to save user’s session state to their home directory, so it can be resumed in a subsequent job.\n\nThe SLURM scancel command is used to cancel the job."
+  },
+  {
+    "objectID": "use/editor.html",
+    "href": "use/editor.html",
+    "title": "Edit in containers",
+    "section": "",
+    "text": "To edit source code in a container, an editor must be installed in the container. This section presents several R integrated development environments that can be used within containers.\nSee also: GUI"
+  },
+  {
+    "objectID": "use/editor.html#rstudio-ide",
+    "href": "use/editor.html#rstudio-ide",
+    "title": "Edit in containers",
+    "section": "1 RStudio IDE",
+    "text": "1 RStudio IDE\nRStudio IDE is the most popular IDE for R.\nTo use RStudio IDE on a container, RStudio Server should be installed in the container.\nThere are images rocker/rstudio etc. with RStudio Server installed, which can be used to immediately run RStudio Server.\ndocker run --rm -ti -p 8787:8787 rocker/rstudio:4\nFor more information on how to use these images, please check the image reference pages.\n\n\n\n\n\n\nTip\n\n\n\nLooking for Docker images for RStudio professional products? Check out the rstudio/rstudio-docker-products repository."
+  },
+  {
+    "objectID": "use/editor.html#jupyter",
+    "href": "use/editor.html#jupyter",
+    "title": "Edit in containers",
+    "section": "2 Jupyter",
+    "text": "2 Jupyter\nJupyter is a web-based IDE that allows you to run Python and other programming languages interactively like notebook.\nTo use R on Jupyter, install the IRkernel R package in addition to installing Jupyter itself.\nrocker/binder has already installed these and starts Jupyter Notebook by default.\ndocker run --rm -ti -p 8888:8888 rocker/binder:4\nThere are also Docker images with many R packages installed maintained by Project Jupyter, e.g. jupyter/r-notebook.\ndocker run --rm -ti -p 8888:8888 jupyter/r-notebook:latest"
+  },
+  {
+    "objectID": "use/editor.html#vscode",
+    "href": "use/editor.html#vscode",
+    "title": "Edit in containers",
+    "section": "3 VSCode",
+    "text": "3 VSCode\nVisual Studio Code - Open Source (Code - OSS) is currently one of the most popular editors.\nWhen editing R in VSCode, vscode-R is a popular extension. This extension is recommended to be used with languageserver and httpgd.\n\n3.1 Visual Studio Code Dev Containers\nThe Microsoft’s Code OSS distribution, Visual Studio Code, has an extension, Dev Containers. (Formerly known as “Remote - Containers”.)\nThat makes a container the backend, which can be used to develop using software in the container.\nThe Dev Containers extension builds images from definition files and creates containers with installed VSCode Server and vscode extensions. Users can run the container and start working inside it without touching anything but the local VSCode.\nThe Dev Containers extension can load and use templates published on the web. The R’s definition is this, which installs languageserver and httpgd, and also installs radian as R console.\nThis definition can also be used in GitHub Codespaces.\nSee also\n\nDev Container Templates\nDev Container Images\nDev Container Features\n\n\n\n3.2 coder/code-server and gitpod-io/openvscode-server\nBoth coder’s code-server and gitpod’s openvscode-server can run Code - OSS server-side and you can use it from the browser. To use them in a Docker container, they must be installed in the container."
+  },
+  {
+    "objectID": "use/gui.html",
+    "href": "use/gui.html",
+    "title": "GUI",
+    "section": "",
+    "text": "If you do not use a web-based IDE (like RStudio Server, Jupyter, VSCode, etc.) with integrated graphics devices, the following additional configuration is required to display plots of R running in your container."
+  },
+  {
+    "objectID": "use/gui.html#the-httpgd-r-package",
+    "href": "use/gui.html#the-httpgd-r-package",
+    "title": "GUI",
+    "section": "1 The httpgd R package",
+    "text": "1 The httpgd R package\nhttpgd is a graphics device for R that is accessible via HTTP.\nStart the httpgd server in the container that published a port, and you can access the plot viewer in your browser.\nFor example, you can create a container with the following command and start the httpgd server from within the R terminal.\n\n\nTerminal\n\ndocker run --rm -ti -p 8000:8000 ghcr.io/rocker-org/devcontainer/r-ver:4 R\n\n\n\nR Terminal\n\nhttpgd::hgd(host = \"0.0.0.0\", port = 8000)\nplot(mtcars)\n\n\n\n\n\n\n\nTip\n\n\n\nDocker images built from the rocker-org/devcontainer-images repository are httpgd pre-installed.\n\n\nFor details, please check the httpgd’s vignette for Docker."
+  },
+  {
+    "objectID": "use/gui.html#x11",
+    "href": "use/gui.html#x11",
+    "title": "GUI",
+    "section": "2 X11",
+    "text": "2 X11\n\n\n\n\n\n\nImportant\n\n\n\nWhile this approach is generic, it is often difficult to configure or perform well, especially on non-Linux operating systems.\n\n\nX11 forwarding by connecting the X11 server in the container to the X11 client on the local machine.\nCommands vary depending on the situation, but for example, the commands like below are used.\n\n\nTerminal\n\ndocker run --rm -ti -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix <imagename> R"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The Rocker Project",
+    "section": "",
+    "text": "Ensure you have Docker installed and start R inside a container with:\ndocker run --rm -ti r-base\nOr get started with an RStudio® instance:\ndocker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio\nand point your browser to localhost:8787. Log in with user/password rstudio/yourpassword.\nFor more information and further options, see the image descriptions."
+  },
+  {
+    "objectID": "index.html#team",
+    "href": "index.html#team",
+    "title": "The Rocker Project",
+    "section": "👥Team",
+    "text": "👥Team\n\n\n\n\n\nCarl\n\n\n\n \n\n\n\n\nDirk\n\n\n\n \n\n\n\n\nNoam\n\n\n\n\nThe Rocker project was created by Carl Boettiger and Dirk Eddelbuettel, and is now maintained by Carl, Dirk, Noam Ross, and SHIMA Tatsuya, with significant contributions from a broad community of users and developers. Get in touch on GitHub issues with bug reports, feature requests, or other feedback."
+  },
+  {
+    "objectID": "index.html#papers",
+    "href": "index.html#papers",
+    "title": "The Rocker Project",
+    "section": "📜Papers",
+    "text": "📜Papers\n\nAn Introduction to Rocker: Docker Containers for R\nThe Rockerverse: Packages and Applications for Containerisation with R"
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "The Rocker Project",
+    "section": "⚖️License",
+    "text": "⚖️License\nThe Rocker Dockerfiles are licensed under the GPL 2 or later."
+  },
+  {
+    "objectID": "index.html#support",
+    "href": "index.html#support",
+    "title": "The Rocker Project",
+    "section": "🤝Support",
+    "text": "🤝Support\nWe are grateful for support from the Chan-Zuckerberg Initiative’s Essential Open Source Software for Science Program."
+  },
+  {
+    "objectID": "index.html#trademarks",
+    "href": "index.html#trademarks",
+    "title": "The Rocker Project",
+    "section": "™️Trademarks",
+    "text": "™️Trademarks\nRStudio® is a registered trademark of RStudio, Inc. The use of the trademarked term RStudio® and the distribution of the RStudio binaries through the images hosted on Docker Hub has been granted by explicit permission of RStudio Inc. Please review RStudio’s trademark use policy and address inquiries about further distribution or other questions to permissions@rstudio.com."
+  },
+  {
+    "objectID": "images/index.html",
+    "href": "images/index.html",
+    "title": "The Rocker Images",
+    "section": "",
+    "text": "The Rocker Project provides a collection of (Linux) containers suited for different needs. Find a base image to extend or images with popular software and optimized libraries pre-installed.\nGet the latest version or a reproducibly fixed environment."
+  },
+  {
+    "objectID": "images/index.html#images",
+    "href": "images/index.html#images",
+    "title": "The Rocker Images",
+    "section": "2 Images",
+    "text": "2 Images\n\n2.1 The versioned stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ver\nubuntu\nInstall R from source and set RSPM as default CRAN mirror\n\n\n\nrocker/rstudio\nrocker/r-ver\nAdds RStudio Server\n\n\n\nrocker/tidyverse\nrocker/rstudio\nAdds tidyverse packages & devtools\n\n\n\nrocker/verse\nrocker/tidyverse\nAdds tex & publishing-related package\n\n\n\nrocker/geospatial\nrocker/verse\nAdds geospatial packages\n\n\n\nrocker/binder\nrocker/geospatial\nAdds requirements to run repositories on mybinder.org\n\n\n\nrocker/shiny\nrocker/r-ver\nAdds shiny server\n\n\n\nrocker/shiny-verse\nrocker/shiny\nAdds tidyverse packages\n\n\n\nrocker/cuda\nrocker/r-ver\nAdds CUDA support to rocker/r-ver\n\n\n\nrocker/ml\nrocker/cuda\nAdds CUDA support to rocker/tidyverse\n\n\n\nrocker/ml-verse\nrocker/ml\nAdds CUDA support to rocker/geospatial\n\n\n\n\nThis stack builds on stable Debian releases (for R versions <= 3.6.3) or Ubuntu LTS (for R versions >= 4.0.0). Images in this stack accept a version tag specifying which version of R is desired, e.g. rocker/rstudio:4.0.0 for R 4.0.0. The latest tag always follows the latest release version of R.\nSome images (e.g. rocker/r-ver) also have the devel tag, which installs the development version of R.\nVersion-tagged images are designed to be stable, consistently providing the same versions of all software (R, R packages, system libraries) rather than the latest available, though Debian system libraries will still receive any security patches. Please check the document about versions for details.\n\n\n2.2 The base stack\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nr-baserocker/r-base\ndebian:testing\nInstall current R from unstable repos\n\n\n\nrocker/r-devel\nr-base\nR-devel added side-by-side onto r-base (using alias RD)\n\n\n\nrocker/drd\nr-base\nLighter rocker/r-devel\n\n\n\nrocker/drp\nr-base\nR-patched added side-by-side onto r-base (using alias RP)\n\n\n\nrocker/r-devel-san\nr-base\nas rocker/r-devel, but built with compiler sanitizers\n\n\n\nrocker/r-devel-ubsan-clang\nr-base\nSanitizers, clang c compiler (instead of gcc)\n\n\n\n\nThis stack builds on debian:testing and Debian unstable repo. Use this stack if you want access to the latest versions of system libraries and compilers through apt-get.\nr-base (Docker Official image) and rocker/r-base are built from the same Dockerfile, but with different build tools.\n\n\n2.3 Additional images\n\n\n\nimage\nbase image\ndescription\npulls\n\n\n\n\nrocker/r-ubuntu\nubuntu\nClose to r-base, but based on ubuntu\n\n\n\nrocker/r-bspm\nr-base, rocker/r-ubuntu, archlinux, fedora, opensuse/tumbleweed\nBinary installation of R packages has been configured, powered by bspm\n\n\n\n\n\n\n2.4 Rocker Pre-built Dev Container Images\nImages built by the Dev Container CLI. See the Rocker Dev Container Images page for details."
+  },
+  {
+    "objectID": "images/other/index.html",
+    "href": "images/other/index.html",
+    "title": "Additional images",
+    "section": "",
+    "text": "r-bspm\n\n\n\n\n\n\n\n\n\n\n\n\n\nr-ubuntu\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "images/other/r-bspm.html",
+    "href": "images/other/r-bspm.html",
+    "title": "r-bspm",
+    "section": "",
+    "text": "Source repository: rocker-org/bspm\nDockerfile\n\nrocker/r-bspm:testing\nrocker/r-bspm:22.04\netc.\n\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
+  },
+  {
+    "objectID": "images/other/r-bspm.html#overview",
+    "href": "images/other/r-bspm.html#overview",
+    "title": "r-bspm",
+    "section": "2 Overview",
+    "text": "2 Overview\nbspm configured containers. Binary R packages can be easily installed. Based on Debian, Ubuntu, Fedora, and OpenSUSE.\nSimilar to r-base and rocker/r-ubuntu in that these can install R binary packages and system dependencies. but thanks to bspm, rocker/r-bspm automatically installs binary packages and system dependencies even when using the R install.packages() function."
+  },
+  {
+    "objectID": "images/other/r-ubuntu.html",
+    "href": "images/other/r-ubuntu.html",
+    "title": "r-ubuntu",
+    "section": "",
+    "text": "Source repository: rocker-org/ubuntu-lts\nDockerfile\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
+  },
+  {
+    "objectID": "images/other/r-ubuntu.html#overview",
+    "href": "images/other/r-ubuntu.html#overview",
+    "title": "r-ubuntu",
+    "section": "2 Overview",
+    "text": "2 Overview\nInstall current R and R packages on Ubuntu LTS, from PPA maintained by Michael Rutter. This image is close to r-base.\nYou can use apt to install binary R packages (r-cran-<package name>) along with its dependencies, as shown in the example below.\napt-get install -y --no-install-recommends r-cran-tidyverse"
+  },
+  {
+    "objectID": "images/external.html",
+    "href": "images/external.html",
+    "title": "Other projects",
+    "section": "",
+    "text": "Here are some images and tools that serve a similar purpose to the Rocker images. Please refer to the links for more information."
+  },
+  {
+    "objectID": "images/external.html#docker-images-for-r",
+    "href": "images/external.html#docker-images-for-r",
+    "title": "Other projects",
+    "section": "1 Docker images for R",
+    "text": "1 Docker images for R\n\n1.1 Jupyter Docker Stacks\nThe stack of Docker images by Project Jupyter, based on Ubuntu, install packages from conda-forge, and configured to run Jupyter.\nIt includes several images with the R package already installed, such as jupyter/r-notebook and jupyter/datascience-notebook, so you can immediately run R on Jupyter.\n\n\n1.2 b-data/jupyterlab-r-docker-stack\nMulti-arch (linux/amd64, linux/arm64/v8) docker images based on Debian including code-server (vscode in the browser).\nImages considered stable for R versions ≥ 4.2.0.\n\n\n1.3 r-hub/r-minimal\nVery small size image with R installed on alpine.\n\n\n1.4 RStudio R Docker Images\nImages of RStudio built and installed R binaries.\n\n\n1.5 Docker containers for Bioconductor\nBioconductor docker images with system dependencies to install all packages. Based on rocker/rstudio.\n\n\n1.6 rhub-linux-builders\nDocker configuration for the Linux builders of the R-hub package builder. These images are useful for you to run to debug your R package.\n\n\n1.7 runiverse/base\nA docker image for building R source packages and documentation, used in the R-universe build tool."
+  },
+  {
+    "objectID": "images/external.html#other-tools",
+    "href": "images/external.html#other-tools",
+    "title": "Other projects",
+    "section": "2 Other tools",
+    "text": "2 Other tools\n\n2.1 Mamba\nA package manager to install various packages from conda-forge and others.\nIf you use Mamba on Linux for R, it may be easier to install packages, see also the Extending images page.\n\n\n2.2 rig\nAn R Installation Manager (Previously known as rim).\nWith rig, you can easily install and switch between specific versions of R.\n\n\n2.3 rsi\nIntended for system administrators who want to perform a source-installation of R.\nIt is meant for installing official releases of R source code on Debian-based Linux distributions, e.g. Ubuntu, using a docker container."
+  },
+  {
+    "objectID": "images/base/index.html",
+    "href": "images/base/index.html",
+    "title": "r-base stack",
+    "section": "",
+    "text": "r-base\n\n\n\n\n\n\n\n\n\n\n\n\n\nr-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "images/base/r-devel.html",
+    "href": "images/base/r-devel.html",
+    "title": "r-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang",
+    "section": "",
+    "text": "Source repository:\n\nrocker-org/r-devel\nrocker-org/drd\nrocker-org/drp\nrocker-org/r-devel-san\nrocker-org/r-devel-san-clang\n\nDockerfile\n\nrocker/r-devel\nrocker/drd\nrocker/drp\nrocker/r-devel-san\nrocker/r-devel-ubsan-clang\n\ntags\n\nrocker/r-devel\n\nDockerHub\n\nrocker/drd\n\nDockerHub\n\nrocker/drp\n\nDockerHub\n\nrocker/r-devel-san\n\nDockerHub\n\nrocker/r-devel-ubsan-clang\n\nDockerHub\n\n\nPublished image details: not available\nNon-root default user: docker"
+  },
+  {
+    "objectID": "images/base/r-devel.html#overview",
+    "href": "images/base/r-devel.html#overview",
+    "title": "r-devel, drd, drp, rocker/r-devel-san, rocker/r-devel-ubsan-clang",
+    "section": "2 Overview",
+    "text": "2 Overview\nThese images are based on r-base and install prerelease version of R from source, separately from the release version of R. These prerelease version R can be executed with RD(for R-devel) or RP(for R-patched).\n\nBoth rocker/r-devel and rocker/drd are images for running R-devel; rocker/drd has a smaller image size because of the different Dockerfile configuration (layers).\nrocker/drp has R-patched installed.\nrocker/r-devel-san and rocker/r-devel-ubsan-clang provide R development binaries with Sanitizer support, for memory checking during R package development1. rocker/r-devel-san uses clang, and rocker/r-devel-ubsan-clang uses gcc.\n\n\n\n\n\n\n\nImportant\n\n\n\nrocker/r-devel-ubsan-clang must be use with docker run’s --cap-add=SYS_PTRACE option. Otherwise, instrumented processes fail to start due to lacking permissions.\ndocker run --rm -ti --cap-add=SYS_PTRACE rocker/r-devel-ubsan-clang\nAlternatively, an instrumented process can be run with ASAN_OPTIONS=detect_leaks=0, but this turns off leak detection.\n\n\n\n\n\n\n\n\nTip\n\n\n\nrocker/r-ver:devel, rocker/rstudio:devel, rocker/tidyverse:devel, rocker/verse:devel also have R-devel installed."
+  },
+  {
+    "objectID": "images/base/r-base.html",
+    "href": "images/base/r-base.html",
+    "title": "r-base",
+    "section": "",
+    "text": "Source repository: rocker-org/rocker\nDockerfile\ntags\n\nDockerHub\n\nPublished image details: not available\nNon-root default user: docker"
+  },
+  {
+    "objectID": "images/base/r-base.html#overview",
+    "href": "images/base/r-base.html#overview",
+    "title": "r-base",
+    "section": "2 Overview",
+    "text": "2 Overview\nInstall current R from unstable repos.\nr-base and rocker/r-base are built from the same Dockerfile, but with different build tools. The timing of updates and available platforms are different."
+  },
+  {
+    "objectID": "images/versioned/cuda.html",
+    "href": "images/versioned/cuda.html",
+    "title": "cuda, ml, ml-verse",
+    "section": "",
+    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\n\nrocker/cuda\nrocker/ml\nrocker/ml-verse\n\ntags\n\nrocker/cuda\n\nDockerHub\nGitHub Container Registry\n\nrocker/ml\n\nDockerHub\nGitHub Container Registry\n\nrocker/ml-verse\n\nDockerHub\nGitHub Container Registry\n\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user:\n\nrocker/cuda: not exist\nrocker/ml: rstudio\nrocker/ml-verse: rstudio"
+  },
+  {
+    "objectID": "images/versioned/cuda.html#overview",
+    "href": "images/versioned/cuda.html#overview",
+    "title": "cuda, ml, ml-verse",
+    "section": "2 Overview",
+    "text": "2 Overview\nrocker/cuda, rocker/ml, and rocker/ml-verse are Docker images for machine learning and GPU-based computation in R. These images correspond to rocker/r-ver, rocker/tidyverse, and rocker/geospatial, respectively.\nAll images are based on the official NVIDIA CUDA docker build recipes, and are installed the reticulate package."
+  },
+  {
+    "objectID": "images/versioned/cuda.html#quick-start",
+    "href": "images/versioned/cuda.html#quick-start",
+    "title": "cuda, ml, ml-verse",
+    "section": "3 Quick start",
+    "text": "3 Quick start\nThe basic usage is the same as rocker/r-ver or rocker/rstudio except for the GPU setting.\nR command line:\n# CPU-only\ndocker run --rm -ti rocker/cuda\n# Machines with nvidia-docker and GPU support\ndocker run --gpus all --rm -ti rocker/cuda\nRStudio Server instance:\n# CPU-only\ndocker run -p 8787:8787 rocker/ml\n# Machines with nvidia-docker and GPU support\ndocker run --gpus all -p 8787:8787 rocker/ml\n\n\n\n\n\n\nImportant\n\n\n\nGPU use requires nvidia-docker runtime to run!"
+  },
+  {
+    "objectID": "images/versioned/cuda.html#how-to-use",
+    "href": "images/versioned/cuda.html#how-to-use",
+    "title": "cuda, ml, ml-verse",
+    "section": "4 How to use",
+    "text": "4 How to use\nSee also the rocker/r-ver’s reference (for rocker/cuda) and the rocker/rstudio’s reference (for rocker/ml and rocker/ml-verse).\n\n4.1 Python versions and environments\nIf you want to switch the Python version called from reticulate, you can use the reticulate’s functions to install Python. For example, with the following command, reticulate installs miniconda and miniconda installs Python 3.7.\nreticulate::install_miniconda()\nreticulate::conda_install(packages = \"python=3.7\")\nThe Python version used by the reticulate package can be checked with the reticulate::py_config() function.\nreticulate::py_config()\n#> python:         /root/.local/share/r-miniconda/envs/r-reticulate/bin/python\n#> libpython:      /root/.local/share/r-miniconda/envs/r-reticulate/lib/libpython3.7m.so\n#> pythonhome:     /root/.local/share/r-miniconda/envs/r-reticulate:/root/.local/share/r-miniconda/envs/r-reticulate\n#> version:        3.7.12 | packaged by conda-forge | (default, Oct 26 2021, 06:08:21)  [GCC 9.4.0]\n#> numpy:          /root/.local/share/r-miniconda/envs/r-reticulate/lib/python3.7/site-packages/numpy\n#> numpy_version:  1.17.5\n\n\n\n\n\n\nImportant\n\n\n\npyenv and pipenv, which were previously installed, are no longer installed. And, the previously set environment variables WORKON_HOME and PYTHON_VENV_PATH are no longer set. (rocker-org/rocker-versioned2#494)"
+  },
+  {
+    "objectID": "images/versioned/r-ver.html",
+    "href": "images/versioned/r-ver.html",
+    "title": "r-ver",
+    "section": "",
+    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\ntags\n\nDockerHub\nGitHub Container Registry\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: not exist"
+  },
+  {
+    "objectID": "images/versioned/r-ver.html#overview",
+    "href": "images/versioned/r-ver.html#overview",
+    "title": "r-ver",
+    "section": "2 Overview",
+    "text": "2 Overview\nrocker/r-ver is alternate image to r-base, with an emphasis on reproducibility.\nCompared to r-base,\n\nBuilds on Ubuntu LTS rather than Debian and system libraries are tied to the Ubuntu version. Images will use the most recent LTS available at the time when the corresponding R version was released.\n\nSince compatibility problems are likely to occur immediately after the release of a new Ubuntu LTS, the version to be used is the one that is at least 90 days past release.\n\nrocker/r-ver:4.0.0 is based on Ubuntu 20.04 (ubuntu:focal) because no interval was set at the time of the Ubuntu 20.04 release.\n\n\nInstalls a fixed version of R itself from source, rather than whatever is already packaged for Ubuntu (the r-base stack gets the latest R version as a binary from Debian unstable).\nThe only platforms available are linux/amd64 and linux/arm64 (arm64 images are experimental and only available for rocker/r-ver 4.1.0 or later).\nSet the Posit Public Package Manager (RStudio Package Manager, RSPM) as default CRAN mirror. For the amd64 platform, RSPM serves compiled Linux binaries of R packages and greatly speeds up package installs.\nNon-latest R version images installs all R packages from a fixed snapshot of CRAN mirror at a given date. This setting ensures that the same version of the R package is installed no matter when the installation is performed.\nProvides images that are generally smaller than the r-base series.\n\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images. Please check the rocker-org/rocker-versioned repository for R <= 3.6.3 images."
+  },
+  {
+    "objectID": "images/versioned/r-ver.html#special-tags",
+    "href": "images/versioned/r-ver.html#special-tags",
+    "title": "r-ver",
+    "section": "3 Special tags",
+    "text": "3 Special tags\n\n3.1 devel\nThe devel images are based on ubuntu:latest (the latest Ubuntu LTS version) and install the latest R-devel daily snapshot.\n\n\n3.2 cuda\nTags which contain cuda (e.g. rocker/r-ver:4.0.0-cuda10.1) are alias of rocker/cuda.\n\n\n\n\n\n\nWarning\n\n\n\ncuda tags will be discontinued in the future, so please use rocker/cuda instead."
+  },
+  {
+    "objectID": "images/versioned/r-ver.html#how-to-use",
+    "href": "images/versioned/r-ver.html#how-to-use",
+    "title": "r-ver",
+    "section": "4 How to use",
+    "text": "4 How to use\n\n4.1 Switch the default CRAN mirror\nAs explained in the overview, rocker/r-ver may have set a past CRAN snapshot as the default repository. This is determined by the options set in the Rprofile. To use a different CRAN mirror, simply write a new setting in the Rprofile.\nFor example, the following Dockerfile sets the default repository to CRAN.\n\n\nDockerfile\n\nFROM rocker/r-ver:4\nRUN echo 'options(repos = c(CRAN = \"https://cloud.r-project.org\"))' >>\"${R_HOME}/etc/Rprofile.site\"\n\n\n\n\n\n\n\nTip\n\n\n\nTo do the same thing by a non-root user in a container, for example, the following command can be used.\n\n\nTerminal\n\necho 'options(repos = c(CRAN = \"https://cloud.r-project.org\"))' | sudo sh -c 'cat - >>\"${R_HOME}/etc/Rprofile.site\"'\n\n\n\nOr, if you want to temporarily change the CRAN mirror during an R session, use the options() function.\nA common use case is when developing an R package and using the devtools::check() function; if the CRAN mirror is not changed from the default, an error like cannot open URL 'packagemanager.posit.co/cran/__linux__/jammy/latest/web/packages/packages.rds': HTTP status was '404 Not Found' may occur.\n\n\nR Terminal\n\noptions(repos = c(CRAN = \"https://cloud.r-project.org\"))\ndevtools::check()\n\n\n\n4.2 Selecting the BLAS implementation used by R\nBy default rocker/r-ver uses the OpenBLAS implementation for Linear Algebra1. But it is possible to switch for the reference BLAS implementation (as provided by the Debian package libblas-dev) using the Shared BLAS setup2.\n\n\n\n\n\n\nImportant\n\n\n\nCalling Python numpy by the reticulate package on R using OpenBLAS may cause a segfault. This causes an error when trying to use Python packages like matplotlib or scikit-learn. (rocker-org/rocker-versioned2#471, numpy/numpy#21643)\nIf this error occurs, change the BLAS used by R to libblas as described below.\n\n\n\n4.2.1 Checking which BLAS is in use\nYou can see the current BLAS configuration for R by using sessionInfo() function in R console.\n\n\nR Terminal\n\nsessionInfo()\n#> R version 4.2.0 (2022-04-22)\n#> Platform: x86_64-pc-linux-gnu (64-bit)\n#> Running under: Ubuntu 20.04.4 LTS\n#>\n#> Matrix products: default\n#> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3\n#> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3\n\nHere for instance R uses OpenBLAS.\n\n\n4.2.2 Switching BLAS implementations\nYou can switch BLAS used by R with the Debian update-alternatives script:\n\nSwitch to libblasSwitch to openblas\n\n\n\n\nTerminal\n\nARCH=$(uname -m)\nupdate-alternatives --set \"libblas.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/blas/libblas.so.3\"\nupdate-alternatives --set \"liblapack.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/lapack/liblapack.so.3\"\n\n\n\n\n\nTerminal\n\nARCH=$(uname -m)\nupdate-alternatives --set \"libblas.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/openblas-pthread/libblas.so.3\"\nupdate-alternatives --set \"liblapack.so.3-${ARCH}-linux-gnu\" \"/usr/lib/${ARCH}-linux-gnu/openblas-pthread/liblapack.so.3\""
+  },
+  {
+    "objectID": "images/versioned/index.html",
+    "href": "images/versioned/index.html",
+    "title": "Version-stable Rocker images",
+    "section": "",
+    "text": "binder\n\n\n\n\n\n\n\n\n\n\n\n\n\ncuda, ml, ml-verse\n\n\n\n\n\n\n\n\n\n\n\n\n\nr-ver\n\n\n\n\n\n\n\n\n\n\n\n\n\nrstudio, tidyverse, verse, geospatial\n\n\n\n\n\n\n\n\n\n\n\n\n\nshiny, shiny-verse\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "images/versioned/shiny.html",
+    "href": "images/versioned/shiny.html",
+    "title": "shiny, shiny-verse",
+    "section": "",
+    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\n\nrocker/shiny\nrocker/shiny-verse\n\ntags\n\nrocker/shiny\n\nDockerHub\nGitHub Container Registry\n\nrocker/shiny-verse\n\nDockerHub\nGitHub Container Registry\n\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: not exist"
+  },
+  {
+    "objectID": "images/versioned/shiny.html#overview",
+    "href": "images/versioned/shiny.html#overview",
+    "title": "shiny, shiny-verse",
+    "section": "2 Overview",
+    "text": "2 Overview\nThese images are based on rocker/r-ver, and Shiny Server and some R packages for Shiny Server are already installed.\nThe basic usage of these images is the same, with the difference being the amount of additional (R) packages installed. (See image details for lists of installation packages)\n\nrocker/shiny-verse has already installed many R packages and their dependencies apt packages. e.g. the tidyverse package, the devtools package, some R Database Interface packages, the data.table package, the fst package, and the Apache Arrow R package.\n\nSince the Shiny Server port is set to 3838, you can open the Shiny screen on localhost:3838 from your browser with the following command.\ndocker run --rm -ti -p 3838:3838 rocker/shiny\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images. For R <= 3.6 images, please check the rocker-org/shiny repository."
+  },
+  {
+    "objectID": "images/versioned/shiny.html#how-to-use",
+    "href": "images/versioned/shiny.html#how-to-use",
+    "title": "shiny, shiny-verse",
+    "section": "3 How to use",
+    "text": "3 How to use\n\n3.1 Environment variables\nSeveral special environment variables can be set to modify Shiny Server’s behavior.\n\n3.1.1 APPLICATION_LOGS_TO_STDOUT\nThe Shiny Server log and all application logs are written to stdout and can be viewed using the docker logs command.\nThe logs for individual apps are still kept in the /var/log/shiny-server directory1. If you want to avoid printing the logs to stdout, set the environment variable APPLICATION_LOGS_TO_STDOUT to false.\ndocker run --rm -ti -e APPLICATION_LOGS_TO_STDOUT=false -p 3838:3838 rocker/shiny\n\n\n\n3.2 Run by non-root user\nShiny Server is normally run by the root user, and sessions within the Shiny Server use the non-root user with UID 999 named shiny.\nBy setting the --user option as follows, Shiny Server can be run by the shiny user.\ndocker run --rm -ti --user shiny -p 3838:3838 rocker/shiny\n\n\n3.3 See also\n\nShared Volumes\nNetworking"
+  },
+  {
+    "objectID": "images/versioned/rstudio.html",
+    "href": "images/versioned/rstudio.html",
+    "title": "rstudio, tidyverse, verse, geospatial",
+    "section": "",
+    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\n\nrocker/rstudio\nrocker/tidyverse\nrocker/verse\nrocker/geospatial\n\ntags\n\nrocker/rstudio\n\nDockerHub\nGitHub Container Registry\n\nrocker/tidyverse\n\nDockerHub\nGitHub Container Registry\n\nrocker/verse\n\nDockerHub\nGitHub Container Registry\n\nrocker/geospatial\n\nDockerHub\nGitHub Container Registry\n\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: rstudio"
+  },
+  {
+    "objectID": "images/versioned/rstudio.html#overview",
+    "href": "images/versioned/rstudio.html#overview",
+    "title": "rstudio, tidyverse, verse, geospatial",
+    "section": "2 Overview",
+    "text": "2 Overview\nThese images are based on rocker/r-ver, and RStudio Server is already installed.\nThe basic usage of these images is the same, with the difference being the amount of additional (R) packages installed. (See image details for lists of installation packages)\n\nrocker/tidyverse has already installed many R packages and their dependencies apt packages. e.g. the tidyverse package, the devtools package, the rmarkdown package, some R Database Interface packages, the data.table package, the fst package, and the Apache Arrow R package.\nrocker/verse has already installed TeX Live and some publishing-related R packages, in addition to the packages installed in rocker/tidyverse.\nrocker/geospatial has already installed some geospatial R packages in addition to the packages installed in rocker/verse.\n\nThese images start RStudio Server with the default command. Since the RStudio Server port is set to 8787, you can open the RStudio screen on localhost:8787 from your browser with the following command.\ndocker run --rm -ti -p 8787:8787 rocker/rstudio\nThe non-root default user rstudio is set up as RStudio Server user, so please enter the username rstudio and a randomly generated password which is displayed in the console to the RStudio login form.\nRStudio will not start if the default command (/init) is overridden. To use R on the command line, specify the R command as follows.\ndocker run --rm -ti rocker/tidyverse R\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images. For R <= 3.6 images, please check the rocker-org/rocker-versioned repository and the rocker-org/geospatial repository."
+  },
+  {
+    "objectID": "images/versioned/rstudio.html#spatial-tags",
+    "href": "images/versioned/rstudio.html#spatial-tags",
+    "title": "rstudio, tidyverse, verse, geospatial",
+    "section": "3 Spatial tags",
+    "text": "3 Spatial tags\n\n3.1 devel\nThe devel images are based on rocker/r-ver:devel, witch install the latest R-devel daily snapshot.\ndevel tags are available for rocker/rstudio, rocker/tidyverse, and rocker/verse.\n\n\n3.2 latest-daily\nThe latest-daily images are based on rocker/r-ver:latest and install the latest RStudio daily build.\nlatest-daily tags are available for rocker/rstudio, rocker/tidyverse, and rocker/verse.\n\n\n3.3 Spacial tags for geospatial toolkit\nrocker/geospatial:ubuntugis (rocker/geospatial:X.Y.Z-ubuntugis) and rocker/geospatial:dev-osgeo are special images that differ slightly from the regular rocker/geospatial.\n\nubuntugis is built on packages installed from the ubuntugis-unstable PPA.\ndev-osgeo is built on the latest release of PROJ, GDAL, and GEOS."
+  },
+  {
+    "objectID": "images/versioned/rstudio.html#how-to-use",
+    "href": "images/versioned/rstudio.html#how-to-use",
+    "title": "rstudio, tidyverse, verse, geospatial",
+    "section": "4 How to use",
+    "text": "4 How to use\n\n4.1 Environment variables\nSeveral special environment variables can be set to modify RStudio Server’s behavior.\n\n\n\n\n\n\nNote\n\n\n\nThe process of referencing these environment variables is done by the /init command, which is the default command set for the container. Therefore, if the /init command is not executed, nothing will happen.\nFor example, if you enter the container with the following command, the uid of the user rstudio is unchanged and remains 1000.\ndocker run --rm -ti -e USERID=1001 -e GROUPID=1001 --user rstudio rocker/tidyverse bash\n\n\n\n4.1.1 PASSWORD\nYou can set a custom password to log in the RStudio instance. Please set your password as an environmental variable PASSWORD like this:\ndocker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio\n\n\n4.1.2 ROOT\nIf ROOT is set to true, the default non-root user will be added to the sudoers group when the server init process.\ndocker run --rm -ti -e ROOT=true -p 8787:8787 rocker/rstudio\nThis configuration allows you to execute sudo commands, like sudo apt update, on the terminal on RStudio.\n\n\n\n\n\n\nNote\n\n\n\nWhen using the sudo command, you must enter the same password you used to log into RStudio.\n\n\n\n\n4.1.3 DISABLE_AUTH\nYou can disable authentication for RStudio Server by setting an environmental variable DISABLE_AUTH=true.\ndocker run --rm -ti -e DISABLE_AUTH=true -p 127.0.0.1:8787:8787 rocker/rstudio\nWith this example, when you visit localhost:8787, you will now automatically be logged in as the user rstudio without having to first enter a user name and password.\n\n\n\n\n\n\nWarning\n\n\n\nUse this setting only in a secure environment. Without authentication, anyone who has access to that port can log in the RStudio Server.\nIf you are using a container on your local computer, it is recommended that you configure the port publishing as -p 127.0.0.1:8787:8787, as in the example, so that it can only be accessed from the same computer.\n\n\n\n\n\n\n\n\nNote\n\n\n\nDISABLE_AUTH=true setting only skips the RStudio log in page. So you will still need to enter the password when use the sudo command with ROOT=true option.\n\n\n\n\n4.1.4 USERID and GROUPID\nThe UID and GID of the default non-root user can be changed as follows:\ndocker run --rm -ti -e USERID=1001 -e GROUPID=1001 -p 8787:8787 rocker/rstudio\n\n\n\n\n\n\nWarning\n\n\n\nIf these are set, ownership of the /home/rstudio directory in the container is updated by the root user. This will also overwrite the ownership of any files that are bind-mounted under the /home/rstudio directory.\n\n\n\n\n\n4.2 Editing work on RStudio Server\nIf you want to make repeated edits on RStudio Server, It would be useful to be able to share files edited on the container with the Docker host.\nHere are some hints for doing this and a sample compose file (for docker compose).\n\nRecent RStudio Server’s configuration files are saved in the ~/.config/rstudio/ directory1.\nIt is not recommended to bind-mount whole home directory on the container (/home/rstudio); RStudio Server may not work properly.\nSince RStudio Server opens the user’s home directory (/home/rstudio) by default, it is easier to use if a working directory is set up under /home/rstudio, e.g. /home/rstudio/workspace. However, for example, another directory such as the one containing CSV files should not necessarily have to be under the home directory, so it is recommended to bind-mount it under its own name directly under the root, e.g. /other_dir.\n\n\n\ncompose.yml\n\nservices:\n  rstudio:\n    image: rocker/verse:4\n    ports:\n      - \"8787:8787\"\n    environment:\n      PASSWORD: yourpassword\n    volumes:\n      - ./.rstudio_config:/home/rstudio/.config/rstudio\n      - ~/workspace:/home/rstudio/workspace\n      - /other_dir:/other_dir\n\n\n\n4.3 See also\n\nNetworking\nShared Volumes"
+  },
+  {
+    "objectID": "images/versioned/binder.html",
+    "href": "images/versioned/binder.html",
+    "title": "binder",
+    "section": "",
+    "text": "Source repository: rocker-org/rocker-versioned2\nDockerfile\ntags\n\nDockerHub\nGitHub Container Registry\n\nPublished image details: rocker-org/rocker-versioned2’s wiki\nNon-root default user: rstudio"
+  },
+  {
+    "objectID": "images/versioned/binder.html#overview",
+    "href": "images/versioned/binder.html#overview",
+    "title": "binder",
+    "section": "2 Overview",
+    "text": "2 Overview\nThis image is based on rocker/geospatial and configured to run RStudio Server on Binder, thanks to jupyter-rsession-proxy.\nFor instructions on how to use this image with Binder for your project, see the rocker-org/binder, a template repository.\nBy placing the following badge  in README.md of your project, RStudio can be started and used in the browser by simply clicking on the badge.\n[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/<GITHUB_USER>/<REPO>/<BRANCH>?urlpath=rstudio)\nYou can also make a Binder badge with usethis::use_binder_badge() R function.\n\n\n\n\n\n\nNote\n\n\n\nThis document is for R 4.0.0 >= images."
+  },
+  {
+    "objectID": "images/versioned/binder.html#how-to-use",
+    "href": "images/versioned/binder.html#how-to-use",
+    "title": "binder",
+    "section": "3 How to use",
+    "text": "3 How to use\n\n3.1 Use outside of Binder\nIf you use this image with Docker, the default command runs JupyterLab. Since the JupyterLab port is set to 8888, you can open the JupyterLab screen on localhost:8888 from your browser with the following command.\ndocker run --rm -ti -p 8888:8888 rocker/binder\nYou can log in by entering the token displayed in the terminal as your password.\nIf you want to set your own password for Jupyter, you can set it as a environment variable JUPYTER_TOKEN1.\ndocker run --rm -ti -e JUPYTER_TOKEN=yourpassword -p 8888:8888 rocker/binder\n\n\n\n\n\n\nTip\n\n\n\nRStudio Server started from Jupyter does not read environment variables set at container startup; if you want to use environment variables on your RStudio instance, set them on the .Renviron file.\n\n\nTo run RStudio Server directly as in rocker/rstudio, execute /init command with the root user specified.\ndocker run --rm -ti -p 8787:8787 --user root rocker/binder /init"
+  },
+  {
+    "objectID": "images/devcontainer/templates.html",
+    "href": "images/devcontainer/templates.html",
+    "title": "Rocker Dev Container Templates",
+    "section": "",
+    "text": "The Rocker Project provides some Dev Container Templates for building an R development environment.\n\nSource repository: rocker-org/devcontainer-templates\n\nThese are displayed on the GitHub Codespaces or on the VS Code Dev Containers UI.\nThese can also be use from the devcontainer CLI.\n\n\nTerminal\n\ndevcontainer templates apply -t ghcr.io/rocker-org/devcontainer-templates/r-ver"
+  },
+  {
+    "objectID": "images/devcontainer/templates.html#see-also",
+    "href": "images/devcontainer/templates.html#see-also",
+    "title": "Rocker Dev Container Templates",
+    "section": "2 See also",
+    "text": "2 See also\n\nRocker Dev Container Features\nRocker Dev Container Images"
+  },
+  {
+    "objectID": "images/devcontainer/index.html",
+    "href": "images/devcontainer/index.html",
+    "title": "Development Container Resources",
+    "section": "",
+    "text": "Rocker Dev Container Features\n\n\n\n\n\n\n\n\n\n\n\n\n\nRocker Dev Container Templates\n\n\n\n\n\n\n\n\n\n\n\n\n\nRocker Pre-built Dev Container Images\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "images/devcontainer/images.html",
+    "href": "images/devcontainer/images.html",
+    "title": "Rocker Pre-built Dev Container Images",
+    "section": "",
+    "text": "Source repository: rocker-org/devcontainer-images\nSource\n\nr-ver\ntidyverse, geospatial\n\ntags\n\nr-ver\ntidyverse\ngeospatial\n\nPublished image details: rocker-org/devcontainer-images’s wiki\nNon-root default user: rstudio"
+  },
+  {
+    "objectID": "images/devcontainer/images.html#overview",
+    "href": "images/devcontainer/images.html#overview",
+    "title": "Rocker Pre-built Dev Container Images",
+    "section": "2 Overview",
+    "text": "2 Overview\nThe Rocker Project provides some Docker container images which built with Dev Container Features. Packages commonly used for development are already installed.\nThese images are intended to be images for R that can be used like the Dev Container images built from devcontainers/images for each language.\nghcr.io/rocker-org/devcontainer/r-ver, ghcr.io/rocker-org/devcontainer/tidyverse, and ghcr.io/rocker-org/devcontainer/geospatial are correspond to rocker/r-ver, rocker/tidyverse, and rocker/geospatial, respectively."
+  },
+  {
+    "objectID": "images/devcontainer/images.html#how-to-use",
+    "href": "images/devcontainer/images.html#how-to-use",
+    "title": "Rocker Pre-built Dev Container Images",
+    "section": "3 How to use",
+    "text": "3 How to use\n\n3.1 devcontainer.json and Dockerfile\nSpecify the image in devcontainer.json as follows.\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"name\": \"${localWorkspaceFolderBasename}\",\n    \"image\": \"ghcr.io/rocker-org/devcontainer/r-ver:4\"\n}\n\nThe basic usage is to customize by adding Dev Container Features here.\nOr, we can use it as a base image in a Dockerfile.\n\n\n.devcontainer/Dockerfile\n\nFROM ghcr.io/rocker-org/devcontainer/tidyverse:4\n\nTo install the R package on the Dockerfile, please refer to the Extending images page.\nWhen using a combination of a devcontainer.json and a Dockerfile, the devcontainer.json file must be rewritten to refer to the Dockerfile.\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"name\": \"${localWorkspaceFolderBasename}\",\n    \"build\": {\n        \"dockerfile\": \"Dockerfile\"\n    }\n}\n\n\n\n3.2 Command line\nWe can use radian instead of the default R console.\n\n\nTerminal\n\ndocker run --rm -ti ghcr.io/rocker-org/devcontainer/r-ver:4 radian\n\nAlso httpgd is already installed so we can expose the container port to show the plot in the browser. See the GUI page for details.\n\n\n3.3 RStudio Server\nghcr.io/rocker-org/devcontainer/tidyverse and ghcr.io/rocker-org/devcontainer/geospatial have already installed RStudio Server. See the rocker/rstudio reference page for usage."
+  },
+  {
+    "objectID": "images/devcontainer/images.html#see-also",
+    "href": "images/devcontainer/images.html#see-also",
+    "title": "Rocker Pre-built Dev Container Images",
+    "section": "4 See also",
+    "text": "4 See also\n\nRocker Dev Container Features\nRocker Dev Container Templates"
+  },
+  {
+    "objectID": "images/devcontainer/features.html",
+    "href": "images/devcontainer/features.html",
+    "title": "Rocker Dev Container Features",
+    "section": "",
+    "text": "The Rocker Project provides some Dev Container Features for installing R or installing software often used with R.\n\nSource repository: rocker-org/devcontainer-features\n\nYou can find them on the Dev Containers site, the GitHub Codespaces Dev Container Editor, or, VSCode Dev Containers.\nThese can be used to easily configure R on containers without R installed, or to make containers for R even more useful. And of course, we can use them independently of R! (except for the Features to install R)\nFor example, install R on the default image of Codespaces by editing the devcontainer.json file as follows:\n\n\n.devcontainer/devcontainer.json\n\n{\n    \"image\": \"mcr.microsoft.com/devcontainers/universal:2\",\n    \"features\": {\n        \"ghcr.io/rocker-org/devcontainer-features/r-apt:latest\": {}\n    }\n}\n\nCheck the source repository for details on each Feature."
+  },
+  {
+    "objectID": "images/devcontainer/features.html#install-r-on-dev-containers",
+    "href": "images/devcontainer/features.html#install-r-on-dev-containers",
+    "title": "Rocker Dev Container Features",
+    "section": "2 Install R on Dev Containers",
+    "text": "2 Install R on Dev Containers\nThere are some Dev Container Features that can be used to install R.\n\nr-apt\nr-rig\nminiforge1 (See also micromamba provided by mamba-org)\n\nEach of these installations of R will be configured to allow installation of R binary packages in the following ways.\n\nSystem package management system (apt)\nPosit Public Package Manager (R functions e.g. install.packages)2\nconda-forge (mamba or conda)\n\nTherefore, which of these you use to install R may depend on which method you wish to use to install the R binary packages.\nSome tips for choosing:\n\nWhen installing R packages via apt or mamba (conda), dependencies outside of R are installed automatically. But, installing R packages via R function (install.packages) may require separate apt installations of system libraries that are dependencies.\nGenerally r-apt installs R packages faster than r-rig. Therefore, if you want to add R to a container, we recommend trying r-apt first. However, r-apt does not support ubuntu on arm64 platform, so if you want to use ubuntu on arm64 platform, use r-rig instead.\nIf you want to install any version of R or use R already installed in the container, you can use r-rig to install any version of R or only the R package without installing R.\nIf you want to install packages that exist in the conda-forge, you can use miniforge for fast installation with mamba."
+  },
+  {
+    "objectID": "images/devcontainer/features.html#install-r-packages-on-dev-containers",
+    "href": "images/devcontainer/features.html#install-r-packages-on-dev-containers",
+    "title": "Rocker Dev Container Features",
+    "section": "3 Install R packages on Dev Containers",
+    "text": "3 Install R packages on Dev Containers\nSeveral Dev Container Features allow R package installation to be defined on devcontainer.json.\n\napt-packages\nr-packages\n\nThese support package installation via apt or R function (pak::pak()).\nThere is also the renv-cache Feature that supports package installation via the renv R package after container startup."
+  },
+  {
+    "objectID": "images/devcontainer/features.html#see-also",
+    "href": "images/devcontainer/features.html#see-also",
+    "title": "Rocker Dev Container Features",
+    "section": "4 See also",
+    "text": "4 See also\n\nRocker Dev Container Images\nRocker Dev Container Templates"
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html",
+    "href": "CODE_OF_CONDUCT.html",
+    "title": "Contributor Covenant Code of Conduct",
+    "section": "",
+    "text": "In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#our-standards",
+    "href": "CODE_OF_CONDUCT.html#our-standards",
+    "title": "Contributor Covenant Code of Conduct",
+    "section": "2 Our Standards",
+    "text": "2 Our Standards\nExamples of behavior that contributes to creating a positive environment include:\n\nUsing welcoming and inclusive language\nBeing respectful of differing viewpoints and experiences\nGracefully accepting constructive criticism\nFocusing on what is best for the community\nShowing empathy towards other community members\n\nExamples of unacceptable behavior by participants include:\n\nThe use of sexualized language or imagery and unwelcome sexual attention or advances\nTrolling, insulting/derogatory comments, and personal or political attacks\nPublic or private harassment\nPublishing others’ private information, such as a physical or electronic address, without explicit permission\nOther conduct which could reasonably be considered inappropriate in a professional setting"
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#our-responsibilities",
+    "href": "CODE_OF_CONDUCT.html#our-responsibilities",
+    "title": "Contributor Covenant Code of Conduct",
+    "section": "3 Our Responsibilities",
+    "text": "3 Our Responsibilities\nProject maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.\nProject maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#scope",
+    "href": "CODE_OF_CONDUCT.html#scope",
+    "title": "Contributor Covenant Code of Conduct",
+    "section": "4 Scope",
+    "text": "4 Scope\nThis Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#enforcement",
+    "href": "CODE_OF_CONDUCT.html#enforcement",
+    "title": "Contributor Covenant Code of Conduct",
+    "section": "5 Enforcement",
+    "text": "5 Enforcement\nInstances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at cboettig@gmail.com. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.\nProject maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project’s leadership."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#attribution",
+    "href": "CODE_OF_CONDUCT.html#attribution",
+    "title": "Contributor Covenant Code of Conduct",
+    "section": "6 Attribution",
+    "text": "6 Attribution\nThis Code of Conduct is adapted from the Contributor Covenant, version 1.4, available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html\nFor answers to common questions about this code of conduct, see https://www.contributor-covenant.org/faq"
   }
 ]
