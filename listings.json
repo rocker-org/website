@@ -1,17 +1,5 @@
 [
   {
-    "listing": "/use/index.html",
-    "items": [
-      "/use/editor.html",
-      "/use/extending.html",
-      "/use/gui.html",
-      "/use/networking.html",
-      "/use/reproducibility.html",
-      "/use/shared_volumes.html",
-      "/use/singularity.html"
-    ]
-  },
-  {
     "listing": "/images/other/index.html",
     "items": [
       "/images/other/r-bspm.html",
@@ -41,6 +29,18 @@
       "/images/devcontainer/features.html",
       "/images/devcontainer/templates.html",
       "/images/devcontainer/images.html"
+    ]
+  },
+  {
+    "listing": "/use/index.html",
+    "items": [
+      "/use/editor.html",
+      "/use/extending.html",
+      "/use/gui.html",
+      "/use/networking.html",
+      "/use/reproducibility.html",
+      "/use/shared_volumes.html",
+      "/use/singularity.html"
     ]
   }
 ]
