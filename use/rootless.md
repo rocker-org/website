@@ -68,7 +68,7 @@ podman run --rm docker.io/rocker/rstudio apt-get update
 
 You can bind mount the `/etc/` directory (e.g. using `-v /etc:/hostetc`) but you won't
 be able to modify most of its files, since you are not allowed to do that
-when you are outside the container. 
+when you are outside the container.
 
 At the host:
 
@@ -180,7 +180,7 @@ If you usually work with a directory shared with other users, it is possible
 that the shared directory belongs to a group you all belong to.
 
 There are several possible solutions. Here we describe two of them that we can
-use in `rocker`. 
+use in `rocker`.
 
 #### Set groups in the running process `--group-add keep-groups`
 
