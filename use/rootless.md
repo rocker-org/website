@@ -28,17 +28,17 @@ as root.
 
 At the host:
 
-```
-$ whoami
-sergio
+```{.sh}
+whoami
+# sergio
 ```
 
 In the container:
 
 
-```
-$ podman run --rm docker.io/rocker/rstudio whoami
-root
+```{.sh}
+podman run --rm docker.io/rocker/rstudio whoami
+# root
 ```
 
 ### Using apt-get inside a rootless container
@@ -48,20 +48,20 @@ rootless container, because it just modifies files inside the container.
 
 At the host:
 
-```
-$ apt-get update
-Reading package lists... Done
-E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
+```{.sh}
+apt-get update
+# Reading package lists... Done
+# E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
 ```
 
 In the container:
 
-```
-$ podman run --rm docker.io/rocker/rstudio apt-get update
-Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
-...
-Fetched 26.8 MB in 6s (4,750 kB/s)
-Reading package lists...
+```{.sh}
+podman run --rm docker.io/rocker/rstudio apt-get update
+# Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+# ...
+# Fetched 26.8 MB in 6s (4,750 kB/s)
+# Reading package lists...
 ```
 
 ### Modifying files
@@ -72,23 +72,23 @@ when you are outside the container.
 
 At the host:
 
-```
-$ touch /etc/try-creating-a-file
-touch: cannot touch '/etc/try-creating-a-file': Permission denied
+```{.sh}
+touch /etc/try-creating-a-file
+# touch: cannot touch '/etc/try-creating-a-file': Permission denied
 ```
 
 In the container: *Rootless means no additional host permissions*
 
-```
-$ podman run --rm -v /etc/:/hostetc docker.io/rocker/rstudio \
-    touch /hostetc/try-creating-a-file
-touch: cannot touch '/hostetc/try-creating-a-file': Permission denied
+```{.sh}
+podman run --rm -v /etc/:/hostetc docker.io/rocker/rstudio \
+  touch /hostetc/try-creating-a-file
+# touch: cannot touch '/hostetc/try-creating-a-file': Permission denied
 ```
 
 However, you can modify the files *within* the container:
 
-```
-$ podman run --rm docker.io/rocker/rstudio touch /etc/try-creating-a-file
+```{.sh}
+podman run --rm docker.io/rocker/rstudio touch /etc/try-creating-a-file
 ```
 
 ### Port binding
@@ -98,18 +98,18 @@ since those are reserved to root (or to be precise reserved to processes with
 `CAP_NET_BIND_SERVICE` capability set).
 
 
-```
-$ podman run --rm -p 80:8787 docker.io/rocker/rstudio
-Error: rootlessport cannot expose privileged port 80, you can add 
-'net.ipv4.ip_unprivileged_port_start=80' to /etc/sysctl.conf (currently 1024),
-or choose a larger port number (>= 1024):
-listen tcp 0.0.0.0:80: bind: permission denied
+```{.sh}
+podman run --rm -p 80:8787 docker.io/rocker/rstudio
+# Error: rootlessport cannot expose privileged port 80, you can add 
+# 'net.ipv4.ip_unprivileged_port_start=80' to /etc/sysctl.conf (currently 1024),
+# or choose a larger port number (>= 1024):
+# listen tcp 0.0.0.0:80: bind: permission denied
 ```
 
 However larger port numbers work perfectly fine:
 
-```
-$ podman run --rm -p 8787:8787 docker.io/rocker/rstudio
+```{.sh}
+podman run --rm -p 8787:8787 docker.io/rocker/rstudio
 ```
 
 ## Rootless containers and file permissions
@@ -136,10 +136,10 @@ user ids that do not overlap with anyone else. The list of subordinate user and
 group ids assigned to each user is stored in `/etc/subuid` and `/etc/subgid`
 files.
 
-```
-$ cat /etc/subuid
-sergio:100000:65536
-ana:165536:65536
+```{.sh}
+cat /etc/subuid
+# sergio:100000:65536
+# ana:165536:65536
 ```
 
 This file is read as follows:
@@ -216,23 +216,23 @@ groups, unmapped in the container.
 
 On the host:
 
-```
-$id
-uid=1000(sergio) gid=1000(sergio) groups=1000(sergio),4(adm),27(sudo),109(lpadmin),124(sambashare)
+```{.sh}
+id
+# uid=1000(sergio) gid=1000(sergio) groups=1000(sergio),4(adm),27(sudo),109(lpadmin),124(sambashare)
 ```
 
 On the container:
 
-```
-$podman run --rm rocker/rstudio id
-uid=0(root) gid=0(root) groups=0(root)
+```{.sh}
+podman run --rm rocker/rstudio id
+# uid=0(root) gid=0(root) groups=0(root)
 ```
 
 Keeping groups:
 
-```
-$ podman run --rm --group-add keep-groups rocker/rstudio id
-uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+```{.sh}
+podman run --rm --group-add keep-groups rocker/rstudio id
+# uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 ```
 
 Note how when keeping groups all the unmapped groups are grouped into 65534 (nogroup).
@@ -254,7 +254,7 @@ and can't write files into your shared directories.
 To run R code or an R script using rocker accessing a shared directory, you
 can use `--group-add keep-groups`.
 
-```
+```{.sh}
 podman run -ti --rm -v /shared_dir:/shared_dir \
   --group-add keep-groups rocker/rstudio R
 ```
@@ -277,13 +277,13 @@ Let's assume here that the shared directory belongs to the GID 2000.
 
 Your system administrator can subordinate to you and your colleagues that GID, so you can use it:
 
-```
-$ cat /etc/subgid
-sergio:100000:65536
-ana:165536:65536
-
-sergio:2000:1
-ana:2000:1
+```{.sh}
+cat /etc/subgid
+# sergio:100000:65536
+# ana:165536:65536
+#
+# sergio:2000:1
+# ana:2000:1
 ```
 
 Now `sergio` and `ana` can use the GID 2000 (note the /etc/sub**g**id).
@@ -305,11 +305,11 @@ mapping, so we know the intermediate group ID of our host 2000 gid.
 
 The intermediate group mapping is found with the following command:
 
-```
-$ podman unshare cat /proc/self/gid_map
-         0       1000          1
-         1       2000          1
-         2     100000      65536
+```{.sh}
+podman unshare cat /proc/self/gid_map
+#          0       1000          1
+#          1       2000          1
+#          2     100000      65536
 ```
 
 The table shows that gid 2000 in the host (middle column) is mapped to
@@ -328,16 +328,16 @@ We will map
 The `--uidmap` and `--gidmap` options in rootless podman map those intermediate
 uids/gids to container ids:
 
-```
-$ podman run  \
-    --rm  \
-    -v /shared_dir:/shared_dir \
-    --uidmap "0:0:65535"  \
-    --gidmap "0:0:1" \
-    --gidmap "1:2:65535" \
-    --gidmap "100000:1:1" \
-    --group-add keep-groups \
-    rocker/rstudio
+```{.sh}
+podman run  \
+  --rm  \
+  -v /shared_dir:/shared_dir \
+  --uidmap "0:0:65535"  \
+  --gidmap "0:0:1" \
+  --gidmap "1:2:65535" \
+  --gidmap "100000:1:1" \
+  --group-add keep-groups \
+  rocker/rstudio
 ```
 
 With all that set:
