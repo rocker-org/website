@@ -18,6 +18,9 @@ about:
       href: https://github.com/rocker-org
     - text: "{{< fa brands docker >}} Docker Hub"
       href: https://hub.docker.com/u/rocker
+format:
+  html:
+    toc: false
 ---
 
 ## 🚀Getting Started
