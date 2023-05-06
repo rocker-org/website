@@ -86,6 +86,28 @@ echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' | sudo sh -c 'ca
 
 :::
 
+:::{.callout-tip}
+
+We can also use the script [`setup_R.sh`](https://github.com/rocker-org/rocker-versioned2/blob/master/scripts/setup_R.sh)
+included in `rocker/r-ver`.
+
+```{.dockerfile filename="Dockerfile"}
+FROM rocker/r-ver:4
+RUN /rocker_scripts/setup_R.sh https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29
+```
+
+The advantage of using this script is that if you specify a URL
+for binary installation from Posit Public Package Manager,
+it will rewrite the URL and switch to source installation on non-amd64 platforms.
+
+For example, in the above example,
+`https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29`
+is set for the amd64 platform,
+but `https://packagemanager.rstudio.com/cran/2023-01-29` is set
+for the arm64 platform as the default CRAN mirror.
+
+:::
+
 Or, if you want to temporarily change the CRAN mirror during an R session, use the `options()` function.
 
 A common use case is when developing an R package and using the `devtools::check()` function;
