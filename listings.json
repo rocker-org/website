@@ -1,16 +1,14 @@
 [
   {
-    "listing": "/images/other/index.html",
+    "listing": "/use/index.html",
     "items": [
-      "/images/other/r-bspm.html",
-      "/images/other/r-ubuntu.html"
-    ]
-  },
-  {
-    "listing": "/images/base/index.html",
-    "items": [
-      "/images/base/r-base.html",
-      "/images/base/r-devel.html"
+      "/use/editor.html",
+      "/use/extending.html",
+      "/use/gui.html",
+      "/use/networking.html",
+      "/use/reproducibility.html",
+      "/use/shared_volumes.html",
+      "/use/singularity.html"
     ]
   },
   {
@@ -24,6 +22,13 @@
     ]
   },
   {
+    "listing": "/images/other/index.html",
+    "items": [
+      "/images/other/r-bspm.html",
+      "/images/other/r-ubuntu.html"
+    ]
+  },
+  {
     "listing": "/images/devcontainer/index.html",
     "items": [
       "/images/devcontainer/features.html",
@@ -32,15 +37,10 @@
     ]
   },
   {
-    "listing": "/use/index.html",
+    "listing": "/images/base/index.html",
     "items": [
-      "/use/editor.html",
-      "/use/extending.html",
-      "/use/gui.html",
-      "/use/networking.html",
-      "/use/reproducibility.html",
-      "/use/shared_volumes.html",
-      "/use/singularity.html"
+      "/images/base/r-base.html",
+      "/images/base/r-devel.html"
     ]
   }
 ]

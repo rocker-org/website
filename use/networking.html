@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.262">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,9 +18,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -126,12 +97,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
-      color: white;
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
 background-image: url(../img/rockerwhale-optim.png);
 background-size: cover;
-    }
-    </style>
+      }
+</style>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -151,147 +133,151 @@ background-size: cover;
     <span class="navbar-title">Rocker Project</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../CODE_OF_CONDUCT.html">
+    <a class="nav-link" href="../CODE_OF_CONDUCT.html" rel="" target="">
  <span class="menu-text">Code of Conduct</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-images" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-images" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Images</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-images">    
         <li>
-    <a class="dropdown-item" href="../images/index.html">
+    <a class="dropdown-item" href="../images/index.html" rel="" target="">
  <span class="dropdown-text">The Rocker Images</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">versioned stack</li>
         <li>
-    <a class="dropdown-item" href="../images/versioned/r-ver.html">
+    <a class="dropdown-item" href="../images/versioned/r-ver.html" rel="" target="">
  <span class="dropdown-text">r-ver</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/versioned/rstudio.html">
+    <a class="dropdown-item" href="../images/versioned/rstudio.html" rel="" target="">
  <span class="dropdown-text">rstudio, tidyverse, verse, geospatial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/versioned/binder.html">
+    <a class="dropdown-item" href="../images/versioned/binder.html" rel="" target="">
  <span class="dropdown-text">binder</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/versioned/shiny.html">
+    <a class="dropdown-item" href="../images/versioned/shiny.html" rel="" target="">
  <span class="dropdown-text">shiny, shiny-verse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/versioned/cuda.html">
+    <a class="dropdown-item" href="../images/versioned/cuda.html" rel="" target="">
  <span class="dropdown-text">cuda, ml, ml-verse</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">base stack</li>
         <li>
-    <a class="dropdown-item" href="https://hub.docker.com/_/r-base">
+    <a class="dropdown-item" href="https://hub.docker.com/_/r-base" rel="" target="">
  <span class="dropdown-text">r-base <i class="fa-solid fa-arrow-up-right-from-square" aria-label="arrow-up-right-from-square"></i></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/base/r-base.html">
+    <a class="dropdown-item" href="../images/base/r-base.html" rel="" target="">
  <span class="dropdown-text">rocker/r-base</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/base/r-devel.html">
+    <a class="dropdown-item" href="../images/base/r-devel.html" rel="" target="">
  <span class="dropdown-text">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Additional images</li>
         <li>
-    <a class="dropdown-item" href="../images/other/r-ubuntu.html">
+    <a class="dropdown-item" href="../images/other/r-ubuntu.html" rel="" target="">
  <span class="dropdown-text">r-ubuntu</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/other/r-bspm.html">
+    <a class="dropdown-item" href="../images/other/r-bspm.html" rel="" target="">
  <span class="dropdown-text">r-bspm</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Dev Container</li>
         <li>
-    <a class="dropdown-item" href="../images/devcontainer/features.html">
+    <a class="dropdown-item" href="../images/devcontainer/features.html" rel="" target="">
  <span class="dropdown-text">Features</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/devcontainer/images.html">
+    <a class="dropdown-item" href="../images/devcontainer/images.html" rel="" target="">
  <span class="dropdown-text">Images</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../images/devcontainer/templates.html">
+    <a class="dropdown-item" href="../images/devcontainer/templates.html" rel="" target="">
  <span class="dropdown-text">Templates</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Other projects</li>
         <li>
-    <a class="dropdown-item" href="../images/external.html">
+    <a class="dropdown-item" href="../images/external.html" rel="" target="">
  <span class="dropdown-text">External images and tools for R</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Use</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-use">    
         <li>
-    <a class="dropdown-item" href="../use/extending.html">
+    <a class="dropdown-item" href="../use/extending.html" rel="" target="">
  <span class="dropdown-text">Extending images</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../use/gui.html">
+    <a class="dropdown-item" href="../use/gui.html" rel="" target="">
  <span class="dropdown-text">GUI</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../use/editor.html">
+    <a class="dropdown-item" href="../use/editor.html" rel="" target="">
  <span class="dropdown-text">Edit in containers</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../use/networking.html">
+    <a class="dropdown-item" href="../use/networking.html" rel="" target="">
  <span class="dropdown-text">Networking</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../use/shared_volumes.html">
+    <a class="dropdown-item" href="../use/shared_volumes.html" rel="" target="">
  <span class="dropdown-text">Shared Volumes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../use/reproducibility.html">
+    <a class="dropdown-item" href="../use/reproducibility.html" rel="" target="">
  <span class="dropdown-text">Reproducibility</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../use/singularity.html">
+    <a class="dropdown-item" href="../use/singularity.html" rel="" target="">
  <span class="dropdown-text">Singularity</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rocker-org"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/rocker-org" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Networking</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../use/networking.html">Networking</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
@@ -299,7 +285,7 @@ background-size: cover;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Networking</h1>
+      <h1 class="title">Networking</h1>
                   <div>
         <div class="description">
           Connect R containers to networks.
@@ -319,56 +305,64 @@ background-size: cover;
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../use/extending.html" class="sidebar-item-text sidebar-link">Extending images</a>
+  <a href="../use/extending.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extending images</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../use/gui.html" class="sidebar-item-text sidebar-link">GUI</a>
+  <a href="../use/gui.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GUI</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../use/editor.html" class="sidebar-item-text sidebar-link">Edit in containers</a>
+  <a href="../use/editor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edit in containers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../use/networking.html" class="sidebar-item-text sidebar-link active">Networking</a>
+  <a href="../use/networking.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Networking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../use/shared_volumes.html" class="sidebar-item-text sidebar-link">Shared Volumes</a>
+  <a href="../use/shared_volumes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Shared Volumes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../use/reproducibility.html" class="sidebar-item-text sidebar-link">Reproducibility</a>
+  <a href="../use/reproducibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reproducibility</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../use/singularity.html" class="sidebar-item-text sidebar-link">Singularity</a>
+  <a href="../use/singularity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Singularity</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#corporate-proxy" id="toc-corporate-proxy" class="nav-link active" data-scroll-target="#corporate-proxy"><span class="toc-section-number">1</span>  Corporate Proxy</a></li>
-  <li><a href="#https" id="toc-https" class="nav-link" data-scroll-target="#https"><span class="toc-section-number">2</span>  HTTPS</a></li>
-  <li><a href="#linking-database-containers" id="toc-linking-database-containers" class="nav-link" data-scroll-target="#linking-database-containers"><span class="toc-section-number">3</span>  Linking database containers</a></li>
+  <li><a href="#corporate-proxy" id="toc-corporate-proxy" class="nav-link active" data-scroll-target="#corporate-proxy"><span class="header-section-number">1</span> Corporate Proxy</a></li>
+  <li><a href="#https" id="toc-https" class="nav-link" data-scroll-target="#https"><span class="header-section-number">2</span> HTTPS</a></li>
+  <li><a href="#linking-database-containers" id="toc-linking-database-containers" class="nav-link" data-scroll-target="#linking-database-containers"><span class="header-section-number">3</span> Linking database containers</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/use/networking.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/use/networking.md" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -383,12 +377,12 @@ background-size: cover;
 <p>If you are behind a corporate proxy, you will need to set up a proxy to the container in order to connect the Docker container to the Internet.</p>
 <p>By setting it up as described in <a href="https://docs.docker.com/network/proxy/">the official documentation</a>, environment variables are set in the container, and many tools, including R, will use these environment variables to connect to the Internet.</p>
 <p>However, RStudio Server and Shiny Server do not respect container environment variables. This may prevent you from connecting to the Internet from RStudio IDE. If you want to use environment variables in sessions within these servers, you must write the variables to a <code>Renviron</code> file.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -527,9 +521,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -594,6 +602,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -636,7 +730,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><img src="../img/cc-by.svg" class="img-fluid" alt="CC-BY"></div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><img src="../img/cc-by.svg" class="img-fluid" alt="CC-BY"></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 

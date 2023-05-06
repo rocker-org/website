@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.262">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -125,12 +96,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
-      color: white;
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
 background-image: url(../../img/rockerwhale-optim.png);
 background-size: cover;
-    }
-    </style>
+      }
+</style>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -150,147 +132,151 @@ background-size: cover;
     <span class="navbar-title">Rocker Project</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../CODE_OF_CONDUCT.html">
+    <a class="nav-link" href="../../CODE_OF_CONDUCT.html" rel="" target="">
  <span class="menu-text">Code of Conduct</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-images" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-images" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Images</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-images">    
         <li>
-    <a class="dropdown-item" href="../../images/index.html">
+    <a class="dropdown-item" href="../../images/index.html" rel="" target="">
  <span class="dropdown-text">The Rocker Images</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">versioned stack</li>
         <li>
-    <a class="dropdown-item" href="../../images/versioned/r-ver.html">
+    <a class="dropdown-item" href="../../images/versioned/r-ver.html" rel="" target="">
  <span class="dropdown-text">r-ver</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/versioned/rstudio.html">
+    <a class="dropdown-item" href="../../images/versioned/rstudio.html" rel="" target="">
  <span class="dropdown-text">rstudio, tidyverse, verse, geospatial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/versioned/binder.html">
+    <a class="dropdown-item" href="../../images/versioned/binder.html" rel="" target="">
  <span class="dropdown-text">binder</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/versioned/shiny.html">
+    <a class="dropdown-item" href="../../images/versioned/shiny.html" rel="" target="">
  <span class="dropdown-text">shiny, shiny-verse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/versioned/cuda.html">
+    <a class="dropdown-item" href="../../images/versioned/cuda.html" rel="" target="">
  <span class="dropdown-text">cuda, ml, ml-verse</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">base stack</li>
         <li>
-    <a class="dropdown-item" href="https://hub.docker.com/_/r-base">
+    <a class="dropdown-item" href="https://hub.docker.com/_/r-base" rel="" target="">
  <span class="dropdown-text">r-base <i class="fa-solid fa-arrow-up-right-from-square" aria-label="arrow-up-right-from-square"></i></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/base/r-base.html">
+    <a class="dropdown-item" href="../../images/base/r-base.html" rel="" target="">
  <span class="dropdown-text">rocker/r-base</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/base/r-devel.html">
+    <a class="dropdown-item" href="../../images/base/r-devel.html" rel="" target="">
  <span class="dropdown-text">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Additional images</li>
         <li>
-    <a class="dropdown-item" href="../../images/other/r-ubuntu.html">
+    <a class="dropdown-item" href="../../images/other/r-ubuntu.html" rel="" target="">
  <span class="dropdown-text">r-ubuntu</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/other/r-bspm.html">
+    <a class="dropdown-item" href="../../images/other/r-bspm.html" rel="" target="">
  <span class="dropdown-text">r-bspm</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Dev Container</li>
         <li>
-    <a class="dropdown-item" href="../../images/devcontainer/features.html">
+    <a class="dropdown-item" href="../../images/devcontainer/features.html" rel="" target="">
  <span class="dropdown-text">Features</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/devcontainer/images.html">
+    <a class="dropdown-item" href="../../images/devcontainer/images.html" rel="" target="">
  <span class="dropdown-text">Images</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../images/devcontainer/templates.html">
+    <a class="dropdown-item" href="../../images/devcontainer/templates.html" rel="" target="">
  <span class="dropdown-text">Templates</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Other projects</li>
         <li>
-    <a class="dropdown-item" href="../../images/external.html">
+    <a class="dropdown-item" href="../../images/external.html" rel="" target="">
  <span class="dropdown-text">External images and tools for R</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Use</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-use">    
         <li>
-    <a class="dropdown-item" href="../../use/extending.html">
+    <a class="dropdown-item" href="../../use/extending.html" rel="" target="">
  <span class="dropdown-text">Extending images</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../use/gui.html">
+    <a class="dropdown-item" href="../../use/gui.html" rel="" target="">
  <span class="dropdown-text">GUI</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../use/editor.html">
+    <a class="dropdown-item" href="../../use/editor.html" rel="" target="">
  <span class="dropdown-text">Edit in containers</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../use/networking.html">
+    <a class="dropdown-item" href="../../use/networking.html" rel="" target="">
  <span class="dropdown-text">Networking</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../use/shared_volumes.html">
+    <a class="dropdown-item" href="../../use/shared_volumes.html" rel="" target="">
  <span class="dropdown-text">Shared Volumes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../use/reproducibility.html">
+    <a class="dropdown-item" href="../../use/reproducibility.html" rel="" target="">
  <span class="dropdown-text">Reproducibility</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../use/singularity.html">
+    <a class="dropdown-item" href="../../use/singularity.html" rel="" target="">
  <span class="dropdown-text">Singularity</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rocker-org"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/rocker-org" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">r-ver</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../images/versioned/r-ver.html">versioned stack</a></li><li class="breadcrumb-item"><a href="../../images/versioned/r-ver.html">r-ver</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
@@ -298,7 +284,7 @@ background-size: cover;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">r-ver</h1>
+      <h1 class="title">r-ver</h1>
                       </div>
   </div>
     
@@ -313,90 +299,104 @@ background-size: cover;
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/index.html" class="sidebar-item-text sidebar-link">The Rocker Images</a>
+  <a href="../../images/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Rocker Images</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">versioned stack</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">versioned stack</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/versioned/r-ver.html" class="sidebar-item-text sidebar-link active">r-ver</a>
+  <a href="../../images/versioned/r-ver.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">r-ver</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/versioned/rstudio.html" class="sidebar-item-text sidebar-link">rstudio, tidyverse, verse, geospatial</a>
+  <a href="../../images/versioned/rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">rstudio, tidyverse, verse, geospatial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/versioned/binder.html" class="sidebar-item-text sidebar-link">binder</a>
+  <a href="../../images/versioned/binder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">binder</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/versioned/shiny.html" class="sidebar-item-text sidebar-link">shiny, shiny-verse</a>
+  <a href="../../images/versioned/shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">shiny, shiny-verse</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/versioned/cuda.html" class="sidebar-item-text sidebar-link">cuda, ml, ml-verse</a>
+  <a href="../../images/versioned/cuda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">cuda, ml, ml-verse</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">base stack</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">base stack</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://hub.docker.com/_/r-base" class="sidebar-item-text sidebar-link">r-base <i class="fa-solid fa-arrow-up-right-from-square" aria-label="arrow-up-right-from-square"></i></a>
+  <a href="https://hub.docker.com/_/r-base" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">r-base <i class="fa-solid fa-arrow-up-right-from-square" aria-label="arrow-up-right-from-square"></i></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/base/r-base.html" class="sidebar-item-text sidebar-link">rocker/r-base</a>
+  <a href="../../images/base/r-base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">rocker/r-base</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/base/r-devel.html" class="sidebar-item-text sidebar-link">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</a>
+  <a href="../../images/base/r-devel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Additional images</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Additional images</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/other/r-ubuntu.html" class="sidebar-item-text sidebar-link">r-ubuntu</a>
+  <a href="../../images/other/r-ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">r-ubuntu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/other/r-bspm.html" class="sidebar-item-text sidebar-link">r-bspm</a>
+  <a href="../../images/other/r-bspm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">r-bspm</span></a>
   </div>
 </li>
       </ul>
@@ -404,25 +404,29 @@ background-size: cover;
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Dev Container</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Dev Container</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/devcontainer/features.html" class="sidebar-item-text sidebar-link">Features</a>
+  <a href="../../images/devcontainer/features.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Features</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/devcontainer/images.html" class="sidebar-item-text sidebar-link">Images</a>
+  <a href="../../images/devcontainer/images.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Images</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/devcontainer/templates.html" class="sidebar-item-text sidebar-link">Templates</a>
+  <a href="../../images/devcontainer/templates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Templates</span></a>
   </div>
 </li>
       </ul>
@@ -430,15 +434,17 @@ background-size: cover;
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Other projects</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Other projects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../images/external.html" class="sidebar-item-text sidebar-link">External images and tools for R</a>
+  <a href="../../images/external.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">External images and tools for R</span></a>
   </div>
 </li>
       </ul>
@@ -446,26 +452,27 @@ background-size: cover;
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link active" data-scroll-target="#quick-reference"><span class="toc-section-number">1</span>  Quick reference</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="toc-section-number">2</span>  Overview</a></li>
-  <li><a href="#special-tags" id="toc-special-tags" class="nav-link" data-scroll-target="#special-tags"><span class="toc-section-number">3</span>  Special tags</a>
+  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link active" data-scroll-target="#quick-reference"><span class="header-section-number">1</span> Quick reference</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">2</span> Overview</a></li>
+  <li><a href="#special-tags" id="toc-special-tags" class="nav-link" data-scroll-target="#special-tags"><span class="header-section-number">3</span> Special tags</a>
   <ul>
-  <li><a href="#devel" id="toc-devel" class="nav-link" data-scroll-target="#devel"><span class="toc-section-number">3.1</span>  <code>devel</code></a></li>
-  <li><a href="#cuda" id="toc-cuda" class="nav-link" data-scroll-target="#cuda"><span class="toc-section-number">3.2</span>  <code>cuda</code></a></li>
+  <li><a href="#devel" id="toc-devel" class="nav-link" data-scroll-target="#devel"><span class="header-section-number">3.1</span> <code>devel</code></a></li>
+  <li><a href="#cuda" id="toc-cuda" class="nav-link" data-scroll-target="#cuda"><span class="header-section-number">3.2</span> <code>cuda</code></a></li>
   </ul></li>
-  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use"><span class="toc-section-number">4</span>  How to use</a>
+  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use"><span class="header-section-number">4</span> How to use</a>
   <ul>
-  <li><a href="#switch-the-default-cran-mirror" id="toc-switch-the-default-cran-mirror" class="nav-link" data-scroll-target="#switch-the-default-cran-mirror"><span class="toc-section-number">4.1</span>  Switch the default CRAN mirror</a></li>
-  <li><a href="#selecting-the-blas-implementation-used-by-r" id="toc-selecting-the-blas-implementation-used-by-r" class="nav-link" data-scroll-target="#selecting-the-blas-implementation-used-by-r"><span class="toc-section-number">4.2</span>  Selecting the BLAS implementation used by R</a>
+  <li><a href="#switch-the-default-cran-mirror" id="toc-switch-the-default-cran-mirror" class="nav-link" data-scroll-target="#switch-the-default-cran-mirror"><span class="header-section-number">4.1</span> Switch the default CRAN mirror</a></li>
+  <li><a href="#selecting-the-blas-implementation-used-by-r" id="toc-selecting-the-blas-implementation-used-by-r" class="nav-link" data-scroll-target="#selecting-the-blas-implementation-used-by-r"><span class="header-section-number">4.2</span> Selecting the BLAS implementation used by R</a>
   <ul class="collapse">
-  <li><a href="#checking-which-blas-is-in-use" id="toc-checking-which-blas-is-in-use" class="nav-link" data-scroll-target="#checking-which-blas-is-in-use"><span class="toc-section-number">4.2.1</span>  Checking which BLAS is in use</a></li>
-  <li><a href="#switching-blas-implementations" id="toc-switching-blas-implementations" class="nav-link" data-scroll-target="#switching-blas-implementations"><span class="toc-section-number">4.2.2</span>  Switching BLAS implementations</a></li>
+  <li><a href="#checking-which-blas-is-in-use" id="toc-checking-which-blas-is-in-use" class="nav-link" data-scroll-target="#checking-which-blas-is-in-use"><span class="header-section-number">4.2.1</span> Checking which BLAS is in use</a></li>
+  <li><a href="#switching-blas-implementations" id="toc-switching-blas-implementations" class="nav-link" data-scroll-target="#switching-blas-implementations"><span class="header-section-number">4.2.2</span> Switching BLAS implementations</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -509,12 +516,12 @@ background-size: cover;
 <li>Non-latest R version images installs all R packages from a fixed snapshot of CRAN mirror at a given date. This setting ensures that the same version of the R package is installed no matter when the installation is performed.</li>
 <li>Provides images that are generally smaller than the <code>r-base</code> series.</li>
 </ul>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -532,12 +539,12 @@ Note
 <section id="cuda" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="cuda"><span class="header-section-number">3.2</span> <code>cuda</code></h3>
 <p>Tags which contain <code>cuda</code> (e.g.&nbsp;<code>rocker/r-ver:4.0.0-cuda10.1</code>) are alias of <a href="../../images/versioned/cuda.html"><code>rocker/cuda</code></a>.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Warning
 </div>
 </div>
@@ -560,12 +567,12 @@ Warning
 <div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/r-ver:4</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">'options(repos = c(CRAN = "https://cloud.r-project.org"))'</span> <span class="op">&gt;&gt;</span><span class="st">"</span><span class="va">${R_HOME}</span><span class="st">/etc/Rprofile.site"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -579,25 +586,47 @@ Tip
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can also use the script <a href="https://github.com/rocker-org/rocker-versioned2/blob/master/scripts/setup_R.sh"><code>setup_R.sh</code></a> included in <code>rocker/r-ver</code>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/r-ver:4</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">/rocker_scripts/setup_R.sh</span> https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The advantage of using this script is that if you specify a URL for binary installation from Posit Public Package Manager, it will rewrite the URL and switch to source installation on non-amd64 platforms.</p>
+<p>For example, in the above example, <code>https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29</code> is set for the amd64 platform, but <code>https://packagemanager.rstudio.com/cran/2023-01-29</code> is set for the arm64 platform as the default CRAN mirror.</p>
+</div>
+</div>
 <p>Or, if you want to temporarily change the CRAN mirror during an R session, use the <code>options()</code> function.</p>
 <p>A common use case is when developing an R package and using the <code>devtools::check()</code> function; if the CRAN mirror is not changed from the default, an error like <code>cannot open URL 'packagemanager.posit.co/cran/__linux__/jammy/latest/web/packages/packages.rds': HTTP status was '404 Not Found'</code> may occur.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>R Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="selecting-the-blas-implementation-used-by-r" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="selecting-the-blas-implementation-used-by-r"><span class="header-section-number">4.2</span> Selecting the BLAS implementation used by R</h3>
 <p>By default <code>rocker/r-ver</code> uses <a href="https://www.openblas.net/">the OpenBLAS</a> implementation for Linear Algebra<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. But it is possible to switch for <a href="https://www.netlib.org/blas/">the reference BLAS implementation</a> (as provided by the Debian package <code>libblas-dev</code>) using the Shared BLAS setup<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -613,21 +642,21 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>R Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.2.0 (2022-04-22)</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.2.0 (2022-04-22)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here for instance R uses OpenBLAS.</p>
 </section>
 <section id="switching-blas-implementations" class="level4" data-number="4.2.2">
 <h4 data-number="4.2.2" class="anchored" data-anchor-id="switching-blas-implementations"><span class="header-section-number">4.2.2</span> Switching BLAS implementations</h4>
 <p>You can switch BLAS used by R with the Debian <code>update-alternatives</code> script:</p>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Switch to libblas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Switch to openblas</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
@@ -635,9 +664,9 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/blas/libblas.so.3"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/lapack/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/blas/libblas.so.3"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/lapack/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -645,9 +674,9 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/libblas.so.3"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/libblas.so.3"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -693,9 +722,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -760,6 +803,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -802,7 +931,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><img src="../../img/cc-by.svg" class="img-fluid" alt="CC-BY"></div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><img src="../../img/cc-by.svg" class="img-fluid" alt="CC-BY"></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 
