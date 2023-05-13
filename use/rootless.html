@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Rootless containers and rocker">
+
+<title>Rocker Project - Running Rootless</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../img/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(../img/rockerwhale-optim.png);
+background-size: cover;
+      }
+</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/rocker-bw.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Rocker Project</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../CODE_OF_CONDUCT.html" rel="" target="">
+ <span class="menu-text">Code of Conduct</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-images" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Images</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-images">    
+        <li>
+    <a class="dropdown-item" href="../images/index.html" rel="" target="">
+ <span class="dropdown-text">The Rocker Images</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">versioned stack</li>
+        <li>
+    <a class="dropdown-item" href="../images/versioned/r-ver.html" rel="" target="">
+ <span class="dropdown-text">r-ver</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/rstudio.html" rel="" target="">
+ <span class="dropdown-text">rstudio, tidyverse, verse, geospatial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/binder.html" rel="" target="">
+ <span class="dropdown-text">binder</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/shiny.html" rel="" target="">
+ <span class="dropdown-text">shiny, shiny-verse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/versioned/cuda.html" rel="" target="">
+ <span class="dropdown-text">cuda, ml, ml-verse</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">base stack</li>
+        <li>
+    <a class="dropdown-item" href="https://hub.docker.com/_/r-base" rel="" target="">
+ <span class="dropdown-text">r-base <i class="fa-solid fa-arrow-up-right-from-square" aria-label="arrow-up-right-from-square"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/base/r-base.html" rel="" target="">
+ <span class="dropdown-text">rocker/r-base</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/base/r-devel.html" rel="" target="">
+ <span class="dropdown-text">r-devel, drd, drp, r-devel-san, r-devel-ubsan-clang</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Additional images</li>
+        <li>
+    <a class="dropdown-item" href="../images/other/r-ubuntu.html" rel="" target="">
+ <span class="dropdown-text">r-ubuntu</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/other/r-bspm.html" rel="" target="">
+ <span class="dropdown-text">r-bspm</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Dev Container</li>
+        <li>
+    <a class="dropdown-item" href="../images/devcontainer/features.html" rel="" target="">
+ <span class="dropdown-text">Features</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/devcontainer/images.html" rel="" target="">
+ <span class="dropdown-text">Images</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../images/devcontainer/templates.html" rel="" target="">
+ <span class="dropdown-text">Templates</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Other projects</li>
+        <li>
+    <a class="dropdown-item" href="../images/external.html" rel="" target="">
+ <span class="dropdown-text">External images and tools for R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Use</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-use">    
+        <li>
+    <a class="dropdown-item" href="../use/extending.html" rel="" target="">
+ <span class="dropdown-text">Extending images</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/gui.html" rel="" target="">
+ <span class="dropdown-text">GUI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/editor.html" rel="" target="">
+ <span class="dropdown-text">Edit in containers</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/networking.html" rel="" target="">
+ <span class="dropdown-text">Networking</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/shared_volumes.html" rel="" target="">
+ <span class="dropdown-text">Shared Volumes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/rootless.html" rel="" target="">
+ <span class="dropdown-text">Running Rootless</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/reproducibility.html" rel="" target="">
+ <span class="dropdown-text">Reproducibility</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../use/singularity.html" rel="" target="">
+ <span class="dropdown-text">Singularity</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rocker-org" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../use/rootless.html">Running Rootless</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Running Rootless</h1>
+                  <div>
+        <div class="description">
+          Rootless containers and rocker
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/extending.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extending images</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/gui.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GUI</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/editor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edit in containers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/networking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Networking</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/shared_volumes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Shared Volumes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/rootless.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Running Rootless</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/reproducibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reproducibility</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../use/singularity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Singularity</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#rootless-containers-security-and-root" id="toc-rootless-containers-security-and-root" class="nav-link active" data-scroll-target="#rootless-containers-security-and-root"><span class="header-section-number">1</span> Rootless containers, security and root</a>
+  <ul>
+  <li><a href="#who-are-we" id="toc-who-are-we" class="nav-link" data-scroll-target="#who-are-we"><span class="header-section-number">1.1</span> Who are we?</a></li>
+  <li><a href="#using-apt-get-inside-a-rootless-container" id="toc-using-apt-get-inside-a-rootless-container" class="nav-link" data-scroll-target="#using-apt-get-inside-a-rootless-container"><span class="header-section-number">1.2</span> Using apt-get inside a rootless container</a></li>
+  <li><a href="#modifying-files" id="toc-modifying-files" class="nav-link" data-scroll-target="#modifying-files"><span class="header-section-number">1.3</span> Modifying files</a></li>
+  <li><a href="#port-binding" id="toc-port-binding" class="nav-link" data-scroll-target="#port-binding"><span class="header-section-number">1.4</span> Port binding</a></li>
+  </ul></li>
+  <li><a href="#rootless-containers-and-file-permissions" id="toc-rootless-containers-and-file-permissions" class="nav-link" data-scroll-target="#rootless-containers-and-file-permissions"><span class="header-section-number">2</span> Rootless containers and file permissions</a>
+  <ul>
+  <li><a href="#how-users-work-in-rootless-containers" id="toc-how-users-work-in-rootless-containers" class="nav-link" data-scroll-target="#how-users-work-in-rootless-containers"><span class="header-section-number">2.1</span> How users work in rootless containers</a></li>
+  <li><a href="#working-alone" id="toc-working-alone" class="nav-link" data-scroll-target="#working-alone"><span class="header-section-number">2.2</span> Working alone</a></li>
+  <li><a href="#sharing-data-with-others" id="toc-sharing-data-with-others" class="nav-link" data-scroll-target="#sharing-data-with-others"><span class="header-section-number">2.3</span> Sharing data with others</a>
+  <ul class="collapse">
+  <li><a href="#set-groups-in-the-running-process---group-add-keep-groups" id="toc-set-groups-in-the-running-process---group-add-keep-groups" class="nav-link" data-scroll-target="#set-groups-in-the-running-process---group-add-keep-groups"><span class="header-section-number">2.3.1</span> Set groups in the running process <code>--group-add keep-groups</code></a></li>
+  <li><a href="#ask-the-system-administrator-to-subordinate-the-group" id="toc-ask-the-system-administrator-to-subordinate-the-group" class="nav-link" data-scroll-target="#ask-the-system-administrator-to-subordinate-the-group"><span class="header-section-number">2.3.2</span> Ask the system administrator to subordinate the group</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rocker-org/website/blob/master/use/rootless.md" class="toc-action">View source</a></p><p><a href="https://github.com/rocker-org/website/edit/master/use/rootless.md" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
+
+
+
+
+<section id="rootless-containers-security-and-root" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="rootless-containers-security-and-root"><span class="header-section-number">1</span> Rootless containers, security and root</h2>
+<p>Docker traditionally ran as the <code>root</code> user. Users who wanted to run docker containers needed to be given <code>sudo</code> access and use <code>sudo docker</code>, or be added to the <code>docker</code> group, so they could run docker without typing <code>sudo</code> first. In both cases, they were running docker with root privileges.</p>
+<p>This is considered a bad security practice because it effectively grants root host privileges to all docker users. However, namespaces and control groups where not as mature when docker started as they are now, and no better alternative was available. But we have an alternative now. Docker offers the possibility to run in <a href="https://docs.docker.com/engine/security/rootless/">rootless</a> mode and <a href="https://podman.io/">podman</a> runs rootless by design.</p>
+<p>Running a container rootless does not mean that the container does not have any root-like capabilities, it means that the container engine does not run as root.</p>
+<p><strong>For most rocker-related projects, running rootless is a security advantage.</strong></p>
+<section id="who-are-we" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="who-are-we"><span class="header-section-number">1.1</span> Who are we?</h3>
+<p>At the host:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sergio</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the container:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> docker.io/rocker/rstudio whoami</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># root</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="using-apt-get-inside-a-rootless-container" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="using-apt-get-inside-a-rootless-container"><span class="header-section-number">1.2</span> Using apt-get inside a rootless container</h3>
+<p>It is perfectly possible to run <code>apt-get</code> commands on a rootless container, because it just modifies files inside the container.</p>
+<p>At the host:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> update</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading package lists... Done</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the container:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> docker.io/rocker/rstudio apt-get update</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetched 26.8 MB in 6s (4,750 kB/s)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading package lists...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="modifying-files" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="modifying-files"><span class="header-section-number">1.3</span> Modifying files</h3>
+<p>You can bind mount the <code>/etc/</code> directory (e.g.&nbsp;using <code>-v /etc:/hostetc</code>) but you won’t be able to modify most of its files, since you are not allowed to do that when you are outside the container.</p>
+<p>At the host:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> /etc/try-creating-a-file</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># touch: cannot touch '/etc/try-creating-a-file': Permission denied</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the container: <em>Rootless means no additional host permissions</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-v</span> /etc/:/hostetc docker.io/rocker/rstudio <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  touch /hostetc/try-creating-a-file</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># touch: cannot touch '/hostetc/try-creating-a-file': Permission denied</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>However, you can modify the files <em>within</em> the container:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> docker.io/rocker/rstudio touch /etc/try-creating-a-file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="port-binding" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="port-binding"><span class="header-section-number">1.4</span> Port binding</h3>
+<p>You can’t bind your container to host ports lower than 1024, since those are reserved to root (or to be precise reserved to processes with <code>CAP_NET_BIND_SERVICE</code> capability set).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-p</span> 80:8787 docker.io/rocker/rstudio</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: rootlessport cannot expose privileged port 80, you can add </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 'net.ipv4.ip_unprivileged_port_start=80' to /etc/sysctl.conf (currently 1024),</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or choose a larger port number (&gt;= 1024):</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># listen tcp 0.0.0.0:80: bind: permission denied</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>However larger port numbers work perfectly fine:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-p</span> 8787:8787 docker.io/rocker/rstudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="rootless-containers-and-file-permissions" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="rootless-containers-and-file-permissions"><span class="header-section-number">2</span> Rootless containers and file permissions</h2>
+<p>If you have a bit of experience with containers you have probably suffered of “permission issues”.</p>
+<p>The typical issue with permissions is that you mount a directory into the container, and the processes in the container write files in that directory with a user id different than yours (usually root). Once you are out of the container you can’t access or modify those files.</p>
+<section id="how-users-work-in-rootless-containers" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="how-users-work-in-rootless-containers"><span class="header-section-number">2.1</span> How users work in rootless containers</h3>
+<p>With rootless containers, even if you are only one user, your container has to behave (read and write files…) as if there were many users. There is no way to magically do this, so the host operating system actually gives you many “subordinate user ids” and “subordinate group ids” for you to use as you wish. <em>How many?</em> Usually around 65k user ids and 65k group ids. When you use a rootless container you may be impersonating up to 65k users! Since it would be a very bad idea to impersonate other users in your computer (impersonating root would be the most dangerous) the system administrator gives you unassigned user ids that do not overlap with anyone else. The list of subordinate user and group ids assigned to each user is stored in <code>/etc/subuid</code> and <code>/etc/subgid</code> files.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/subuid</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sergio:100000:65536</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ana:165536:65536</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This file is read as follows:</p>
+<ul>
+<li>The user <code>sergio</code> has assigned 65536 additional subordinate user IDs starting at 100000. This spans the range 100000-165535.</li>
+<li>The user <code>ana</code> has assigned 65536 additional subordinate user IDs starting at 165536. This spans the range 165536-231071.</li>
+</ul>
+<p>When you start a container, the user and group ids used by the image should be mapped to the host. The default user mapping in podman maps the 0 container uid (corresponding to the container root user) to your real user id in the host, and all your subordinate user IDs are mapped to user ids <code>1:n</code> in the container. The same applies to group id mapping.</p>
+</section>
+<section id="working-alone" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="working-alone"><span class="header-section-number">2.2</span> Working alone</h3>
+<p>In the container, you can use user ids without issues (e.g.&nbsp;you can be root).</p>
+<p>If you bind mount a directory that you own:</p>
+<ul>
+<li>If you create a file as the root user in the container, outside of it the file will be owned by you.</li>
+<li>If you create a file as the container UID 1000, outside of the container will appear to be owned by one of your subordinate IDs (e.g.&nbsp;100999)</li>
+</ul>
+<p>What about mounting directories that you DO NOT own?</p>
+<ul>
+<li>The files and directories that you do not own belong to host UIDs that are not mapped into the container, so when the container asks for their UID the operating system returns the “overflow user id”, which is the ID 65534 by default and usually are listed as owned by <code>nobody</code> or <code>nogroup</code>.</li>
+</ul>
+</section>
+<section id="sharing-data-with-others" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="sharing-data-with-others"><span class="header-section-number">2.3</span> Sharing data with others</h3>
+<p>If you usually work with a directory shared with other users, it is possible that the shared directory belongs to a group you all belong to.</p>
+<p>There are several possible solutions. Here we describe two of them that we can use in <code>rocker</code>.</p>
+<section id="set-groups-in-the-running-process---group-add-keep-groups" class="level4" data-number="2.3.1">
+<h4 data-number="2.3.1" class="anchored" data-anchor-id="set-groups-in-the-running-process---group-add-keep-groups"><span class="header-section-number">2.3.1</span> Set groups in the running process <code>--group-add keep-groups</code></h4>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Adding <code>--group-add keep-groups</code> to <code>podman run</code> works when running an R session or an R script, but not when logging in from the rstudio server website.</p>
+<p>See below for an alternative</p>
+</div>
+</div>
+<p>By belonging to a group you may have permissions to do things (e.g.&nbsp;write to your shared directory). The ones who actually <em>do</em> things are processes that you start and you own. Your processes usually inherit your user id and your groups, and based on those groups they are authorized to do things.</p>
+<p>When <code>podman run</code> starts the initial process in the container the process running there will typically have the root uid and the root gid inside the container, which map to your own UID and GID. There are reasons for not inheriting all your extra group ids:</p>
+<ul>
+<li>The other group IDs are not mapped inside the container, so they are of little use there.</li>
+<li>The other group IDs may give permissions to do things in the host that the container should never be able to do (e.g.&nbsp;access some particular device).</li>
+</ul>
+<p>However, <code>podman run</code> accepts <code>--group-add keep-groups</code>. When that option is enabled, <code>podman</code> starts the initial process in the container. That process will have your GID (mapped to the root GID in the container) and all your other extra groups, unmapped in the container.</p>
+<p>On the host:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># uid=1000(sergio) gid=1000(sergio) groups=1000(sergio),4(adm),27(sudo),109(lpadmin),124(sambashare)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>On the container:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> rocker/rstudio id</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># uid=0(root) gid=0(root) groups=0(root)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Keeping groups:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">--group-add</span> keep-groups rocker/rstudio id</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># uid=0(root) gid=0(root) groups=0(root),65534(nogroup)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note how when keeping groups all the unmapped groups are grouped into 65534 (nogroup).</p>
+<p>Even if the container process can’t see those groups, when the process tries to read or write a file it has the groups set, so it actually has the permissions to work.</p>
+<p>On web applications such as RStudio, where the user logs in through the web browser, the process with the R session is not started directly by podman, but instead it is started by RStudio server when the user logs in.</p>
+<p>In this scenario, the started process does not inherit the groups from the host, and can’t write files into your shared directories.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To run R code or an R script using rocker accessing a shared directory, you can use <code>--group-add keep-groups</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">-ti</span> <span class="at">--rm</span> <span class="at">-v</span> /shared_dir:/shared_dir <span class="dt">\</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--group-add</span> keep-groups rocker/rstudio R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>However you won’t be able to access that directory if you try to login from the web browser.</p>
+</div>
+</div>
+</section>
+<section id="ask-the-system-administrator-to-subordinate-the-group" class="level4" data-number="2.3.2">
+<h4 data-number="2.3.2" class="anchored" data-anchor-id="ask-the-system-administrator-to-subordinate-the-group"><span class="header-section-number">2.3.2</span> Ask the system administrator to subordinate the group</h4>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This solution is complicated. There is a discussion open at <a href="https://github.com/containers/podman/issues/18333">podman#18333</a> to attempt to simplify it.</p>
+</div>
+</div>
+<p>Let’s assume here that the shared directory belongs to the GID 2000.</p>
+<p>Your system administrator can subordinate to you and your colleagues that GID, so you can use it:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/subgid</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sergio:100000:65536</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ana:165536:65536</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sergio:2000:1</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ana:2000:1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now <code>sergio</code> and <code>ana</code> can use the GID 2000 (note the /etc/sub<strong>g</strong>id).</p>
+<p>You will have to map your group host ID into the container so the container can access it. There are two caveats:</p>
+<ul>
+<li><p>When providing a custom mapping you need to provide a complete <code>uidmap</code> and a complete <code>gidmap</code>.</p></li>
+<li><p>When providing either of those two mappings in rootless <code>podman</code>, instead of mapping to the container from the host, we map to the container from podman’s intermediate mapping.</p></li>
+</ul>
+<p>The first caveat will require us to provide some default identity mappings. The second caveat will require us to find out what’s the intermediate podman mapping, so we know the intermediate group ID of our host 2000 gid.</p>
+<p>The intermediate group mapping is found with the following command:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> unshare cat /proc/self/gid_map</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#          0       1000          1</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#          1       2000          1</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#          2     100000      65536</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The table shows that gid 2000 in the host (middle column) is mapped to intermediate gid 1 (left column).</p>
+<p>We will map</p>
+<table class="table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Container ID</th>
+<th>Intermediate ID</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>User</td>
+<td>0 - 65534</td>
+<td>0 - 65534</td>
+<td>Identity mapping (no change needed in user mapping besides the default one)</td>
+</tr>
+<tr class="even">
+<td>Group</td>
+<td>0</td>
+<td>0</td>
+<td>Identity mapping (our main host GID 1000, was mapped to intermediate 0 by default)</td>
+</tr>
+<tr class="odd">
+<td>Group</td>
+<td>1 - 65534</td>
+<td>2 - 65535</td>
+<td>We skip intermediate GID 1, so 1-&gt;2, 2-&gt;3…</td>
+</tr>
+<tr class="even">
+<td>Group</td>
+<td>100000</td>
+<td>1</td>
+<td>We map container GID 100000 to intermediate GID 1, that we saw matches host GID 2000</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>--uidmap</code> and <code>--gidmap</code> options in rootless podman map those intermediate uids/gids to container ids:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run  <span class="dt">\</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rm</span>  <span class="dt">\</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> /shared_dir:/shared_dir <span class="dt">\</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--uidmap</span> <span class="st">"0:0:65535"</span>  <span class="dt">\</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--gidmap</span> <span class="st">"0:0:1"</span> <span class="dt">\</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--gidmap</span> <span class="st">"1:2:65535"</span> <span class="dt">\</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--gidmap</span> <span class="st">"100000:1:1"</span> <span class="dt">\</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--group-add</span> keep-groups <span class="dt">\</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  rocker/rstudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With all that set:</p>
+<ul>
+<li>Our rocker image will be able to obtain a container group id for the host gid 2000</li>
+<li>It will add the root user to that group in the container’s <code>/etc/groups</code> file</li>
+<li><strong>When you log in from the rstudio website, you will have access to the shared directory.</strong></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><img src="../img/cc-by.svg" class="img-fluid" alt="CC-BY"></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
