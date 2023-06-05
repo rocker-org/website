@@ -462,7 +462,7 @@ Tip
 <h3 data-number="1.2" class="anchored" data-anchor-id="install-binary-packages"><span class="header-section-number">1.2</span> Install binary packages</h3>
 <p>Source installations generally take longer than binary installations, so there are several ways to install binary R packages on Linux.</p>
 <section id="posit-public-package-manager" class="level4" data-number="1.2.1">
-<h4 data-number="1.2.1" class="anchored" data-anchor-id="posit-public-package-manager"><span class="header-section-number">1.2.1</span> <a href="https://packagemanager.rstudio.com/">Posit Public Package Manager</a></h4>
+<h4 data-number="1.2.1" class="anchored" data-anchor-id="posit-public-package-manager"><span class="header-section-number">1.2.1</span> <a href="https://packagemanager.posit.co/">Posit Public Package Manager</a></h4>
 <p>Posit Package Manager (Formerly “RStudio Package Manager”, RSPM) provides binary R packages for specific Linux distributions<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Since RSPM provides all packages on CRAN as a CRAN mirror, users can install packages just as if they were installed from CRAN.</p>
 <p>For example, Ubuntu based image <a href="../images/versioned/r-ver.html"><code>rocker/r-ver:4</code></a> on amd64 platform, which has already set up the public version of RSPM (Posit Public Package Manager) as its default CRAN mirror, can install the <code>curl</code> package as follows.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/r-ver:4</span>

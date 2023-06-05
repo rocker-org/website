@@ -516,7 +516,7 @@ background-size: cover;
 </ul></li>
 <li>Installs a fixed version of R itself from source, rather than whatever is already packaged for Ubuntu (the <code>r-base</code> stack gets the latest R version as a binary from Debian unstable).</li>
 <li>The only platforms available are <code>linux/amd64</code> and <code>linux/arm64</code> (arm64 images are experimental and only available for <code>rocker/r-ver</code> 4.1.0 or later).</li>
-<li>Set <a href="https://packagemanager.rstudio.com">the Posit Public Package Manager (RStudio Package Manager, RSPM)</a> as default CRAN mirror. For the amd64 platform, RSPM serves compiled Linux binaries of R packages and greatly speeds up package installs.</li>
+<li>Set <a href="https://packagemanager.posit.co">the Posit Public Package Manager (P3M, a.k.a RStudio Package Manager, RSPM)</a> as default CRAN mirror. For the amd64 platform, RSPM serves compiled Linux binaries of R packages and greatly speeds up package installs.</li>
 <li>Non-latest R version images installs all R packages from a fixed snapshot of CRAN mirror at a given date. This setting ensures that the same version of the R package is installed no matter when the installation is performed.</li>
 <li>Provides images that are generally smaller than the <code>r-base</code> series.</li>
 </ul>
@@ -606,10 +606,10 @@ Tip
 <pre><strong>Dockerfile</strong></pre>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/r-ver:4</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">/rocker_scripts/setup_R.sh</span> https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">/rocker_scripts/setup_R.sh</span> https://packagemanager.posit.co/cran/__linux__/jammy/2023-01-29</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The advantage of using this script is that if you specify a URL for binary installation from Posit Public Package Manager, it will rewrite the URL and switch to source installation on non-amd64 platforms.</p>
-<p>For example, in the above example, <code>https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29</code> is set for the amd64 platform, but <code>https://packagemanager.rstudio.com/cran/2023-01-29</code> is set for the arm64 platform as the default CRAN mirror.</p>
+<p>The advantage of using this script is that if you specify a URL for binary installation from Posit Public Package Manager (P3M), it will rewrite the URL and switch to source installation on non-amd64 platforms.</p>
+<p>For example, in the above example, <code>https://packagemanager.posit.co/cran/__linux__/jammy/2023-01-29</code> is set for the amd64 platform, but <code>https://packagemanager.posit.co/cran/2023-01-29</code> is set for the arm64 platform as the default CRAN mirror.</p>
 </div>
 </div>
 <p>Or, if you want to temporarily change the CRAN mirror during an R session, use the <code>options()</code> function.</p>
@@ -620,6 +620,14 @@ Tip
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is also possible to set up P3M and CRAN at the same time to achieve both binary installation and successful the <code>devtools::check()</code> function as follows. (<a href="https://github.com/rocker-org/rocker-versioned2/issues/658">rocker-org/rocker-versioned2#658</a>)</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile</strong></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/r-ver:4</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">'options(repos = c(P3M = "https://packagemanager.posit.co/cran/__linux__/jammy/latest", CRAN = "https://cloud.r-project.org"))'</span> <span class="op">&gt;&gt;</span><span class="st">"</span><span class="va">${R_HOME}</span><span class="st">/etc/Rprofile.site"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="selecting-the-blas-implementation-used-by-r" class="level3" data-number="4.2">
@@ -646,14 +654,14 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>R Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.2.0 (2022-04-22)</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.2.0 (2022-04-22)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here for instance R uses OpenBLAS.</p>
 </section>
@@ -668,9 +676,9 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/blas/libblas.so.3"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/lapack/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/blas/libblas.so.3"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/lapack/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -678,9 +686,9 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/libblas.so.3"</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARCH</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"libblas.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/libblas.so.3"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">update-alternatives</span> <span class="at">--set</span> <span class="st">"liblapack.so.3-</span><span class="va">${ARCH}</span><span class="st">-linux-gnu"</span> <span class="st">"/usr/lib/</span><span class="va">${ARCH}</span><span class="st">-linux-gnu/openblas-pthread/liblapack.so.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
