@@ -31,7 +31,7 @@ Compared to `r-base`,
   (the `r-base` stack gets the latest R version as a binary from Debian unstable).
 - The only platforms available are `linux/amd64` and `linux/arm64`
   (arm64 images are experimental and only available for `rocker/r-ver` 4.1.0 or later).
-- Set [the Posit Public Package Manager (P3M, a.k.a RStudio Package Manager, RSPM)](https://packagemanager.rstudio.com)
+- Set [the Posit Public Package Manager (P3M, a.k.a RStudio Package Manager, RSPM)](https://packagemanager.posit.co)
   as default CRAN mirror.
   For the amd64 platform, RSPM serves compiled Linux binaries of R packages and greatly speeds up package installs.
 - Non-latest R version images installs all R packages from a fixed snapshot of CRAN mirror at a given date.
@@ -93,7 +93,7 @@ included in `rocker/r-ver`.
 
 ```{.dockerfile filename="Dockerfile"}
 FROM rocker/r-ver:4
-RUN /rocker_scripts/setup_R.sh https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29
+RUN /rocker_scripts/setup_R.sh https://packagemanager.posit.co/cran/__linux__/jammy/2023-01-29
 ```
 
 The advantage of using this script is that if you specify a URL
@@ -101,9 +101,9 @@ for binary installation from Posit Public Package Manager (P3M),
 it will rewrite the URL and switch to source installation on non-amd64 platforms.
 
 For example, in the above example,
-`https://packagemanager.rstudio.com/cran/__linux__/jammy/2023-01-29`
+`https://packagemanager.posit.co/cran/__linux__/jammy/2023-01-29`
 is set for the amd64 platform,
-but `https://packagemanager.rstudio.com/cran/2023-01-29` is set
+but `https://packagemanager.posit.co/cran/2023-01-29` is set
 for the arm64 platform as the default CRAN mirror.
 
 :::

@@ -89,7 +89,7 @@ Check [the `pak` package documentation](https://pak.r-lib.org/index.html) for de
 Source installations generally take longer than binary installations,
 so there are several ways to install binary R packages on Linux.
 
-#### [Posit Public Package Manager](https://packagemanager.rstudio.com/)
+#### [Posit Public Package Manager](https://packagemanager.posit.co/)
 
 Posit Package Manager (Formerly "RStudio Package Manager", RSPM) provides binary R packages for specific Linux distributions[^rspm].
 Since RSPM provides all packages on CRAN as a CRAN mirror,
