@@ -31,7 +31,7 @@ Compared to `r-base`,
   (the `r-base` stack gets the latest R version as a binary from Debian unstable).
 - The only platforms available are `linux/amd64` and `linux/arm64`
   (arm64 images are experimental and only available for `rocker/r-ver` 4.1.0 or later).
-- Set [the Posit Public Package Manager (RStudio Package Manager, RSPM)](https://packagemanager.rstudio.com)
+- Set [the Posit Public Package Manager (P3M, a.k.a RStudio Package Manager, RSPM)](https://packagemanager.rstudio.com)
   as default CRAN mirror.
   For the amd64 platform, RSPM serves compiled Linux binaries of R packages and greatly speeds up package installs.
 - Non-latest R version images installs all R packages from a fixed snapshot of CRAN mirror at a given date.
@@ -97,7 +97,7 @@ RUN /rocker_scripts/setup_R.sh https://packagemanager.rstudio.com/cran/__linux__
 ```
 
 The advantage of using this script is that if you specify a URL
-for binary installation from Posit Public Package Manager,
+for binary installation from Posit Public Package Manager (P3M),
 it will rewrite the URL and switch to source installation on non-amd64 platforms.
 
 For example, in the above example,
@@ -118,6 +118,15 @@ may occur.
 ```{.r filename="R Terminal"}
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 devtools::check()
+```
+
+It is also possible to set up P3M and CRAN at the same time
+to achieve both binary installation and successful the `devtools::check()` function as follows.
+([rocker-org/rocker-versioned2#658](https://github.com/rocker-org/rocker-versioned2/issues/658))
+
+```{.dockerfile filename="Dockerfile"}
+FROM rocker/r-ver:4
+RUN echo 'options(repos = c(P3M = "https://packagemanager.posit.co/cran/__linux__/jammy/latest", CRAN = "https://cloud.r-project.org"))' >>"${R_HOME}/etc/Rprofile.site"
 ```
 
 ### Selecting the BLAS implementation used by R
