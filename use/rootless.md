@@ -1,30 +1,40 @@
 ---
 title: "Running Rootless"
 description: Rootless containers and rocker
+execute:
+  eval: false
 ---
-
-## Rootless containers, security and root
 
 Docker traditionally ran as the `root` user. Users who wanted to run docker
 containers needed to be given `sudo` access and use `sudo docker`, or be added
 to the `docker` group, so they could run docker without typing `sudo` first. In
-both cases, they were running docker with root privileges.
-
-This is considered a bad security practice because it effectively grants root
+both cases, they were running docker with root privileges. This is considered a
+bad security practice, because it effectively grants root
 host privileges to all docker users. However, namespaces and control groups where
-not as mature when docker started as they are now, and no better alternative
-was available. But we have an alternative now. Docker offers the possibility to
-run in [rootless](https://docs.docker.com/engine/security/rootless/) mode and
-[podman](https://podman.io/) runs rootless by design.
+not as mature as they are now, and no better alternative
+was available.
+
+However today docker offers the possibility to
+run in [rootless](https://docs.docker.com/engine/security/rootless/) mode.
+[Podman](https://podman.io/) runs rootless by design.
+
+:::{.callout-note appearance="simple"}
+
+## Podman or Docker?
+
+ Podman 4.7 and above includes an extended syntax for `--uidmap` and `--gidmap` that
+ makes it straightforward to map additional groups. This feature was 
+ [contributed](https://github.com/containers/podman/pull/18713)
+ by a rocker user, so you are encouraged to try it!
+:::
+
 
 Running a container rootless does not mean that the container does not have
 any root-like capabilities, it means that the container engine does not run
-as root.
-
-**For most rocker-related projects, running rootless is a security advantage.**
+as root. **For most rocker-related projects, running rootless is a security advantage.**
 
 
-### Who are we?
+## Who am I?
 
 At the host:
 
@@ -41,7 +51,7 @@ podman run --rm docker.io/rocker/rstudio whoami
 # root
 ```
 
-### Using apt-get inside a rootless container
+## Using apt-get inside a rootless container
 
 It is perfectly possible to run `apt-get` commands on a
 rootless container, because it just modifies files inside the container.
@@ -64,7 +74,7 @@ podman run --rm docker.io/rocker/rstudio apt-get update
 # Reading package lists...
 ```
 
-### Modifying files
+## Modifying files
 
 You can bind mount the `/etc/` directory (e.g. using `-v /etc:/hostetc`) but you won't
 be able to modify most of its files, since you are not allowed to do that
@@ -91,7 +101,21 @@ However, you can modify the files *within* the container:
 podman run --rm docker.io/rocker/rstudio touch /etc/try-creating-a-file
 ```
 
-### Port binding
+And files from mounted volumes, assuming you have the permissions where they
+are mounted at the host:
+
+```{.sh}
+podman run \
+    --rm \
+    --volume "$HOME/workdir:/workdir" \
+    docker.io/rocker/rstudio touch /workdir/try-creating-a-file
+ls "$HOME/workdir/try-creating-a-file"
+rm "$HOME/workdir/try-creating-a-file"
+```
+
+Your user in the host is mapped to the `root` user in the container.
+
+## Port binding
 
 You can't bind your container to host ports lower than 1024,
 since those are reserved to root (or to be precise reserved to processes with
@@ -112,237 +136,121 @@ However larger port numbers work perfectly fine:
 podman run --rm -p 8787:8787 docker.io/rocker/rstudio
 ```
 
-## Rootless containers and file permissions
+## Mounting shared data from an additional group
 
-If you have a bit of experience with containers you have probably suffered
-of "permission issues".
-
-The typical issue with permissions is that you mount a directory into the
-container, and the processes in the container write files in that directory
-with a user id different than yours (usually root). Once you are out of the
-container you can't access or modify those files.
-
-### How users work in rootless containers
-
-With rootless containers, even if you are only one user, your container
-has to behave (read and write files...) as if there were many users. There is
-no way to magically do this, so the host operating system actually gives you
-many "subordinate user ids" and "subordinate group ids" for you to use as you
-wish. *How many?* Usually around 65k user ids and 65k group ids. When you use
-a rootless container you may be impersonating up to 65k users! Since it would
-be a very bad idea to impersonate other users in your computer (impersonating
-root would be the most dangerous) the system administrator gives you unassigned
-user ids that do not overlap with anyone else. The list of subordinate user and
-group ids assigned to each user is stored in `/etc/subuid` and `/etc/subgid`
-files.
-
-```{.sh}
-cat /etc/subuid
-# sergio:100000:65536
-# ana:165536:65536
-```
-
-This file is read as follows:
-
-- The user `sergio` has assigned 65536 additional subordinate user IDs starting at 100000.
-  This spans the range 100000-165535.
-- The user `ana` has assigned 65536 additional subordinate user IDs starting at 165536.
-  This spans the range 165536-231071.
-
-When you start a container, the user and group ids used by the image should be
-mapped to the host. The default user mapping in podman maps the 0 container uid
-(corresponding to the container root user) to your real user id in the host,
-and all your subordinate user IDs are mapped to user ids `1:n` in the container.
-The same applies to group id mapping.
-
-### Working alone
-
-In the container, you can use user ids without issues (e.g. you can be root).
-
-If you bind mount a directory that you own:
-
-- If you create a file as the root user in the container, outside of it the
-  file will be owned by you.
-- If you create a file as the container UID 1000, outside of the container will
-  appear to be owned by one of your subordinate IDs (e.g. 100999)
-
-What about mounting directories that you DO NOT own?
-
-- The files and directories that you do not own belong to host UIDs that are
-  not mapped into the container, so when the container asks for their UID
-  the operating system returns the "overflow user id", which is the ID 65534 by
-  default and usually are listed as owned by `nobody` or `nogroup`.
-
-
-### Sharing data with others
-
-If you usually work with a directory shared with other users, it is possible
-that the shared directory belongs to a group you all belong to.
-
-There are several possible solutions. Here we describe two of them that we can
-use in `rocker`.
-
-#### Set groups in the running process `--group-add keep-groups`
-
-:::{.callout-important}
-
-Adding `--group-add keep-groups` to `podman run` works when running an R session
-or an R script, but not when logging in from the rstudio server website.
-
-See below for an alternative
-
-:::
-
-
-By belonging to a group you may have permissions to do things (e.g. write to
-your shared directory). The ones who actually *do* things are processes that
-you start and you own. Your processes usually inherit your user id and your
-groups, and based on those groups they are authorized to do things.
-
-When `podman run` starts the initial process in the container the process running
-there will typically have the root uid and the root gid inside the container,
-which map to your own UID and GID. There are reasons for not inheriting
-all your extra group ids:
-
-- The other group IDs are not mapped inside the container, so they are of little
-  use there.
-- The other group IDs may give permissions to do things in the host that the
-  container should never be able to do (e.g. access some particular device).
-
-However, `podman run` accepts `--group-add keep-groups`. When that option is
-enabled, `podman` starts the initial process in the container. That process will
-have your GID (mapped to the root GID in the container) and all your other extra
-groups, unmapped in the container.
-
-On the host:
-
-```{.sh}
-id
-# uid=1000(sergio) gid=1000(sergio) groups=1000(sergio),4(adm),27(sudo),109(lpadmin),124(sambashare)
-```
-
-On the container:
-
-```{.sh}
-podman run --rm rocker/rstudio id
-# uid=0(root) gid=0(root) groups=0(root)
-```
-
-Keeping groups:
-
-```{.sh}
-podman run --rm --group-add keep-groups rocker/rstudio id
-# uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
-```
-
-Note how when keeping groups all the unmapped groups are grouped into 65534 (nogroup).
-
-
-Even if the container process can't see those groups, when the process tries to read or
-write a file it has the groups set, so it actually has the permissions to work.
-
-On web applications such as RStudio, where the user logs in through the web browser,
-the process with the R session is not started directly by podman, but instead it is
-started by RStudio server when the user logs in.
-
-In this scenario, the started process does not inherit the groups from the host,
-and can't write files into your shared directories.
+You may want to mount a directory from a group you belong to, to be able to read
+and write into it. Let's say you are `ana` and you belong to the `rfriends`
+group in the host. That group has access to the `/shared_data` folder, that you would
+like to access from your container.
 
 :::{.callout-tip}
 
-
 To run R code or an R script using rocker accessing a shared directory, you
-can use `--group-add keep-groups`.
+can skip the instructions below and manage to work on the command line. However,
+you won't be able to access that directory if you try to login from RStudio's web
+browser. It will only work from process launched from the command line.
+
 
 ```{.sh}
-podman run -ti --rm -v /shared_dir:/shared_dir \
-  --group-add keep-groups rocker/rstudio R
+podman run 
+  -ti \
+  --rm \
+  --group-add keep-groups \
+  -v /shared_dir:/shared_dir \
+  docker.io/rocker/rstudio R
 ```
-
-However you won't be able to access that directory if you try to login from the web browser.
-
 :::
 
 
-#### Ask the system administrator to subordinate the group
 
-:::{.callout-important}
+1. Find out the group ID (GID) of the `rfriends` group.
 
-This solution is complicated. There is a discussion open at
-[podman#18333](https://github.com/containers/podman/issues/18333) to attempt to simplify it.
+    ```{.sh}
+    getent group rfriends
+    rfriends:x:2000:ana,sergio
+    ```
 
-:::
+    The GID is `2000`, and both `ana` and `sergio` belong to it.
 
-Let's assume here that the shared directory belongs to the GID 2000.
+2. Subordinate that GID to your user. You will need administrative permissions:
 
-Your system administrator can subordinate to you and your colleagues that GID, so you can use it:
+    ```{.sh}
+    sudo usermod --add-subgids 2000-2000 ana
+    ```
 
-```{.sh}
-cat /etc/subgid
-# sergio:100000:65536
-# ana:165536:65536
-#
-# sergio:2000:1
-# ana:2000:1
-```
+3. Update your Podman rootless namespace:
 
-Now `sergio` and `ana` can use the GID 2000 (note the /etc/sub**g**id).
+    ```{.sh}
+    podman system migrate
+    ```
 
-You will have to map your group host ID into the container so the container
-can access it. There are two caveats:
-
-- When providing a custom mapping you need to provide a complete `uidmap`
-  and a complete `gidmap`.
-
-- When providing either of those two mappings in rootless `podman`, instead of
-  mapping to the container from the host, we map to the container from podman's
-  intermediate mapping.
+You are now able to map the group in the container. How? That depends on your Podman version:
 
 
-The first caveat will require us to provide some default identity mappings.
-The second caveat will require us to find out what's the intermediate podman
-mapping, so we know the intermediate group ID of our host 2000 gid.
+### Podman versions 4.7 and above
 
-The intermediate group mapping is found with the following command:
+To run your container mapping your host GID `2000` to a container GID combine
+the `--group-add keep-groups` with the `--gidmap` option:
 
 ```{.sh}
-podman unshare cat /proc/self/gid_map
-#          0       1000          1
-#          1       2000          1
-#          2     100000      65536
+podman run \
+    --rm \
+    --group-add keep-groups \
+    --gidmap="+g102000:@2000" \
+    --volume /shared_dir:/shared_dir \
+    docker.io/rocker/rstudio
 ```
 
-The table shows that gid 2000 in the host (middle column) is mapped to
-intermediate gid 1 (left column).
-
-We will map
-
-| Type  | Container ID | Intermediate ID | Reason                                                                               |
-| ----- | ------------ | --------------- | ------------------------------------------------------------------------------------ |
-| User  |  0 - 65534   |   0 - 65534     | Identity mapping (no change needed in user mapping besides the default one)          |
-| Group |      0       |       0         | Identity mapping (our main host GID 1000, was mapped to intermediate 0 by default)   |
-| Group |  1 - 65534   |   2 - 65535     | We skip intermediate GID 1, so 1->2, 2->3...                                         |
-| Group |   100000     |       1         | We map container GID 100000 to intermediate GID 1, that we saw matches host GID 2000 |
+You will have used `--group-add keep-groups` so the user in the container still belongs to
+the subordinated group. The `--gidmap` argument takes care of appending the mapping of group
+`2000` from the host to group `102000` in the container. Additioning `100 000` to your GID is an
+easy way to remember the container GID and avoid collisions with lower container GIDs.
 
 
-The `--uidmap` and `--gidmap` options in rootless podman map those intermediate
-uids/gids to container ids:
+### Podman versions below 4.7
+
+The command will look like:
 
 ```{.sh}
 podman run  \
-  --rm  \
-  -v /shared_dir:/shared_dir \
-  --uidmap "0:0:65535"  \
-  --gidmap "0:0:1" \
-  --gidmap "1:2:65535" \
-  --gidmap "100000:1:1" \
-  --group-add keep-groups \
-  rocker/rstudio
+    --rm  \
+    --group-add keep-groups \
+    --uidmap "0:0:65535"  \
+    --gidmap "0:0:1" \
+    --gidmap "102000:1:1" \
+    --gidmap "1:2:60000" \
+    --volume /shared_dir:/shared_dir \
+    docker.io/rocker/rstudio
 ```
 
-With all that set:
+You can notice several differences in the idmapping command:
 
-- Our rocker image will be able to obtain a container group id for the host gid 2000
-- It will add the root user to that group in the container's `/etc/groups` file
-- **When you log in from the rstudio website, you will have access to the shared directory.**
+- You must provide a default user id mapping: `--uidmap "0:0:65535"`
+- You must provide a full group id mapping:
+
+    * The group id mapping should map intermediate GID 0 to container GID 0.
+      `--gidmap "0:0:1"` This maps your user to root.
+
+    * You must find out the intermediate GID mapping for the GID you want to map 
+      (using `podman unshare cat /proc/self/gid_map`).
+      
+
+        ```{.sh}
+        podman unshare cat /proc/self/gid_map
+        #          0       1000          1
+        #          1       2000          1
+        #          2     100000      65536
+        ```
+
+      By looking at the table above, you can find host GID `2000` in the middle
+      column and see it is mapped to intermediate id `1` in the left column.
+      
+      So your mapping must include intermediate GID `1` to container GID `102000`:
+      `--gidmap 102000:1:1`
+
+    * And you must map container IDs from 1 to n, using free intermediate GIDs.
+      Here we map 60000: `--gidmap "1:2:60000"`.
+
+And happy coding!
+
 
