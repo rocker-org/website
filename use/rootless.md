@@ -37,7 +37,7 @@ as root. **For most rocker-related projects, running rootless is a security adva
 
 At the host:
 
-```{.sh}
+```{.sh filename="Terminal"}
 whoami
 # sergio
 ```
@@ -45,7 +45,7 @@ whoami
 In the container:
 
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run --rm docker.io/rocker/rstudio whoami
 # root
 ```
@@ -57,7 +57,7 @@ rootless container, because it just modifies files inside the container.
 
 At the host:
 
-```{.sh}
+```{.sh filename="Terminal"}
 apt-get update
 # Reading package lists... Done
 # E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
@@ -65,7 +65,7 @@ apt-get update
 
 In the container:
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run --rm docker.io/rocker/rstudio apt-get update
 # Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
 # ...
@@ -81,14 +81,14 @@ when you are outside the container.
 
 At the host:
 
-```{.sh}
+```{.sh filename="Terminal"}
 touch /etc/try-creating-a-file
 # touch: cannot touch '/etc/try-creating-a-file': Permission denied
 ```
 
 In the container: *Rootless means no additional host permissions*
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run --rm -v /etc/:/hostetc docker.io/rocker/rstudio \
   touch /hostetc/try-creating-a-file
 # touch: cannot touch '/hostetc/try-creating-a-file': Permission denied
@@ -96,14 +96,14 @@ podman run --rm -v /etc/:/hostetc docker.io/rocker/rstudio \
 
 However, you can modify the files *within* the container:
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run --rm docker.io/rocker/rstudio touch /etc/try-creating-a-file
 ```
 
 And files from mounted volumes, assuming you have the permissions where they
 are mounted at the host:
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run \
     --rm \
     --volume "$HOME/workdir:/workdir" \
@@ -121,7 +121,7 @@ since those are reserved to root (or to be precise reserved to processes with
 `CAP_NET_BIND_SERVICE` capability set).
 
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run --rm -p 80:8787 docker.io/rocker/rstudio
 # Error: rootlessport cannot expose privileged port 80, you can add 
 # 'net.ipv4.ip_unprivileged_port_start=80' to /etc/sysctl.conf (currently 1024),
@@ -131,7 +131,7 @@ podman run --rm -p 80:8787 docker.io/rocker/rstudio
 
 However larger port numbers work perfectly fine:
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run --rm -p 8787:8787 docker.io/rocker/rstudio
 ```
 
@@ -150,7 +150,7 @@ you won't be able to access that directory if you try to login from RStudio's we
 browser. It will only work from process launched from the command line.
 
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run 
   -ti \
   --rm \
@@ -164,7 +164,7 @@ podman run
 
 1. Find out the group ID (GID) of the `rfriends` group.
 
-    ```{.sh}
+    ```{.sh filename="Terminal"}
     getent group rfriends
     rfriends:x:2000:ana,sergio
     ```
@@ -173,13 +173,13 @@ podman run
 
 2. Subordinate that GID to your user. You will need administrative permissions:
 
-    ```{.sh}
+    ```{.sh filename="Terminal"}
     sudo usermod --add-subgids 2000-2000 ana
     ```
 
 3. Update your Podman rootless namespace:
 
-    ```{.sh}
+    ```{.sh filename="Terminal"}
     podman system migrate
     ```
 
@@ -191,7 +191,7 @@ You are now able to map the group in the container. How? That depends on your Po
 To run your container mapping your host GID `2000` to a container GID combine
 the `--group-add keep-groups` with the `--gidmap` option:
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run \
     --rm \
     --group-add keep-groups \
@@ -210,7 +210,7 @@ easy way to remember the container GID and avoid collisions with lower container
 
 The command will look like:
 
-```{.sh}
+```{.sh filename="Terminal"}
 podman run  \
     --rm  \
     --group-add keep-groups \
@@ -234,7 +234,7 @@ You can notice several differences in the idmapping command:
       (using `podman unshare cat /proc/self/gid_map`).
       
 
-        ```{.sh}
+        ```{.sh filename="Terminal"}
         podman unshare cat /proc/self/gid_map
         #          0       1000          1
         #          1       2000          1
