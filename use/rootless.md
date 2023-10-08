@@ -1,8 +1,6 @@
 ---
 title: "Running Rootless"
 description: Rootless containers and rocker
-execute:
-  eval: false
 ---
 
 Docker traditionally ran as the `root` user. Users who wanted to run docker
