@@ -20,10 +20,10 @@ run in [rootless](https://docs.docker.com/engine/security/rootless/) mode.
 
 ## Podman or Docker?
 
- Podman 4.7 and above includes an extended syntax for `--uidmap` and `--gidmap` that
- makes it straightforward to map additional groups. This feature was 
- [contributed](https://github.com/containers/podman/pull/18713)
- by a rocker user, so you are encouraged to try it!
+Podman 4.7 and above includes an extended syntax for `--uidmap` and `--gidmap` that
+makes it straightforward to map additional groups. This feature was 
+[contributed](https://github.com/containers/podman/pull/18713)
+by a rocker user, so you are encouraged to try it!
 
 :::
 
@@ -227,29 +227,27 @@ You can notice several differences in the idmapping command:
 - You must provide a default user id mapping: `--uidmap "0:0:65535"`
 - You must provide a full group id mapping:
 
-    * The group id mapping should map intermediate GID 0 to container GID 0.
-      `--gidmap "0:0:1"` This maps your user to root.
+  * The group id mapping should map intermediate GID 0 to container GID 0.
+    `--gidmap "0:0:1"` This maps your user to root.
 
-    * You must find out the intermediate GID mapping for the GID you want to map 
-      (using `podman unshare cat /proc/self/gid_map`).
-      
+  * You must find out the intermediate GID mapping for the GID you want to map
+    (using `podman unshare cat /proc/self/gid_map`).
 
-        ```{.sh filename="Terminal"}
-        podman unshare cat /proc/self/gid_map
-        #          0       1000          1
-        #          1       2000          1
-        #          2     100000      65536
-        ```
 
-      By looking at the table above, you can find host GID `2000` in the middle
+    ```{.sh filename="Terminal"}
+    podman unshare cat /proc/self/gid_map
+    #          0       1000          1
+    #          1       2000          1
+    #          2     100000      65536
+    ```
+
+    By looking at the table above, you can find host GID `2000` in the middle
       column and see it is mapped to intermediate id `1` in the left column.
-      
-      So your mapping must include intermediate GID `1` to container GID `102000`:
-      `--gidmap 102000:1:1`
+    
+    So your mapping must include intermediate GID `1` to container GID `102000`:
+    `--gidmap 102000:1:1`
 
-    * And you must map container IDs from 1 to n, using free intermediate GIDs.
-      Here we map 60000: `--gidmap "1:2:60000"`.
+  * And you must map container IDs from 1 to n, using free intermediate GIDs.
+    Here we map 60000: `--gidmap "1:2:60000"`.
 
 And happy coding!
-
-
