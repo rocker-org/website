@@ -21,7 +21,7 @@ run in [rootless](https://docs.docker.com/engine/security/rootless/) mode.
 ## Podman or Docker?
 
 Podman 4.7 and above includes an extended syntax for `--uidmap` and `--gidmap` that
-makes it straightforward to map additional groups. This feature was 
+makes it straightforward to map additional groups. This feature was
 [contributed](https://github.com/containers/podman/pull/18713)
 by a rocker user, so you are encouraged to try it!
 
@@ -243,7 +243,7 @@ You can notice several differences in the idmapping command:
 
     By looking at the table above, you can find host GID `2000` in the middle
       column and see it is mapped to intermediate id `1` in the left column.
-    
+
     So your mapping must include intermediate GID `1` to container GID `102000`:
     `--gidmap 102000:1:1`
 
