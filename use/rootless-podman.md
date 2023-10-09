@@ -1,6 +1,8 @@
 ---
 title: "Running without root privileges using Podman"
 description: Rootless containers and rocker
+aliases:
+  - /use/rootless.html
 ---
 
 Docker traditionally ran as the `root` user. Users who wanted to run docker
