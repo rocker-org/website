@@ -1,5 +1,20 @@
 [
   {
+    "listing": "/images/devcontainer/index.html",
+    "items": [
+      "/images/devcontainer/features.html",
+      "/images/devcontainer/templates.html",
+      "/images/devcontainer/images.html"
+    ]
+  },
+  {
+    "listing": "/images/base/index.html",
+    "items": [
+      "/images/base/r-base.html",
+      "/images/base/r-devel.html"
+    ]
+  },
+  {
     "listing": "/images/versioned/index.html",
     "items": [
       "/images/versioned/binder.html",
@@ -17,21 +32,6 @@
     ]
   },
   {
-    "listing": "/images/devcontainer/index.html",
-    "items": [
-      "/images/devcontainer/features.html",
-      "/images/devcontainer/templates.html",
-      "/images/devcontainer/images.html"
-    ]
-  },
-  {
-    "listing": "/images/base/index.html",
-    "items": [
-      "/images/base/r-base.html",
-      "/images/base/r-devel.html"
-    ]
-  },
-  {
     "listing": "/use/index.html",
     "items": [
       "/use/editor.html",
@@ -39,7 +39,7 @@
       "/use/gui.html",
       "/use/networking.html",
       "/use/reproducibility.html",
-      "/use/rootless.html",
+      "/use/rootless-podman.html",
       "/use/shared_volumes.html",
       "/use/singularity.html"
     ]
