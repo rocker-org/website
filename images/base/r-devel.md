@@ -42,7 +42,7 @@ These prerelease version R can be executed with `RD`(for R-devel) or `RP`(for R-
 - `rocker/drp` has R-patched installed.
 - `rocker/r-devel-san` and `rocker/r-devel-ubsan-clang` provide R development binaries with Sanitizer support,
   for memory checking during R package development[^r-exts].
-  `rocker/r-devel-san` uses clang, and `rocker/r-devel-ubsan-clang` uses gcc.
+  `rocker/r-devel-san` uses gcc, and `rocker/r-devel-ubsan-clang` uses clang.
 
 [^r-exts]: [Writing R Extensions](https://cran.r-project.org/doc/manuals/r-devel/R-exts.html#Checking-memory-access)
 
