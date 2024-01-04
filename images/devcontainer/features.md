@@ -29,6 +29,10 @@ by editing [the `devcontainer.json` file](https://containers.dev/implementors/sp
 }
 ```
 
+There is also a repository that can be used to try Dev Containers on GitHub Codespaces immediately.
+
+- [rocker-org/devcontainer-try-r](https://github.com/rocker-org/devcontainer-try-r)
+
 Check the source repository for details on each Feature.
 
 ## Install R on Dev Containers

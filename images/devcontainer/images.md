@@ -35,7 +35,6 @@ Specify the image in [`devcontainer.json`](https://containers.dev/implementors/s
 
 ```{.json filename=".devcontainer/devcontainer.json"}
 {
-    "name": "${localWorkspaceFolderBasename}",
     "image": "ghcr.io/rocker-org/devcontainer/r-ver:4"
 }
 ```
@@ -55,7 +54,6 @@ the `devcontainer.json` file must be rewritten to refer to the Dockerfile.
 
 ```{.json filename=".devcontainer/devcontainer.json"}
 {
-    "name": "${localWorkspaceFolderBasename}",
     "build": {
         "dockerfile": "Dockerfile"
     }
