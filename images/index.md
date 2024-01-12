@@ -62,6 +62,8 @@ but with different build tools.
 |----------------------------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | [`rocker/r-ubuntu`](other/r-ubuntu.md) | `ubuntu`                                                                  | Close to `r-base`, but based on `ubuntu`                                                                          | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/r-ubuntu.svg) |
 | [`rocker/r-bspm`](other/r-bspm.md)     | `r-base`, `rocker/r-ubuntu`, `archlinux`, `fedora`, `opensuse/tumbleweed` | Binary installation of R packages has been configured, powered by [bspm](https://cran.r-project.org/package=bspm) | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/r-bspm.svg)   |
+| [`rocker/r-r2u`](https://eddelbuettel.github.io/r2u)     | `ubuntu`  | [r2u](https://eddelbuettel.github.io/r2u) offers all CRAN packages as binaries for Ubuntu, also uses [bspm](https://cran.r-project.org/package=bspm) | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/r2u.svg)   |
+
 
 ### Rocker Pre-built Dev Container Images
 
