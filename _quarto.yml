@@ -52,6 +52,8 @@ website:
               href: images/other/r-ubuntu.md
             - text: r-bspm
               href: images/other/r-bspm.md
+            - text: r2u {{< fa arrow-up-right-from-square >}}
+              href: https://eddelbuettel.github.io/r2u
         - text: ---
         - section: Dev Container
           contents:
