@@ -34,6 +34,15 @@ they can use the following command to work in the container and not worry about 
 ```sh
 docker run --rm -ti --user docker -v "$(pwd)"/work:/workspace r-base bash
 ```
+## Example
+
+Let's say you have a Docker container with the name `tb4` and you would like to share your local directory `/home/username/Code/fake_package` inside the `tb4` container at the point `/opt/ros/container_ws/src/fake_package`. To do this you will need to know the username used within the Docker container. You can find the correct username inside the container using the `whoami` command, for this example let's say the user name is `root`. The command to make this happen would be:
+
+```sh
+docker run --rm -ti --user root -v/home/username/Code/fake_package:/opt/ros/container_ws/src/fake_package tb4 bash`
+```
+
+It is worth noting that you can use the -v flag multiple times during a single command.
 
 :::{.callout-important}
 
