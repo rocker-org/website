@@ -82,8 +82,12 @@ Several Dev Container Features allow R package installation to be defined on `de
 
 These support package installation via `apt` or R function ([`pak::pak()`](https://pak.r-lib.org/reference/pak.html)).
 
-There is also [the `renv-cache` Feature](https://github.com/rocker-org/devcontainer-features/tree/main/src/renv-cache)
-that supports package installation via [the `renv` R package](https://rstudio.github.io/renv/) after container startup.
+There are also [`r-dependent-packages`](https://github.com/rocker-org/devcontainer-features/tree/main/src/r-dependent-packages)
+and [`renv-cache`](https://github.com/rocker-org/devcontainer-features/tree/main/src/renv-cache).
+
+- `r-dependent-packages` supports package installation from a `DESCRIPTION` file via
+  ([`pak::local_install_deps()`](https://pak.r-lib.org/reference/local_install_deps.html)) after container startup.
+- `renv-cache` supports package installation via [the `renv` R package](https://rstudio.github.io/renv/) after container startup.
 
 ## See also
 
