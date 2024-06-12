@@ -507,7 +507,7 @@
     "href": "images/devcontainer/features.html#install-r-packages-on-dev-containers",
     "title": "Rocker Dev Container Features",
     "section": "3 Install R packages on Dev Containers",
-    "text": "3 Install R packages on Dev Containers\nSeveral Dev Container Features allow R package installation to be defined on devcontainer.json.\n\napt-packages\nr-packages\n\nThese support package installation via apt or R function (pak::pak()).\nThere is also the renv-cache Feature that supports package installation via the renv R package after container startup.",
+    "text": "3 Install R packages on Dev Containers\nSeveral Dev Container Features allow R package installation to be defined on devcontainer.json.\n\napt-packages\nr-packages\n\nThese support package installation via apt or R function (pak::pak()).\nThere are also r-dependent-packages and renv-cache.\n\nr-dependent-packages supports package installation from a DESCRIPTION file via (pak::local_install_deps()) after container startup.\nrenv-cache supports package installation via the renv R package after container startup.",
     "crumbs": [
       "Dev Container",
       "Features"

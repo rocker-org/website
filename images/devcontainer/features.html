@@ -552,7 +552,11 @@ background-size: cover;
 <li><a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/r-packages"><code>r-packages</code></a></li>
 </ol>
 <p>These support package installation via <code>apt</code> or R function (<a href="https://pak.r-lib.org/reference/pak.html"><code>pak::pak()</code></a>).</p>
-<p>There is also <a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/renv-cache">the <code>renv-cache</code> Feature</a> that supports package installation via <a href="https://rstudio.github.io/renv/">the <code>renv</code> R package</a> after container startup.</p>
+<p>There are also <a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/r-dependent-packages"><code>r-dependent-packages</code></a> and <a href="https://github.com/rocker-org/devcontainer-features/tree/main/src/renv-cache"><code>renv-cache</code></a>.</p>
+<ul>
+<li><code>r-dependent-packages</code> supports package installation from a <code>DESCRIPTION</code> file via (<a href="https://pak.r-lib.org/reference/local_install_deps.html"><code>pak::local_install_deps()</code></a>) after container startup.</li>
+<li><code>renv-cache</code> supports package installation via <a href="https://rstudio.github.io/renv/">the <code>renv</code> R package</a> after container startup.</li>
+</ul>
 </section>
 <section id="see-also" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="see-also"><span class="header-section-number">4</span> See also</h2>
