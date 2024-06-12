@@ -45,17 +45,17 @@ For more information and further options, see [the image descriptions](images).
 
 :::{layout="[30,-5,30,-5,30]" layout-valign="center"}
 
-[![Carl](img/cboettig.jpg)](https://twitter.com/cboettig)
+[![Carl](img/cboettig.jpg)](https://github.com/cboettig)
 
-[![Dirk](img/edd.jpg)](https://twitter.com/eddelbuettel)
+[![Dirk](img/edd.jpg)](https://github.com/eddelbuettel)
 
-[![Noam](img/noamross.jpg)](https://twitter.com/noamross)
+[![Noam](img/noamross.jpg)](https://github.com/noamross)
 
 :::
 
-The Rocker project was created by [Carl Boettiger](https://twitter.com/cboettig) and [Dirk Eddelbuettel](https://twitter.com/eddelbuettel),
-and is now maintained by Carl, Dirk, [Noam Ross](https://twitter.com/noamross),
-and [SHIMA Tatsuya](https://twitter.com/eitsupi),
+The Rocker project was created by [Carl Boettiger](https://github.com/cboettig) and [Dirk Eddelbuettel](https://github.com/eddelbuettel),
+and is now maintained by Carl, Dirk, [Noam Ross](https://github.com/noamross),
+and [SHIMA Tatsuya](https://github.com/eitsupi),
 with significant contributions from a broad community of users and developers.
 Get in touch on [GitHub issues](https://github.com/rocker-org/rocker/issues) with bug reports,
 feature requests, or other feedback.
