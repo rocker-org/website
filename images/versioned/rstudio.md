@@ -56,7 +56,7 @@ The non-root default user `rstudio` is set up as RStudio Server user,
 so please enter the username `rstudio` and a randomly generated password
 which is displayed in the console to the RStudio login form.
 If your container system runs rootless, you will have to use the `root`
-user to login instead. In this case the privileges of the `root` user
+user to login instead, using the randomly generated password displayed in the console. In this case the privileges of the `root` user
 in the container are already bounded by your regular user permissions
 in the host system.
 
