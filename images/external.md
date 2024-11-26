@@ -50,6 +50,10 @@ These images are useful for you to run to debug your R package.
 A docker image for building R source packages and documentation,
 used in the [R-universe](https://r-universe.dev) build tool.
 
+### [jmgirard/rocker-bayes](https://github.com/jmgirard/rocker-bayes)
+
+A multiarchitecture Docker image for Bayesian analysis in R (e.g., including rstan, cmdstanr, brms, and rstanarm). 
+
 ## Other tools
 
 ### [Mamba](https://github.com/mamba-org/mamba)
