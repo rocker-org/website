@@ -52,7 +52,7 @@ used in the [R-universe](https://r-universe.dev) build tool.
 
 ### [jmgirard/rocker-bayes](https://github.com/jmgirard/rocker-bayes)
 
-A multiarchitecture Docker image for Bayesian analysis in R (e.g., including rstan, cmdstanr, brms, and rstanarm). 
+A multiarchitecture Docker image for Bayesian analysis in R (e.g., including rstan, cmdstanr, brms, and rstanarm).
 
 ## Other tools
 
