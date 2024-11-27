@@ -58,7 +58,7 @@ docker run --gpus all -p 8787:8787 rocker/ml
 
 :::{.callout-important}
 
-GPU use requires [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/) runtime to run!
+GPU use requires [nvidia-container-toolkit](https://github.com/NVIDIA/nvidia-container-toolkit/) runtime to run!
 
 :::
 
