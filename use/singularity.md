@@ -5,33 +5,33 @@ aliases:
   - /use/singularity/
 ---
 
-[Singularity](https://www.sylabs.io/guides/latest/user-guide/) is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters.
+[Singularity](https://docs.sylabs.io/guides/latest/user-guide/) is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters.
 Rocker images can be imported and run using Singularity, with optional custom password support.
+
+:::{.callout-note}
+In this guide, *Singularity* can refer to either [SingularityCE](https://sylabs.io/singularity/) or [Apptainer](https://apptainer.org/).
+While Apptainer is generally [compatible with Singularity commands and environment variables](https://apptainer.org/docs/user/latest/singularity_compatibility.html), Apptainer users may wish to replace the `singularity` command with `apptainer`, and `SINGULARITY` with `APPTAINER` in environment variables.
+:::
 
 ## Importing a Rocker Image
 
 Use the `singularity pull` command to import the desired Rocker image from Docker Hub into a (compressed, read-only) Singularity Image File:
 
 ```bash
-singularity pull docker://rocker/rstudio:4.2
+singularity pull docker://rocker/rstudio:4.4.2
 ```
 
-If additional Debian (or other) software packages are needed, a Rocker base image can be extended in a [Singularity definition file](https://sylabs.io/guides/3.7/user-guide/definition_files.html).
-Note that sudo privileges are required to use the `singularity build` command, unless using a remote builder such as the [Sylabs Cloud Remote Builder](https://cloud.sylabs.io/builder).
-Alternatively, a Rocker base image can be extended in a Dockerfile and a Singularity image built using the [docker2singularity](https://github.com/singularityhub/docker2singularity) Docker image.
+If additional Linux software packages are needed, a new container image must be built using the Rocker image as the base image; see the [SingularityCE](https://docs.sylabs.io/guides/latest/user-guide/build_a_container.html) and [Apptainer](https://apptainer.org/docs/user/latest/build_a_container.html) guides for building container images.
 Modifications to the base Rocker image are not needed for installing R packages into a personal library in the user's home directory.
 
 ## Running a Rocker Singularity container (localhost, no password)
 
 ```bash
-mkdir -p run var-lib-rstudio-server
-
-printf 'provider=sqlite\ndirectory=/var/lib/rstudio-server\n' > database.conf
-
 singularity exec \
-   --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf \
-   rstudio_4.2.sif \
-   /usr/lib/rstudio-server/bin/rserver --www-address=127.0.0.1
+   --scratch /run,/var/lib/rstudio-server \
+   --workdir $(mktemp -d) \
+   rstudio_4.4.2.sif \
+   rserver --www-address=127.0.0.1 --server-user=$(whoami)
 ```
 
 This will run rserver in a Singularity container.
@@ -44,9 +44,9 @@ To enable password authentication, set the PASSWORD environment variable and add
 
 ```bash
 PASSWORD='...' singularity exec \
-   --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf \
-   rstudio_4.2.sif \
-   /usr/lib/rstudio-server/bin/rserver --auth-none=0 --auth-pam-helper-path=pam-helper --server-user=$(whoami)
+   --scratch /run,/var/lib/rstudio-server \
+   rstudio_4.4.2.sif \
+   rserver --auth-none=0 --auth-pam-helper-path=pam-helper --server-user=$(whoami)
 ```
 
 After pointing your browser to http://_hostname_:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.
@@ -78,31 +78,31 @@ The following example illustrates how this may be done with a SLURM job script.
 
 # Create temporary directory to be populated with directories to bind-mount in the container
 # where writable file systems are necessary. Adjust path as appropriate for your computing environment.
-workdir=$(python -c 'import tempfile; print(tempfile.mkdtemp())')
-
-mkdir -p -m 700 ${workdir}/run ${workdir}/tmp ${workdir}/var/lib/rstudio-server
-cat > ${workdir}/database.conf <<END
-provider=sqlite
-directory=/var/lib/rstudio-server
-END
+workdir=$(mktemp -d)
 
 # Set OMP_NUM_THREADS to prevent OpenBLAS (and any other OpenMP-enhanced
 # libraries used by R) from spawning more threads than the number of processors
 # allocated to the job.
 #
-# Set R_LIBS_USER to a path specific to rocker/rstudio to avoid conflicts with
+# Set R_LIBS_USER to an existing path specific to rocker/rstudio to avoid conflicts with
 # personal libraries from any R installation in the host environment
+
+R_LIBS_USER=${HOME}/R/rocker-rstudio/4.4.2
+mkdir -p "${R_LIBS_USER}"
 
 cat > ${workdir}/rsession.sh <<END
 #!/bin/sh
-export OMP_NUM_THREADS=${SLURM_JOB_CPUS_PER_NODE}
-export R_LIBS_USER=${HOME}/R/rocker-rstudio/4.2
+export OMP_NUM_THREADS=${SLURM_CPUS_ON_NODE}
+export R_LIBS_USER="${R_LIBS_USER}"
+## custom Rprofile & Renviron (default is $HOME/.Rprofile and $HOME/.Renviron)
+# export R_PROFILE_USER=/path/to/Rprofile
+# export R_ENVIRON_USER=/path/to/Renviron
 exec /usr/lib/rstudio-server/bin/rsession "\${@}"
 END
 
 chmod +x ${workdir}/rsession.sh
 
-export SINGULARITY_BIND="${workdir}/run:/run,${workdir}/tmp:/tmp,${workdir}/database.conf:/etc/rstudio/database.conf,${workdir}/rsession.sh:/etc/rstudio/rsession.sh,${workdir}/var/lib/rstudio-server:/var/lib/rstudio-server"
+export SINGULARITY_BIND="${workdir}/rsession.sh:/etc/rstudio/rsession.sh"
 
 # Do not suspend idle sessions.
 # Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf
@@ -113,7 +113,7 @@ export SINGULARITYENV_USER=$(id -un)
 export SINGULARITYENV_PASSWORD=$(openssl rand -base64 15)
 # get unused socket per https://unix.stackexchange.com/a/132524
 # tiny race condition between the python & singularity commands
-readonly PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+readonly PORT=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 cat 1>&2 <<END
 1. SSH tunnel from your workstation using the following command:
 
@@ -134,12 +134,16 @@ When done using RStudio Server, terminate the job by:
       scancel -f ${SLURM_JOB_ID}
 END
 
-singularity exec --cleanenv rstudio_4.2.sif \
-    /usr/lib/rstudio-server/bin/rserver --www-port ${PORT} \
+singularity exec --cleanenv \
+                 --scratch /run,/tmp,/var/lib/rstudio-server \
+                 --workdir ${workdir} \
+                 rstudio_4.4.2.sif \
+    rserver --www-port ${PORT} \
             --auth-none=0 \
             --auth-pam-helper-path=pam-helper \
             --auth-stay-signed-in-days=30 \
             --auth-timeout-minutes=0 \
+            --server-user=$(whoami) \
             --rsession-path=/etc/rstudio/rsession.sh
 printf 'rserver exited' 1>&2
 ```
