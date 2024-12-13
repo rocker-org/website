@@ -89,13 +89,11 @@ workdir=$(mktemp -d)
 # Set R_LIBS_USER to an existing path specific to rocker/rstudio to avoid conflicts with
 # personal libraries from any R installation in the host environment
 
-R_LIBS_USER=${HOME}/R/rocker-rstudio/4.4.2
-mkdir -p "${R_LIBS_USER}"
-
 cat > ${workdir}/rsession.sh <<END
 #!/bin/sh
 export OMP_NUM_THREADS=${SLURM_CPUS_ON_NODE}
-export R_LIBS_USER="${R_LIBS_USER}"
+export R_LIBS_USER=${HOME}/R/rocker-rstudio/4.4.2
+mkdir -p "\${R_LIBS_USER}"
 ## custom Rprofile & Renviron (default is $HOME/.Rprofile and $HOME/.Renviron)
 # export R_PROFILE_USER=/path/to/Rprofile
 # export R_ENVIRON_USER=/path/to/Renviron
