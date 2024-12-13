@@ -82,22 +82,17 @@ The following example illustrates how this may be done with a SLURM job script.
 # where writable file systems are necessary. Adjust path as appropriate for your computing environment.
 workdir=$(mktemp -d)
 
-# Set OMP_NUM_THREADS to prevent OpenBLAS (and any other OpenMP-enhanced
-# libraries used by R) from spawning more threads than the number of processors
-# allocated to the job.
-#
 # Set R_LIBS_USER to an existing path specific to rocker/rstudio to avoid conflicts with
 # personal libraries from any R installation in the host environment
 
-cat > ${workdir}/rsession.sh <<END
+cat > ${workdir}/rsession.sh <<"END"
 #!/bin/sh
-export OMP_NUM_THREADS=${SLURM_CPUS_ON_NODE}
 export R_LIBS_USER=${HOME}/R/rocker-rstudio/4.4.2
-mkdir -p "\${R_LIBS_USER}"
+mkdir -p "${R_LIBS_USER}"
 ## custom Rprofile & Renviron (default is $HOME/.Rprofile and $HOME/.Renviron)
 # export R_PROFILE_USER=/path/to/Rprofile
 # export R_ENVIRON_USER=/path/to/Renviron
-exec /usr/lib/rstudio-server/bin/rsession "\${@}"
+exec /usr/lib/rstudio-server/bin/rsession "${@}"
 END
 
 chmod +x ${workdir}/rsession.sh
