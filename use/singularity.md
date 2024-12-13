@@ -9,8 +9,10 @@ aliases:
 Rocker images can be imported and run using Singularity, with optional custom password support.
 
 :::{.callout-note}
+
 In this guide, *Singularity* can refer to either [SingularityCE](https://sylabs.io/singularity/) or [Apptainer](https://apptainer.org/).
 While Apptainer is generally [compatible with Singularity commands and environment variables](https://apptainer.org/docs/user/latest/singularity_compatibility.html), Apptainer users may wish to replace the `singularity` command with `apptainer`, and `SINGULARITY` with `APPTAINER` in environment variables.
+
 :::
 
 ## Importing a Rocker Image
