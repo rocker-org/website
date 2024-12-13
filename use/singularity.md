@@ -49,7 +49,7 @@ PASSWORD='...' singularity exec \
    rserver --auth-none=0 --auth-pam-helper-path=pam-helper --server-user=$(whoami)
 ```
 
-After pointing your browser to http://_hostname_:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.
+After pointing your browser to http://*hostname*:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.
 
 ## Additional Options for RStudio >= 1.3.x
 
