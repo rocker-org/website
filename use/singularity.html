@@ -397,32 +397,42 @@ background-size: cover;
 
 
 
-<p><a href="https://www.sylabs.io/guides/latest/user-guide/">Singularity</a> is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters. Rocker images can be imported and run using Singularity, with optional custom password support.</p>
+<p><a href="https://docs.sylabs.io/guides/latest/user-guide/">Singularity</a> is useful for running containers as an unprivileged user, especially in multi-user environments like High-Performance Computing clusters. Rocker images can be imported and run using Singularity, with optional custom password support.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this guide, <em>Singularity</em> can refer to either <a href="https://sylabs.io/singularity/">SingularityCE</a> or <a href="https://apptainer.org/">Apptainer</a>. While Apptainer is generally <a href="https://apptainer.org/docs/user/latest/singularity_compatibility.html">compatible with Singularity commands and environment variables</a>, Apptainer users may wish to replace the <code>singularity</code> command with <code>apptainer</code>, and <code>SINGULARITY</code> with <code>APPTAINER</code> in environment variables.</p>
+</div>
+</div>
 <section id="importing-a-rocker-image" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="importing-a-rocker-image"><span class="header-section-number">1</span> Importing a Rocker Image</h2>
 <p>Use the <code>singularity pull</code> command to import the desired Rocker image from Docker Hub into a (compressed, read-only) Singularity Image File:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://rocker/rstudio:4.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If additional Debian (or other) software packages are needed, a Rocker base image can be extended in a <a href="https://sylabs.io/guides/3.7/user-guide/definition_files.html">Singularity definition file</a>. Note that sudo privileges are required to use the <code>singularity build</code> command, unless using a remote builder such as the <a href="https://cloud.sylabs.io/builder">Sylabs Cloud Remote Builder</a>. Alternatively, a Rocker base image can be extended in a Dockerfile and a Singularity image built using the <a href="https://github.com/singularityhub/docker2singularity">docker2singularity</a> Docker image. Modifications to the base Rocker image are not needed for installing R packages into a personal library in the user’s home directory.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://rocker/rstudio:4.4.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If additional Linux software packages are needed, a new container image must be built using the Rocker image as the base image; see the <a href="https://docs.sylabs.io/guides/latest/user-guide/build_a_container.html">SingularityCE</a> and <a href="https://apptainer.org/docs/user/latest/build_a_container.html">Apptainer</a> guides for building container images. Modifications to the base Rocker image are not needed for installing R packages into a personal library in the user’s home directory.</p>
 </section>
 <section id="running-a-rocker-singularity-container-localhost-no-password" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="running-a-rocker-singularity-container-localhost-no-password"><span class="header-section-number">2</span> Running a Rocker Singularity container (localhost, no password)</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> run var-lib-rstudio-server</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'provider=sqlite\ndirectory=/var/lib/rstudio-server\n'</span> <span class="op">&gt;</span> database.conf</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="dt">\</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">--bind</span> run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf <span class="dt">\</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>   rstudio_4.2.sif <span class="dt">\</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>   /usr/lib/rstudio-server/bin/rserver <span class="at">--www-address</span><span class="op">=</span>127.0.0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">--scratch</span> /run,/var/lib/rstudio-server <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">--workdir</span> <span class="va">$(</span><span class="fu">mktemp</span> <span class="at">-d</span><span class="va">)</span> <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   rstudio_4.4.2.sif <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   rserver <span class="at">--www-address</span><span class="op">=</span>127.0.0.1 <span class="at">--server-user</span><span class="op">=</span><span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will run rserver in a Singularity container. The <code>--www-address=127.0.0.1</code> option binds to localhost (the default is 0.0.0.0, or all IP addresses on the host). listening on 127.0.0.1:8787.</p>
 </section>
 <section id="running-a-rocker-singularity-container-with-password-authentication" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="running-a-rocker-singularity-container-with-password-authentication"><span class="header-section-number">3</span> Running a Rocker Singularity container with password authentication</h2>
 <p>To enable password authentication, set the PASSWORD environment variable and add the <code>--auth-none=0 --auth-pam-helper-path=pam-helper</code> options:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">PASSWORD</span><span class="op">=</span><span class="st">'...'</span> <span class="ex">singularity</span> exec <span class="dt">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">--bind</span> run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf <span class="dt">\</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   rstudio_4.2.sif <span class="dt">\</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   /usr/lib/rstudio-server/bin/rserver <span class="at">--auth-none</span><span class="op">=</span>0 <span class="at">--auth-pam-helper-path</span><span class="op">=</span>pam-helper <span class="at">--server-user</span><span class="op">=</span><span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">--scratch</span> /run,/var/lib/rstudio-server <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   rstudio_4.4.2.sif <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   rserver <span class="at">--auth-none</span><span class="op">=</span>0 <span class="at">--auth-pam-helper-path</span><span class="op">=</span>pam-helper <span class="at">--server-user</span><span class="op">=</span><span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After pointing your browser to http://<em>hostname</em>:8787, enter your local user ID on the system as the username, and the custom password specified in the PASSWORD environment variable.</p>
 </section>
 <section id="additional-options-for-rstudio-1.3.x" class="level2" data-number="4">
@@ -445,70 +455,67 @@ background-size: cover;
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create temporary directory to be populated with directories to bind-mount in the container</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># where writable file systems are necessary. Adjust path as appropriate for your computing environment.</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="va">workdir</span><span class="op">=</span><span class="va">$(</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import tempfile; print(tempfile.mkdtemp())'</span><span class="va">)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="va">workdir</span><span class="op">=</span><span class="va">$(</span><span class="fu">mktemp</span> <span class="at">-d</span><span class="va">)</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="at">-m</span> 700 <span class="va">${workdir}</span>/run <span class="va">${workdir}</span>/tmp <span class="va">${workdir}</span>/var/lib/rstudio-server</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> <span class="va">${workdir}</span>/database.conf <span class="op">&lt;&lt;END</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">provider=sqlite</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">directory=/var/lib/rstudio-server</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Set OMP_NUM_THREADS to prevent OpenBLAS (and any other OpenMP-enhanced</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># libraries used by R) from spawning more threads than the number of processors</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># allocated to the job.</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Set R_LIBS_USER to a path specific to rocker/rstudio to avoid conflicts with</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># personal libraries from any R installation in the host environment</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set R_LIBS_USER to an existing path specific to rocker/rstudio to avoid conflicts with</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># personal libraries from any R installation in the host environment</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> <span class="va">${workdir}</span>/rsession.sh <span class="op">&lt;&lt;"END"</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/sh</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="st">export R_LIBS_USER=${HOME}/R/rocker-rstudio/4.4.2</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="st">mkdir -p "${R_LIBS_USER}"</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="st">## custom Rprofile &amp; Renviron (default is $HOME/.Rprofile and $HOME/.Renviron)</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="st"># export R_PROFILE_USER=/path/to/Rprofile</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="st"># export R_ENVIRON_USER=/path/to/Renviron</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="st">exec /usr/lib/rstudio-server/bin/rsession "${@}"</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> <span class="va">${workdir}</span>/rsession.sh <span class="op">&lt;&lt;END</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/sh</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="st">export OMP_NUM_THREADS=</span><span class="va">${SLURM_JOB_CPUS_PER_NODE}</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="st">export R_LIBS_USER=</span><span class="va">${HOME}</span><span class="st">/R/rocker-rstudio/4.2</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="st">exec /usr/lib/rstudio-server/bin/rsession "</span><span class="dt">\$</span><span class="st">{@}"</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x <span class="va">${workdir}</span>/rsession.sh</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x <span class="va">${workdir}</span>/rsession.sh</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITY_BIND</span><span class="op">=</span><span class="st">"</span><span class="va">${workdir}</span><span class="st">/rsession.sh:/etc/rstudio/rsession.sh"</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Do not suspend idle sessions.</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/rstudio/rstudio/blob/v1.4.1106/src/cpp/server/ServerSessionManager.cpp#L126</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_RSTUDIO_SESSION_TIMEOUT</span><span class="op">=</span>0</span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITY_BIND</span><span class="op">=</span><span class="st">"</span><span class="va">${workdir}</span><span class="st">/run:/run,</span><span class="va">${workdir}</span><span class="st">/tmp:/tmp,</span><span class="va">${workdir}</span><span class="st">/database.conf:/etc/rstudio/database.conf,</span><span class="va">${workdir}</span><span class="st">/rsession.sh:/etc/rstudio/rsession.sh,</span><span class="va">${workdir}</span><span class="st">/var/lib/rstudio-server:/var/lib/rstudio-server"</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Do not suspend idle sessions.</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/rstudio/rstudio/blob/v1.4.1106/src/cpp/server/ServerSessionManager.cpp#L126</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_RSTUDIO_SESSION_TIMEOUT</span><span class="op">=</span>0</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_USER</span><span class="op">=</span><span class="va">$(</span><span class="fu">id</span> <span class="at">-un</span><span class="va">)</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_PASSWORD</span><span class="op">=</span><span class="va">$(</span><span class="ex">openssl</span> rand <span class="at">-base64</span> 15<span class="va">)</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co"># get unused socket per https://unix.stackexchange.com/a/132524</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># tiny race condition between the python &amp; singularity commands</span></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="bu">readonly</span> <span class="va">PORT</span><span class="op">=</span><span class="va">$(</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()'</span><span class="va">)</span></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span> <span class="op">&lt;&lt;END</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="st">1. SSH tunnel from your workstation using the following command:</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="st">   ssh -N -L 8787:</span><span class="va">${HOSTNAME}</span><span class="st">:</span><span class="va">${PORT}</span><span class="st"> </span><span class="va">${SINGULARITYENV_USER}</span><span class="st">@LOGIN-HOST</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_USER</span><span class="op">=</span><span class="va">$(</span><span class="fu">id</span> <span class="at">-un</span><span class="va">)</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SINGULARITYENV_PASSWORD</span><span class="op">=</span><span class="va">$(</span><span class="ex">openssl</span> rand <span class="at">-base64</span> 15<span class="va">)</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># get unused socket per https://unix.stackexchange.com/a/132524</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># tiny race condition between the python &amp; singularity commands</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="bu">readonly</span> <span class="va">PORT</span><span class="op">=</span><span class="va">$(</span><span class="ex">python3</span> <span class="at">-c</span> <span class="st">'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()'</span><span class="va">)</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span> <span class="op">&lt;&lt;END</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="st">1. SSH tunnel from your workstation using the following command:</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="st">   ssh -N -L 8787:</span><span class="va">${HOSTNAME}</span><span class="st">:</span><span class="va">${PORT}</span><span class="st"> </span><span class="va">${SINGULARITYENV_USER}</span><span class="st">@LOGIN-HOST</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="st">   and point your web browser to http://localhost:8787</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="st">2. log in to RStudio Server using the following credentials:</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="st">   user: </span><span class="va">${SINGULARITYENV_USER}</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="st">   password: </span><span class="va">${SINGULARITYENV_PASSWORD}</span></span>
 <span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="st">   and point your web browser to http://localhost:8787</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="st">When done using RStudio Server, terminate the job by:</span></span>
 <span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="st">2. log in to RStudio Server using the following credentials:</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="st">   user: </span><span class="va">${SINGULARITYENV_USER}</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="st">   password: </span><span class="va">${SINGULARITYENV_PASSWORD}</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="st">When done using RStudio Server, terminate the job by:</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="st">1. Exit the RStudio Session ("power" button in the top right corner of the RStudio window)</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="st">2. Issue the following command on the login node:</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="st">      scancel -f </span><span class="va">${SLURM_JOB_ID}</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="at">--cleanenv</span> rstudio_4.2.sif <span class="dt">\</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>    /usr/lib/rstudio-server/bin/rserver <span class="at">--www-port</span> <span class="va">${PORT}</span> <span class="dt">\</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-none</span><span class="op">=</span>0 <span class="dt">\</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-pam-helper-path</span><span class="op">=</span>pam-helper <span class="dt">\</span></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-stay-signed-in-days</span><span class="op">=</span>30 <span class="dt">\</span></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-timeout-minutes</span><span class="op">=</span>0 <span class="dt">\</span></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>            <span class="at">--rsession-path</span><span class="op">=</span>/etc/rstudio/rsession.sh</span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'rserver exited'</span> <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="st">1. Exit the RStudio Session ("power" button in the top right corner of the RStudio window)</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="st">2. Issue the following command on the login node:</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="st">      scancel -f </span><span class="va">${SLURM_JOB_ID}</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="op">END</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="at">--cleanenv</span> <span class="dt">\</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>                 <span class="at">--scratch</span> /run,/tmp,/var/lib/rstudio-server <span class="dt">\</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>                 <span class="at">--workdir</span> <span class="va">${workdir}</span> <span class="dt">\</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>                 rstudio_4.4.2.sif <span class="dt">\</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>    rserver <span class="at">--www-port</span> <span class="va">${PORT}</span> <span class="dt">\</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-none</span><span class="op">=</span>0 <span class="dt">\</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-pam-helper-path</span><span class="op">=</span>pam-helper <span class="dt">\</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-stay-signed-in-days</span><span class="op">=</span>30 <span class="dt">\</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>            <span class="at">--auth-timeout-minutes</span><span class="op">=</span>0 <span class="dt">\</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>            <span class="at">--server-user</span><span class="op">=</span><span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span> <span class="dt">\</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>            <span class="at">--rsession-path</span><span class="op">=</span>/etc/rstudio/rsession.sh</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'rserver exited'</span> <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The job script is submitted using the SLURM <code>sbatch</code> command:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sbatch rstudio-server.job</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Submitted</span> batch job 123456</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
