@@ -486,8 +486,7 @@ background-size: cover;
   <li><a href="#spatial-tags" id="toc-spatial-tags" class="nav-link" data-scroll-target="#spatial-tags"><span class="header-section-number">3</span> Spatial tags</a>
   <ul>
   <li><a href="#devel" id="toc-devel" class="nav-link" data-scroll-target="#devel"><span class="header-section-number">3.1</span> <code>devel</code></a></li>
-  <li><a href="#latest-daily" id="toc-latest-daily" class="nav-link" data-scroll-target="#latest-daily"><span class="header-section-number">3.2</span> <code>latest-daily</code></a></li>
-  <li><a href="#spacial-tags-for-geospatial-toolkit" id="toc-spacial-tags-for-geospatial-toolkit" class="nav-link" data-scroll-target="#spacial-tags-for-geospatial-toolkit"><span class="header-section-number">3.3</span> Spacial tags for geospatial toolkit</a></li>
+  <li><a href="#spacial-tags-for-geospatial-toolkit" id="toc-spacial-tags-for-geospatial-toolkit" class="nav-link" data-scroll-target="#spacial-tags-for-geospatial-toolkit"><span class="header-section-number">3.2</span> Spacial tags for geospatial toolkit</a></li>
   </ul></li>
   <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use"><span class="header-section-number">4</span> How to use</a>
   <ul>
@@ -499,7 +498,11 @@ background-size: cover;
   <li><a href="#userid-and-groupid" id="toc-userid-and-groupid" class="nav-link" data-scroll-target="#userid-and-groupid"><span class="header-section-number">4.1.4</span> <code>USERID</code> and <code>GROUPID</code></a></li>
   </ul></li>
   <li><a href="#editing-work-on-rstudio-server" id="toc-editing-work-on-rstudio-server" class="nav-link" data-scroll-target="#editing-work-on-rstudio-server"><span class="header-section-number">4.2</span> Editing work on RStudio Server</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">4.3</span> See also</a></li>
+  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq"><span class="header-section-number">4.3</span> FAQ</a>
+  <ul class="collapse">
+  <li><a href="#how-can-i-change-the-default-user-name-of-rstudio-server" id="toc-how-can-i-change-the-default-user-name-of-rstudio-server" class="nav-link" data-scroll-target="#how-can-i-change-the-default-user-name-of-rstudio-server"><span class="header-section-number">4.3.1</span> How can I change the default user name of RStudio Server?</a></li>
+  </ul></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">4.4</span> See also</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/rocker-org/website/blob/master/images/versioned/rstudio.md" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/rocker-org/website/edit/master/images/versioned/rstudio.md" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
@@ -582,18 +585,12 @@ Note
 <section id="devel" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="devel"><span class="header-section-number">3.1</span> <code>devel</code></h3>
 <p>The <code>devel</code> images are based on <code>rocker/r-ver:devel</code>, witch install <a href="https://cloud.r-project.org/src/base-prerelease/">the latest R-devel daily snapshot</a>.</p>
-<p><code>devel</code> tags are available for <code>rocker/rstudio</code>, <code>rocker/tidyverse</code>, and <code>rocker/verse</code>.</p>
+<p><code>devel</code> tags are available for <code>rocker/rstudio</code> and <code>rocker/tidyverse</code>.</p>
 </section>
-<section id="latest-daily" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="latest-daily"><span class="header-section-number">3.2</span> <code>latest-daily</code></h3>
-<p>The <code>latest-daily</code> images are based on <code>rocker/r-ver:latest</code> and install <a href="https://dailies.rstudio.com/">the latest RStudio daily build</a>.</p>
-<p><code>latest-daily</code> tags are available for <code>rocker/rstudio</code>, <code>rocker/tidyverse</code>, and <code>rocker/verse</code>.</p>
-</section>
-<section id="spacial-tags-for-geospatial-toolkit" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="spacial-tags-for-geospatial-toolkit"><span class="header-section-number">3.3</span> Spacial tags for geospatial toolkit</h3>
+<section id="spacial-tags-for-geospatial-toolkit" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="spacial-tags-for-geospatial-toolkit"><span class="header-section-number">3.2</span> Spacial tags for geospatial toolkit</h3>
 <p><code>rocker/geospatial:ubuntugis</code> (<code>rocker/geospatial:X.Y.Z-ubuntugis</code>) and <code>rocker/geospatial:dev-osgeo</code> are special images that differ slightly from the regular <code>rocker/geospatial</code>.</p>
 <ul>
-<li><code>ubuntugis</code> is built on packages installed from <a href="https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable">the ubuntugis-unstable PPA</a>.</li>
 <li><code>dev-osgeo</code> is built on the latest release of <a href="https://proj.org/">PROJ</a>, <a href="https://gdal.org/">GDAL</a>, and <a href="https://libgeos.org/">GEOS</a>.</li>
 </ul>
 </section>
@@ -720,8 +717,29 @@ Warning
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /other_dir:/other_dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="see-also" class="level3" data-number="4.3">
-<h3 data-number="4.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">4.3</span> See also</h3>
+<section id="faq" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="faq"><span class="header-section-number">4.3</span> FAQ</h3>
+<section id="how-can-i-change-the-default-user-name-of-rstudio-server" class="level4" data-number="4.3.1">
+<h4 data-number="4.3.1" class="anchored" data-anchor-id="how-can-i-change-the-default-user-name-of-rstudio-server"><span class="header-section-number">4.3.1</span> How can I change the default user name of RStudio Server?</h4>
+<p>We think that changing the user name is not necessary in most use cases (because Linux manages file system permissions by ID, not by name).</p>
+<p>However, if you want to change the default user name, you should creat a new user. For example, something like this:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile</strong></pre>
+</div>
+<div class="sourceCode" id="cb9" data-filename="Dockerfile"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/rstudio:4</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> DEFAULT_USER=new_user</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="op">&lt;&lt;EOF</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">if grep -q "1000" /etc/passwd; then</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">    userdel --remove "</span><span class="va">$(</span><span class="fu">id</span> <span class="at">-un</span> 1000<span class="va">)</span><span class="st">";</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">fi</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">/rocker_scripts/default_user.sh</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="see-also" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="see-also"><span class="header-section-number">4.4</span> See also</h3>
 <ul>
 <li><a href="../../use/networking.html">Networking</a></li>
 <li><a href="../../use/shared_volumes.html">Shared Volumes</a></li>
