@@ -70,7 +70,7 @@ docker run --rm -ti -e APPLICATION_LOGS_TO_STDOUT=false -p 3838:3838 rocker/shin
 ### Run by non-root user
 
 Shiny Server is normally run by the `root` user,
-and sessions within the Shiny Server use the non-root user with UID 999 named `shiny`.
+and sessions within the Shiny Server use the non-root user named `shiny`.
 
 By setting the `--user` option as follows, Shiny Server can be run by the `shiny` user.
 
