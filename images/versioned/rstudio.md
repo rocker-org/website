@@ -82,20 +82,13 @@ and the [rocker-org/geospatial](https://github.com/rocker-org/geospatial) reposi
 The `devel` images are based on `rocker/r-ver:devel`,
 witch install [the latest R-devel daily snapshot](https://cloud.r-project.org/src/base-prerelease/).
 
-`devel` tags are available for `rocker/rstudio`, `rocker/tidyverse`, and `rocker/verse`.
-
-### `latest-daily`
-
-The `latest-daily` images are based on `rocker/r-ver:latest` and install [the latest RStudio daily build](https://dailies.rstudio.com/).
-
-`latest-daily` tags are available for `rocker/rstudio`, `rocker/tidyverse`, and `rocker/verse`.
+`devel` tags are available for `rocker/rstudio` and `rocker/tidyverse`.
 
 ### Spacial tags for geospatial toolkit
 
 `rocker/geospatial:ubuntugis` (`rocker/geospatial:X.Y.Z-ubuntugis`) and `rocker/geospatial:dev-osgeo` are special images
 that differ slightly from the regular `rocker/geospatial`.
 
-- `ubuntugis` is built on packages installed from [the ubuntugis-unstable PPA](https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable).
 - `dev-osgeo` is built on the latest release of [PROJ](https://proj.org/), [GDAL](https://gdal.org/), and [GEOS](https://libgeos.org/).
 
 ## How to use
@@ -221,6 +214,27 @@ services:
       - ./.rstudio_config:/home/rstudio/.config/rstudio
       - ~/workspace:/home/rstudio/workspace
       - /other_dir:/other_dir
+```
+
+### FAQ
+
+#### How can I change the default user name of RStudio Server?
+
+We think that changing the user name is not necessary in most use cases
+(because Linux manages file system permissions by ID, not by name).
+
+However, if you want to change the default user name, you should creat a new user.
+For example, something like this:
+
+```{.dockerfile filename="Dockerfile"}
+FROM rocker/rstudio:4
+ENV DEFAULT_USER=new_user
+RUN <<EOF
+if grep -q "1000" /etc/passwd; then
+    userdel --remove "$(id -un 1000)";
+fi
+/rocker_scripts/default_user.sh
+EOF
 ```
 
 ### See also
