@@ -565,7 +565,7 @@ Note
 </section>
 <section id="run-by-non-root-user" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="run-by-non-root-user"><span class="header-section-number">3.2</span> Run by non-root user</h3>
-<p>Shiny Server is normally run by the <code>root</code> user, and sessions within the Shiny Server use the non-root user with UID 999 named <code>shiny</code>.</p>
+<p>Shiny Server is normally run by the <code>root</code> user, and sessions within the Shiny Server use the non-root user named <code>shiny</code>.</p>
 <p>By setting the <code>--user</code> option as follows, Shiny Server can be run by the <code>shiny</code> user.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">--user</span> shiny <span class="at">-p</span> 3838:3838 rocker/shiny</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
