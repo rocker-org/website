@@ -89,7 +89,7 @@ See also
 ### Positron
 
 [Positron](https://positron.posit.co/) is an IDE for data science based on
-Code - OSS, which has deep integration with R.
+Code OSS, which has deep integration with R.
 Positron does not have an extension like Visual Studio Code's Dev Containers extension,
 so it cannot control Dev Containers from Positron, and it requires to use
 [Remote SSH](https://positron.posit.co/remote-ssh.html) to connect to the container.
