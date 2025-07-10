@@ -64,7 +64,7 @@ This extension is recommended to be used with
 ### Visual Studio Code Dev Containers
 
 The Microsoft's Code OSS distribution, [Visual Studio Code](https://code.visualstudio.com/),
-has an extension, [Dev Containers](https://code.visualstudio.com/docs/remote/containers).
+has an extension, [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).
 (Formerly known as "Remote - Containers".)
 
 That makes a container the backend, which can be used to develop using software in the container.
@@ -79,6 +79,24 @@ which installs `languageserver` and `httpgd`,
 and also installs [`radian`](https://github.com/randy3k/radian) as R console.
 
 This definition can also be used in [GitHub Codespaces](https://github.com/features/codespaces).
+
+See also
+
+- [Dev Container Templates](../images/devcontainer/templates.md)
+- [Dev Container Images](../images/devcontainer/images.md)
+- [Dev Container Features](../images/devcontainer/features.md)
+
+### Positron
+
+[Positron](https://positron.posit.co/) is an IDE for data science based on
+Code - OSS, which has deep integration with R.
+Positron does not have an extension like Visual Studio Code's Dev Containers extension,
+so it cannot control Dev Containers from Positron, and it requires to use
+[Remote SSH](https://positron.posit.co/remote-ssh.html) to connect to the container.
+
+The easiest way to connect to a container with Positron is to create a Dev Container
+with [DevPod](https://devpod.sh/), which has Positron support and automatically
+creates the container and connects to it from Positron.
 
 See also
 
