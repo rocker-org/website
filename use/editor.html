@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-27ff797eb298626ee712224a4eea9629.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8fafb4ce372c07f33041763c729a1300.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -387,7 +387,8 @@ background-size: cover;
   <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode"><span class="header-section-number">3</span> VSCode</a>
   <ul>
   <li><a href="#visual-studio-code-dev-containers" id="toc-visual-studio-code-dev-containers" class="nav-link" data-scroll-target="#visual-studio-code-dev-containers"><span class="header-section-number">3.1</span> Visual Studio Code Dev Containers</a></li>
-  <li><a href="#codercode-server-and-gitpod-ioopenvscode-server" id="toc-codercode-server-and-gitpod-ioopenvscode-server" class="nav-link" data-scroll-target="#codercode-server-and-gitpod-ioopenvscode-server"><span class="header-section-number">3.2</span> coder/code-server and gitpod-io/openvscode-server</a></li>
+  <li><a href="#positron" id="toc-positron" class="nav-link" data-scroll-target="#positron"><span class="header-section-number">3.2</span> Positron</a></li>
+  <li><a href="#codercode-server-and-gitpod-ioopenvscode-server" id="toc-codercode-server-and-gitpod-ioopenvscode-server" class="nav-link" data-scroll-target="#codercode-server-and-gitpod-ioopenvscode-server"><span class="header-section-number">3.3</span> coder/code-server and gitpod-io/openvscode-server</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/rocker-org/website/blob/master/use/editor.md" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/rocker-org/website/edit/master/use/editor.md" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
@@ -437,7 +438,7 @@ Tip
 <p>When editing R in VSCode, <a href="https://github.com/REditorSupport/vscode-R">vscode-R</a> is a popular extension. This extension is recommended to be used with <a href="https://github.com/REditorSupport/languageserver"><code>languageserver</code></a> and <a href="https://nx10.github.io/httpgd/"><code>httpgd</code></a>.</p>
 <section id="visual-studio-code-dev-containers" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="visual-studio-code-dev-containers"><span class="header-section-number">3.1</span> Visual Studio Code Dev Containers</h3>
-<p>The Microsoft’s Code OSS distribution, <a href="https://code.visualstudio.com/">Visual Studio Code</a>, has an extension, <a href="https://code.visualstudio.com/docs/remote/containers">Dev Containers</a>. (Formerly known as “Remote - Containers”.)</p>
+<p>The Microsoft’s Code OSS distribution, <a href="https://code.visualstudio.com/">Visual Studio Code</a>, has an extension, <a href="https://code.visualstudio.com/docs/devcontainers/containers">Dev Containers</a>. (Formerly known as “Remote - Containers”.)</p>
 <p>That makes a container the backend, which can be used to develop using software in the container.</p>
 <p>The Dev Containers extension builds images from definition files and creates containers with installed VSCode Server and vscode extensions. Users can run the container and start working inside it without touching anything but the local VSCode.</p>
 <p>The Dev Containers extension can load and use templates published on the web. The R’s definition is <a href="https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver">this</a>, which installs <code>languageserver</code> and <code>httpgd</code>, and also installs <a href="https://github.com/randy3k/radian"><code>radian</code></a> as R console.</p>
@@ -449,8 +450,19 @@ Tip
 <li><a href="../images/devcontainer/features.html">Dev Container Features</a></li>
 </ul>
 </section>
-<section id="codercode-server-and-gitpod-ioopenvscode-server" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="codercode-server-and-gitpod-ioopenvscode-server"><span class="header-section-number">3.2</span> coder/code-server and gitpod-io/openvscode-server</h3>
+<section id="positron" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="positron"><span class="header-section-number">3.2</span> Positron</h3>
+<p><a href="https://positron.posit.co/">Positron</a> is an IDE for data science based on Code OSS, which has deep integration with R. Positron does not have an extension like Visual Studio Code’s Dev Containers extension, so it cannot control Dev Containers from Positron, and it requires to use <a href="https://positron.posit.co/remote-ssh.html">Remote SSH</a> to connect to the container.</p>
+<p>The easiest way to connect to a container with Positron is to create a Dev Container with <a href="https://devpod.sh/">DevPod</a>, which has Positron support and automatically creates the container and connects to it from Positron.</p>
+<p>See also</p>
+<ul>
+<li><a href="../images/devcontainer/templates.html">Dev Container Templates</a></li>
+<li><a href="../images/devcontainer/images.html">Dev Container Images</a></li>
+<li><a href="../images/devcontainer/features.html">Dev Container Features</a></li>
+</ul>
+</section>
+<section id="codercode-server-and-gitpod-ioopenvscode-server" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="codercode-server-and-gitpod-ioopenvscode-server"><span class="header-section-number">3.3</span> coder/code-server and gitpod-io/openvscode-server</h3>
 <p>Both <a href="https://github.com/coder/code-server">coder’s code-server</a> and <a href="https://github.com/gitpod-io/openvscode-server">gitpod’s openvscode-server</a> can run Code - OSS server-side and you can use it from the browser. To use them in a Docker container, they must be installed in the container.</p>
 
 
