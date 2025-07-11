@@ -66,8 +66,6 @@ Some tips for choosing:
   may require separate `apt` installations of system libraries that are dependencies.
 - Generally `r-apt` installs R packages faster than `r-rig`.
   Therefore, if you want to add R to a container, we recommend trying `r-apt` first.
-  However, `r-apt` does not support `ubuntu` on arm64 platform, so if you want to use `ubuntu` on arm64 platform,
-  use `r-rig` instead.
 - If you want to install any version of R or use R already installed in the container,
   you can use `r-rig` to install any version of R or only the R package without installing R.
 - If you want to install packages that exist in the conda-forge,
