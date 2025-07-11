@@ -539,7 +539,7 @@ background-size: cover;
 <p>Some tips for choosing:</p>
 <ul>
 <li>When installing R packages via <code>apt</code> or <code>mamba</code> (<code>conda</code>), dependencies outside of R are installed automatically. But, installing R packages via R function (<code>install.packages</code>) may require separate <code>apt</code> installations of system libraries that are dependencies.</li>
-<li>Generally <code>r-apt</code> installs R packages faster than <code>r-rig</code>. Therefore, if you want to add R to a container, we recommend trying <code>r-apt</code> first. However, <code>r-apt</code> does not support <code>ubuntu</code> on arm64 platform, so if you want to use <code>ubuntu</code> on arm64 platform, use <code>r-rig</code> instead.</li>
+<li>Generally <code>r-apt</code> installs R packages faster than <code>r-rig</code>. Therefore, if you want to add R to a container, we recommend trying <code>r-apt</code> first.</li>
 <li>If you want to install any version of R or use R already installed in the container, you can use <code>r-rig</code> to install any version of R or only the R package without installing R.</li>
 <li>If you want to install packages that exist in the conda-forge, you can use <code>miniforge</code> for fast installation with <code>mamba</code>.</li>
 </ul>
