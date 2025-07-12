@@ -74,3 +74,9 @@ execute `/init` command with the root user specified.
 ```sh
 docker run --rm -ti -p 8787:8787 --user root rocker/binder /init
 ```
+
+## Alternatives
+
+If you are *primarily* interested in using the Jupyter ecosystem of tools, consider using
+the images from the [jupyter/docker-stacks](https://rocker-project.org/images/external.html#jupyter-docker-stacks)
+project instead.
