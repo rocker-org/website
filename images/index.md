@@ -21,12 +21,8 @@ Get the latest version or a reproducibly fixed environment.
 | [`rocker/tidyverse`](versioned/rstudio.md)  | `rocker/rstudio`                            | Adds tidyverse packages & devtools                                             | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/tidyverse)   |
 | [`rocker/verse`](versioned/rstudio.md)      | `rocker/tidyverse`                          | Adds tex & publishing-related package                                          | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/verse)       |
 | [`rocker/geospatial`](versioned/rstudio.md) | `rocker/verse`                              | Adds geospatial packages                                                       | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/geospatial)  |
-| [`rocker/binder`](versioned/binder.md)      | `rocker/geospatial`                         | Adds requirements to run repositories on [mybinder.org](https://mybinder.org/) | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/binder)      |
 | [`rocker/shiny`](versioned/shiny.md)        | `rocker/r-ver`                              | Adds shiny server                                                              | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/shiny)       |
 | [`rocker/shiny-verse`](versioned/shiny.md)  | `rocker/shiny`                              | Adds tidyverse packages                                                        | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/shiny-verse) |
-| [`rocker/cuda`](versioned/cuda.md)          | `rocker/r-ver`                              | Adds CUDA support to `rocker/r-ver`                                            | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/cuda)        |
-| [`rocker/ml`](versioned/cuda.md)            | `rocker/cuda`                               | Adds CUDA support to `rocker/tidyverse`                                        | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/ml)          |
-| [`rocker/ml-verse`](versioned/cuda.md)      | `rocker/ml`                                 | Adds CUDA support to `rocker/geospatial`                                       | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/ml-verse)    |
 
 This stack builds on stable Debian releases (for R versions <= `3.6.3`) or Ubuntu LTS (for R versions >= `4.0.0`).
 Images in this stack accept a version tag specifying which version of R is desired, e.g. `rocker/rstudio:4.0.0` for R `4.0.0`.
@@ -38,6 +34,18 @@ Version-tagged images are designed to be stable, consistently providing the same
 (R, R packages, system libraries) rather than the latest available,
 though Debian system libraries will still receive any security patches.
 Please check [the document about versions](https://github.com/rocker-org/rocker-versioned2/wiki/Versions) for details.
+
+## The Jupyter stack
+
+This stack builds on official Jupyter instances.  This stack uses `r2u` + `bspm` mechanisms for fast R package installs with automatic dependency resolution, making these images easy to extend without knowledge of apt-get and system dependencies.
+
+| image                                       | base image                                  | description                                                                    | pulls                                                                   |
+|---------------------------------------------|---------------------------------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [`rocker/binder`](versioned/binder.md)      | `quay.io/jupyter/minimal-notebook`          | JuyterHub compatible with `rocker/geospatial`, RStudio, VSCode interfaces      | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/binder)      |
+| [`rocker/ml`](versioned/cuda.md)            | `quay.io/jupyter/minimal-notebook`          | JupyterHub compatible with RStudio, VSCode, + common python libraries          | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/ml)          |
+| [`rocker/cuda`](versioned/cuda.md)          | `quay.io/jupyter/pytorch-notebook:cuda12-ubuntu-24.04` | The `rocker/ml` recipe on a CUDA-12 base image                      | ![Docker Pulls](https://img.shields.io/docker/pulls/rocker/cuda)        |
+
+
 
 ### The base stack
 
